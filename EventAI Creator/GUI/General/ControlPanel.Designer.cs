@@ -120,6 +120,7 @@
             this.Controls.Add(this.removescriptnames);
             this.Controls.Add(this.setallscriptnames);
             this.Name = "ControlPanel";
+            this.ShowIcon = false;
             this.Text = "Control Panel";
             this.ResumeLayout(false);
             this.PerformLayout();

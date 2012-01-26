@@ -82,8 +82,8 @@
             // 
             // listBoxtexts
             // 
-            this.listBoxtexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxtexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxtexts.FormattingEnabled = true;
             this.listBoxtexts.Location = new System.Drawing.Point(9, 101);
             this.listBoxtexts.Name = "listBoxtexts";
@@ -118,8 +118,8 @@
             this.TextBoxlocal0.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal0.TabIndex = 14;
             this.TextBoxlocal0.Text = "";
-            this.TextBoxlocal0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal0.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal1
             // 
@@ -129,8 +129,8 @@
             this.TextBoxlocal1.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal1.TabIndex = 15;
             this.TextBoxlocal1.Text = "";
-            this.TextBoxlocal1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal1.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal3
             // 
@@ -140,8 +140,8 @@
             this.TextBoxlocal3.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal3.TabIndex = 16;
             this.TextBoxlocal3.Text = "";
-            this.TextBoxlocal3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal3.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal6
             // 
@@ -151,8 +151,8 @@
             this.TextBoxlocal6.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal6.TabIndex = 17;
             this.TextBoxlocal6.Text = "";
-            this.TextBoxlocal6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal6.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal4
             // 
@@ -162,8 +162,8 @@
             this.TextBoxlocal4.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal4.TabIndex = 18;
             this.TextBoxlocal4.Text = "";
-            this.TextBoxlocal4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal4.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal7
             // 
@@ -173,8 +173,8 @@
             this.TextBoxlocal7.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal7.TabIndex = 19;
             this.TextBoxlocal7.Text = "";
-            this.TextBoxlocal7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal7.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal2
             // 
@@ -184,8 +184,8 @@
             this.TextBoxlocal2.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal2.TabIndex = 20;
             this.TextBoxlocal2.Text = "";
-            this.TextBoxlocal2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal2.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal5
             // 
@@ -195,8 +195,8 @@
             this.TextBoxlocal5.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal5.TabIndex = 22;
             this.TextBoxlocal5.Text = "";
-            this.TextBoxlocal5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal5.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal8
             // 
@@ -206,8 +206,8 @@
             this.TextBoxlocal8.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal8.TabIndex = 23;
             this.TextBoxlocal8.Text = "";
-            this.TextBoxlocal8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal8.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // label2
             // 
@@ -419,8 +419,8 @@
             this.customlistBoxtexts.Name = "customlistBoxtexts";
             this.customlistBoxtexts.Size = new System.Drawing.Size(81, 304);
             this.customlistBoxtexts.TabIndex = 40;
-            this.customlistBoxtexts.SelectedIndexChanged += new System.EventHandler(this.customlistBoxtexts_SelectedIndexChanged);
             this.customlistBoxtexts.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.customlistBoxtexts_ItemCheck);
+            this.customlistBoxtexts.SelectedIndexChanged += new System.EventHandler(this.customlistBoxtexts_SelectedIndexChanged);
             // 
             // er
             // 
@@ -478,7 +478,8 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.menuStrip1);
             this.Name = "TEXTEditor";
-            this.Text = "localized Texts Editor";
+            this.ShowIcon = false;
+            this.Text = "Texts Editor";
             this.Load += new System.EventHandler(this.TEXTEditor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

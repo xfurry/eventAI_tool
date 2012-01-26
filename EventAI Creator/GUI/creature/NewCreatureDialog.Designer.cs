@@ -71,6 +71,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "NewCreatureDialog";
+            this.ShowIcon = false;
             this.Text = "Create New Script";
             this.ResumeLayout(false);
             this.PerformLayout();

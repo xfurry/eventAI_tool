@@ -105,8 +105,8 @@
             // 
             // listBoxsummons
             // 
-            this.listBoxsummons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxsummons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxsummons.FormattingEnabled = true;
             this.listBoxsummons.Location = new System.Drawing.Point(12, 88);
             this.listBoxsummons.Name = "listBoxsummons";
@@ -185,8 +185,8 @@
             this.box_position_X.Size = new System.Drawing.Size(188, 20);
             this.box_position_X.TabIndex = 49;
             this.box_position_X.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
-            this.box_position_X.Leave += new System.EventHandler(this.txtBox_Leave);
             this.box_position_X.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
+            this.box_position_X.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // box_position_Y
             // 
@@ -195,8 +195,8 @@
             this.box_position_Y.Size = new System.Drawing.Size(188, 20);
             this.box_position_Y.TabIndex = 50;
             this.box_position_Y.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
-            this.box_position_Y.Leave += new System.EventHandler(this.txtBox_Leave);
             this.box_position_Y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
+            this.box_position_Y.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // box_position_Z
             // 
@@ -205,8 +205,8 @@
             this.box_position_Z.Size = new System.Drawing.Size(188, 20);
             this.box_position_Z.TabIndex = 51;
             this.box_position_Z.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
-            this.box_position_Z.Leave += new System.EventHandler(this.txtBox_Leave);
             this.box_position_Z.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
+            this.box_position_Z.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // box_orientation
             // 
@@ -215,8 +215,8 @@
             this.box_orientation.Size = new System.Drawing.Size(188, 20);
             this.box_orientation.TabIndex = 52;
             this.box_orientation.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
-            this.box_orientation.Leave += new System.EventHandler(this.txtBox_Leave);
             this.box_orientation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
+            this.box_orientation.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // box_spawntimesecs
             // 
@@ -226,8 +226,8 @@
             this.box_spawntimesecs.Size = new System.Drawing.Size(188, 20);
             this.box_spawntimesecs.TabIndex = 53;
             this.box_spawntimesecs.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
-            this.box_spawntimesecs.Leave += new System.EventHandler(this.txtBox_Leave);
             this.box_spawntimesecs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intnumberbox_KeyPress);
+            this.box_spawntimesecs.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // box_comment
             // 
@@ -319,8 +319,8 @@
             this.customlistBoxsummons.Name = "customlistBoxsummons";
             this.customlistBoxsummons.Size = new System.Drawing.Size(85, 184);
             this.customlistBoxsummons.TabIndex = 57;
-            this.customlistBoxsummons.SelectedIndexChanged += new System.EventHandler(this.listBoxsummons_SelectedIndexChanged);
             this.customlistBoxsummons.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.customlistBoxsummons_ItemCheck);
+            this.customlistBoxsummons.SelectedIndexChanged += new System.EventHandler(this.listBoxsummons_SelectedIndexChanged);
             // 
             // SummonsEditor
             // 
@@ -350,7 +350,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SummonsEditor";
-            this.Text = "Summontable Editor";
+            this.ShowIcon = false;
+            this.Text = "Summon Table Editor";
             this.Load += new System.EventHandler(this.SummonsEditor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

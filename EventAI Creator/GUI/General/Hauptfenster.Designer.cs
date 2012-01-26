@@ -90,8 +90,8 @@
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(46, 20);
-            this.fileMenu.Text = "&Datei";
+            this.fileMenu.Size = new System.Drawing.Size(43, 20);
+            this.fileMenu.Text = "&Data";
             // 
             // newToolStripMenuItem
             // 
@@ -99,20 +99,20 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.newToolStripMenuItem.Text = "&Neu";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewCreatureDialog);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.exitToolStripMenuItem.Text = "&Beenden";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
             // controlPanelToolStripMenuItem
@@ -135,15 +135,15 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.optionsToolStripMenuItem.Text = "&Optionen";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // localizedTextsToolStripMenuItem
             // 
             this.localizedTextsToolStripMenuItem.Name = "localizedTextsToolStripMenuItem";
-            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.localizedTextsToolStripMenuItem.Text = "localized Texts";
+            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.localizedTextsToolStripMenuItem.Text = "Texts";
             this.localizedTextsToolStripMenuItem.Click += new System.EventHandler(this.localizedTextsToolStripMenuItem_Click);
             // 
             // summonsToolStripMenuItem
@@ -162,8 +162,8 @@
             this.closeAllToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(57, 20);
-            this.windowsMenu.Text = "&Fenster";
+            this.windowsMenu.Size = new System.Drawing.Size(63, 20);
+            this.windowsMenu.Text = "&Window";
             // 
             // cascadeToolStripMenuItem
             // 
@@ -245,18 +245,18 @@
             // 
             // npcofflistbox
             // 
-            this.npcofflistbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.npcofflistbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.npcofflistbox.FormattingEnabled = true;
             this.npcofflistbox.Location = new System.Drawing.Point(4, 31);
             this.npcofflistbox.Name = "npcofflistbox";
             this.npcofflistbox.Size = new System.Drawing.Size(76, 485);
             this.npcofflistbox.TabIndex = 2;
             this.toolTip.SetToolTip(this.npcofflistbox, "You get an Custom Copy if you click on it");
+            this.npcofflistbox.Click += new System.EventHandler(this.npcofflistbox_Click);
             this.npcofflistbox.SelectedIndexChanged += new System.EventHandler(this.npcofflistbox_Click);
             this.npcofflistbox.DoubleClick += new System.EventHandler(this.npcofflistbox_Click);
-            this.npcofflistbox.Click += new System.EventHandler(this.npcofflistbox_Click);
             // 
             // panel1
             // 
@@ -281,23 +281,23 @@
             this.label3.Size = new System.Drawing.Size(169, 54);
             this.label3.TabIndex = 7;
             this.label3.Text = "Click an Item from the left\r\nBox to modify an Official Creature\r\nClick \"new\" Item" +
-                " to make a new one.\r\n\r\nCheck items in the Right Box if they\r\nshould Overwrite Of" +
-                "ficial Scripts, no matter what";
+    " to make a new one.\r\n\r\nCheck items in the Right Box if they\r\nshould Overwrite Of" +
+    "ficial Scripts, no matter what";
             // 
             // npclistbox
             // 
-            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.npclistbox.ContextMenuStrip = this.creaturelistboxcontextmenu;
             this.npclistbox.FormattingEnabled = true;
             this.npclistbox.Location = new System.Drawing.Point(86, 31);
             this.npclistbox.Name = "npclistbox";
             this.npclistbox.Size = new System.Drawing.Size(77, 484);
             this.npclistbox.TabIndex = 6;
-            this.npclistbox.EnabledChanged += new System.EventHandler(this.npclistbox_EnabledChanged);
             this.npclistbox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.npclistbox_ItemCheck);
-            this.npclistbox.DoubleClick += new System.EventHandler(this.npclistbox_DoubleClick);
             this.npclistbox.Click += new System.EventHandler(this.npclistbox_Click);
+            this.npclistbox.EnabledChanged += new System.EventHandler(this.npclistbox_EnabledChanged);
+            this.npclistbox.DoubleClick += new System.EventHandler(this.npclistbox_DoubleClick);
             // 
             // creaturelistboxcontextmenu
             // 
@@ -340,13 +340,13 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Hauptfenster";
-            this.ShowIcon = false;
-            this.Text = "eventAI Creator (c) by Harper";
-            this.Load += new System.EventHandler(this.Hauptfenster_Load);
+            this.Text = "MaNGOS eventAI development tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hauptfenster_FormClosing);
+            this.Load += new System.EventHandler(this.Hauptfenster_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

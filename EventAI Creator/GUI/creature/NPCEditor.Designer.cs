@@ -36,9 +36,9 @@
             this.saveAllNPCsToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sQLToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setInCreaturetemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.setInCreaturetemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +110,13 @@
             this.sQLToolStripMenuItem1.Text = "SQL";
             this.sQLToolStripMenuItem1.Click += new System.EventHandler(this.sQLToolStripMenuItem1_Click);
             // 
+            // setInCreaturetemplateToolStripMenuItem
+            // 
+            this.setInCreaturetemplateToolStripMenuItem.Name = "setInCreaturetemplateToolStripMenuItem";
+            this.setInCreaturetemplateToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.setInCreaturetemplateToolStripMenuItem.Text = "Remove Scriptname";
+            this.setInCreaturetemplateToolStripMenuItem.Click += new System.EventHandler(this.setInCreaturetemplateToolStripMenuItem_Click);
+            // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
@@ -118,13 +125,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 600);
             this.panel1.TabIndex = 1;
-            // 
-            // setInCreaturetemplateToolStripMenuItem
-            // 
-            this.setInCreaturetemplateToolStripMenuItem.Name = "setInCreaturetemplateToolStripMenuItem";
-            this.setInCreaturetemplateToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
-            this.setInCreaturetemplateToolStripMenuItem.Text = "Remove Scriptname";
-            this.setInCreaturetemplateToolStripMenuItem.Click += new System.EventHandler(this.setInCreaturetemplateToolStripMenuItem_Click);
             // 
             // NPCEditor
             // 
@@ -136,9 +136,10 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "NPCEditor";
-            this.Text = "eAI Creator";
-            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.NPCEditor_ControlRemoved);
+            this.ShowIcon = false;
+            this.Text = "MaNGOS eventAI development tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
+            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.NPCEditor_ControlRemoved);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(eAICreator));
             this.noDBconnection = new System.Windows.Forms.Button();
             this.connectbutton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.tboxmysqlname = new System.Windows.Forms.TextBox();
             this.tboxmysqlport = new System.Windows.Forms.TextBox();
             this.tboxmysqlhost = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -95,7 +95,6 @@
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlname);
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlport);
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlhost);
-            this.mysqlgroupbox.Controls.Add(this.label7);
             this.mysqlgroupbox.Controls.Add(this.label6);
             this.mysqlgroupbox.Controls.Add(this.label5);
             this.mysqlgroupbox.Controls.Add(this.label4);
@@ -157,15 +156,6 @@
             this.tboxmysqlhost.Name = "tboxmysqlhost";
             this.tboxmysqlhost.Size = new System.Drawing.Size(200, 20);
             this.tboxmysqlhost.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 199);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Scriptdev2 DB";
             // 
             // label6
             // 
@@ -324,10 +314,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.noDBconnection);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eAICreator";
-            this.Text = "eAI Creator";
-            this.Load += new System.EventHandler(this.eAICreator_Load);
+            this.Text = "MaNGOS eventAI development tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.eAICreator_FormClosing);
+            this.Load += new System.EventHandler(this.eAICreator_Load);
             this.mysqlgroupbox.ResumeLayout(false);
             this.mysqlgroupbox.PerformLayout();
             this.sshgroupbox.ResumeLayout(false);
@@ -352,7 +343,6 @@
         private System.Windows.Forms.TextBox tboxmysqlname;
         private System.Windows.Forms.TextBox tboxmysqlport;
         private System.Windows.Forms.TextBox tboxmysqlhost;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
