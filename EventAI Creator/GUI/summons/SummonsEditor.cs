@@ -1,0 +1,300 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using MySql.Data;
+
+namespace EventAI_Creator
+{
+    public partial class SummonsEditor : Form
+    {
+        uint summon_id;
+
+        public SummonsEditor()
+        {
+            InitializeComponent();
+        }
+        private void UpdateListBox(bool updateofficial)
+        {
+            if (updateofficial)
+            {
+                listBoxsummons.Items.Clear();
+                foreach (KeyValuePair<uint, summon> item in summons.OffList)
+                {
+                    listBoxsummons.Items.Add(item.Key);
+                }
+            }
+            customlistBoxsummons.Items.Clear();
+            foreach (KeyValuePair<uint, summon> item in summons.map)
+            {
+                customlistBoxsummons.Items.Add(item.Key);
+                if (item.Value.overwritesofficial)
+                    customlistBoxsummons.SetItemChecked(customlistBoxsummons.Items.Count - 1, true);
+            }
+        }
+
+        private void SummonsEditor_Load(object sender, EventArgs e)
+        {
+            UpdateListBox(true);
+            if (customlistBoxsummons.Items.Count != 0)
+                this.customlistBoxsummons.SelectedIndex = 0;
+        }
+
+        private void buttonadd_Click(object sender, EventArgs e)
+        {
+            if (this.textboxadd.Text.Length != 0)
+            {
+                if (summons.Add(System.Convert.ToUInt32(this.textboxadd.Text)))
+                {
+                    summon_id = System.Convert.ToUInt32(this.textboxadd.Text);
+                    summonID.Text = this.textboxadd.Text;
+                    UpdateListBox(false);
+                    box_comment.Text = "0"; box_orientation.Text = "0"; box_position_X.Text = "0"; box_position_Y.Text = "0"; box_position_Z.Text = "0"; box_spawntimesecs.Text = "0";
+
+                    int i = 0;
+                    foreach (uint item in customlistBoxsummons.Items)
+                    {
+                        if (item.ToString() == summonID.Text)
+                        {
+                            customlistBoxsummons.SelectedIndex = i;
+                            break;
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
+
+        private void listBoxsummons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                summon_id = Convert.ToUInt32(customlistBoxsummons.Items[customlistBoxsummons.SelectedIndex]);
+                summonID.Text = summon_id.ToString();
+                box_spawntimesecs.Text = summons.map[summon_id].spawntimesecs.ToString();
+                box_position_Z.Text = summons.map[summon_id].position_z.ToString();
+                box_position_Y.Text = summons.map[summon_id].position_y.ToString();
+                box_position_X.Text = summons.map[summon_id].position_x.ToString();
+                box_orientation.Text = summons.map[summon_id].orientation.ToString();
+                box_comment.Text = summons.map[summon_id].comment;
+                summons.map[summon_id].changed = true;
+            }
+        }
+        private void numberbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            float test;
+            string strin = "";
+            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
+            {
+                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
+            }
+            else
+            {
+                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
+            }
+            if (strin == "-" || strin == "\b" || strin == "")
+                e.Handled = false;
+            else
+            {
+                bool tes = float.TryParse(strin, out test);
+                if ("-1234567890,\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
+                {
+                    e.Handled = true;
+                }
+                else e.Handled = false;
+            }
+        }
+
+        private void intnumberbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Int32 test;
+            string strin = "";
+            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
+            {
+                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
+            }
+            else
+            {
+                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
+            }
+            if (strin != "")
+            {
+                bool tes = Int32.TryParse(strin, out test);
+                if ("1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
+                {
+                    e.Handled = true;
+                }
+            }
+            else e.Handled = false;
+        }
+
+        private void stringbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if ("\"\'".IndexOf(e.KeyChar.ToString()) < 0)
+            //{
+            //    e.Handled = false;
+            //}
+            //else
+            //{
+            //    e.Handled = true;
+            //}
+        }
+        private void txtBox_Leave(object sender, EventArgs e)
+        {
+            if ((sender as TextBox).Text == "" || (sender as TextBox).Text == "-")
+            {
+                (sender as TextBox).Text = "0";
+            }
+        }
+
+        private void summontextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (this.customlistBoxsummons.SelectedIndex != -1 && (sender as TextBox).Text.Length > 0 && (sender as TextBox).Text != "-" && (sender as TextBox).Text != ",")
+            {
+                if ((sender as TextBox) == box_comment)
+                    summons.map[summon_id].comment = box_comment.Text;
+                if ((sender as TextBox) == box_orientation)
+                    summons.map[summon_id].orientation = float.Parse(box_orientation.Text);
+                if ((sender as TextBox) == box_position_X)
+                    summons.map[summon_id].position_x = float.Parse(box_position_X.Text);
+                if ((sender as TextBox) == box_position_Y)
+                    summons.map[summon_id].position_y = float.Parse(box_position_Y.Text);
+                if ((sender as TextBox) == box_position_Z)
+                    summons.map[summon_id].position_z = float.Parse(box_position_Z.Text);
+                if ((sender as TextBox) == box_spawntimesecs)
+                    summons.map[summon_id].spawntimesecs = System.Convert.ToInt32(box_spawntimesecs.Text);
+            }
+        }
+
+        private void deletebutton_Click(object sender, EventArgs e)
+        {
+            if (Datastores.dbused)
+            {
+                switch (MessageBox.Show("Do you want to Remove it from Database Now? (Executing delete Query", "Remove from Database?", MessageBoxButtons.YesNoCancel))
+                {
+                    case DialogResult.Yes:
+                        string query = SQLcreator.CreateDeleteQuery(summons.map[summon_id],"");
+                        MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
+                        try
+                        {
+                            c.ExecuteNonQuery();
+                            summons.map.Remove(summon_id);
+                            UpdateListBox(false);
+                            if (customlistBoxsummons.Items.Count != 0)
+                                customlistBoxsummons.SelectedIndex = 0;
+                            else customlistBoxsummons.SelectedIndex = -1;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        break;
+                    case DialogResult.No:
+                        summons.map.Remove(summon_id);
+                        UpdateListBox(false);
+                        if (customlistBoxsummons.Items.Count != 0)
+                            customlistBoxsummons.SelectedIndex = 0;
+                        else customlistBoxsummons.SelectedIndex = -1;
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+
+                }
+            }
+            else
+            {
+                summons.map.Remove(summon_id);
+                UpdateListBox(false);
+                if (customlistBoxsummons.Items.Count != 0)
+                    customlistBoxsummons.SelectedIndex = 0;
+                else customlistBoxsummons.SelectedIndex = -1;
+            }
+        }
+
+        private void toDBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                SQLCommonExecutes.SaveOneItemTODB(summons.map[summon_id]);
+            }
+            else MessageBox.Show("No Items");
+        }
+
+        private void toDBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                SQLCommonExecutes.SaveAllItemsToDB(summons.map);
+            }
+            else MessageBox.Show("No Items");
+        }
+
+        private void toSQLFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    string FileName = saveFileDialog.FileName;
+                    summons.PrintSummonToFile(summon_id, FileName);
+                }
+            }
+            else MessageBox.Show("No Items");
+        }
+
+        private void toSQLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    string FileName = saveFileDialog.FileName;
+                    summons.PrintALLSummonsToFile(FileName);
+                }
+            }
+            else MessageBox.Show("No Items");
+        }
+
+        private void customlistBoxsummons_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (customlistBoxsummons.SelectedIndex != -1)
+            {
+                if (customlistBoxsummons.GetItemChecked(customlistBoxsummons.SelectedIndex))
+                {
+                    SQLConnection.DoNONREADSD2Query("DELETE FROM info_summons WHERE entry = " + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ";", false);
+                    summons.map[Convert.ToUInt32(customlistBoxsummons.SelectedItem)].overwritesofficial = false;
+                }
+                else
+                {
+                    SQLConnection.DoNONREADSD2Query("INSERT INTO info_summons VALUES(" + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ");", false);
+                    summons.map[Convert.ToUInt32(customlistBoxsummons.SelectedItem)].overwritesofficial = true;
+                }
+            }
+        }
+
+        private void listBoxsummons_Click(object sender, EventArgs e)
+        {
+            if (summons.map.ContainsKey(Convert.ToUInt32(listBoxsummons.SelectedItem)))
+            {
+                customlistBoxsummons.SelectedIndex = customlistBoxsummons.Items.IndexOf(listBoxsummons.SelectedItem);
+            }
+            else
+            {
+                summons.map.Add(Convert.ToUInt32(listBoxsummons.SelectedItem), summons.OffList[Convert.ToUInt32(listBoxsummons.SelectedItem)]);
+                UpdateListBox(false);
+                customlistBoxsummons.SelectedIndex = customlistBoxsummons.Items.IndexOf(listBoxsummons.SelectedItem);
+            }
+        }
+    }
+}
