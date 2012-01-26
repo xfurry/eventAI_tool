@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Search = new System.Windows.Forms.Button();
-            this.listBoxtexts = new System.Windows.Forms.ListBox();
             this.textboxsearch = new System.Windows.Forms.TextBox();
             this.label0 = new System.Windows.Forms.Label();
             this.TextBoxlocal0 = new System.Windows.Forms.RichTextBox();
@@ -65,7 +64,6 @@
             this.toFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteThisTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customlistBoxtexts = new System.Windows.Forms.CheckedListBox();
-            this.er = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -79,17 +77,6 @@
             this.Search.TabIndex = 1;
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = true;
-            // 
-            // listBoxtexts
-            // 
-            this.listBoxtexts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxtexts.FormattingEnabled = true;
-            this.listBoxtexts.Location = new System.Drawing.Point(9, 101);
-            this.listBoxtexts.Name = "listBoxtexts";
-            this.listBoxtexts.Size = new System.Drawing.Size(70, 303);
-            this.listBoxtexts.TabIndex = 2;
-            this.listBoxtexts.Click += new System.EventHandler(this.listBoxtexts_Click);
             // 
             // textboxsearch
             // 
@@ -415,30 +402,20 @@
             // customlistBoxtexts
             // 
             this.customlistBoxtexts.FormattingEnabled = true;
-            this.customlistBoxtexts.Location = new System.Drawing.Point(85, 100);
+            this.customlistBoxtexts.Location = new System.Drawing.Point(9, 100);
             this.customlistBoxtexts.Name = "customlistBoxtexts";
-            this.customlistBoxtexts.Size = new System.Drawing.Size(81, 304);
+            this.customlistBoxtexts.Size = new System.Drawing.Size(159, 304);
             this.customlistBoxtexts.TabIndex = 40;
-            this.customlistBoxtexts.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.customlistBoxtexts_ItemCheck);
             this.customlistBoxtexts.SelectedIndexChanged += new System.EventHandler(this.customlistBoxtexts_SelectedIndexChanged);
-            // 
-            // er
-            // 
-            this.er.AutoSize = true;
-            this.er.Location = new System.Drawing.Point(9, 82);
-            this.er.Name = "er";
-            this.er.Size = new System.Drawing.Size(39, 13);
-            this.er.TabIndex = 41;
-            this.er.Text = "Official";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(82, 84);
+            this.label11.Location = new System.Drawing.Point(39, 84);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.Size = new System.Drawing.Size(106, 13);
             this.label11.TabIndex = 42;
-            this.label11.Text = "Custom";
+            this.label11.Text = "EventAI scripts texts:";
             // 
             // TEXTEditor
             // 
@@ -447,7 +424,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(941, 448);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.er);
             this.Controls.Add(this.customlistBoxtexts);
             this.Controls.Add(this.textboxcomment);
             this.Controls.Add(this.labelcomment);
@@ -474,7 +450,6 @@
             this.Controls.Add(this.TextBoxlocal0);
             this.Controls.Add(this.label0);
             this.Controls.Add(this.textboxsearch);
-            this.Controls.Add(this.listBoxtexts);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.menuStrip1);
             this.Name = "TEXTEditor";
@@ -491,7 +466,6 @@
         #endregion
 
         private System.Windows.Forms.Button Search;
-        private System.Windows.Forms.ListBox listBoxtexts;
         private System.Windows.Forms.TextBox textboxsearch;
         private System.Windows.Forms.Label label0;
         private System.Windows.Forms.RichTextBox TextBoxlocal0;
@@ -527,7 +501,6 @@
         private System.Windows.Forms.ToolStripMenuItem toFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteThisTextToolStripMenuItem;
         private System.Windows.Forms.CheckedListBox customlistBoxtexts;
-        private System.Windows.Forms.Label er;
         private System.Windows.Forms.Label label11;
 
     }

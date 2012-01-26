@@ -21,7 +21,6 @@ namespace EventAI_Creator
         }
 
         public static SortedList<uint,summon> map = new SortedList<uint,summon>();
-        public static SortedList<uint, summon> OffList = new SortedList<uint, summon>();
 
         public static bool PrintSummonToFile(uint creature_id, string file)
         {
@@ -47,7 +46,6 @@ namespace EventAI_Creator
 
         public uint id;
         public bool changed = false;
-        public bool overwritesofficial = false;
         public float position_x = 0;
         public float position_y = 0;
         public float position_z = 0;

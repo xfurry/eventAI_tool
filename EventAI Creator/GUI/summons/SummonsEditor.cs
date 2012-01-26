@@ -21,20 +21,11 @@ namespace EventAI_Creator
         }
         private void UpdateListBox(bool updateofficial)
         {
-            if (updateofficial)
-            {
-                listBoxsummons.Items.Clear();
-                foreach (KeyValuePair<uint, summon> item in summons.OffList)
-                {
-                    listBoxsummons.Items.Add(item.Key);
-                }
-            }
             customlistBoxsummons.Items.Clear();
             foreach (KeyValuePair<uint, summon> item in summons.map)
             {
                 customlistBoxsummons.Items.Add(item.Key);
-                if (item.Value.overwritesofficial)
-                    customlistBoxsummons.SetItemChecked(customlistBoxsummons.Items.Count - 1, true);
+                customlistBoxsummons.SetItemChecked(customlistBoxsummons.Items.Count - 1, false);
             }
         }
 
@@ -273,27 +264,11 @@ namespace EventAI_Creator
                 if (customlistBoxsummons.GetItemChecked(customlistBoxsummons.SelectedIndex))
                 {
                     SQLConnection.DoNONREADSD2Query("DELETE FROM info_summons WHERE entry = " + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ";", false);
-                    summons.map[Convert.ToUInt32(customlistBoxsummons.SelectedItem)].overwritesofficial = false;
                 }
                 else
                 {
                     SQLConnection.DoNONREADSD2Query("INSERT INTO info_summons VALUES(" + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ");", false);
-                    summons.map[Convert.ToUInt32(customlistBoxsummons.SelectedItem)].overwritesofficial = true;
                 }
-            }
-        }
-
-        private void listBoxsummons_Click(object sender, EventArgs e)
-        {
-            if (summons.map.ContainsKey(Convert.ToUInt32(listBoxsummons.SelectedItem)))
-            {
-                customlistBoxsummons.SelectedIndex = customlistBoxsummons.Items.IndexOf(listBoxsummons.SelectedItem);
-            }
-            else
-            {
-                summons.map.Add(Convert.ToUInt32(listBoxsummons.SelectedItem), summons.OffList[Convert.ToUInt32(listBoxsummons.SelectedItem)]);
-                UpdateListBox(false);
-                customlistBoxsummons.SelectedIndex = customlistBoxsummons.Items.IndexOf(listBoxsummons.SelectedItem);
             }
         }
     }

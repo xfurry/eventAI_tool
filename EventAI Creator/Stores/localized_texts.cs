@@ -20,7 +20,6 @@ namespace EventAI_Creator
         }
 
         public static SortedList<int, localized_text> map = new SortedList<int,localized_text>();
-        public static SortedList<int, localized_text> OffList = new SortedList<int, localized_text>();
 
         public static bool PrintLocalToFile(int creature_id, string file)
         {
@@ -46,7 +45,6 @@ namespace EventAI_Creator
 
         public int id;
         public bool changed = false;
-        public bool overwritesofficial = false;
         public string locale_0 = "";    // default = english
         public string locale_1 = "";    // korean
         public string locale_2 = "";    // french

@@ -33,7 +33,6 @@
             this.summonID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textboxsearch = new System.Windows.Forms.TextBox();
-            this.listBoxsummons = new System.Windows.Forms.ListBox();
             this.Search = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -102,17 +101,6 @@
             this.textboxsearch.Name = "textboxsearch";
             this.textboxsearch.Size = new System.Drawing.Size(57, 20);
             this.textboxsearch.TabIndex = 38;
-            // 
-            // listBoxsummons
-            // 
-            this.listBoxsummons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBoxsummons.FormattingEnabled = true;
-            this.listBoxsummons.Location = new System.Drawing.Point(12, 88);
-            this.listBoxsummons.Name = "listBoxsummons";
-            this.listBoxsummons.Size = new System.Drawing.Size(69, 186);
-            this.listBoxsummons.TabIndex = 37;
-            this.listBoxsummons.Click += new System.EventHandler(this.listBoxsummons_Click);
             // 
             // Search
             // 
@@ -315,9 +303,9 @@
             // customlistBoxsummons
             // 
             this.customlistBoxsummons.FormattingEnabled = true;
-            this.customlistBoxsummons.Location = new System.Drawing.Point(87, 88);
+            this.customlistBoxsummons.Location = new System.Drawing.Point(15, 88);
             this.customlistBoxsummons.Name = "customlistBoxsummons";
-            this.customlistBoxsummons.Size = new System.Drawing.Size(85, 184);
+            this.customlistBoxsummons.Size = new System.Drawing.Size(157, 184);
             this.customlistBoxsummons.TabIndex = 57;
             this.customlistBoxsummons.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.customlistBoxsummons_ItemCheck);
             this.customlistBoxsummons.SelectedIndexChanged += new System.EventHandler(this.listBoxsummons_SelectedIndexChanged);
@@ -345,7 +333,6 @@
             this.Controls.Add(this.summonID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textboxsearch);
-            this.Controls.Add(this.listBoxsummons);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -367,7 +354,6 @@
         private System.Windows.Forms.Label summonID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textboxsearch;
-        private System.Windows.Forms.ListBox listBoxsummons;
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

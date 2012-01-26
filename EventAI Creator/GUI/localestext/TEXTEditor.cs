@@ -21,20 +21,11 @@ namespace EventAI_Creator.GUI.General.localestext
 
         private void UpdateListBox(bool updateofficial)
         {
-            if (updateofficial)
-            {
-                listBoxtexts.Items.Clear();
-                foreach (KeyValuePair<int, localized_text> item in localized_texts.OffList)
-                {
-                    listBoxtexts.Items.Add(item.Key);
-                }
-            }
             customlistBoxtexts.Items.Clear();
             foreach (KeyValuePair<int, localized_text> item in localized_texts.map)
             {
                 customlistBoxtexts.Items.Add(item.Key);
-                if (item.Value.overwritesofficial)
-                    customlistBoxtexts.SetItemChecked(customlistBoxtexts.Items.Count - 1, true);
+                customlistBoxtexts.SetItemChecked(customlistBoxtexts.Items.Count - 1, false);
             }
         }
 
@@ -69,20 +60,6 @@ namespace EventAI_Creator.GUI.General.localestext
                         i++;
                     }
                 }
-            }
-        }
-
-        private void listBoxtexts_Click(object sender, EventArgs e)
-        {
-            if (localized_texts.map.ContainsKey(Convert.ToInt32(listBoxtexts.SelectedItem)))
-            {
-                customlistBoxtexts.SelectedIndex = customlistBoxtexts.Items.IndexOf(listBoxtexts.SelectedItem);
-            }
-            else
-            {
-                localized_texts.map.Add(Convert.ToInt32(listBoxtexts.SelectedItem), localized_texts.OffList[Convert.ToInt32(listBoxtexts.SelectedItem)]);
-                UpdateListBox(false);
-                customlistBoxtexts.SelectedIndex = customlistBoxtexts.Items.IndexOf(listBoxtexts.SelectedItem);
             }
         }
 
@@ -262,23 +239,6 @@ namespace EventAI_Creator.GUI.General.localestext
                 }
             }
             else MessageBox.Show("No Items");
-        }
-
-        private void customlistBoxtexts_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (customlistBoxtexts.SelectedIndex != -1)
-            {
-                if (customlistBoxtexts.GetItemChecked(customlistBoxtexts.SelectedIndex))
-                {
-                    SQLConnection.DoNONREADSD2Query("DELETE FROM info_locals WHERE entry = " + Convert.ToUInt32(customlistBoxtexts.SelectedItem) + ";", false);
-                    localized_texts.map[Convert.ToInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = false;
-                }
-                else
-                {
-                    SQLConnection.DoNONREADSD2Query("INSERT INTO info_locals VALUES(" + Convert.ToUInt32(customlistBoxtexts.SelectedItem) + ");", false);
-                    localized_texts.map[Convert.ToInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = true;
-                }
-            }
         }
     }
 }

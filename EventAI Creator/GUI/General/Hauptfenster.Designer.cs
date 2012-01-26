@@ -52,14 +52,11 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.npcofflistbox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.npclistbox = new System.Windows.Forms.CheckedListBox();
             this.creaturelistboxcontextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -99,19 +96,19 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewCreatureDialog);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(138, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -135,21 +132,21 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // localizedTextsToolStripMenuItem
             // 
             this.localizedTextsToolStripMenuItem.Name = "localizedTextsToolStripMenuItem";
-            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.localizedTextsToolStripMenuItem.Text = "Texts";
             this.localizedTextsToolStripMenuItem.Click += new System.EventHandler(this.localizedTextsToolStripMenuItem_Click);
             // 
             // summonsToolStripMenuItem
             // 
             this.summonsToolStripMenuItem.Name = "summonsToolStripMenuItem";
-            this.summonsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.summonsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.summonsToolStripMenuItem.Text = "Summons";
             this.summonsToolStripMenuItem.Click += new System.EventHandler(this.summonsToolStripMenuItem_Click);
             // 
@@ -243,46 +240,15 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // npcofflistbox
-            // 
-            this.npcofflistbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.npcofflistbox.FormattingEnabled = true;
-            this.npcofflistbox.Location = new System.Drawing.Point(4, 31);
-            this.npcofflistbox.Name = "npcofflistbox";
-            this.npcofflistbox.Size = new System.Drawing.Size(76, 485);
-            this.npcofflistbox.TabIndex = 2;
-            this.toolTip.SetToolTip(this.npcofflistbox, "You get an Custom Copy if you click on it");
-            this.npcofflistbox.Click += new System.EventHandler(this.npcofflistbox_Click);
-            this.npcofflistbox.SelectedIndexChanged += new System.EventHandler(this.npcofflistbox_Click);
-            this.npcofflistbox.DoubleClick += new System.EventHandler(this.npcofflistbox_Click);
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.npclistbox);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.npcofflistbox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 49);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(174, 582);
             this.panel1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 528);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 54);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Click an Item from the left\r\nBox to modify an Official Creature\r\nClick \"new\" Item" +
-    " to make a new one.\r\n\r\nCheck items in the Right Box if they\r\nshould Overwrite Of" +
-    "ficial Scripts, no matter what";
             // 
             // npclistbox
             // 
@@ -290,13 +256,11 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.npclistbox.ContextMenuStrip = this.creaturelistboxcontextmenu;
             this.npclistbox.FormattingEnabled = true;
-            this.npclistbox.Location = new System.Drawing.Point(86, 31);
+            this.npclistbox.Location = new System.Drawing.Point(12, 31);
             this.npclistbox.Name = "npclistbox";
-            this.npclistbox.Size = new System.Drawing.Size(77, 484);
+            this.npclistbox.Size = new System.Drawing.Size(151, 529);
             this.npclistbox.TabIndex = 6;
-            this.npclistbox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.npclistbox_ItemCheck);
             this.npclistbox.Click += new System.EventHandler(this.npclistbox_Click);
-            this.npclistbox.EnabledChanged += new System.EventHandler(this.npclistbox_EnabledChanged);
             this.npclistbox.DoubleClick += new System.EventHandler(this.npclistbox_DoubleClick);
             // 
             // creaturelistboxcontextmenu
@@ -316,20 +280,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 15);
+            this.label2.Location = new System.Drawing.Point(27, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Custom";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Official";
+            this.label2.Text = "Existing creature scripts";
             // 
             // Hauptfenster
             // 
@@ -377,7 +332,6 @@
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox npcofflistbox;
         private System.Windows.Forms.ToolStripMenuItem localizedTextsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summonsToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip creaturelistboxcontextmenu;
@@ -390,9 +344,7 @@
         private System.Windows.Forms.ToolStripMenuItem reloadDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controlPanelToolStripMenuItem;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox npclistbox;
-        private System.Windows.Forms.Label label3;
     }
 }
 

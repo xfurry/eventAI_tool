@@ -64,7 +64,6 @@ namespace EventAI_Creator
         public bool activectemplate = false;
         public string creature_name;
         public bool changed = false;
-        public bool overwritesofficial = false;
         public List<Event_dataset> line = new List<Event_dataset>();
     }
 
@@ -106,7 +105,6 @@ namespace EventAI_Creator
         }
 
         public static SortedList<uint, creature> npcList = new SortedList<uint, creature>();
-        public static SortedList<uint, creature> OffNpcList = new SortedList<uint, creature>();
         public static List<uint> npcsAvailable = new List<uint>();
     }
 }

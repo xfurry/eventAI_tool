@@ -80,34 +80,20 @@ namespace EventAI_Creator
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form childForm in MdiChildren)
-            {
                 childForm.Close();
-            }
         }
 
         public void UpdateNPCListBox(bool updateoff)
         {
-            ListBox Listbox = panel1.Controls.Find("npcofflistbox", true)[0] as ListBox;
-            
             CheckedListBox npcListbox = panel1.Controls.Find("npclistbox", true)[0] as CheckedListBox;
             npcListbox.Items.Clear();
             IList<uint> list;
-            if (updateoff)
-            {
-                Listbox.Items.Clear();
-                list = creatures.OffNpcList.Keys;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Listbox.Items.Add(list[i].ToString());
-                }
-            }
 
             list = creatures.npcList.Keys;
             for (int i = 0; i < list.Count; i++)
             {
-                    npcListbox.Items.Add(list[i].ToString());
-                    if (creatures.npcList[list[i]].overwritesofficial)
-                        npcListbox.SetItemChecked(npcListbox.Items.Count - 1, true);
+                npcListbox.Items.Add(list[i].ToString());
+                npcListbox.SetItemChecked(npcListbox.Items.Count - 1, false);
             }
         }
 
@@ -131,20 +117,21 @@ namespace EventAI_Creator
         {
             if (this.npclistbox.SelectedIndex != -1)
             {
-               bool makenew = true;
+                bool makenew = true;
                 foreach (Form item in MdiChildren)
                 {
                     if (item is NPCEditor)
                     {
                         if ((item as NPCEditor).npc_id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
-                        { (item as NPCEditor).Show(); (item as NPCEditor).Activate(); makenew = false; }
+                        {
+                            (item as NPCEditor).Show();
+                            (item as NPCEditor).Activate();
+                            makenew = false;
+                        }
                     }
                 }
                 if (makenew)
-                {
                     this.ShowNewForm(System.Convert.ToUInt32(this.npclistbox.Items[this.npclistbox.SelectedIndex]));
-                }
-                
             }
         }
 
@@ -158,15 +145,20 @@ namespace EventAI_Creator
                     if (item is NPCEditor)
                     {
                         if ((item as NPCEditor).npc_id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
-                        { (item as NPCEditor).Show(); (item as NPCEditor).Activate();
-                        if ((item as NPCEditor).WindowState == FormWindowState.Maximized) (item as NPCEditor).WindowState = FormWindowState.Normal; else (item as NPCEditor).WindowState = FormWindowState.Maximized; makenew = false;
+                        {
+                            (item as NPCEditor).Show();
+                            (item as NPCEditor).Activate();
+
+                            if ((item as NPCEditor).WindowState == FormWindowState.Maximized)
+                                (item as NPCEditor).WindowState = FormWindowState.Normal;
+                            else (item as NPCEditor).WindowState = FormWindowState.Maximized;
+
+                            makenew = false;
                         }
                     }
                 }
                 if (makenew)
-                {
                     this.ShowNewForm(System.Convert.ToUInt32(this.npclistbox.Items[this.npclistbox.SelectedIndex]));
-                }
 
             }
         }
@@ -177,7 +169,10 @@ namespace EventAI_Creator
             foreach (Form item in MdiChildren)
             {
                 if (item is GUI.General.localestext.TEXTEditor)
-                { alreadyexist = true; item.Show(); }
+                {
+                    alreadyexist = true;
+                    item.Show();
+                }
             }
             if (!alreadyexist)
             {
@@ -263,19 +258,19 @@ namespace EventAI_Creator
             {
                 if (npclistbox.SelectedIndex != -1)
                 {
-                    foreach (Form item in MdiChildren)
-                    {
-                        if (item is NPCEditor)
-                        {
-                            if ((item as NPCEditor).npc_id == System.Convert.ToInt32(this.npclistbox.Items[npcofflistbox.SelectedIndex]))
-                            {
-                                (item as NPCEditor).Close();
-                            }
-                        }
-                    }
+                    //foreach (Form item in MdiChildren)
+                    //{
+                    //    if (item is NPCEditor)
+                    //    {
+                    //        if ((item as NPCEditor).npc_id == System.Convert.ToInt32(this.npclistbox.Items[npcofflistbox.SelectedIndex]))
+                    //        {
+                    //            (item as NPCEditor).Close();
+                    //        }
+                    //    }
+                    //}
 
-                    creatures.DelCreature(System.Convert.ToUInt32(this.npclistbox.Items[npcofflistbox.SelectedIndex]));
-                    UpdateNPCListBox(false);
+                    //creatures.DelCreature(System.Convert.ToUInt32(this.npclistbox.Items[npcofflistbox.SelectedIndex]));
+                    //UpdateNPCListBox(false);
                 }
             }
         }
@@ -306,9 +301,6 @@ namespace EventAI_Creator
             }
             creatures.npcList.Clear();
             creatures.npcsAvailable.Clear();
-            creatures.OffNpcList.Clear();
-            summons.OffList.Clear();
-            localized_texts.OffList.Clear();
             summons.map.Clear();
             localized_texts.map.Clear();
             Datastores.ReloadDB();
@@ -329,48 +321,6 @@ namespace EventAI_Creator
                 newForm.MdiParent = this;
                 newForm.Show();
             }
-        }
-
-        private void npcofflistbox_Click(object sender, EventArgs e)
-        {
-            if (npcofflistbox.SelectedIndex != -1)
-            {
-                if (creatures.npcList.ContainsKey(Convert.ToUInt32(npcofflistbox.Items[npcofflistbox.SelectedIndex])))
-                {
-                    npclistbox.SelectedItem = npcofflistbox.SelectedItem;
-                    npclistbox_Click(sender, e);
-                    //UpdateNPCListBox(false);
-                }
-                else
-                {
-                    creatures.npcList.Add(Convert.ToUInt32(npcofflistbox.Items[npcofflistbox.SelectedIndex]), creatures.OffNpcList[Convert.ToUInt32(npcofflistbox.Items[npcofflistbox.SelectedIndex])]);
-                    UpdateNPCListBox(false);
-                    npclistbox.SelectedItem = npcofflistbox.SelectedItem;
-                    npclistbox_Click(sender, e);
-                }
-            }
-        }
-
-        private void npclistbox_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (npclistbox.SelectedIndex != -1)
-            {
-                if (npclistbox.GetItemChecked(npclistbox.SelectedIndex))
-                {
-                    SQLConnection.DoNONREADSD2Query("DELETE FROM info_scripts WHERE entry = " + Convert.ToUInt32(npclistbox.SelectedItem) + ";", false);
-                    creatures.npcList[Convert.ToUInt32(npclistbox.SelectedItem)].overwritesofficial = false;
-                }
-                else
-                {
-                    SQLConnection.DoNONREADSD2Query("INSERT INTO info_scripts VALUES(" + Convert.ToUInt32(npclistbox.SelectedItem) + ");", false);
-                    creatures.npcList[Convert.ToUInt32(npclistbox.SelectedItem)].overwritesofficial = true;
-                }
-            }
-        }
-
-        private void npclistbox_EnabledChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

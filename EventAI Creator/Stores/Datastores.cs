@@ -19,9 +19,11 @@ namespace EventAI_Creator
     {
         public static bool dbused = false;
 
-
         public static void ReloadDB()
         {
+            if (!Datastores.dbused)
+                return;
+
             MySqlDataReader reader = null;
 
             // Check for the creatureAI tables
@@ -784,16 +786,10 @@ namespace EventAI_Creator
             {
                 foreach (KeyValuePair<uint, creature> itemf in (item as SortedList<uint,creature>))
                 {
-                    if (creatures.OffNpcList.ContainsKey(itemf.Key))
+                    if (creatures.npcList.ContainsKey(itemf.Key))
                     {
-                        if (itemf.Value.overwritesofficial)
-                        {
                             query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_scripts");
                             query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_scripts");
-                        }
-                    }
-                    else
-                    {
                     }
                 }
                 SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_scripts` SELECT  * FROM `eventai_scripts_custom` WHERE `eventai_scripts_custom`.`creature_id` NOT IN (SELECT creature_id FROM eventai_scripts_official);", false);
@@ -802,16 +798,10 @@ namespace EventAI_Creator
             {
                 foreach (KeyValuePair<uint, summon> itemf in (item as SortedList<uint,summon>))
                 {
-                    if (summons.OffList.ContainsKey(itemf.Key))
+                    if (summons.map.ContainsKey(itemf.Key))
                     {
-                        if (itemf.Value.overwritesofficial)
-                        {
                             query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_summons");
                             query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_summons");
-                        }
-                    }
-                    else
-                    {
                     }
                 }
                 SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_summons` SELECT  * FROM `eventai_summons_custom` WHERE `eventai_summons_custom`.`id` NOT IN (SELECT id FROM eventai_summons_official);", false);
@@ -821,16 +811,10 @@ namespace EventAI_Creator
             {
                 foreach (KeyValuePair<int, localized_text> itemf in (item as SortedList<int,localized_text>))
                 {
-                    if (localized_texts.OffList.ContainsKey(itemf.Key))
+                    if (localized_texts.map.ContainsKey(itemf.Key))
                     {
-                        if (itemf.Value.overwritesofficial)
-                        {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_localized_texts");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_localized_texts");
-                        }
-                    }
-                    else
-                    {
+                        query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_localized_texts");
+                        query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_localized_texts");
                     }
                 }
                 SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_localized_texts` SELECT  * FROM `eventai_localized_texts_custom` WHERE `eventai_localized_texts_custom`.`id` NOT IN (SELECT id FROM eventai_localized_texts_official);", false);

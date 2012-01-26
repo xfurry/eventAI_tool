@@ -64,7 +64,7 @@ namespace EventAI_Creator.GUI.General
                 SQLCommonExecutes.setScriptnameInCreature_template(item.Value.creature_id, false);
                 item.Value.activectemplate = true;
             }
-            foreach (KeyValuePair<uint,creature> item in creatures.OffNpcList)
+            foreach (KeyValuePair<uint, creature> item in creatures.npcList)
             {
                 SQLCommonExecutes.setScriptnameInCreature_template(item.Value.creature_id, false);
                 item.Value.activectemplate = true;
@@ -85,7 +85,7 @@ namespace EventAI_Creator.GUI.General
                 SQLCommonExecutes.setScriptnameInCreature_template(item.Value.creature_id, true);
                 item.Value.activectemplate = false;
             }
-            foreach (KeyValuePair<uint,creature> item in creatures.OffNpcList)
+            foreach (KeyValuePair<uint, creature> item in creatures.npcList)
             {
                 SQLCommonExecutes.setScriptnameInCreature_template(item.Value.creature_id, true);
                 item.Value.activectemplate = false;
