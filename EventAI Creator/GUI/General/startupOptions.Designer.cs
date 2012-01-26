@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mysqlgroupbox = new System.Windows.Forms.GroupBox();
             this.tboxmysqlpw = new System.Windows.Forms.TextBox();
-            this.tboxmysqlsd2db = new System.Windows.Forms.TextBox();
             this.tboxmysqlwordldb = new System.Windows.Forms.TextBox();
             this.tboxmysqlname = new System.Windows.Forms.TextBox();
             this.tboxmysqlport = new System.Windows.Forms.TextBox();
@@ -60,17 +59,17 @@
             // 
             // noDBconnection
             // 
-            this.noDBconnection.Location = new System.Drawing.Point(473, 254);
+            this.noDBconnection.Location = new System.Drawing.Point(217, 210);
             this.noDBconnection.Name = "noDBconnection";
-            this.noDBconnection.Size = new System.Drawing.Size(111, 23);
+            this.noDBconnection.Size = new System.Drawing.Size(75, 23);
             this.noDBconnection.TabIndex = 0;
-            this.noDBconnection.Text = "Dont Use Database";
+            this.noDBconnection.Text = "Work offline";
             this.noDBconnection.UseVisualStyleBackColor = true;
             this.noDBconnection.Click += new System.EventHandler(this.noDBconnection_Click);
             // 
             // connectbutton
             // 
-            this.connectbutton.Location = new System.Drawing.Point(392, 254);
+            this.connectbutton.Location = new System.Drawing.Point(109, 210);
             this.connectbutton.Name = "connectbutton";
             this.connectbutton.Size = new System.Drawing.Size(75, 23);
             this.connectbutton.TabIndex = 1;
@@ -83,14 +82,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 13);
+            this.label1.Size = new System.Drawing.Size(341, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Welcome to eAI Creator. Please set your Database Settings";
+            this.label1.Text = "Welcome to MaNGOS eventAI tool. Please set your Database Settings";
             // 
             // mysqlgroupbox
             // 
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlpw);
-            this.mysqlgroupbox.Controls.Add(this.tboxmysqlsd2db);
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlwordldb);
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlname);
             this.mysqlgroupbox.Controls.Add(this.tboxmysqlport);
@@ -102,7 +100,7 @@
             this.mysqlgroupbox.Controls.Add(this.label2);
             this.mysqlgroupbox.Location = new System.Drawing.Point(13, 30);
             this.mysqlgroupbox.Name = "mysqlgroupbox";
-            this.mysqlgroupbox.Size = new System.Drawing.Size(360, 247);
+            this.mysqlgroupbox.Size = new System.Drawing.Size(360, 170);
             this.mysqlgroupbox.TabIndex = 3;
             this.mysqlgroupbox.TabStop = false;
             this.mysqlgroupbox.Text = "MySQL Connection Settings";
@@ -116,18 +114,9 @@
             this.tboxmysqlpw.Size = new System.Drawing.Size(200, 20);
             this.tboxmysqlpw.TabIndex = 4;
             // 
-            // tboxmysqlsd2db
-            // 
-            this.tboxmysqlsd2db.Location = new System.Drawing.Point(154, 196);
-            this.tboxmysqlsd2db.MaxLength = 255;
-            this.tboxmysqlsd2db.Name = "tboxmysqlsd2db";
-            this.tboxmysqlsd2db.ReadOnly = true;
-            this.tboxmysqlsd2db.Size = new System.Drawing.Size(200, 20);
-            this.tboxmysqlsd2db.TabIndex = 6;
-            // 
             // tboxmysqlwordldb
             // 
-            this.tboxmysqlwordldb.Location = new System.Drawing.Point(154, 170);
+            this.tboxmysqlwordldb.Location = new System.Drawing.Point(154, 134);
             this.tboxmysqlwordldb.MaxLength = 255;
             this.tboxmysqlwordldb.Name = "tboxmysqlwordldb";
             this.tboxmysqlwordldb.Size = new System.Drawing.Size(200, 20);
@@ -160,11 +149,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 173);
+            this.label6.Location = new System.Drawing.Point(8, 137);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.Size = new System.Drawing.Size(97, 13);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Mangos World DB";
+            this.label6.Text = "Mangos World DB:";
             // 
             // label5
             // 
@@ -215,14 +204,14 @@
             this.sshgroupbox.Controls.Add(this.sshcheckbox);
             this.sshgroupbox.Location = new System.Drawing.Point(379, 12);
             this.sshgroupbox.Name = "sshgroupbox";
-            this.sshgroupbox.Size = new System.Drawing.Size(205, 236);
+            this.sshgroupbox.Size = new System.Drawing.Size(205, 221);
             this.sshgroupbox.TabIndex = 4;
             this.sshgroupbox.TabStop = false;
             this.sshgroupbox.Text = "SSH Connection";
             // 
             // tboxsshpw
             // 
-            this.tboxsshpw.Location = new System.Drawing.Point(13, 210);
+            this.tboxsshpw.Location = new System.Drawing.Point(13, 191);
             this.tboxsshpw.MaxLength = 255;
             this.tboxsshpw.Name = "tboxsshpw";
             this.tboxsshpw.PasswordChar = '?';
@@ -232,7 +221,7 @@
             // 
             // tboxsshuser
             // 
-            this.tboxsshuser.Location = new System.Drawing.Point(13, 165);
+            this.tboxsshuser.Location = new System.Drawing.Point(13, 152);
             this.tboxsshuser.MaxLength = 255;
             this.tboxsshuser.Name = "tboxsshuser";
             this.tboxsshuser.ReadOnly = true;
@@ -241,7 +230,7 @@
             // 
             // tboxsshport
             // 
-            this.tboxsshport.Location = new System.Drawing.Point(13, 119);
+            this.tboxsshport.Location = new System.Drawing.Point(13, 106);
             this.tboxsshport.MaxLength = 255;
             this.tboxsshport.Name = "tboxsshport";
             this.tboxsshport.ReadOnly = true;
@@ -260,7 +249,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 194);
+            this.label11.Location = new System.Drawing.Point(10, 175);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 4;
@@ -269,7 +258,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 103);
+            this.label10.Location = new System.Drawing.Point(10, 90);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 13);
             this.label10.TabIndex = 3;
@@ -278,7 +267,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 149);
+            this.label9.Location = new System.Drawing.Point(10, 129);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 13);
             this.label9.TabIndex = 2;
@@ -308,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 289);
+            this.ClientSize = new System.Drawing.Size(596, 243);
             this.Controls.Add(this.sshgroupbox);
             this.Controls.Add(this.mysqlgroupbox);
             this.Controls.Add(this.label1);
@@ -338,7 +327,6 @@
         private System.Windows.Forms.CheckBox sshcheckbox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tboxmysqlsd2db;
         private System.Windows.Forms.TextBox tboxmysqlwordldb;
         private System.Windows.Forms.TextBox tboxmysqlname;
         private System.Windows.Forms.TextBox tboxmysqlport;
