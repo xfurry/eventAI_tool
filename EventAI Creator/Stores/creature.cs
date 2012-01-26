@@ -16,6 +16,9 @@ namespace EventAI_Creator
             this.event_inverse_phase_mask = 0;
             comment = "";
         }
+
+        public int script_id;
+
         public int event_type;
         public UInt32 event_inverse_phase_mask;
         public int event_chance;
@@ -41,15 +44,14 @@ namespace EventAI_Creator
         public int action3_param3;
 
         public string comment;
-
     }
 
     class creature
     {
-        public creature(uint id)
+        public creature(uint id, string name)
         {
             this.creature_id = id;
-            this.creature_name = id.ToString();
+            this.creature_name = name;
         }
 
         public void AddEvent()
@@ -57,6 +59,7 @@ namespace EventAI_Creator
             Event_dataset temp = new Event_dataset();
             line.Add(temp);
         }
+
         public uint creature_id;
         public bool activectemplate = false;
         public string creature_name;
@@ -74,6 +77,7 @@ namespace EventAI_Creator
             npcList.Add(npc.creature_id,npc);
             return true;
         }
+
         public static void DelCreature(uint creature_id)
         {
             npcList.Remove(creature_id);
@@ -91,6 +95,7 @@ namespace EventAI_Creator
             SQLcreator.WriteCreatureToFile(npcList[creature_id], file, false);
             return true;
         }
+
         public static bool PrintALLCreaturesToFile(string file)
         {
             foreach (KeyValuePair<uint,creature> item in npcList)
@@ -99,6 +104,7 @@ namespace EventAI_Creator
             }
             return true;
         }
+
         public static SortedList<uint, creature> npcList = new SortedList<uint, creature>();
         public static SortedList<uint, creature> OffNpcList = new SortedList<uint, creature>();
         public static List<uint> npcsAvailable = new List<uint>();

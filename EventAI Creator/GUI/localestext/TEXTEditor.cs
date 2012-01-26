@@ -13,7 +13,7 @@ namespace EventAI_Creator.GUI.General.localestext
 {
     public partial class TEXTEditor : Form
     {
-        uint text_id;
+        int text_id;
         public TEXTEditor()
         {
             InitializeComponent();
@@ -24,13 +24,13 @@ namespace EventAI_Creator.GUI.General.localestext
             if (updateofficial)
             {
                 listBoxtexts.Items.Clear();
-                foreach (KeyValuePair<uint, localized_text> item in localized_texts.OffList)
+                foreach (KeyValuePair<int, localized_text> item in localized_texts.OffList)
                 {
                     listBoxtexts.Items.Add(item.Key);
                 }
             }
             customlistBoxtexts.Items.Clear();
-            foreach (KeyValuePair<uint, localized_text> item in localized_texts.map)
+            foreach (KeyValuePair<int, localized_text> item in localized_texts.map)
             {
                 customlistBoxtexts.Items.Add(item.Key);
                 if (item.Value.overwritesofficial)
@@ -49,9 +49,9 @@ namespace EventAI_Creator.GUI.General.localestext
         {
             if (this.textboxadd.Text.Length != 0)
             {
-                if (localized_texts.Add(System.Convert.ToUInt32(this.textboxadd.Text)))
+                if (localized_texts.Add(System.Convert.ToInt32(this.textboxadd.Text)))
                 {
-                    text_id = System.Convert.ToUInt32(this.textboxadd.Text);
+                    text_id = System.Convert.ToInt32(this.textboxadd.Text);
                     textlocalID.Text = this.textboxadd.Text;
                     UpdateListBox(false);
                     TextBoxlocal0.Text = ""; TextBoxlocal1.Text = ""; TextBoxlocal2.Text = ""; TextBoxlocal3.Text = "";
@@ -74,13 +74,13 @@ namespace EventAI_Creator.GUI.General.localestext
 
         private void listBoxtexts_Click(object sender, EventArgs e)
         {
-            if (localized_texts.map.ContainsKey(Convert.ToUInt32(listBoxtexts.SelectedItem)))
+            if (localized_texts.map.ContainsKey(Convert.ToInt32(listBoxtexts.SelectedItem)))
             {
                 customlistBoxtexts.SelectedIndex = customlistBoxtexts.Items.IndexOf(listBoxtexts.SelectedItem);
             }
             else
             {
-                localized_texts.map.Add(Convert.ToUInt32(listBoxtexts.SelectedItem), localized_texts.OffList[Convert.ToUInt32(listBoxtexts.SelectedItem)]);
+                localized_texts.map.Add(Convert.ToInt32(listBoxtexts.SelectedItem), localized_texts.OffList[Convert.ToInt32(listBoxtexts.SelectedItem)]);
                 UpdateListBox(false);
                 customlistBoxtexts.SelectedIndex = customlistBoxtexts.Items.IndexOf(listBoxtexts.SelectedItem);
             }
@@ -90,19 +90,19 @@ namespace EventAI_Creator.GUI.General.localestext
         {
             if (customlistBoxtexts.SelectedIndex != -1)
             {
-                text_id = System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex]);
+                text_id = System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex]);
                 textlocalID.Text = text_id.ToString();
-                TextBoxlocal0.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_0;
-                TextBoxlocal1.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_1;
-                TextBoxlocal2.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_2;
-                TextBoxlocal3.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_3;
-                TextBoxlocal4.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_4;
-                TextBoxlocal5.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_5;
-                TextBoxlocal6.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_6;
-                TextBoxlocal7.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_7;
-                TextBoxlocal8.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_8;
-                textboxcomment.Text = localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].comment;
-                localized_texts.map[System.Convert.ToUInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].changed = true;
+                TextBoxlocal0.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_0;
+                TextBoxlocal1.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_1;
+                TextBoxlocal2.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_2;
+                TextBoxlocal3.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_3;
+                TextBoxlocal4.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_4;
+                TextBoxlocal5.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_5;
+                TextBoxlocal6.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_6;
+                TextBoxlocal7.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_7;
+                TextBoxlocal8.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_8;
+                textboxcomment.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].comment;
+                localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].changed = true;
             }
         }
 
@@ -271,12 +271,12 @@ namespace EventAI_Creator.GUI.General.localestext
                 if (customlistBoxtexts.GetItemChecked(customlistBoxtexts.SelectedIndex))
                 {
                     SQLConnection.DoNONREADSD2Query("DELETE FROM info_locals WHERE entry = " + Convert.ToUInt32(customlistBoxtexts.SelectedItem) + ";", false);
-                    localized_texts.map[Convert.ToUInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = false;
+                    localized_texts.map[Convert.ToInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = false;
                 }
                 else
                 {
                     SQLConnection.DoNONREADSD2Query("INSERT INTO info_locals VALUES(" + Convert.ToUInt32(customlistBoxtexts.SelectedItem) + ");", false);
-                    localized_texts.map[Convert.ToUInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = true;
+                    localized_texts.map[Convert.ToInt32(customlistBoxtexts.SelectedItem)].overwritesofficial = true;
                 }
             }
         }

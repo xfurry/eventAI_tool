@@ -24,10 +24,11 @@ namespace EventAI_Creator
         {
             MySqlDataReader reader = null;
 
+            // Check for the creatureAI tables
             try
             {
                 string sQuery = "SELECT information_schema.TABLES.table_name FROM information_schema.TABLES " +
-                "where information_schema.TABLES.table_name IN ('creature_ai_scripts','creature_ai_summons','creature_ai_texts') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
+                    "where information_schema.TABLES.table_name IN ('creature_ai_scripts','creature_ai_summons','creature_ai_texts') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
                 MySqlCommand comm = new MySqlCommand(sQuery, SQLConnection.conn);
                 reader = comm.ExecuteReader();
 
@@ -48,23 +49,23 @@ namespace EventAI_Creator
 
             if (Datastores.dbused)
             {
-                MySqlCommand c = new MySqlCommand("SELECT * FROM creature_ai_scripts", SQLConnection.conn);
+                // Select all creature scripts and creature names
+                MySqlCommand c = new MySqlCommand("SELECT a.*, b.name FROM creature_ai_scripts a join creature_template b on a.creature_id = b.entry;", SQLConnection.conn);
                 reader = c.ExecuteReader();
 
                 try
                 {
                     while (reader.Read())
                     {
-                        if (creatures.npcList.ContainsKey(reader.GetUInt32("creature_id")))
+                        if (!creatures.npcList.ContainsKey(reader.GetUInt32("creature_id")))
                         {
-                        }
-                        else
-                        {
-                            creature temp = new creature(reader.GetUInt32("creature_id"));
+                            creature temp = new creature(reader.GetUInt32("creature_id"), reader.GetString("name"));
                             creatures.npcList.Add(reader.GetUInt32("creature_id"), temp);
                         }
+
                         Event_dataset item = new Event_dataset();
 
+                        item.script_id = reader.GetInt32("id");
                         item.event_type = reader.GetInt32("event_type");
                         item.event_inverse_phase_mask = reader.GetUInt32("event_inverse_phase_mask");
                         item.event_chance = reader.GetInt32("event_chance");
@@ -86,6 +87,7 @@ namespace EventAI_Creator
                         item.action3_param2 = reader.GetInt32("action3_param2");
                         item.action3_param3 = reader.GetInt32("action3_param3");
                         item.comment = reader.GetString("comment");
+
                         creatures.npcList[reader.GetUInt32("creature_id")].line.Add(item);
                     }
                 }
@@ -94,52 +96,8 @@ namespace EventAI_Creator
                     MessageBox.Show(ex.Message);
                 }
                 reader.Close();
-                //c.CommandText = "SELECT * FROM `eventai_scripts_official`";
-                //reader = c.ExecuteReader();
 
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        if (creatures.OffNpcList.ContainsKey(reader.GetUInt32("creature_id")))
-                //        {
-                //        }
-                //        else
-                //        {
-                //            creature temp = new creature(reader.GetUInt32("creature_id"));
-                //            creatures.OffNpcList.Add(reader.GetUInt32("creature_id"), temp);
-                //        }
-                //        Event_dataset item = new Event_dataset();
-
-                //        item.event_type = reader.GetInt32("event_type");
-                //        item.event_inverse_phase_mask = reader.GetUInt32("event_inverse_phase_mask");
-                //        item.event_chance = reader.GetInt32("event_chance");
-                //        item.event_flags = reader.GetInt32("event_flags");
-                //        item.event_param1 = reader.GetInt32("event_param1");
-                //        item.event_param2 = reader.GetInt32("event_param2");
-                //        item.event_param3 = reader.GetInt32("event_param3");
-                //        item.event_param4 = reader.GetInt32("event_param4");
-                //        item.action1_type = reader.GetInt32("action1_type");
-                //        item.action1_param1 = reader.GetInt32("action1_param1");
-                //        item.action1_param2 = reader.GetInt32("action1_param2");
-                //        item.action1_param3 = reader.GetInt32("action1_param3");
-                //        item.action2_type = reader.GetInt32("action2_type");
-                //        item.action2_param1 = reader.GetInt32("action2_param1");
-                //        item.action2_param2 = reader.GetInt32("action2_param2");
-                //        item.action2_param3 = reader.GetInt32("action2_param3");
-                //        item.action3_type = reader.GetInt32("action3_type");
-                //        item.action3_param1 = reader.GetInt32("action3_param1");
-                //        item.action3_param2 = reader.GetInt32("action3_param2");
-                //        item.action3_param3 = reader.GetInt32("action3_param3");
-                //        item.comment = reader.GetString("comment");
-                //        creatures.OffNpcList[reader.GetUInt32("creature_id")].line.Add(item);
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
+                // Select all creature AI summons
                 c.CommandText = "SELECT * FROM creature_ai_summons";
                 reader.Close();
                 reader = c.ExecuteReader();
@@ -155,6 +113,7 @@ namespace EventAI_Creator
                         item.position_y = reader.GetFloat("position_y");
                         item.position_z = reader.GetFloat("position_z");
                         item.spawntimesecs = reader.GetInt32("spawntimesecs");
+
                         summons.map.Add(reader.GetUInt32("id"), item);
                     }
                 }
@@ -163,50 +122,7 @@ namespace EventAI_Creator
                     MessageBox.Show(ex.Message);
                 }
 
-                //c.CommandText = "SELECT * FROM `eventai_summons_official`";
-                //reader.Close();
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        summon item = new summon(reader.GetUInt32("id"));
-                //        item.comment = reader.GetString("comment");
-                //        item.orientation = reader.GetFloat("orientation");
-                //        item.position_x = reader.GetFloat("position_x");
-                //        item.position_y = reader.GetFloat("position_y");
-                //        item.position_z = reader.GetFloat("position_z");
-                //        item.spawntimesecs = reader.GetInt32("spawntimesecs");
-                //        summons.OffList.Add(reader.GetUInt32("id"), item);
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
-                //c.CommandText = "SELECT * FROM `eventai_texts_custom`";
-                //reader.Close();
-
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        localized_text item = new localized_text(reader.GetUInt32("id"));
-                //        item.comment = reader.GetString("comment");
-                //        item.locale_0 = reader.GetString("text");
-                //        localized_texts.map.Add(reader.GetUInt32("id"), item);
-                //    }
-
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
+                // Select all creature AI texts
                 c.CommandText = "SELECT * FROM creature_ai_texts";
                 reader.Close();
 
@@ -216,28 +132,69 @@ namespace EventAI_Creator
                 {
                     while (reader.Read())
                     {
-                        localized_text item = new localized_text(reader.GetUInt32("entry"));
-                        item.locale_1 = reader.GetString("content_loc1");
-                        item.locale_2 = reader.GetString("content_loc2");
-                        item.locale_3 = reader.GetString("content_loc3");
-                        item.locale_4 = reader.GetString("content_loc4");
-                        item.locale_5 = reader.GetString("content_loc5");
-                        item.locale_6 = reader.GetString("content_loc6");
-                        item.locale_7 = reader.GetString("content_loc7");
-                        item.locale_8 = reader.GetString("content_loc8");
-                        if (!localized_texts.map.ContainsKey(reader.GetUInt32("entry")))
-                            localized_texts.map.Add(reader.GetUInt32("entry"), item);
+                        localized_text item = new localized_text(reader.GetInt32("entry"));
+                        item.locale_0 = reader.GetString("content_default");
+
+                        int colIndex = reader.GetOrdinal("content_loc1");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_1 = reader.GetString("content_loc1");
                         else
-                        {
-                            localized_texts.map[reader.GetUInt32("entry")].locale_1 = item.locale_1;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_2 = item.locale_2;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_3 = item.locale_3;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_4 = item.locale_4;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_5 = item.locale_5;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_6 = item.locale_6;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_7 = item.locale_7;
-                            localized_texts.map[reader.GetUInt32("entry")].locale_8 = item.locale_8;
-                        }
+                            item.locale_1 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc2");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_2 = reader.GetString("content_loc2");
+                        else
+                            item.locale_2 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc3");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_3 = reader.GetString("content_loc3");
+                        else
+                            item.locale_3 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc4");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_4 = reader.GetString("content_loc4");
+                        else
+                            item.locale_4 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc5");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_5 = reader.GetString("content_loc5");
+                        else
+                            item.locale_5 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc6");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_6 = reader.GetString("content_loc6");
+                        else
+                            item.locale_6 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc7");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_7 = reader.GetString("content_loc7");
+                        else
+                            item.locale_7 = string.Empty;
+
+                        colIndex = reader.GetOrdinal("content_loc8");
+                        if (!reader.IsDBNull(colIndex))
+                            item.locale_8 = reader.GetString("content_loc8");
+                        else
+                            item.locale_8 = string.Empty;
+
+                        item.sound = reader.GetInt32("sound");
+                        item.type = reader.GetInt32("type");
+                        item.language = reader.GetInt32("language");
+                        item.emote = reader.GetInt32("emote");
+
+                        colIndex = reader.GetOrdinal("comment");
+                        if (!reader.IsDBNull(colIndex))
+                            item.comment = reader.GetString("comment");
+                        else
+                            item.comment = string.Empty;
+
+                        localized_texts.map.Add(reader.GetInt32("entry"), item);
                     }
 
                 }
@@ -246,68 +203,10 @@ namespace EventAI_Creator
                     MessageBox.Show(ex.Message);
                 }
                 reader.Close();
-                //c.CommandText = "SELECT * FROM `eventai_texts_official`";
 
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        localized_text item = new localized_text(reader.GetUInt32("id"));
-                //        item.comment = reader.GetString("comment");
-                //        item.locale_0 = reader.GetString("text");
-                //        localized_texts.OffList.Add(reader.GetUInt32("id"), item);
-                //    }
-
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-                //reader.Close();
-
-                //c.CommandText = "SELECT * FROM `eventai_localized_texts_official`";
-
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        localized_text item = new localized_text(reader.GetUInt32("id"));
-                //        item.locale_1 = reader.GetString("locale_1");
-                //        item.locale_2 = reader.GetString("locale_2");
-                //        item.locale_3 = reader.GetString("locale_3");
-                //        item.locale_4 = reader.GetString("locale_4");
-                //        item.locale_5 = reader.GetString("locale_5");
-                //        item.locale_6 = reader.GetString("locale_6");
-                //        item.locale_7 = reader.GetString("locale_7");
-                //        item.locale_8 = reader.GetString("locale_8");
-                //        if (!localized_texts.OffList.ContainsKey(reader.GetUInt32("id")))
-                //            localized_texts.OffList.Add(reader.GetUInt32("id"), item);
-                //        else
-                //        {
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_1 = item.locale_1;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_2 = item.locale_2;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_3 = item.locale_3;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_4 = item.locale_4;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_5 = item.locale_5;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_6 = item.locale_6;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_7 = item.locale_7;
-                //            localized_texts.OffList[reader.GetUInt32("id")].locale_8 = item.locale_8;
-                //        }
-                //    }
-
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-                //reader.Close();
-
+                // Select creature entries
                 SQLConnection.conn.ChangeDatabase(SQLConnection.dbworld);
-                c.CommandText = "SELECT entry FROM `creature_template` WHERE AIName = 'EventAI';";
+                c.CommandText = "SELECT entry FROM creature_template WHERE AIName='EventAI';";
                 reader = c.ExecuteReader();
 
                 try
@@ -342,90 +241,10 @@ namespace EventAI_Creator
                     MessageBox.Show(ex.Message);
                 }
                 reader.Close();
-
-                //string delete = "";
-                //SQLConnection.conn.ChangeDatabase(SQLConnection.dbsd2);
-
-                //c.CommandText = "SELECT * FROM info_summons;";
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        if (summons.map.ContainsKey(reader.GetUInt32("entry")))
-                //            summons.map[reader.GetUInt32("entry")].overwritesofficial = true;
-                //        else
-                //        {
-                //            delete = delete + Convert.ToUInt32(reader.GetUInt32("entry"));
-                //        }
-                //    }
-                //    reader.Close();
-                //    if (delete.Length != 0)
-                //    {
-                //        SQLConnection.DoNONREADSD2Query("DELETE FROM info_locals WHERE entry IN(" + delete + ");", false);
-                //        delete = "";
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
-                //c.CommandText = "SELECT * FROM info_scripts;";
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        if (creatures.npcList.ContainsKey(reader.GetUInt32("entry")))
-                //            creatures.npcList[reader.GetUInt32("entry")].overwritesofficial = true;
-                //        else
-                //        {
-                //            delete = delete + Convert.ToUInt32(reader.GetUInt32("entry"));
-                //        }
-                //    }
-                //    reader.Close();
-                //    if (delete.Length != 0)
-                //    {
-                //        SQLConnection.DoNONREADSD2Query("DELETE FROM info_scripts WHERE entry IN(" + delete + ");", false);
-                //        delete = "";
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-
-                //c.CommandText = "SELECT * FROM info_locals;";
-                //reader = c.ExecuteReader();
-
-                //try
-                //{
-                //    while (reader.Read())
-                //    {
-                //        if (localized_texts.map.ContainsKey(reader.GetUInt32("entry")))
-                //        localized_texts.map[reader.GetUInt32("entry")].overwritesofficial = true;
-                //        else
-                //        {
-                //            delete = delete + Convert.ToUInt32(reader.GetUInt32("entry"));
-                //        }
-                //    }
-                //    reader.Close();
-                //    if (delete.Length != 0)
-                //    {
-                //        SQLConnection.DoNONREADSD2Query("DELETE FROM info_locals WHERE entry IN(" + delete + ");", false);
-                //        delete = "";
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
             }
         }
     }
+
     static class SQLcreator
     {
         public static bool WriteCreatureToFile(creature npc, string file, bool reihe)
@@ -562,7 +381,7 @@ namespace EventAI_Creator
             }
             if (item is localized_texts)
             {
-                SortedList<uint, localized_text> copy = localized_texts.map;
+                SortedList<int, localized_text> copy = localized_texts.map;
                 table = "`eventai_localized_texts_custom`";
                 table2 = "`eventai_texts_custom`";
                 if (tableparam == "eventai_localized_texts")
@@ -570,7 +389,7 @@ namespace EventAI_Creator
                     table = tableparam;
                     table2 = "eventai_texts";
                 }
-                foreach (KeyValuePair<uint, localized_text> itemf in copy)
+                foreach (KeyValuePair<int, localized_text> itemf in copy)
                 {
                     customquery = customquery + "DELETE FROM " + table + " WHERE id = " + itemf.Key + ";DELETE FROM " + table2 + "WHERE id = " + itemf.Key + ";";
                 }
@@ -674,8 +493,8 @@ namespace EventAI_Creator
                     table = tableparam;
                     table2 = "eventai_texts";
                 }
-                SortedList<uint, localized_text> copy = localized_texts.map;
-                foreach (KeyValuePair<uint, localized_text> itemf in copy)
+                SortedList<int, localized_text> copy = localized_texts.map;
+                foreach (KeyValuePair<int, localized_text> itemf in copy)
                 {
                     customquery = customquery + "INSERT INTO "+table2+" VALUES("+localized_texts.map[itemf.Key].id+",'"+ MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','"+MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment)+"');";
                     customquery = customquery + "INSERT INTO "+table+" VALUES('" + localized_texts.map[itemf.Key].id + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_1) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_2) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_3) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_4) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_5) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_6) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_7) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_8) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "');";
@@ -1000,7 +819,7 @@ namespace EventAI_Creator
             }
             if (item is SortedList<uint, localized_text>)
             {
-                foreach (KeyValuePair<uint, localized_text> itemf in (item as SortedList<uint,localized_text>))
+                foreach (KeyValuePair<int, localized_text> itemf in (item as SortedList<int,localized_text>))
                 {
                     if (localized_texts.OffList.ContainsKey(itemf.Key))
                     {
@@ -1053,7 +872,7 @@ namespace EventAI_Creator
 
                 if (item.Equals(localized_texts.map))
                 {
-                    foreach (KeyValuePair<uint, localized_text> itemf in localized_texts.map)
+                    foreach (KeyValuePair<int, localized_text> itemf in localized_texts.map)
                     {
                         if (itemf.Value.changed)
                         {

@@ -10,10 +10,16 @@ namespace EventAI_Creator
         public static bool Add(uint id)
         {
             summon temp = new summon(id);
+
             if (!map.ContainsKey(id))
-            { map.Add(id, temp); return true; }
-            else return false;
+            {
+                map.Add(id, temp);
+                return true;
+            }
+            else
+                return false;
         }
+
         public static SortedList<uint,summon> map = new SortedList<uint,summon>();
         public static SortedList<uint, summon> OffList = new SortedList<uint, summon>();
 
@@ -22,12 +28,12 @@ namespace EventAI_Creator
             SQLcreator.WriteSummonToFile(map[creature_id], file, false);
             return true;
         }
+
         public static bool PrintALLSummonsToFile(string file)
         {
             foreach (KeyValuePair<uint, summon> item in map)
-            {
                 SQLcreator.WriteSummonToFile(item.Value, file, true);
-            }
+
             return true;
         }
     }
@@ -38,6 +44,7 @@ namespace EventAI_Creator
         {
             id = idi;
         }
+
         public uint id;
         public bool changed = false;
         public bool overwritesofficial = false;

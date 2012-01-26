@@ -45,7 +45,7 @@ namespace EventAI_Creator
                 return;
             }
 
-            creature newcreature = new creature(System.Convert.ToUInt32(textBox1.Text));
+            creature newcreature = new creature(System.Convert.ToUInt32(textBox1.Text), "");
             if (!creatures.AddCreature(newcreature))
                 MessageBox.Show("ID already Exists!");
             else
