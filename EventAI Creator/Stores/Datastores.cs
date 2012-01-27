@@ -249,60 +249,66 @@ namespace EventAI_Creator
 
     static class SQLcreator
     {
+        // Create creature script
         public static bool WriteCreatureToFile(creature npc, string file, bool reihe)
         {
             if (npc == null || npc.line.Count == 0)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("## " + npc.creature_name);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc, ""));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc, ""));
+            sqlpatchfile.WriteLine("/*" + npc.creature_name + "*/");
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
             sqlpatchfile.Close();
             return true;
         }
+
+        // Create summon script
         public static bool WriteSummonToFile(summon npc, string file, bool reihe)
         {
             if (npc == null)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("## " + npc.comment + npc.id);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc, ""));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc, ""));
+            sqlpatchfile.WriteLine("/*" + npc.comment + " " + npc.id + "*/");
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
             sqlpatchfile.Close();
             return true;
         }
+
+        // Create text script
         public static bool WriteLocalizedTextToFile(localized_text npc, string file, bool reihe)
         {
             if (npc == null)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("## " + npc.comment + npc.id);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc, ""));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc, ""));
+            sqlpatchfile.WriteLine("/*" + npc.comment + " " + npc.id + "*/");
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
             sqlpatchfile.Close();
             return true;
         }
 
-        public static string CreateDeleteQuery(object item,string tableparam)
+        public static string CreateDeleteQuery(object item)
         {
             string table = "eventai_summons_custom";
             string argument = "id < 0";
             string customquery = "";
             string table2 = "";
 
-            if(item is creature)
+            if (item is creature)
             {
                 creature copy = item as creature;
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 argument = "creature_id IN ("+copy.creature_id+")";
             }
+
             if (item is List<creature>)
             {
                 List<creature> copy = item as List<creature>;
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 argument = "creature_id IN (";
                 foreach (creature itemf in copy)
                 {
@@ -311,10 +317,11 @@ namespace EventAI_Creator
                 argument.Remove(argument.Length);
                 argument = argument+")";
             }
+
             if (item is creatures)
             {
                 SortedList<uint,creature> copy = creatures.npcList;
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 argument = "creature_id IN(";
                 foreach(KeyValuePair<uint,creature> itemf in copy)
                 {
@@ -327,13 +334,13 @@ namespace EventAI_Creator
             if (item is summon)
             {
                 summon copy = item as summon;
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 argument = "id IN ("+ copy.id+")";
             }
             if (item is List<summon>)
             {
                 List<summon> copy = item as List<summon>;
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 argument = "id IN(";
                 foreach (summon itemf in copy)
                 {
@@ -342,10 +349,11 @@ namespace EventAI_Creator
                 argument.Remove(argument.Length);
                 argument = argument+")";
             }
+
             if (item is summons)
             {
                 SortedList<uint, summon> copy = summons.map;
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 argument = "id IN (";
                 foreach (KeyValuePair<uint, summon> itemf in copy)
                 {
@@ -358,20 +366,15 @@ namespace EventAI_Creator
             if (item is localized_text)
             {
                 localized_text copy = item as localized_text;
-                table = "`eventai_localized_texts_custom`";
-                table2 = "`eventai_texts_custom`";
-                if (tableparam == "eventai_localized_texts")
-                {
-                    table = tableparam;
-                    table2 = "eventai_texts";
-                }
-                customquery = "DELETE FROM " + table + " WHERE id = " + copy.id + ";DELETE FROM " + table2 + " WHERE id = " + copy.id + ";";
+                table = "creature_ai_texts";
+                customquery = "DELETE FROM " + table + " WHERE id = " + copy.id + ";";
 
             }
+
             if (item is List<localized_text>)
             {
                 List<localized_text> copy = item as List<localized_text>;
-                table = "`eventai_localized_texts_custom`";
+                table = "creature_ai_texts";
                 argument = "id IN(";
                 foreach (localized_text itemf in copy)
                 {
@@ -379,38 +382,27 @@ namespace EventAI_Creator
                 }
                 argument.Remove(argument.Length);
                 argument = argument + ")";
+
                 MessageBox.Show("LOL, this should never happen, REPORT!");
             }
             if (item is localized_texts)
             {
                 SortedList<int, localized_text> copy = localized_texts.map;
-                table = "`eventai_localized_texts_custom`";
-                table2 = "`eventai_texts_custom`";
-                if (tableparam == "eventai_localized_texts")
-                {
-                    table = tableparam;
-                    table2 = "eventai_texts";
-                }
+                table = "creature_ai_texts";
                 foreach (KeyValuePair<int, localized_text> itemf in copy)
                 {
-                    customquery = customquery + "DELETE FROM " + table + " WHERE id = " + itemf.Key + ";DELETE FROM " + table2 + "WHERE id = " + itemf.Key + ";";
+                    customquery = customquery + "DELETE FROM " + table + " WHERE id = " + itemf.Key + ";";
                 }
             }
 
-            if (tableparam.Length != 0)
-            {
-                table = tableparam;
-            }
             string result = "";
             if (customquery.Length != 0)
-            {
                 result = customquery;
-            }
-            else result = "DELETE FROM " + table + " WHERE " + argument + ";";
+
             return result;
         }
 
-        public static string CreateCreatureTemplateQuery(object item,bool remove)
+        public static string CreateCreatureTemplateQuery(object item, bool remove)
         {
             string arguments = "";
 
@@ -443,40 +435,35 @@ namespace EventAI_Creator
                     else arguments = arguments + "," + itemf.Key;
                 }
             }
+
             if (item is uint)
                 arguments = item.ToString();
-            string scriptname;
+
+            string scriptname = "EventAI";
             if (remove)
-                scriptname = "''";
-            else scriptname = "'mob_eventai'";
-            string result = "UPDATE creature_template SET scriptname = "+scriptname+" WHERE entry IN("+arguments+");";
+                scriptname = "";
+
+            string result = "UPDATE creature_template SET AIName='"+ scriptname +"' WHERE entry IN("+arguments+");";
 
             return result;
         }
 
-        public static string CreateCreateQuery(object item,string tableparam)
+        public static string CreateCreateQuery(object item)
         {
             string table = "";
             string lines = "";
             string customquery = "";
             string table2 = "";
 
-            if(item is localized_text)
+            if (item is localized_text)
             {
-                table = "`eventai_localized_texts_custom`";
-                table2 = "`eventai_texts_custom`";
-                if (tableparam == "eventai_localized_texts")
-                {
-                    table = tableparam;
-                    table2 = "eventai_texts";
-                }
+                table = "creature_ai_texts";
                 localized_text copy = item as localized_text;
-                customquery = "INSERT INTO " + table2 + " VALUES(" + copy.id + ",'" + MySqlHelper.EscapeString(copy.locale_0) + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
-                customquery = customquery + "INSERT INTO " + table + " VALUES('" + copy.id + "','" + MySqlHelper.EscapeString(copy.locale_1) + "','" + MySqlHelper.EscapeString(copy.locale_2) + "','" + MySqlHelper.EscapeString(copy.locale_3) + "','" + MySqlHelper.EscapeString(copy.locale_4) + "','" + MySqlHelper.EscapeString(copy.locale_5) + "','" + MySqlHelper.EscapeString(copy.locale_6) + "','" + MySqlHelper.EscapeString(copy.locale_7) + "','" + MySqlHelper.EscapeString(copy.locale_8) + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
+                customquery = "INSERT INTO " + table + " VALUES(" + copy.id + ",'" + MySqlHelper.EscapeString(copy.locale_0) + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
              }
             if (item is List<localized_text>)
             {
-                table = "`eventai_localized_texts_custom`";
+                table = "creature_ai_texts";
                 List<localized_text> copy = item as List<localized_text>;
                 foreach (localized_text itemf in copy)
                 {
@@ -488,30 +475,24 @@ namespace EventAI_Creator
             }
             if (item is localized_texts)
             {
-                table = "`eventai_localized_texts_custom`";
-                table2 = "`eventai_texts_custom`";
-                if (tableparam == "eventai_localized_texts")
-                {
-                    table = tableparam;
-                    table2 = "eventai_texts";
-                }
+                table = "creature_ai_texts";
+
                 SortedList<int, localized_text> copy = localized_texts.map;
                 foreach (KeyValuePair<int, localized_text> itemf in copy)
                 {
-                    customquery = customquery + "INSERT INTO "+table2+" VALUES("+localized_texts.map[itemf.Key].id+",'"+ MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','"+MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment)+"');";
                     customquery = customquery + "INSERT INTO "+table+" VALUES('" + localized_texts.map[itemf.Key].id + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_1) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_2) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_3) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_4) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_5) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_6) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_7) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_8) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "');";
                 }
             }
 
             if (item is summon)
             {
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 summon copy = item as summon;
                 lines = "('" + copy.id + "','" + copy.position_x.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.position_y.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.position_z.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.orientation.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.spawntimesecs + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
             }
             if (item is List<summon>)
             {
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 List<summon> copy = item as List<summon>;
                 foreach (summon itemf in copy)
                 {
@@ -522,7 +503,7 @@ namespace EventAI_Creator
             }
             if (item is summons)
             {
-                table = "`eventai_summons_custom`";
+                table = "creature_ai_summons";
                 SortedList<uint, summon> copy = summons.map;
                 foreach (KeyValuePair<uint, summon> itemf in copy)
                 {
@@ -534,7 +515,7 @@ namespace EventAI_Creator
 
             if (item is creature)
             {
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 creature copy = item as creature;
 
                 for (int i = 0; i < copy.line.Count; i++)
@@ -569,7 +550,7 @@ namespace EventAI_Creator
             }
             if (item is List<creature>)
             {
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 List<creature> copy = item as List<creature>;
 
                 foreach (creature itemf in copy)
@@ -606,7 +587,7 @@ namespace EventAI_Creator
             }
             if (item is creatures)
             {
-                table = "`eventai_scripts_custom`";
+                table = "creature_ai_scripts";
                 SortedList<uint,creature> copy = creatures.npcList;
 
                 foreach(KeyValuePair<uint,creature> itemf in copy)
@@ -641,15 +622,13 @@ namespace EventAI_Creator
                 lines.Remove(lines.Length);
                 lines = lines + ";";
             }
-            string result="";
-            if (tableparam.Length != 0)
-                table = tableparam;
-            
-                if (customquery.Length != 0)
-                {
-                    result = customquery;
-                }
-                else if (lines.Length != 0) result = "INSERT INTO " + table + " VALUES " + lines;
+            string result = "";
+
+            if (customquery.Length != 0)
+            {
+                result = customquery;
+            }
+            else if (lines.Length != 0) result = "INSERT INTO " + table + " VALUES " + lines;
             return result;
         }
     }
@@ -663,7 +642,6 @@ namespace EventAI_Creator
                 dbhost = tdbhost;
                 dbuser = tdbuser;
                 dbpass = tdbpass;
-                //dbsd2 = tdbsd2;
                 dbworld = tdbworld;
                 string connStr = String.Format("server={0};user id={1};password={2}; database={3}; pooling=false", dbhost, dbuser, dbpass, tdbworld);
 
@@ -688,7 +666,7 @@ namespace EventAI_Creator
         {
             if(!Datastores.dbused)
                 return;
-            SQLConnection.conn.ChangeDatabase(SQLConnection.dbsd2);
+            SQLConnection.conn.ChangeDatabase(SQLConnection.dbworld);
             MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
             try
             {
@@ -706,7 +684,6 @@ namespace EventAI_Creator
         public static string dbuser;
         public static string dbpass;
         public static string dbworld;
-        public static string dbsd2;
         public static Exception error;
         public static MySqlConnection conn;
     }
@@ -766,12 +743,10 @@ namespace EventAI_Creator
             {
                 SQLConnection.conn.ChangeDatabase(SQLConnection.dbworld);
                 c.ExecuteNonQuery();
-                SQLConnection.conn.ChangeDatabase(SQLConnection.dbsd2);
                 return true;
             }
             catch(Exception ex)
             {
-                SQLConnection.conn.ChangeDatabase(SQLConnection.dbsd2);
                 MessageBox.Show(ex.Message);
                 return false;
             }
@@ -788,11 +763,10 @@ namespace EventAI_Creator
                 {
                     if (creatures.npcList.ContainsKey(itemf.Key))
                     {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_scripts");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_scripts");
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                     }
                 }
-                SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_scripts` SELECT  * FROM `eventai_scripts_custom` WHERE `eventai_scripts_custom`.`creature_id` NOT IN (SELECT creature_id FROM eventai_scripts_official);", false);
             }
             if (item is SortedList<uint, summon>)
             {
@@ -800,12 +774,10 @@ namespace EventAI_Creator
                 {
                     if (summons.map.ContainsKey(itemf.Key))
                     {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_summons");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_summons");
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                     }
                 }
-                SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_summons` SELECT  * FROM `eventai_summons_custom` WHERE `eventai_summons_custom`.`id` NOT IN (SELECT id FROM eventai_summons_official);", false);
-
             }
             if (item is SortedList<uint, localized_text>)
             {
@@ -813,15 +785,14 @@ namespace EventAI_Creator
                 {
                     if (localized_texts.map.ContainsKey(itemf.Key))
                     {
-                        query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "eventai_localized_texts");
-                        query = query + SQLcreator.CreateCreateQuery(itemf.Value, "eventai_localized_texts");
+                        query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                        query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                     }
                 }
-                SQLConnection.DoNONREADSD2Query("INSERT INTO `eventai_localized_texts` SELECT  * FROM `eventai_localized_texts_custom` WHERE `eventai_localized_texts_custom`.`id` NOT IN (SELECT id FROM eventai_localized_texts_official);", false);
-
             }
             if(query != "")
-            SQLConnection.DoNONREADSD2Query(query,true);
+                SQLConnection.DoNONREADSD2Query(query,true);
+
             return true;
         }
 
@@ -829,8 +800,8 @@ namespace EventAI_Creator
         {
             if (Datastores.dbused)
             {
-                string query = SQLcreator.CreateDeleteQuery(item,"");
-                query = query + SQLcreator.CreateCreateQuery(item,"");
+                string query = SQLcreator.CreateDeleteQuery(item);
+                query = query + SQLcreator.CreateCreateQuery(item);
                 MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
                 try
                 {
@@ -860,8 +831,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value,"");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value,"");
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                         }
                     }
                 }
@@ -871,8 +842,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value,"");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value,"");
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                         }
                     }
                 }
@@ -882,8 +853,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value,"");
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value,"");
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
                         }
                     }
                 }

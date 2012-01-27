@@ -205,7 +205,7 @@ namespace EventAI_Creator
                 switch (MessageBox.Show("Do you want to Remove it from Database Now? (Executing delete Query", "Remove from Database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
-                        string query = SQLcreator.CreateDeleteQuery(creatures.GetCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex])),"");
+                        string query = SQLcreator.CreateDeleteQuery(creatures.GetCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex])));
                         MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
                         try
                         {
