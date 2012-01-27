@@ -18,10 +18,13 @@ namespace EventAI_Creator
         public SummonsEditor()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
+
         private void UpdateListBox(bool updateofficial)
         {
             customlistBoxsummons.Items.Clear();
+
             foreach (KeyValuePair<uint, summon> item in summons.map)
             {
                 customlistBoxsummons.Items.Add(item.Key);
@@ -32,6 +35,7 @@ namespace EventAI_Creator
         private void SummonsEditor_Load(object sender, EventArgs e)
         {
             UpdateListBox(true);
+
             if (customlistBoxsummons.Items.Count != 0)
                 this.customlistBoxsummons.SelectedIndex = 0;
         }
@@ -45,7 +49,12 @@ namespace EventAI_Creator
                     summon_id = System.Convert.ToUInt32(this.textboxadd.Text);
                     summonID.Text = this.textboxadd.Text;
                     UpdateListBox(false);
-                    box_comment.Text = "0"; box_orientation.Text = "0"; box_position_X.Text = "0"; box_position_Y.Text = "0"; box_position_Z.Text = "0"; box_spawntimesecs.Text = "0";
+                    box_comment.Text = "";
+                    box_orientation.Text = "0";
+                    box_position_X.Text = "0";
+                    box_position_Y.Text = "0";
+                    box_position_Z.Text = "0";
+                    box_spawntimesecs.Text = "0";
 
                     int i = 0;
                     foreach (uint item in customlistBoxsummons.Items)
@@ -76,52 +85,25 @@ namespace EventAI_Creator
                 summons.map[summon_id].changed = true;
             }
         }
+
         private void numberbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            float test;
-            string strin = "";
-            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
-            {
-                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
-            }
-            else
-            {
-                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
-            }
-            if (strin == "-" || strin == "\b" || strin == "")
-                e.Handled = false;
-            else
-            {
-                bool tes = float.TryParse(strin, out test);
-                if ("-1234567890,\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
-                {
-                    e.Handled = true;
-                }
-                else e.Handled = false;
-            }
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != '.')
+                e.Handled = true;
+
+            // only allow one decimal point
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+                e.Handled = true;
         }
 
         private void intnumberbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Int32 test;
-            string strin = "";
-            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
-            {
-                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
-            }
-            else
-            {
-                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
-            }
-            if (strin != "")
-            {
-                bool tes = Int32.TryParse(strin, out test);
-                if ("1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
-                {
-                    e.Handled = true;
-                }
-            }
-            else e.Handled = false;
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
 
         private void stringbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -135,12 +117,11 @@ namespace EventAI_Creator
             //    e.Handled = true;
             //}
         }
+
         private void txtBox_Leave(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == "" || (sender as TextBox).Text == "-")
-            {
+            if ((sender as TextBox).Text == "" || (sender as TextBox).Text == ".")
                 (sender as TextBox).Text = "0";
-            }
         }
 
         private void summontextbox_TextChanged(object sender, EventArgs e)
@@ -166,7 +147,7 @@ namespace EventAI_Creator
         {
             if (Datastores.dbused)
             {
-                switch (MessageBox.Show("Do you want to Remove it from Database Now? (Executing delete Query", "Remove from Database?", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show("Are you sure you want to delete the selected text from the database?", "Remove from Database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         string query = SQLcreator.CreateDeleteQuery(summons.map[summon_id]);
@@ -178,7 +159,8 @@ namespace EventAI_Creator
                             UpdateListBox(false);
                             if (customlistBoxsummons.Items.Count != 0)
                                 customlistBoxsummons.SelectedIndex = 0;
-                            else customlistBoxsummons.SelectedIndex = -1;
+                            else
+                                customlistBoxsummons.SelectedIndex = -1;
                         }
                         catch (Exception ex)
                         {
@@ -190,11 +172,11 @@ namespace EventAI_Creator
                         UpdateListBox(false);
                         if (customlistBoxsummons.Items.Count != 0)
                             customlistBoxsummons.SelectedIndex = 0;
-                        else customlistBoxsummons.SelectedIndex = -1;
+                        else
+                            customlistBoxsummons.SelectedIndex = -1;
                         break;
                     case DialogResult.Cancel:
                         break;
-
                 }
             }
             else
@@ -203,26 +185,25 @@ namespace EventAI_Creator
                 UpdateListBox(false);
                 if (customlistBoxsummons.Items.Count != 0)
                     customlistBoxsummons.SelectedIndex = 0;
-                else customlistBoxsummons.SelectedIndex = -1;
+                else
+                    customlistBoxsummons.SelectedIndex = -1;
             }
         }
 
         private void toDBToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (customlistBoxsummons.SelectedIndex != -1)
-            {
                 SQLCommonExecutes.SaveOneItemTODB(summons.map[summon_id]);
-            }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (customlistBoxsummons.SelectedIndex != -1)
-            {
                 SQLCommonExecutes.SaveAllItemsToDB(summons.map);
-            }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toSQLFileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -238,7 +219,8 @@ namespace EventAI_Creator
                     summons.PrintSummonToFile(summon_id, FileName);
                 }
             }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toSQLFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -254,22 +236,39 @@ namespace EventAI_Creator
                     summons.PrintALLSummonsToFile(FileName);
                 }
             }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void customlistBoxsummons_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            //if (customlistBoxsummons.SelectedIndex != -1)
+            //{
+            //    if (customlistBoxsummons.GetItemChecked(customlistBoxsummons.SelectedIndex))
+            //    {
+            //        SQLConnection.DoNONREADSD2Query("DELETE FROM info_summons WHERE entry = " + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ";", false);
+            //    }
+            //    else
+            //    {
+            //        SQLConnection.DoNONREADSD2Query("INSERT INTO info_summons VALUES(" + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ");", false);
+            //    }
+            //}
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+        }
+
+        private void toToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (customlistBoxsummons.SelectedIndex != -1)
             {
-                if (customlistBoxsummons.GetItemChecked(customlistBoxsummons.SelectedIndex))
-                {
-                    SQLConnection.DoNONREADSD2Query("DELETE FROM info_summons WHERE entry = " + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ";", false);
-                }
-                else
-                {
-                    SQLConnection.DoNONREADSD2Query("INSERT INTO info_summons VALUES(" + Convert.ToUInt32(customlistBoxsummons.SelectedItem) + ");", false);
-                }
+                ScriptDisplay sd = new ScriptDisplay(summons.PrintToQueryWindow(summon_id));
+                sd.ShowDialog();
             }
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
     }
 }

@@ -327,5 +327,15 @@ namespace EventAI_Creator
                 newForm.Show();
             }
         }
+
+        private void help_toolstrip_button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+        }
+
+        private void db_scripts_button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("DB scripts support not yet implemented");
+        }
     }
 }

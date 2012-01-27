@@ -35,6 +35,14 @@ namespace EventAI_Creator
 
             return true;
         }
+
+        public static string PrintToQueryWindow(uint script_id)
+        {
+            string value = "";
+            value = SQLcreator.WriteSummonToWindow(map[script_id]);
+
+            return value;
+        }
     }
 
     class summon

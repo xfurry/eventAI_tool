@@ -270,11 +270,25 @@ namespace EventAI_Creator
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("/*" + script.comment + " " + script.id + "*/");
+            sqlpatchfile.WriteLine("-- Summon id: " + script.id);
             sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script));
             sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script));
             sqlpatchfile.Close();
             return true;
+        }
+
+        // Preview summon scripts
+        public static string WriteSummonToWindow(summon script)
+        {
+            if (script == null)
+                return "";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("-- Summon id: " + script.id);
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+
+            return sb.ToString();
         }
 
         // Create text script
@@ -307,16 +321,17 @@ namespace EventAI_Creator
 
         public static string CreateDeleteQuery(object item)
         {
-            string table = "eventai_summons_custom";
+            string table = "";
             string argument = "id < 0";
             string customquery = "";
             string table2 = "";
 
+            // Creature
             if (item is creature)
             {
                 creature copy = item as creature;
                 table = "creature_ai_scripts";
-                argument = "creature_id IN ("+copy.creature_id+")";
+                argument = "creature_id="+copy.creature_id;
             }
 
             if (item is List<creature>)
@@ -324,10 +339,10 @@ namespace EventAI_Creator
                 List<creature> copy = item as List<creature>;
                 table = "creature_ai_scripts";
                 argument = "creature_id IN (";
+
                 foreach (creature itemf in copy)
-                {
                     argument = argument + itemf.creature_id+",";
-                }
+
                 argument.Remove(argument.Length);
                 argument = argument+")";
             }
@@ -336,30 +351,32 @@ namespace EventAI_Creator
             {
                 SortedList<uint,creature> copy = creatures.npcList;
                 table = "creature_ai_scripts";
-                argument = "creature_id IN(";
+                argument = "creature_id IN (";
+
                 foreach(KeyValuePair<uint,creature> itemf in copy)
-                {
                     argument = argument + itemf.Key + ",";
-                }
+
                 argument.Remove(argument.Length);
                 argument = argument + ")";
             }
 
+            // Summons
             if (item is summon)
             {
                 summon copy = item as summon;
                 table = "creature_ai_summons";
-                argument = "id IN ("+ copy.id+")";
+                argument = "id="+ copy.id;
             }
+
             if (item is List<summon>)
             {
                 List<summon> copy = item as List<summon>;
                 table = "creature_ai_summons";
-                argument = "id IN(";
+                argument = "id IN (";
+
                 foreach (summon itemf in copy)
-                {
                     argument = argument + itemf.id + ",";
-                }
+
                 argument.Remove(argument.Length);
                 argument = argument+")";
             }
@@ -369,10 +386,10 @@ namespace EventAI_Creator
                 SortedList<uint, summon> copy = summons.map;
                 table = "creature_ai_summons";
                 argument = "id IN (";
+
                 foreach (KeyValuePair<uint, summon> itemf in copy)
-                {
                     argument = argument + itemf.Key + ",";
-                }
+
                 argument.Remove(argument.Length);
                 argument = argument + ")";
             }
@@ -397,6 +414,8 @@ namespace EventAI_Creator
             string result = "";
             if (customquery.Length != 0)
                 result = customquery;
+            else
+                result = "DELETE FROM " + table + " WHERE " + argument + ";";
 
             return result;
         }
@@ -452,7 +471,6 @@ namespace EventAI_Creator
             string table = "";
             string lines = "";
             string customquery = "";
-            string table2 = "";
 
             // Create single text query
             if (item is localized_text)
@@ -497,35 +515,39 @@ namespace EventAI_Creator
                 }
             }
 
+            // Summons
             if (item is summon)
             {
                 table = "creature_ai_summons";
                 summon copy = item as summon;
                 lines = "('" + copy.id + "','" + copy.position_x.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.position_y.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.position_z.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.orientation.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + copy.spawntimesecs + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
             }
+
             if (item is List<summon>)
             {
                 table = "creature_ai_summons";
                 List<summon> copy = item as List<summon>;
+
                 foreach (summon itemf in copy)
-                {
                     lines = "('" + itemf.id + "','" + itemf.position_x.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + itemf.position_y.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + itemf.position_z.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + itemf.orientation.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + itemf.spawntimesecs + "','" + MySqlHelper.EscapeString(itemf.comment) + "'),";
-                }
-                lines.Remove(lines.Length);
-                lines = lines + ";";
-            }
-            if (item is summons)
-            {
-                table = "creature_ai_summons";
-                SortedList<uint, summon> copy = summons.map;
-                foreach (KeyValuePair<uint, summon> itemf in copy)
-                {
-                    lines = "('" + summons.map[itemf.Key].id + "','" + summons.map[itemf.Key].position_x.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].position_y.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].position_z.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].orientation.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].spawntimesecs + "','" + MySqlHelper.EscapeString(summons.map[itemf.Key].comment) + "'),";
-                }
+
                 lines.Remove(lines.Length);
                 lines = lines + ";";
             }
 
+            if (item is summons)
+            {
+                table = "creature_ai_summons";
+                SortedList<uint, summon> copy = summons.map;
+
+                foreach (KeyValuePair<uint, summon> itemf in copy)
+                    lines = "('" + summons.map[itemf.Key].id + "','" + summons.map[itemf.Key].position_x.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].position_y.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].position_z.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].orientation.ToString(CultureInfo.GetCultureInfo("en-US")) + "','" + summons.map[itemf.Key].spawntimesecs + "','" + MySqlHelper.EscapeString(summons.map[itemf.Key].comment) + "'),";
+
+                lines.Remove(lines.Length);
+                lines = lines + ";";
+            }
+
+            // Creatures
             if (item is creature)
             {
                 table = "creature_ai_scripts";
@@ -558,7 +580,8 @@ namespace EventAI_Creator
                     MySqlHelper.EscapeString(copy.line[i].comment) + "')";
                     if (i + 1 < copy.line.Count)
                         lines =lines+",";
-                    else lines =lines+";";
+                    else
+                        lines =lines+";";
                 }
             }
             if (item is List<creature>)
@@ -638,11 +661,11 @@ namespace EventAI_Creator
             string result = "";
 
             if (customquery.Length != 0)
-            {
                 result = customquery;
-            }
-            else if (lines.Length != 0) result = "INSERT INTO " + table + " VALUES " + lines;
-            return result;
+            else if (lines.Length != 0)
+                result = "INSERT INTO " + table + " VALUES \r\n" + lines;
+
+                return result;
         }
     }
 

@@ -138,8 +138,8 @@
             this.TextBoxlocal0.Size = new System.Drawing.Size(244, 99);
             this.TextBoxlocal0.TabIndex = 2;
             this.TextBoxlocal0.Text = "";
-            this.TextBoxlocal0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal0.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal1
             // 
@@ -149,8 +149,8 @@
             this.TextBoxlocal1.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal1.TabIndex = 15;
             this.TextBoxlocal1.Text = "";
-            this.TextBoxlocal1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal1.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal3
             // 
@@ -160,8 +160,8 @@
             this.TextBoxlocal3.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal3.TabIndex = 16;
             this.TextBoxlocal3.Text = "";
-            this.TextBoxlocal3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal3.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal6
             // 
@@ -171,8 +171,8 @@
             this.TextBoxlocal6.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal6.TabIndex = 17;
             this.TextBoxlocal6.Text = "";
-            this.TextBoxlocal6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal6.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal4
             // 
@@ -182,8 +182,8 @@
             this.TextBoxlocal4.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal4.TabIndex = 18;
             this.TextBoxlocal4.Text = "";
-            this.TextBoxlocal4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal4.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal7
             // 
@@ -193,8 +193,8 @@
             this.TextBoxlocal7.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal7.TabIndex = 19;
             this.TextBoxlocal7.Text = "";
-            this.TextBoxlocal7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal7.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal2
             // 
@@ -204,8 +204,8 @@
             this.TextBoxlocal2.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal2.TabIndex = 20;
             this.TextBoxlocal2.Text = "";
-            this.TextBoxlocal2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal2.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal5
             // 
@@ -215,8 +215,8 @@
             this.TextBoxlocal5.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal5.TabIndex = 22;
             this.TextBoxlocal5.Text = "";
-            this.TextBoxlocal5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal5.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // TextBoxlocal8
             // 
@@ -226,8 +226,8 @@
             this.TextBoxlocal8.Size = new System.Drawing.Size(245, 125);
             this.TextBoxlocal8.TabIndex = 23;
             this.TextBoxlocal8.Text = "";
-            this.TextBoxlocal8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             this.TextBoxlocal8.TextChanged += new System.EventHandler(this.localetextbox_TextChanged);
+            this.TextBoxlocal8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
             // 
             // label1
             // 
@@ -312,27 +312,27 @@
             this.toFileToolStripMenuItem1,
             this.toWindowToolStripMenuItem});
             this.saveThisTextToolStripMenuItem.Name = "saveThisTextToolStripMenuItem";
-            this.saveThisTextToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveThisTextToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.saveThisTextToolStripMenuItem.Text = "To";
             // 
             // toDBToolStripMenuItem1
             // 
             this.toDBToolStripMenuItem1.Name = "toDBToolStripMenuItem1";
-            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.toDBToolStripMenuItem1.Text = "To DB";
             this.toDBToolStripMenuItem1.Click += new System.EventHandler(this.toDBToolStripMenuItem1_Click);
             // 
             // toFileToolStripMenuItem1
             // 
             this.toFileToolStripMenuItem1.Name = "toFileToolStripMenuItem1";
-            this.toFileToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.toFileToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.toFileToolStripMenuItem1.Text = "To File";
             this.toFileToolStripMenuItem1.Click += new System.EventHandler(this.toFileToolStripMenuItem1_Click);
             // 
             // toWindowToolStripMenuItem
             // 
             this.toWindowToolStripMenuItem.Name = "toWindowToolStripMenuItem";
-            this.toWindowToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.toWindowToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.toWindowToolStripMenuItem.Text = "To Window";
             this.toWindowToolStripMenuItem.Click += new System.EventHandler(this.toWindowToolStripMenuItem_Click);
             // 
@@ -342,27 +342,27 @@
             this.toDBToolStripMenuItem,
             this.toFileToolStripMenuItem});
             this.saveAllTextsToolStripMenuItem.Name = "saveAllTextsToolStripMenuItem";
-            this.saveAllTextsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveAllTextsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.saveAllTextsToolStripMenuItem.Text = "Save All Texts";
             // 
             // toDBToolStripMenuItem
             // 
             this.toDBToolStripMenuItem.Name = "toDBToolStripMenuItem";
-            this.toDBToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.toDBToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.toDBToolStripMenuItem.Text = "To DB";
             this.toDBToolStripMenuItem.Click += new System.EventHandler(this.toDBToolStripMenuItem_Click);
             // 
             // toFileToolStripMenuItem
             // 
             this.toFileToolStripMenuItem.Name = "toFileToolStripMenuItem";
-            this.toFileToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.toFileToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.toFileToolStripMenuItem.Text = "To File";
             this.toFileToolStripMenuItem.Click += new System.EventHandler(this.toFileToolStripMenuItem_Click);
             // 
             // deleteThisTextToolStripMenuItem
             // 
             this.deleteThisTextToolStripMenuItem.Name = "deleteThisTextToolStripMenuItem";
-            this.deleteThisTextToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.deleteThisTextToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.deleteThisTextToolStripMenuItem.Text = "Delete This Text";
             this.deleteThisTextToolStripMenuItem.Click += new System.EventHandler(this.button_delete_Click);
             // 
@@ -624,8 +624,8 @@
             this.comboBox_emote.Size = new System.Drawing.Size(205, 21);
             this.comboBox_emote.TabIndex = 6;
             this.comboBox_emote.SelectedIndexChanged += new System.EventHandler(this.localetextbox_TextChanged);
-            this.comboBox_emote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
             this.comboBox_emote.TextUpdate += new System.EventHandler(this.localetextbox_TextChanged);
+            this.comboBox_emote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberbox_KeyPress);
             // 
             // toolStrip1
             // 
@@ -729,6 +729,7 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
             // TEXTEditor
             // 

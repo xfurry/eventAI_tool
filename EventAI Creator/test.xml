@@ -21,18 +21,18 @@
             Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
             </summary>
         </member>
-        <member name="F:EventAI_Creator.GUI.General.ScriptDisplay.components">
+        <member name="F:EventAI_Creator.ScriptDisplay.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:EventAI_Creator.GUI.General.ScriptDisplay.Dispose(System.Boolean)">
+        <member name="M:EventAI_Creator.ScriptDisplay.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:EventAI_Creator.GUI.General.ScriptDisplay.InitializeComponent">
+        <member name="M:EventAI_Creator.ScriptDisplay.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.

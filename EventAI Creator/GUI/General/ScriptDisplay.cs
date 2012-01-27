@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EventAI_Creator.GUI.General
+namespace EventAI_Creator
 {
     public partial class ScriptDisplay : Form
     {

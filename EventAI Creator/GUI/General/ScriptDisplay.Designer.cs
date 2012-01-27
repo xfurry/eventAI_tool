@@ -1,4 +1,4 @@
-﻿namespace EventAI_Creator.GUI.General
+﻿namespace EventAI_Creator
 {
     partial class ScriptDisplay
     {

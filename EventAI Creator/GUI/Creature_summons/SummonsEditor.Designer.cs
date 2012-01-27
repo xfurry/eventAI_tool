@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SummonsEditor));
             this.buttonadd = new System.Windows.Forms.Button();
             this.textboxadd = new System.Windows.Forms.TextBox();
             this.summonID = new System.Windows.Forms.Label();
@@ -51,17 +52,30 @@
             this.saveThisSummonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toDBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toSQLFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllSummonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toSQLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteThisSummonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customlistBoxsummons = new System.Windows.Forms.CheckedListBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveAll_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.save_DB_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.save_all_db_toolstrip = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.preview_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.delete_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonadd
             // 
-            this.buttonadd.Location = new System.Drawing.Point(201, 49);
+            this.buttonadd.Location = new System.Drawing.Point(394, 60);
             this.buttonadd.Name = "buttonadd";
             this.buttonadd.Size = new System.Drawing.Size(57, 22);
             this.buttonadd.TabIndex = 42;
@@ -71,7 +85,7 @@
             // 
             // textboxadd
             // 
-            this.textboxadd.Location = new System.Drawing.Point(138, 49);
+            this.textboxadd.Location = new System.Drawing.Point(331, 61);
             this.textboxadd.Name = "textboxadd";
             this.textboxadd.Size = new System.Drawing.Size(57, 20);
             this.textboxadd.TabIndex = 41;
@@ -88,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Location = new System.Drawing.Point(178, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 39;
@@ -97,7 +111,7 @@
             // textboxsearch
             // 
             this.textboxsearch.Enabled = false;
-            this.textboxsearch.Location = new System.Drawing.Point(12, 49);
+            this.textboxsearch.Location = new System.Drawing.Point(205, 61);
             this.textboxsearch.Name = "textboxsearch";
             this.textboxsearch.Size = new System.Drawing.Size(57, 20);
             this.textboxsearch.TabIndex = 38;
@@ -105,7 +119,7 @@
             // Search
             // 
             this.Search.Enabled = false;
-            this.Search.Location = new System.Drawing.Point(75, 47);
+            this.Search.Location = new System.Drawing.Point(268, 60);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(57, 22);
             this.Search.TabIndex = 36;
@@ -251,7 +265,8 @@
             // 
             this.saveThisSummonToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toDBToolStripMenuItem1,
-            this.toSQLFileToolStripMenuItem1});
+            this.toSQLFileToolStripMenuItem1,
+            this.toToolStripMenuItem});
             this.saveThisSummonToolStripMenuItem.Name = "saveThisSummonToolStripMenuItem";
             this.saveThisSummonToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.saveThisSummonToolStripMenuItem.Text = "Save this Summon";
@@ -259,16 +274,23 @@
             // toDBToolStripMenuItem1
             // 
             this.toDBToolStripMenuItem1.Name = "toDBToolStripMenuItem1";
-            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.toDBToolStripMenuItem1.Text = "To DB";
             this.toDBToolStripMenuItem1.Click += new System.EventHandler(this.toDBToolStripMenuItem1_Click);
             // 
             // toSQLFileToolStripMenuItem1
             // 
             this.toSQLFileToolStripMenuItem1.Name = "toSQLFileToolStripMenuItem1";
-            this.toSQLFileToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.toSQLFileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.toSQLFileToolStripMenuItem1.Text = "To SQL File";
             this.toSQLFileToolStripMenuItem1.Click += new System.EventHandler(this.toSQLFileToolStripMenuItem1_Click);
+            // 
+            // toToolStripMenuItem
+            // 
+            this.toToolStripMenuItem.Name = "toToolStripMenuItem";
+            this.toToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toToolStripMenuItem.Text = "To Window";
+            this.toToolStripMenuItem.Click += new System.EventHandler(this.toToolStripMenuItem_Click);
             // 
             // saveAllSummonsToolStripMenuItem
             // 
@@ -303,18 +325,123 @@
             // customlistBoxsummons
             // 
             this.customlistBoxsummons.FormattingEnabled = true;
-            this.customlistBoxsummons.Location = new System.Drawing.Point(15, 88);
+            this.customlistBoxsummons.Location = new System.Drawing.Point(15, 58);
             this.customlistBoxsummons.Name = "customlistBoxsummons";
             this.customlistBoxsummons.Size = new System.Drawing.Size(157, 184);
             this.customlistBoxsummons.TabIndex = 57;
             this.customlistBoxsummons.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.customlistBoxsummons_ItemCheck);
             this.customlistBoxsummons.SelectedIndexChanged += new System.EventHandler(this.listBoxsummons_SelectedIndexChanged);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripButton,
+            this.saveAll_toolstrip_button,
+            this.toolStripSeparator2,
+            this.save_DB_toolstrip_button,
+            this.save_all_db_toolstrip,
+            this.toolStripSeparator,
+            this.preview_toolstrip_button,
+            this.delete_toolstrip_button,
+            this.toolStripSeparator1,
+            this.helpToolStripButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(468, 25);
+            this.toolStrip1.TabIndex = 58;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.toSQLFileToolStripMenuItem1_Click);
+            // 
+            // saveAll_toolstrip_button
+            // 
+            this.saveAll_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveAll_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("saveAll_toolstrip_button.Image")));
+            this.saveAll_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveAll_toolstrip_button.Name = "saveAll_toolstrip_button";
+            this.saveAll_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.saveAll_toolstrip_button.Text = "Save &All";
+            this.saveAll_toolstrip_button.Click += new System.EventHandler(this.toSQLFileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // save_DB_toolstrip_button
+            // 
+            this.save_DB_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.save_DB_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("save_DB_toolstrip_button.Image")));
+            this.save_DB_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.save_DB_toolstrip_button.Name = "save_DB_toolstrip_button";
+            this.save_DB_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.save_DB_toolstrip_button.Text = "Save to &DB";
+            this.save_DB_toolstrip_button.Click += new System.EventHandler(this.toDBToolStripMenuItem1_Click);
+            // 
+            // save_all_db_toolstrip
+            // 
+            this.save_all_db_toolstrip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.save_all_db_toolstrip.Image = ((System.Drawing.Image)(resources.GetObject("save_all_db_toolstrip.Image")));
+            this.save_all_db_toolstrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.save_all_db_toolstrip.Name = "save_all_db_toolstrip";
+            this.save_all_db_toolstrip.Size = new System.Drawing.Size(23, 22);
+            this.save_all_db_toolstrip.Text = "Save All to &DB";
+            this.save_all_db_toolstrip.Click += new System.EventHandler(this.toDBToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // preview_toolstrip_button
+            // 
+            this.preview_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.preview_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("preview_toolstrip_button.Image")));
+            this.preview_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.preview_toolstrip_button.Name = "preview_toolstrip_button";
+            this.preview_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.preview_toolstrip_button.Text = "&Preview";
+            this.preview_toolstrip_button.Click += new System.EventHandler(this.toToolStripMenuItem_Click);
+            // 
+            // delete_toolstrip_button
+            // 
+            this.delete_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.delete_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("delete_toolstrip_button.Image")));
+            this.delete_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.delete_toolstrip_button.Name = "delete_toolstrip_button";
+            this.delete_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.delete_toolstrip_button.Text = "&Delete";
+            this.delete_toolstrip_button.Click += new System.EventHandler(this.deletebutton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // helpToolStripButton
+            // 
+            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
+            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton.Name = "helpToolStripButton";
+            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.helpToolStripButton.Text = "He&lp";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
+            // 
             // SummonsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 287);
+            this.ClientSize = new System.Drawing.Size(468, 251);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.customlistBoxsummons);
             this.Controls.Add(this.box_comment);
             this.Controls.Add(this.box_spawntimesecs);
@@ -342,6 +469,8 @@
             this.Load += new System.EventHandler(this.SummonsEditor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,5 +506,17 @@
         private System.Windows.Forms.ToolStripMenuItem toSQLFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteThisSummonToolStripMenuItem;
         private System.Windows.Forms.CheckedListBox customlistBoxsummons;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
+        private System.Windows.Forms.ToolStripButton saveAll_toolstrip_button;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton save_DB_toolstrip_button;
+        private System.Windows.Forms.ToolStripButton save_all_db_toolstrip;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripButton preview_toolstrip_button;
+        private System.Windows.Forms.ToolStripButton delete_toolstrip_button;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem toToolStripMenuItem;
     }
 }

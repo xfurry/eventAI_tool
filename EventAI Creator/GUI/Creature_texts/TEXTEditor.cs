@@ -14,6 +14,7 @@ namespace EventAI_Creator.GUI.General.localestext
     public partial class TEXTEditor : Form
     {
         int text_id;
+
         public TEXTEditor()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace EventAI_Creator.GUI.General.localestext
         private void UpdateListBox(bool updateofficial)
         {
             customlistBoxtexts.Items.Clear();
+
             foreach (KeyValuePair<int, localized_text> item in localized_texts.map)
             {
                 customlistBoxtexts.Items.Add(item.Key);
@@ -40,8 +42,9 @@ namespace EventAI_Creator.GUI.General.localestext
         private void TEXTEditor_Load(object sender, EventArgs e)
         {
             UpdateListBox(true);
-            if(customlistBoxtexts.Items.Count != 0)
-            this.customlistBoxtexts.SelectedIndex = 0;
+
+            if (customlistBoxtexts.Items.Count != 0)
+                this.customlistBoxtexts.SelectedIndex = 0;
         }
 
         private void buttonadd_Click(object sender, EventArgs e)
@@ -214,7 +217,8 @@ namespace EventAI_Creator.GUI.General.localestext
                             UpdateListBox(false);
                             if (customlistBoxtexts.Items.Count != 0)
                                 customlistBoxtexts.SelectedIndex = 0;
-                            else customlistBoxtexts.SelectedIndex = -1;
+                            else
+                                customlistBoxtexts.SelectedIndex = -1;
                         }
                         catch (Exception ex)
                         {
@@ -226,11 +230,11 @@ namespace EventAI_Creator.GUI.General.localestext
                         UpdateListBox(false);
                         if (customlistBoxtexts.Items.Count != 0)
                             customlistBoxtexts.SelectedIndex = 0;
-                        else customlistBoxtexts.SelectedIndex = -1;
+                        else
+                            customlistBoxtexts.SelectedIndex = -1;
                         break;
                     case DialogResult.Cancel:
                         break;
-
                 }
             }
             else
@@ -239,26 +243,25 @@ namespace EventAI_Creator.GUI.General.localestext
                 UpdateListBox(false);
                 if (customlistBoxtexts.Items.Count != 0)
                     customlistBoxtexts.SelectedIndex = 0;
-                else customlistBoxtexts.SelectedIndex = -1;
+                else
+                    customlistBoxtexts.SelectedIndex = -1;
             }
         }
 
         private void toDBToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (customlistBoxtexts.SelectedIndex != -1)
-            {
                 SQLCommonExecutes.SaveOneItemTODB(localized_texts.map[text_id]);
-            }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (customlistBoxtexts.SelectedIndex != -1)
-            {
                 SQLCommonExecutes.SaveAllItemsToDB(localized_texts.map);
-            }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,14 +271,15 @@ namespace EventAI_Creator.GUI.General.localestext
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     string FileName = saveFileDialog.FileName;
                     localized_texts.PrintALLLocalsToFile(FileName);
                 }
             }
-            else MessageBox.Show("No Items");
-            
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         private void toFileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -285,13 +289,15 @@ namespace EventAI_Creator.GUI.General.localestext
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     string FileName = saveFileDialog.FileName;
                     localized_texts.PrintLocalToFile(text_id, FileName);
                 }
             }
-            else MessageBox.Show("No Items");
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
         }
 
         // Change the visibility of the other local texts
@@ -309,11 +315,21 @@ namespace EventAI_Creator.GUI.General.localestext
             }
         }
 
-        // View display windos
+        // View display window
         private void toWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScriptDisplay sd = new ScriptDisplay(localized_texts.PrintToQueryWindow(text_id));
-            sd.ShowDialog();
+            if (customlistBoxtexts.SelectedIndex != -1)
+            {
+                ScriptDisplay sd = new ScriptDisplay(localized_texts.PrintToQueryWindow(text_id));
+                sd.ShowDialog();
+            }
+            else
+                MessageBox.Show("There are no scripts selected in the list.");
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
         }
     }
 }
