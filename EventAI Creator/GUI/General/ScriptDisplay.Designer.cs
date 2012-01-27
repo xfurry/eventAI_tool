@@ -31,11 +31,12 @@
             this.button_copy = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.textBox_query = new System.Windows.Forms.TextBox();
+            this.button_execute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_copy
             // 
-            this.button_copy.Location = new System.Drawing.Point(157, 235);
+            this.button_copy.Location = new System.Drawing.Point(209, 235);
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(75, 23);
             this.button_copy.TabIndex = 0;
@@ -45,7 +46,7 @@
             // 
             // button_close
             // 
-            this.button_close.Location = new System.Drawing.Point(261, 235);
+            this.button_close.Location = new System.Drawing.Point(315, 235);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(75, 23);
             this.button_close.TabIndex = 1;
@@ -63,11 +64,23 @@
             this.textBox_query.TabIndex = 2;
             this.textBox_query.WordWrap = false;
             // 
+            // button_execute
+            // 
+            this.button_execute.Enabled = false;
+            this.button_execute.Location = new System.Drawing.Point(103, 235);
+            this.button_execute.Name = "button_execute";
+            this.button_execute.Size = new System.Drawing.Size(75, 23);
+            this.button_execute.TabIndex = 3;
+            this.button_execute.Text = "Execute";
+            this.button_execute.UseVisualStyleBackColor = true;
+            this.button_execute.Click += new System.EventHandler(this.button_execute_Click);
+            // 
             // ScriptDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 273);
+            this.Controls.Add(this.button_execute);
             this.Controls.Add(this.textBox_query);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_copy);
@@ -84,5 +97,6 @@
         private System.Windows.Forms.Button button_copy;
         private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.TextBox textBox_query;
+        private System.Windows.Forms.Button button_execute;
     }
 }

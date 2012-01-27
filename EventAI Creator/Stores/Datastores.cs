@@ -398,7 +398,7 @@ namespace EventAI_Creator
             if (item is localized_text)
             {
                 localized_text copy = item as localized_text;
-                customquery = "DELETE FROM creature_ai_texts WHERE id=" + copy.id + ";";
+                customquery = "DELETE FROM creature_ai_texts WHERE entry=" + copy.id + ";";
             }
             // not used
             if (item is List<localized_text>)
@@ -408,7 +408,7 @@ namespace EventAI_Creator
             {
                 SortedList<int, localized_text> copy = localized_texts.map;
                 foreach (KeyValuePair<int, localized_text> itemf in copy)
-                    customquery = customquery + "DELETE FROM creature_ai_texts WHERE id=" + itemf.Key + ";";
+                    customquery = customquery + "DELETE FROM creature_ai_texts WHERE entry=" + itemf.Key + ";";
             }
 
             string result = "";
@@ -478,7 +478,7 @@ namespace EventAI_Creator
                 localized_text copy = item as localized_text;
                 if (!copy.useOtherLocale)
                     customquery = "INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`,`emote`) VALUES \r\n('" +
-                        copy.id + ",'" + MySqlHelper.EscapeString(copy.locale_0) + "','" +
+                        copy.id + "','" + MySqlHelper.EscapeString(copy.locale_0) + "','" +
                         copy.sound + "','" + copy.type + "','" + copy.language + "','" +
                         MySqlHelper.EscapeString(copy.comment) + "', '" + copy.emote + "');";
                 else
@@ -501,7 +501,7 @@ namespace EventAI_Creator
                 {
                     if (!localized_texts.map[itemf.Key].useOtherLocale)
                         customquery = customquery + "INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`,`emote`) VALUES \r\n('" +
-                            localized_texts.map[itemf.Key].id + ",'" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','" +
+                            localized_texts.map[itemf.Key].id + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','" +
                             localized_texts.map[itemf.Key].sound + "','" + localized_texts.map[itemf.Key].type + "','" + localized_texts.map[itemf.Key].language + "','" +
                             MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "','" + localized_texts.map[itemf.Key].emote + "');";
                     else
@@ -911,6 +911,31 @@ namespace EventAI_Creator
                 }
             }
             else { MessageBox.Show("No DB Connection"); return false; }
+        }
+
+        public static bool ExecuteDBScript(string query)
+        {
+            if (!Datastores.dbused)
+                return false;
+
+            bool result = false;
+
+            MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
+            try
+            {
+                if (query != "")
+                {
+                    int res = c.ExecuteNonQuery();
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                result = false;
+            }
+
+            return result;
         }
     }
 
