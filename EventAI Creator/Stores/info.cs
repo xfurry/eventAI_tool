@@ -36,12 +36,12 @@ namespace EventAI_Creator
 /*20 | 21*/{"QUEST_COMPLETE","","","","","Event not implemented in core - use at your own risk"},
 /*21 | 22*/{"REACHED_HOME","","","","","Expires when a creature reaches it's home (spawn) location after evade."},
 /*22 | 23*/{"RECEIVE_EMOTE","EmoteId","Condition","CondValue1","CondValue2","Expires when a creature receives an emote with emote text id (enum TextEmotes) in (Param1). Conditions can be defined (Param2) with optional values (Param3,Param4), see enum ConditionType."},
-/*23 | 24*/{"AURA","SpellID","AmmountInStack","RepeatMin","RepeatMax","Expires when a creature has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
-/*24 | 25*/{"TARGET_AURA","SpellID","AmmountInStack","RepeatMin","RepeatMax","Expires when the current target unit has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
+/*23 | 24*/{"AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when a creature has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
+/*24 | 25*/{"TARGET_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when the current target unit has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
 /*25 | 26*/{"SUMMONED_JUST_DIED","CreatureId","RepeatMin","RepeatMax","","Expires after creature with entry = (Param1) is die (Param1 = 0 means all spawns). Will repeat every (Param2) and (Param3)."},
 /*26 | 27*/{"SUMMONED_JUST_DESPAWN","CreatureId","RepeatMin","RepeatMax","","Expires before creature with entry = (Param1) is despawn (Param1 = 0 means all spawns). Will repeat every (Param2) and (Param3)."},
-/*27 | 28*/{"MISSING_AURA","SpellID","AmmountInStack","RepeatMin","RepeatMax","Expires when a creature not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
-/*28 | 29*/{"TARGET_MISSING_AURA","SpellID","AmmountInStack","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."}
+/*27 | 28*/{"MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when a creature not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
+/*28 | 29*/{"TARGET_MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."}
        };
 
         public static string[,] ActionListInfo = new string[,]
