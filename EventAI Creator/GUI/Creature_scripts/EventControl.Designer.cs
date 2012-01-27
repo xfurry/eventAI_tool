@@ -110,6 +110,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.expand = new System.Windows.Forms.CheckBox();
             this.deleteevent = new System.Windows.Forms.Button();
+            this.button_flag_select = new System.Windows.Forms.Button();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -180,8 +181,8 @@
             this.EventParam1.Size = new System.Drawing.Size(100, 20);
             this.EventParam1.TabIndex = 2;
             this.EventParam1.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventParam1.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventParam1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventParam1.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // EventParam2
             // 
@@ -191,8 +192,8 @@
             this.EventParam2.Size = new System.Drawing.Size(100, 20);
             this.EventParam2.TabIndex = 3;
             this.EventParam2.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventParam2.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventParam2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventParam2.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // EventParam3
             // 
@@ -202,19 +203,19 @@
             this.EventParam3.Size = new System.Drawing.Size(100, 20);
             this.EventParam3.TabIndex = 4;
             this.EventParam3.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventParam3.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventParam3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventParam3.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // EventFlagTBox
             // 
             this.EventFlagTBox.Location = new System.Drawing.Point(68, 174);
             this.EventFlagTBox.MaxLength = 3;
             this.EventFlagTBox.Name = "EventFlagTBox";
-            this.EventFlagTBox.Size = new System.Drawing.Size(100, 20);
+            this.EventFlagTBox.Size = new System.Drawing.Size(50, 20);
             this.EventFlagTBox.TabIndex = 7;
             this.EventFlagTBox.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventFlagTBox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventFlagTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventFlagTBox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // EventChanceTBox
             // 
@@ -224,8 +225,8 @@
             this.EventChanceTBox.Size = new System.Drawing.Size(100, 20);
             this.EventChanceTBox.TabIndex = 6;
             this.EventChanceTBox.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventChanceTBox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventChanceTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventChanceTBox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // lblevFlag
             // 
@@ -282,11 +283,12 @@
             this.EventParam4.Size = new System.Drawing.Size(100, 20);
             this.EventParam4.TabIndex = 5;
             this.EventParam4.TextChanged += new System.EventHandler(this.control_changed);
-            this.EventParam4.Leave += new System.EventHandler(this.txtBox_Leave);
             this.EventParam4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.EventParam4.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // groupBoxevent
             // 
+            this.groupBoxevent.Controls.Add(this.button_flag_select);
             this.groupBoxevent.Controls.Add(this.lblevType);
             this.groupBoxevent.Controls.Add(this.EventTypeCBox);
             this.groupBoxevent.Controls.Add(this.EventParam4);
@@ -379,8 +381,8 @@
             this.Action1Param3Tbox.Size = new System.Drawing.Size(89, 20);
             this.Action1Param3Tbox.TabIndex = 12;
             this.Action1Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action1Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action1Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action1Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action1Param2Tbox
             // 
@@ -390,8 +392,8 @@
             this.Action1Param2Tbox.Size = new System.Drawing.Size(94, 20);
             this.Action1Param2Tbox.TabIndex = 11;
             this.Action1Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action1Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action1Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action1Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action1Param1Tbox
             // 
@@ -401,8 +403,8 @@
             this.Action1Param1Tbox.Size = new System.Drawing.Size(104, 20);
             this.Action1Param1Tbox.TabIndex = 10;
             this.Action1Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action1Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action1Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action1Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // groupBox1
             // 
@@ -475,8 +477,8 @@
             this.Action2Param3Tbox.Size = new System.Drawing.Size(89, 20);
             this.Action2Param3Tbox.TabIndex = 16;
             this.Action2Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action2Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action2Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action2Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action2Param2Tbox
             // 
@@ -486,8 +488,8 @@
             this.Action2Param2Tbox.Size = new System.Drawing.Size(94, 20);
             this.Action2Param2Tbox.TabIndex = 15;
             this.Action2Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action2Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action2Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action2Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action2Param1Tbox
             // 
@@ -497,8 +499,8 @@
             this.Action2Param1Tbox.Size = new System.Drawing.Size(104, 20);
             this.Action2Param1Tbox.TabIndex = 14;
             this.Action2Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action2Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action2Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action2Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // groupBox2
             // 
@@ -571,8 +573,8 @@
             this.Action3Param3Tbox.Size = new System.Drawing.Size(89, 20);
             this.Action3Param3Tbox.TabIndex = 20;
             this.Action3Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action3Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action3Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action3Param3Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action3Param2Tbox
             // 
@@ -582,8 +584,8 @@
             this.Action3Param2Tbox.Size = new System.Drawing.Size(94, 20);
             this.Action3Param2Tbox.TabIndex = 19;
             this.Action3Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action3Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action3Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action3Param2Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // Action3Param1Tbox
             // 
@@ -593,8 +595,8 @@
             this.Action3Param1Tbox.Size = new System.Drawing.Size(104, 20);
             this.Action3Param1Tbox.TabIndex = 18;
             this.Action3Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
-            this.Action3Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             this.Action3Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.Action3Param1Tbox.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // PhaseCheckBox01
             // 
@@ -605,8 +607,8 @@
             this.PhaseCheckBox01.TabIndex = 21;
             this.PhaseCheckBox01.Text = "01";
             this.PhaseCheckBox01.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox01.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox01.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox01.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox29
             // 
@@ -617,8 +619,8 @@
             this.PhaseCheckBox29.TabIndex = 49;
             this.PhaseCheckBox29.Text = "29";
             this.PhaseCheckBox29.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox29.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox29.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox29.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox21
             // 
@@ -629,8 +631,8 @@
             this.PhaseCheckBox21.TabIndex = 41;
             this.PhaseCheckBox21.Text = "21";
             this.PhaseCheckBox21.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox21.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox21.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox21.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox30
             // 
@@ -641,8 +643,8 @@
             this.PhaseCheckBox30.TabIndex = 50;
             this.PhaseCheckBox30.Text = "30";
             this.PhaseCheckBox30.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox30.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox30.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox30.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox14
             // 
@@ -653,8 +655,8 @@
             this.PhaseCheckBox14.TabIndex = 34;
             this.PhaseCheckBox14.Text = "14";
             this.PhaseCheckBox14.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox14.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox14.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox14.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox31
             // 
@@ -665,8 +667,8 @@
             this.PhaseCheckBox31.TabIndex = 51;
             this.PhaseCheckBox31.Text = "31";
             this.PhaseCheckBox31.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox31.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox31.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox31.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox28
             // 
@@ -677,8 +679,8 @@
             this.PhaseCheckBox28.TabIndex = 48;
             this.PhaseCheckBox28.Text = "28";
             this.PhaseCheckBox28.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox28.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox28.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox28.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox13
             // 
@@ -689,8 +691,8 @@
             this.PhaseCheckBox13.TabIndex = 33;
             this.PhaseCheckBox13.Text = "13";
             this.PhaseCheckBox13.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox13.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox13.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox13.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox27
             // 
@@ -701,8 +703,8 @@
             this.PhaseCheckBox27.TabIndex = 47;
             this.PhaseCheckBox27.Text = "27";
             this.PhaseCheckBox27.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox27.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox27.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox27.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox26
             // 
@@ -713,8 +715,8 @@
             this.PhaseCheckBox26.TabIndex = 46;
             this.PhaseCheckBox26.Text = "26";
             this.PhaseCheckBox26.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox26.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox26.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox26.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox32
             // 
@@ -725,8 +727,8 @@
             this.PhaseCheckBox32.TabIndex = 52;
             this.PhaseCheckBox32.Text = "32";
             this.PhaseCheckBox32.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox32.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox32.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox32.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox25
             // 
@@ -737,8 +739,8 @@
             this.PhaseCheckBox25.TabIndex = 45;
             this.PhaseCheckBox25.Text = "25";
             this.PhaseCheckBox25.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox25.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox25.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox25.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox22
             // 
@@ -749,8 +751,8 @@
             this.PhaseCheckBox22.TabIndex = 42;
             this.PhaseCheckBox22.Text = "22";
             this.PhaseCheckBox22.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox22.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox22.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox22.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox08
             // 
@@ -761,8 +763,8 @@
             this.PhaseCheckBox08.TabIndex = 28;
             this.PhaseCheckBox08.Text = "08";
             this.PhaseCheckBox08.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox08.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox08.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox08.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox09
             // 
@@ -773,8 +775,8 @@
             this.PhaseCheckBox09.TabIndex = 29;
             this.PhaseCheckBox09.Text = "09";
             this.PhaseCheckBox09.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox09.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox09.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox09.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox23
             // 
@@ -785,8 +787,8 @@
             this.PhaseCheckBox23.TabIndex = 43;
             this.PhaseCheckBox23.Text = "23";
             this.PhaseCheckBox23.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox23.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox23.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox23.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox10
             // 
@@ -797,8 +799,8 @@
             this.PhaseCheckBox10.TabIndex = 30;
             this.PhaseCheckBox10.Text = "10";
             this.PhaseCheckBox10.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox10.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox10.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox10.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox24
             // 
@@ -809,8 +811,8 @@
             this.PhaseCheckBox24.TabIndex = 44;
             this.PhaseCheckBox24.Text = "24";
             this.PhaseCheckBox24.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox24.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox24.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox24.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox11
             // 
@@ -821,8 +823,8 @@
             this.PhaseCheckBox11.TabIndex = 31;
             this.PhaseCheckBox11.Text = "11";
             this.PhaseCheckBox11.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox11.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox11.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox11.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox12
             // 
@@ -833,8 +835,8 @@
             this.PhaseCheckBox12.TabIndex = 32;
             this.PhaseCheckBox12.Text = "12";
             this.PhaseCheckBox12.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox12.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox12.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox12.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox07
             // 
@@ -845,8 +847,8 @@
             this.PhaseCheckBox07.TabIndex = 27;
             this.PhaseCheckBox07.Text = "07";
             this.PhaseCheckBox07.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox07.ForeColorChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox07.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox07.ForeColorChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox20
             // 
@@ -857,8 +859,8 @@
             this.PhaseCheckBox20.TabIndex = 40;
             this.PhaseCheckBox20.Text = "20";
             this.PhaseCheckBox20.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox20.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox20.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox20.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox06
             // 
@@ -869,8 +871,8 @@
             this.PhaseCheckBox06.TabIndex = 26;
             this.PhaseCheckBox06.Text = "06";
             this.PhaseCheckBox06.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox06.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox06.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox06.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox19
             // 
@@ -881,8 +883,8 @@
             this.PhaseCheckBox19.TabIndex = 39;
             this.PhaseCheckBox19.Text = "19";
             this.PhaseCheckBox19.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox19.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox19.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox19.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox05
             // 
@@ -893,8 +895,8 @@
             this.PhaseCheckBox05.TabIndex = 25;
             this.PhaseCheckBox05.Text = "05";
             this.PhaseCheckBox05.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox05.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox05.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox05.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox18
             // 
@@ -905,8 +907,8 @@
             this.PhaseCheckBox18.TabIndex = 38;
             this.PhaseCheckBox18.Text = "18";
             this.PhaseCheckBox18.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox18.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox18.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox18.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox04
             // 
@@ -917,8 +919,8 @@
             this.PhaseCheckBox04.TabIndex = 24;
             this.PhaseCheckBox04.Text = "04";
             this.PhaseCheckBox04.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox04.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox04.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox04.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox17
             // 
@@ -929,8 +931,8 @@
             this.PhaseCheckBox17.TabIndex = 37;
             this.PhaseCheckBox17.Text = "17";
             this.PhaseCheckBox17.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox17.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox17.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox17.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox03
             // 
@@ -941,8 +943,8 @@
             this.PhaseCheckBox03.TabIndex = 23;
             this.PhaseCheckBox03.Text = "03";
             this.PhaseCheckBox03.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox03.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox03.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox03.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox16
             // 
@@ -953,8 +955,8 @@
             this.PhaseCheckBox16.TabIndex = 36;
             this.PhaseCheckBox16.Text = "16";
             this.PhaseCheckBox16.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox16.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox16.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox16.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox02
             // 
@@ -965,8 +967,8 @@
             this.PhaseCheckBox02.TabIndex = 22;
             this.PhaseCheckBox02.Text = "02";
             this.PhaseCheckBox02.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox02.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox02.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox02.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseCheckBox15
             // 
@@ -977,8 +979,8 @@
             this.PhaseCheckBox15.TabIndex = 35;
             this.PhaseCheckBox15.Text = "15";
             this.PhaseCheckBox15.UseVisualStyleBackColor = true;
-            this.PhaseCheckBox15.TextChanged += new System.EventHandler(this.control_changed);
             this.PhaseCheckBox15.CheckedChanged += new System.EventHandler(this.control_changed);
+            this.PhaseCheckBox15.TextChanged += new System.EventHandler(this.control_changed);
             // 
             // PhaseMaskInfoLb
             // 
@@ -1009,6 +1011,16 @@
             this.deleteevent.Text = "Delete Event";
             this.deleteevent.UseVisualStyleBackColor = true;
             this.deleteevent.Click += new System.EventHandler(this.deleteevent_Click);
+            // 
+            // button_flag_select
+            // 
+            this.button_flag_select.Location = new System.Drawing.Point(118, 174);
+            this.button_flag_select.Name = "button_flag_select";
+            this.button_flag_select.Size = new System.Drawing.Size(50, 20);
+            this.button_flag_select.TabIndex = 15;
+            this.button_flag_select.Text = "Select";
+            this.button_flag_select.UseVisualStyleBackColor = true;
+            this.button_flag_select.Click += new System.EventHandler(this.button_flag_select_Click);
             // 
             // EventControl
             // 
@@ -1156,5 +1168,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckBox expand;
         private System.Windows.Forms.Button deleteevent;
+        private System.Windows.Forms.Button button_flag_select;
     }
 }

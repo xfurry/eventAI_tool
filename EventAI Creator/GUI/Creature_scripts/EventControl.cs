@@ -451,5 +451,16 @@ namespace EventAI_Creator
                 (sender as TextBox).Text = "0";
             }
         }
+
+        private void button_flag_select_Click(object sender, EventArgs e)
+        {
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text));
+            dialog.ShowDialog(this);
+        }
+
+        public void set_event_flags(int flag_value)
+        {
+            this.EventFlagTBox.Text = flag_value.ToString();
+        }
     }
 }

@@ -95,6 +95,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\Creature_scripts\EventFlag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Creature_scripts\EventFlag.Designer.cs">
+      <DependentUpon>EventFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\General\ControlPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,16 +113,16 @@
     <Compile Include="GUI\General\startupOptions.Designer.cs">
       <DependentUpon>startupOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\summons\SummonsEditor.cs">
+    <Compile Include="GUI\Creature_summons\SummonsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\summons\SummonsEditor.Designer.cs">
+    <Compile Include="GUI\Creature_summons\SummonsEditor.Designer.cs">
       <DependentUpon>SummonsEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\localestext\TEXTEditor.cs">
+    <Compile Include="GUI\Creature_texts\TEXTEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\localestext\TEXTEditor.Designer.cs">
+    <Compile Include="GUI\Creature_texts\TEXTEditor.Designer.cs">
       <DependentUpon>TEXTEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
@@ -126,10 +132,10 @@
     <Compile Include="Stores\summons.cs" />
     <Compile Include="Stores\creature.cs" />
     <Compile Include="Stores\localized_texts.cs" />
-    <Compile Include="GUI\creature\NPCEditor.cs">
+    <Compile Include="GUI\Creature_scripts\NPCEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\creature\NPCEditor.Designer.cs">
+    <Compile Include="GUI\Creature_scripts\NPCEditor.Designer.cs">
       <DependentUpon>NPCEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\General\Hauptfenster.cs">
@@ -138,15 +144,18 @@
     <Compile Include="GUI\General\Hauptfenster.Designer.cs">
       <DependentUpon>Hauptfenster.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\creature\NewCreatureDialog.cs">
+    <Compile Include="GUI\Creature_scripts\NewCreatureDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\creature\NewCreatureDialog.Designer.cs">
+    <Compile Include="GUI\Creature_scripts\NewCreatureDialog.Designer.cs">
       <DependentUpon>NewCreatureDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\creature\NPCEditor.resx">
+    <EmbeddedResource Include="GUI\Creature_scripts\EventFlag.resx">
+      <DependentUpon>EventFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Creature_scripts\NPCEditor.resx">
       <DependentUpon>NPCEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -158,7 +167,7 @@
       <DependentUpon>Hauptfenster.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\creature\NewCreatureDialog.resx">
+    <EmbeddedResource Include="GUI\Creature_scripts\NewCreatureDialog.resx">
       <DependentUpon>NewCreatureDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -166,11 +175,11 @@
       <DependentUpon>startupOptions.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\localestext\TEXTEditor.resx">
+    <EmbeddedResource Include="GUI\Creature_texts\TEXTEditor.resx">
       <DependentUpon>TEXTEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\summons\SummonsEditor.resx">
+    <EmbeddedResource Include="GUI\Creature_summons\SummonsEditor.resx">
       <DependentUpon>SummonsEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -179,7 +188,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\creature\EventControl.resx">
+    <EmbeddedResource Include="GUI\Creature_scripts\EventControl.resx">
       <DependentUpon>EventControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -202,10 +211,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="GUI\creature\EventControl.cs">
+    <Compile Include="GUI\Creature_scripts\EventControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\creature\EventControl.Designer.cs">
+    <Compile Include="GUI\Creature_scripts\EventControl.Designer.cs">
       <DependentUpon>EventControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>

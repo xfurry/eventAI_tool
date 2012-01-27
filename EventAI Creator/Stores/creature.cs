@@ -12,7 +12,7 @@ namespace EventAI_Creator
         public Event_dataset()
         {
             this.event_chance = 100;
-            this.event_flags = 1;
+            this.event_flags = 0;
             this.event_inverse_phase_mask = 0;
             comment = "";
         }
