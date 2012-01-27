@@ -172,6 +172,7 @@ namespace EventAI_Creator
                 {
                     alreadyexist = true;
                     item.Show();
+                    item.Activate();
                 }
             }
             if (!alreadyexist)
@@ -188,7 +189,11 @@ namespace EventAI_Creator
             foreach (Form item in MdiChildren)
             {
                 if (item is SummonsEditor)
-                { alreadyexist = true; item.Show(); }
+                {
+                    alreadyexist = true;
+                    item.Show();
+                    item.Activate();
+                }
             }
             if (!alreadyexist)
             {

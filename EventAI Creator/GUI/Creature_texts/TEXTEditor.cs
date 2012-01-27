@@ -17,6 +17,14 @@ namespace EventAI_Creator.GUI.General.localestext
         public TEXTEditor()
         {
             InitializeComponent();
+            // init default values for boxes
+            comboBox_type.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_type.SelectedIndex = 0;
+            comboBox_language.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_language.SelectedIndex = 0;
+            comboBox_emote.SelectedIndex = 0;
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void UpdateListBox(bool updateofficial)
@@ -50,7 +58,7 @@ namespace EventAI_Creator.GUI.General.localestext
                     TextBoxlocal8.Text = ""; textboxcomment.Text = "";
 
                     int i = 0;
-                    foreach (uint item in customlistBoxtexts.Items)
+                    foreach (int item in customlistBoxtexts.Items)
                     {
                         if (item.ToString() == textlocalID.Text)
                         {
@@ -78,6 +86,26 @@ namespace EventAI_Creator.GUI.General.localestext
                 TextBoxlocal6.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_6;
                 TextBoxlocal7.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_7;
                 TextBoxlocal8.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].locale_8;
+                textBox_sound_id.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].sound.ToString();
+
+                int languageId = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].language;
+                int indentCount = 0;
+                if (languageId > 33)
+                    indentCount = indentCount += 1;
+                if (languageId > 14)
+                    indentCount = indentCount += 18;
+                if (languageId > 3)
+                    indentCount = indentCount += 2;
+                comboBox_language.SelectedIndex = languageId - indentCount;
+
+                int emoteId = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].emote;
+                indentCount = 0;
+                if (emoteId > 7)
+                    indentCount = indentCount += 2;
+                if (emoteId > comboBox_emote.Items.Count)
+                    comboBox_emote.Text = emoteId.ToString();
+                comboBox_emote.SelectedIndex = emoteId - indentCount;
+                comboBox_type.SelectedIndex = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].type;
                 textboxcomment.Text = localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].comment;
                 localized_texts.map[System.Convert.ToInt32(customlistBoxtexts.Items[customlistBoxtexts.SelectedIndex])].changed = true;
             }
@@ -85,25 +113,15 @@ namespace EventAI_Creator.GUI.General.localestext
 
         private void numberbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Int32 test;
-            string strin = "";
-            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
-            {
-                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
-            }
-            else
-            {
-                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
-            }
-            if (strin != "")
-            {
-                bool tes = Int32.TryParse(strin, out test);
-                if ("1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
-                {
-                    e.Handled = true;
-                }
-            }
-            else e.Handled = false;
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != '-')
+                e.Handled = true;
+
+            // only allow one decimal point
+            if (e.KeyChar == '-'
+                && (sender as TextBox).Text.IndexOf('-') > -1)
+                e.Handled = true;
         }
 
         private void stringbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -142,14 +160,49 @@ namespace EventAI_Creator.GUI.General.localestext
                     localized_texts.map[text_id].locale_8 = TextBoxlocal8.Text;
                 if ((sender as TextBox) == textboxcomment)
                     localized_texts.map[text_id].comment = textboxcomment.Text;
+                if ((sender as TextBox) == textBox_sound_id)
+                    localized_texts.map[text_id].sound = Convert.ToInt32(textBox_sound_id.Text);
+                if ((sender as ComboBox) == comboBox_emote)
+                {
+                    // If we have numeric then we take the number
+                    try
+                    {
+                        if (Convert.ToInt32(comboBox_emote.Text) > 0)
+                            localized_texts.map[text_id].emote = Convert.ToInt32(comboBox_emote.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        int emoteId = comboBox_emote.SelectedIndex;
+                        int indentCount = 0;
+                        if (emoteId > 7)
+                            indentCount = indentCount += 2;
+
+                        localized_texts.map[text_id].emote = emoteId + indentCount;
+                    }
+                }
+                if ((sender as ComboBox) == comboBox_language)
+                {
+                    int languageId = comboBox_language.SelectedIndex;
+                    int indentCount = 0;
+                    if (languageId > 13)
+                        indentCount = indentCount += 1;
+                    if (languageId > 12)
+                        indentCount = indentCount += 18;
+                    if (languageId > 3)
+                        indentCount = indentCount += 2;
+
+                    localized_texts.map[text_id].language = languageId + indentCount;
+                }
+                if ((sender as ComboBox) == comboBox_type)
+                    localized_texts.map[text_id].type = comboBox_type.SelectedIndex;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_delete_Click(object sender, EventArgs e)
         {
             if (Datastores.dbused)
             {
-                switch (MessageBox.Show("Do you want to Remove it from Database Now? (Executing delete Query", "Remove from Database?", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show("Are you sure you want to delete the selected text from the database?", "Remove from database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         string query = SQLcreator.CreateDeleteQuery(localized_texts.map[text_id]);
@@ -239,6 +292,28 @@ namespace EventAI_Creator.GUI.General.localestext
                 }
             }
             else MessageBox.Show("No Items");
+        }
+
+        // Change the visibility of the other local texts
+        private void checkBox_use_locale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_use_locale.Checked)
+            {
+                tabControl_texts.Visible = true;
+                localized_texts.map[text_id].useOtherLocale = true;
+            }
+            else
+            {
+                tabControl_texts.Visible = false;
+                localized_texts.map[text_id].useOtherLocale = false;
+            }
+        }
+
+        // View display windos
+        private void toWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScriptDisplay sd = new ScriptDisplay(localized_texts.PrintToQueryWindow(text_id));
+            sd.ShowDialog();
         }
     }
 }

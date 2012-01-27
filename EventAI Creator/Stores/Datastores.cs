@@ -264,31 +264,45 @@ namespace EventAI_Creator
         }
 
         // Create summon script
-        public static bool WriteSummonToFile(summon npc, string file, bool reihe)
+        public static bool WriteSummonToFile(summon script, string file, bool reihe)
         {
-            if (npc == null)
+            if (script == null)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("/*" + npc.comment + " " + npc.id + "*/");
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
+            sqlpatchfile.WriteLine("/*" + script.comment + " " + script.id + "*/");
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script));
             sqlpatchfile.Close();
             return true;
         }
 
         // Create text script
-        public static bool WriteLocalizedTextToFile(localized_text npc, string file, bool reihe)
+        public static bool WriteLocalizedTextToFile(localized_text script, string file, bool reihe)
         {
-            if (npc == null)
+            if (script == null)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("/*" + npc.comment + " " + npc.id + "*/");
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
+            sqlpatchfile.WriteLine("-- Text id: " + script.id);
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script));
             sqlpatchfile.Close();
             return true;
+        }
+
+        // Preview text scripts
+        public static string WriteLocalizedTextToWindow(localized_text script)
+        {
+            if (script == null)
+                return "";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("-- Text id: "  + script.id);
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+
+            return sb.ToString();
         }
 
         public static string CreateDeleteQuery(object item)
@@ -363,36 +377,21 @@ namespace EventAI_Creator
                 argument = argument + ")";
             }
 
+            // selete single text
             if (item is localized_text)
             {
                 localized_text copy = item as localized_text;
-                table = "creature_ai_texts";
-                customquery = "DELETE FROM " + table + " WHERE id = " + copy.id + ";";
-
+                customquery = "DELETE FROM creature_ai_texts WHERE id=" + copy.id + ";";
             }
-
+            // not used
             if (item is List<localized_text>)
-            {
-                List<localized_text> copy = item as List<localized_text>;
-                table = "creature_ai_texts";
-                argument = "id IN(";
-                foreach (localized_text itemf in copy)
-                {
-                    argument = argument + itemf.id + ",";
-                }
-                argument.Remove(argument.Length);
-                argument = argument + ")";
-
-                MessageBox.Show("LOL, this should never happen, REPORT!");
-            }
+                MessageBox.Show("Error!");
+            // delete all texts - currently not used
             if (item is localized_texts)
             {
                 SortedList<int, localized_text> copy = localized_texts.map;
-                table = "creature_ai_texts";
                 foreach (KeyValuePair<int, localized_text> itemf in copy)
-                {
-                    customquery = customquery + "DELETE FROM " + table + " WHERE id = " + itemf.Key + ";";
-                }
+                    customquery = customquery + "DELETE FROM creature_ai_texts WHERE id=" + itemf.Key + ";";
             }
 
             string result = "";
@@ -455,32 +454,46 @@ namespace EventAI_Creator
             string customquery = "";
             string table2 = "";
 
+            // Create single text query
             if (item is localized_text)
             {
-                table = "creature_ai_texts";
                 localized_text copy = item as localized_text;
-                customquery = "INSERT INTO " + table + " VALUES(" + copy.id + ",'" + MySqlHelper.EscapeString(copy.locale_0) + "','" + MySqlHelper.EscapeString(copy.comment) + "');";
+                if (!copy.useOtherLocale)
+                    customquery = "INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`,`emote`) VALUES \r\n('" +
+                        copy.id + ",'" + MySqlHelper.EscapeString(copy.locale_0) + "','" +
+                        copy.sound + "','" + copy.type + "','" + copy.language + "','" +
+                        MySqlHelper.EscapeString(copy.comment) + "', '" + copy.emote + "');";
+                else
+                    customquery = "INSERT INTO creature_ai_texts VALUES \r\n('"
+                            + copy.id + "','" + MySqlHelper.EscapeString(copy.locale_0) + "','" + MySqlHelper.EscapeString(copy.locale_1) + "','"
+                            + MySqlHelper.EscapeString(copy.locale_2) + "','" + MySqlHelper.EscapeString(copy.locale_3) + "','"
+                            + MySqlHelper.EscapeString(copy.locale_4) + "','" + MySqlHelper.EscapeString(copy.locale_5) + "','"
+                            + MySqlHelper.EscapeString(copy.locale_6) + "','" + MySqlHelper.EscapeString(copy.locale_7) + "','"
+                            + MySqlHelper.EscapeString(copy.locale_8) + "','" + copy.sound + "','" + copy.type + "','" + copy.language + "','"
+                            + copy.emote + "," + MySqlHelper.EscapeString(copy.comment) + "');";
              }
+            // not used
             if (item is List<localized_text>)
-            {
-                table = "creature_ai_texts";
-                List<localized_text> copy = item as List<localized_text>;
-                foreach (localized_text itemf in copy)
-                {
-                    lines = lines+"('" + itemf.id + "','" + MySqlHelper.EscapeString(itemf.locale_0) + "','" + MySqlHelper.EscapeString(itemf.locale_1) + "','" + MySqlHelper.EscapeString(itemf.locale_2) + "','" + MySqlHelper.EscapeString(itemf.locale_3) + "','" + MySqlHelper.EscapeString(itemf.locale_4) + "','" + MySqlHelper.EscapeString(itemf.locale_5) + "','" + MySqlHelper.EscapeString(itemf.locale_6) + "','" + MySqlHelper.EscapeString(itemf.locale_7) + "','" + MySqlHelper.EscapeString(itemf.locale_8) + "','" + MySqlHelper.EscapeString(itemf.comment) + "'),";
-                }
-                lines.Remove(lines.Length);
-                lines = lines + ";";
-                MessageBox.Show("WOOOOOOOOOOOOT,THIS should NEVER HAPPEN!!!!");
-            }
+                MessageBox.Show("Error!");
+            // Create multi text query - currently not used
             if (item is localized_texts)
             {
-                table = "creature_ai_texts";
-
                 SortedList<int, localized_text> copy = localized_texts.map;
                 foreach (KeyValuePair<int, localized_text> itemf in copy)
                 {
-                    customquery = customquery + "INSERT INTO "+table+" VALUES('" + localized_texts.map[itemf.Key].id + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_1) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_2) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_3) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_4) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_5) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_6) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_7) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_8) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "');";
+                    if (!localized_texts.map[itemf.Key].useOtherLocale)
+                        customquery = customquery + "INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`,`emote`) VALUES \r\n('" +
+                            localized_texts.map[itemf.Key].id + ",'" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','" +
+                            localized_texts.map[itemf.Key].sound + "','" + localized_texts.map[itemf.Key].type + "','" + localized_texts.map[itemf.Key].language + "','" +
+                            MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "','" + localized_texts.map[itemf.Key].emote + "');";
+                    else
+                        customquery = customquery + "INSERT INTO creature_ai_texts VALUES \r\n('"
+                            + localized_texts.map[itemf.Key].id + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_0) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_1) + "','"
+                            + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_2) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_3) + "','"
+                            + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_4) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_5) + "','"
+                            + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_6) + "','" + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_7) + "','"
+                            + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].locale_8) + "','" + localized_texts.map[itemf.Key].sound + "','" + localized_texts.map[itemf.Key].type + "','" + localized_texts.map[itemf.Key].language + "','"
+                            + localized_texts.map[itemf.Key].emote + "," + MySqlHelper.EscapeString(localized_texts.map[itemf.Key].comment) + "');";
                 }
             }
 

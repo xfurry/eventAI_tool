@@ -57,6 +57,11 @@
             this.creaturelistboxcontextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
+            this.texts_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.summons_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.help_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -87,7 +92,7 @@
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(43, 20);
+            this.fileMenu.Size = new System.Drawing.Size(42, 20);
             this.fileMenu.Text = "&Data";
             // 
             // newToolStripMenuItem
@@ -96,26 +101,26 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewCreatureDialog);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(142, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
             // controlPanelToolStripMenuItem
             // 
             this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
-            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.controlPanelToolStripMenuItem.Text = "Control Panel";
             this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
             // 
@@ -126,27 +131,27 @@
             this.localizedTextsToolStripMenuItem,
             this.summonsToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(49, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(50, 20);
             this.toolsMenu.Text = "&Extras";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // localizedTextsToolStripMenuItem
             // 
             this.localizedTextsToolStripMenuItem.Name = "localizedTextsToolStripMenuItem";
-            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.localizedTextsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.localizedTextsToolStripMenuItem.Text = "Texts";
             this.localizedTextsToolStripMenuItem.Click += new System.EventHandler(this.localizedTextsToolStripMenuItem_Click);
             // 
             // summonsToolStripMenuItem
             // 
             this.summonsToolStripMenuItem.Name = "summonsToolStripMenuItem";
-            this.summonsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.summonsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.summonsToolStripMenuItem.Text = "Summons";
             this.summonsToolStripMenuItem.Click += new System.EventHandler(this.summonsToolStripMenuItem_Click);
             // 
@@ -159,7 +164,7 @@
             this.closeAllToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(63, 20);
+            this.windowsMenu.Size = new System.Drawing.Size(57, 20);
             this.windowsMenu.Text = "&Window";
             // 
             // cascadeToolStripMenuItem
@@ -200,14 +205,19 @@
             // reloadDatabaseToolStripMenuItem
             // 
             this.reloadDatabaseToolStripMenuItem.Name = "reloadDatabaseToolStripMenuItem";
-            this.reloadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.reloadDatabaseToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
             this.reloadDatabaseToolStripMenuItem.Text = "Reload Database";
             this.reloadDatabaseToolStripMenuItem.Click += new System.EventHandler(this.reloadDatabaseToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripButton});
+            this.newToolStripButton,
+            this.toolStripSeparator1,
+            this.texts_toolstrip_button,
+            this.summons_toolstrip_button,
+            this.toolStripSeparator2,
+            this.help_toolstrip_button});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1086, 25);
@@ -237,7 +247,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
             // panel1
@@ -252,28 +262,28 @@
             // 
             // npclistbox
             // 
-            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.npclistbox.ContextMenuStrip = this.creaturelistboxcontextmenu;
             this.npclistbox.FormattingEnabled = true;
             this.npclistbox.Location = new System.Drawing.Point(12, 31);
             this.npclistbox.Name = "npclistbox";
             this.npclistbox.Size = new System.Drawing.Size(151, 529);
             this.npclistbox.TabIndex = 6;
-            this.npclistbox.Click += new System.EventHandler(this.npclistbox_Click);
             this.npclistbox.DoubleClick += new System.EventHandler(this.npclistbox_DoubleClick);
+            this.npclistbox.Click += new System.EventHandler(this.npclistbox_Click);
             // 
             // creaturelistboxcontextmenu
             // 
             this.creaturelistboxcontextmenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testToolStripMenuItem});
             this.creaturelistboxcontextmenu.Name = "creaturelistboxcontextmenu";
-            this.creaturelistboxcontextmenu.Size = new System.Drawing.Size(108, 26);
+            this.creaturelistboxcontextmenu.Size = new System.Drawing.Size(117, 26);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.testToolStripMenuItem.Text = "Delete";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -285,6 +295,45 @@
             this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Existing creature scripts";
+            // 
+            // texts_toolstrip_button
+            // 
+            this.texts_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.texts_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("texts_toolstrip_button.Image")));
+            this.texts_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.texts_toolstrip_button.Name = "texts_toolstrip_button";
+            this.texts_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.texts_toolstrip_button.Text = "Creature AI texts";
+            this.texts_toolstrip_button.Click += new System.EventHandler(this.localizedTextsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // summons_toolstrip_button
+            // 
+            this.summons_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.summons_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("summons_toolstrip_button.Image")));
+            this.summons_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.summons_toolstrip_button.Name = "summons_toolstrip_button";
+            this.summons_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.summons_toolstrip_button.Text = "Creature AI summons";
+            this.summons_toolstrip_button.Click += new System.EventHandler(this.summonsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // help_toolstrip_button
+            // 
+            this.help_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.help_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("help_toolstrip_button.Image")));
+            this.help_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.help_toolstrip_button.Name = "help_toolstrip_button";
+            this.help_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.help_toolstrip_button.Text = "Help";
             // 
             // Hauptfenster
             // 
@@ -300,8 +349,8 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Hauptfenster";
             this.Text = "MaNGOS eventAI development tool";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hauptfenster_FormClosing);
             this.Load += new System.EventHandler(this.Hauptfenster_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hauptfenster_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -345,6 +394,11 @@
         private System.Windows.Forms.ToolStripMenuItem controlPanelToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckedListBox npclistbox;
+        private System.Windows.Forms.ToolStripButton texts_toolstrip_button;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton summons_toolstrip_button;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton help_toolstrip_button;
     }
 }
 

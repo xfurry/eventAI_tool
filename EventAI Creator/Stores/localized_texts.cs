@@ -34,6 +34,14 @@ namespace EventAI_Creator
 
             return true;
         }
+
+        public static string PrintToQueryWindow(int script_id)
+        {
+            string value = "";
+            value = SQLcreator.WriteLocalizedTextToWindow(map[script_id]);
+
+            return value;
+        }
     }
 
     class localized_text
@@ -45,6 +53,7 @@ namespace EventAI_Creator
 
         public int id;
         public bool changed = false;
+        public bool useOtherLocale = false;
         public string locale_0 = "";    // default = english
         public string locale_1 = "";    // korean
         public string locale_2 = "";    // french
@@ -54,10 +63,10 @@ namespace EventAI_Creator
         public string locale_6 = "";    // spanish
         public string locale_7 = "";    // spanish mexico
         public string locale_8 = "";    // russian
-        public int sound;
-        public int type;
-        public int language;
-        public int emote;
+        public int sound = 0;
+        public int type = 0;
+        public int language = 0;
+        public int emote = 0;
         public string comment = "";
     }
 }
