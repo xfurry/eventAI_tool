@@ -47,6 +47,7 @@
             this.lblphasemask = new System.Windows.Forms.Label();
             this.EventParam4 = new System.Windows.Forms.TextBox();
             this.groupBoxevent = new System.Windows.Forms.GroupBox();
+            this.button_flag_select = new System.Windows.Forms.Button();
             this.groupBoxAction1 = new System.Windows.Forms.GroupBox();
             this.Action1Param1Lb = new System.Windows.Forms.Label();
             this.Action1Param3Lb = new System.Windows.Forms.Label();
@@ -110,7 +111,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.expand = new System.Windows.Forms.CheckBox();
             this.deleteevent = new System.Windows.Forms.Button();
-            this.button_flag_select = new System.Windows.Forms.Button();
+            this.button_spell_mask = new System.Windows.Forms.Button();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             // groupBoxevent
             // 
+            this.groupBoxevent.Controls.Add(this.button_spell_mask);
             this.groupBoxevent.Controls.Add(this.button_flag_select);
             this.groupBoxevent.Controls.Add(this.lblevType);
             this.groupBoxevent.Controls.Add(this.EventTypeCBox);
@@ -309,6 +311,16 @@
             this.groupBoxevent.TabIndex = 18;
             this.groupBoxevent.TabStop = false;
             this.groupBoxevent.Text = "Event Settings";
+            // 
+            // button_flag_select
+            // 
+            this.button_flag_select.Location = new System.Drawing.Point(118, 174);
+            this.button_flag_select.Name = "button_flag_select";
+            this.button_flag_select.Size = new System.Drawing.Size(50, 20);
+            this.button_flag_select.TabIndex = 15;
+            this.button_flag_select.Text = "Select";
+            this.button_flag_select.UseVisualStyleBackColor = true;
+            this.button_flag_select.Click += new System.EventHandler(this.button_flag_select_Click);
             // 
             // groupBoxAction1
             // 
@@ -613,7 +625,7 @@
             // PhaseCheckBox29
             // 
             this.PhaseCheckBox29.AutoSize = true;
-            this.PhaseCheckBox29.Location = new System.Drawing.Point(83, 267);
+            this.PhaseCheckBox29.Location = new System.Drawing.Point(83, 266);
             this.PhaseCheckBox29.Name = "PhaseCheckBox29";
             this.PhaseCheckBox29.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox29.TabIndex = 49;
@@ -637,7 +649,7 @@
             // PhaseCheckBox30
             // 
             this.PhaseCheckBox30.AutoSize = true;
-            this.PhaseCheckBox30.Location = new System.Drawing.Point(127, 267);
+            this.PhaseCheckBox30.Location = new System.Drawing.Point(127, 266);
             this.PhaseCheckBox30.Name = "PhaseCheckBox30";
             this.PhaseCheckBox30.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox30.TabIndex = 50;
@@ -649,7 +661,7 @@
             // PhaseCheckBox14
             // 
             this.PhaseCheckBox14.AutoSize = true;
-            this.PhaseCheckBox14.Location = new System.Drawing.Point(655, 232);
+            this.PhaseCheckBox14.Location = new System.Drawing.Point(655, 230);
             this.PhaseCheckBox14.Name = "PhaseCheckBox14";
             this.PhaseCheckBox14.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox14.TabIndex = 34;
@@ -661,7 +673,7 @@
             // PhaseCheckBox31
             // 
             this.PhaseCheckBox31.AutoSize = true;
-            this.PhaseCheckBox31.Location = new System.Drawing.Point(171, 267);
+            this.PhaseCheckBox31.Location = new System.Drawing.Point(171, 266);
             this.PhaseCheckBox31.Name = "PhaseCheckBox31";
             this.PhaseCheckBox31.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox31.TabIndex = 51;
@@ -673,7 +685,7 @@
             // PhaseCheckBox28
             // 
             this.PhaseCheckBox28.AutoSize = true;
-            this.PhaseCheckBox28.Location = new System.Drawing.Point(655, 248);
+            this.PhaseCheckBox28.Location = new System.Drawing.Point(655, 247);
             this.PhaseCheckBox28.Name = "PhaseCheckBox28";
             this.PhaseCheckBox28.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox28.TabIndex = 48;
@@ -685,7 +697,7 @@
             // PhaseCheckBox13
             // 
             this.PhaseCheckBox13.AutoSize = true;
-            this.PhaseCheckBox13.Location = new System.Drawing.Point(611, 232);
+            this.PhaseCheckBox13.Location = new System.Drawing.Point(611, 230);
             this.PhaseCheckBox13.Name = "PhaseCheckBox13";
             this.PhaseCheckBox13.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox13.TabIndex = 33;
@@ -697,7 +709,7 @@
             // PhaseCheckBox27
             // 
             this.PhaseCheckBox27.AutoSize = true;
-            this.PhaseCheckBox27.Location = new System.Drawing.Point(611, 248);
+            this.PhaseCheckBox27.Location = new System.Drawing.Point(611, 247);
             this.PhaseCheckBox27.Name = "PhaseCheckBox27";
             this.PhaseCheckBox27.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox27.TabIndex = 47;
@@ -709,7 +721,7 @@
             // PhaseCheckBox26
             // 
             this.PhaseCheckBox26.AutoSize = true;
-            this.PhaseCheckBox26.Location = new System.Drawing.Point(567, 248);
+            this.PhaseCheckBox26.Location = new System.Drawing.Point(567, 247);
             this.PhaseCheckBox26.Name = "PhaseCheckBox26";
             this.PhaseCheckBox26.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox26.TabIndex = 46;
@@ -721,7 +733,7 @@
             // PhaseCheckBox32
             // 
             this.PhaseCheckBox32.AutoSize = true;
-            this.PhaseCheckBox32.Location = new System.Drawing.Point(215, 267);
+            this.PhaseCheckBox32.Location = new System.Drawing.Point(215, 266);
             this.PhaseCheckBox32.Name = "PhaseCheckBox32";
             this.PhaseCheckBox32.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox32.TabIndex = 52;
@@ -733,7 +745,7 @@
             // PhaseCheckBox25
             // 
             this.PhaseCheckBox25.AutoSize = true;
-            this.PhaseCheckBox25.Location = new System.Drawing.Point(523, 248);
+            this.PhaseCheckBox25.Location = new System.Drawing.Point(523, 247);
             this.PhaseCheckBox25.Name = "PhaseCheckBox25";
             this.PhaseCheckBox25.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox25.TabIndex = 45;
@@ -757,7 +769,7 @@
             // PhaseCheckBox08
             // 
             this.PhaseCheckBox08.AutoSize = true;
-            this.PhaseCheckBox08.Location = new System.Drawing.Point(391, 231);
+            this.PhaseCheckBox08.Location = new System.Drawing.Point(391, 230);
             this.PhaseCheckBox08.Name = "PhaseCheckBox08";
             this.PhaseCheckBox08.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox08.TabIndex = 28;
@@ -769,7 +781,7 @@
             // PhaseCheckBox09
             // 
             this.PhaseCheckBox09.AutoSize = true;
-            this.PhaseCheckBox09.Location = new System.Drawing.Point(435, 232);
+            this.PhaseCheckBox09.Location = new System.Drawing.Point(435, 230);
             this.PhaseCheckBox09.Name = "PhaseCheckBox09";
             this.PhaseCheckBox09.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox09.TabIndex = 29;
@@ -781,7 +793,7 @@
             // PhaseCheckBox23
             // 
             this.PhaseCheckBox23.AutoSize = true;
-            this.PhaseCheckBox23.Location = new System.Drawing.Point(435, 248);
+            this.PhaseCheckBox23.Location = new System.Drawing.Point(435, 247);
             this.PhaseCheckBox23.Name = "PhaseCheckBox23";
             this.PhaseCheckBox23.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox23.TabIndex = 43;
@@ -793,7 +805,7 @@
             // PhaseCheckBox10
             // 
             this.PhaseCheckBox10.AutoSize = true;
-            this.PhaseCheckBox10.Location = new System.Drawing.Point(479, 232);
+            this.PhaseCheckBox10.Location = new System.Drawing.Point(479, 230);
             this.PhaseCheckBox10.Name = "PhaseCheckBox10";
             this.PhaseCheckBox10.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox10.TabIndex = 30;
@@ -817,7 +829,7 @@
             // PhaseCheckBox11
             // 
             this.PhaseCheckBox11.AutoSize = true;
-            this.PhaseCheckBox11.Location = new System.Drawing.Point(523, 232);
+            this.PhaseCheckBox11.Location = new System.Drawing.Point(523, 230);
             this.PhaseCheckBox11.Name = "PhaseCheckBox11";
             this.PhaseCheckBox11.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox11.TabIndex = 31;
@@ -829,7 +841,7 @@
             // PhaseCheckBox12
             // 
             this.PhaseCheckBox12.AutoSize = true;
-            this.PhaseCheckBox12.Location = new System.Drawing.Point(567, 232);
+            this.PhaseCheckBox12.Location = new System.Drawing.Point(567, 230);
             this.PhaseCheckBox12.Name = "PhaseCheckBox12";
             this.PhaseCheckBox12.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox12.TabIndex = 32;
@@ -865,7 +877,7 @@
             // PhaseCheckBox06
             // 
             this.PhaseCheckBox06.AutoSize = true;
-            this.PhaseCheckBox06.Location = new System.Drawing.Point(303, 231);
+            this.PhaseCheckBox06.Location = new System.Drawing.Point(303, 230);
             this.PhaseCheckBox06.Name = "PhaseCheckBox06";
             this.PhaseCheckBox06.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox06.TabIndex = 26;
@@ -901,7 +913,7 @@
             // PhaseCheckBox18
             // 
             this.PhaseCheckBox18.AutoSize = true;
-            this.PhaseCheckBox18.Location = new System.Drawing.Point(215, 247);
+            this.PhaseCheckBox18.Location = new System.Drawing.Point(215, 248);
             this.PhaseCheckBox18.Name = "PhaseCheckBox18";
             this.PhaseCheckBox18.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox18.TabIndex = 38;
@@ -925,7 +937,7 @@
             // PhaseCheckBox17
             // 
             this.PhaseCheckBox17.AutoSize = true;
-            this.PhaseCheckBox17.Location = new System.Drawing.Point(171, 247);
+            this.PhaseCheckBox17.Location = new System.Drawing.Point(171, 248);
             this.PhaseCheckBox17.Name = "PhaseCheckBox17";
             this.PhaseCheckBox17.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox17.TabIndex = 37;
@@ -949,7 +961,7 @@
             // PhaseCheckBox16
             // 
             this.PhaseCheckBox16.AutoSize = true;
-            this.PhaseCheckBox16.Location = new System.Drawing.Point(127, 247);
+            this.PhaseCheckBox16.Location = new System.Drawing.Point(127, 248);
             this.PhaseCheckBox16.Name = "PhaseCheckBox16";
             this.PhaseCheckBox16.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox16.TabIndex = 36;
@@ -961,7 +973,7 @@
             // PhaseCheckBox02
             // 
             this.PhaseCheckBox02.AutoSize = true;
-            this.PhaseCheckBox02.Location = new System.Drawing.Point(127, 231);
+            this.PhaseCheckBox02.Location = new System.Drawing.Point(127, 230);
             this.PhaseCheckBox02.Name = "PhaseCheckBox02";
             this.PhaseCheckBox02.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox02.TabIndex = 22;
@@ -973,7 +985,7 @@
             // PhaseCheckBox15
             // 
             this.PhaseCheckBox15.AutoSize = true;
-            this.PhaseCheckBox15.Location = new System.Drawing.Point(83, 247);
+            this.PhaseCheckBox15.Location = new System.Drawing.Point(83, 248);
             this.PhaseCheckBox15.Name = "PhaseCheckBox15";
             this.PhaseCheckBox15.Size = new System.Drawing.Size(38, 17);
             this.PhaseCheckBox15.TabIndex = 35;
@@ -1012,15 +1024,16 @@
             this.deleteevent.UseVisualStyleBackColor = true;
             this.deleteevent.Click += new System.EventHandler(this.deleteevent_Click);
             // 
-            // button_flag_select
+            // button_spell_mask
             // 
-            this.button_flag_select.Location = new System.Drawing.Point(118, 174);
-            this.button_flag_select.Name = "button_flag_select";
-            this.button_flag_select.Size = new System.Drawing.Size(50, 20);
-            this.button_flag_select.TabIndex = 15;
-            this.button_flag_select.Text = "Select";
-            this.button_flag_select.UseVisualStyleBackColor = true;
-            this.button_flag_select.Click += new System.EventHandler(this.button_flag_select_Click);
+            this.button_spell_mask.Location = new System.Drawing.Point(118, 65);
+            this.button_spell_mask.Name = "button_spell_mask";
+            this.button_spell_mask.Size = new System.Drawing.Size(50, 20);
+            this.button_spell_mask.TabIndex = 16;
+            this.button_spell_mask.Text = "Select";
+            this.button_spell_mask.UseVisualStyleBackColor = true;
+            this.button_spell_mask.Visible = false;
+            this.button_spell_mask.Click += new System.EventHandler(this.button_spell_mask_Click);
             // 
             // EventControl
             // 
@@ -1169,5 +1182,6 @@
         private System.Windows.Forms.CheckBox expand;
         private System.Windows.Forms.Button deleteevent;
         private System.Windows.Forms.Button button_flag_select;
+        private System.Windows.Forms.Button button_spell_mask;
     }
 }

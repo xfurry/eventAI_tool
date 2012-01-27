@@ -46,21 +46,6 @@
             // 
             this.checkedListBox_flags.CheckOnClick = true;
             this.checkedListBox_flags.FormattingEnabled = true;
-            this.checkedListBox_flags.Items.AddRange(new object[] {
-            "REPEATABLE              Event repeats (Does not repeat if this flag is not set)",
-            "DIFFICULTY_0             Event occurs in instance difficulty 0 (will not occur if" +
-                " not set)",
-            "DIFFICULTY_1             Event occurs in instance difficulty 1 (will not occur if" +
-                " not set)",
-            "DIFFICULTY_2             Event occurs in instance difficulty 2 (will not occur if" +
-                " not set)",
-            "DIFFICULTY_3             Event occurs in instance difficulty 3 (will not occur if" +
-                " not set)",
-            "RANDOM_ACTION      At event occur execute one random action from event actions in" +
-                "stead all actions.",
-            "DUMMY_FLAG             Not used",
-            "DEBUG_ONLY             Prevents events from occuring on Release builds. Useful fo" +
-                "r testing new features."});
             this.checkedListBox_flags.Location = new System.Drawing.Point(13, 12);
             this.checkedListBox_flags.Name = "checkedListBox_flags";
             this.checkedListBox_flags.Size = new System.Drawing.Size(525, 139);

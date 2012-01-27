@@ -12,10 +12,17 @@ namespace EventAI_Creator
     public partial class EventFlag : Form
     {
         private EventControl parent;
+        private int flagType = 0;
 
-        public EventFlag(EventControl control, int flag_value)
+        public EventFlag(EventControl control, int flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */)
         {
             InitializeComponent();
+
+            for (int i = 0; i < items.Count(); i++)
+                checkedListBox_flags.Items.Add(items[i]);
+
+            flagType = type;
+
             parent = control;
 
             // Check only the lists for the given event mask
@@ -36,7 +43,16 @@ namespace EventAI_Creator
             foreach (int indexChecked in checkedListBox_flags.CheckedIndices)
                 flag_value += Convert.ToInt32(Math.Pow(2, indexChecked));
 
-            parent.set_event_flags(flag_value);
+            switch (flagType)
+            {
+                case 0:
+                    parent.set_event_flags(flag_value);
+                    break;
+                case 1:
+                    parent.set_spell_mask(flag_value);
+                    break;
+            }
+
             this.Close();
         }
     }

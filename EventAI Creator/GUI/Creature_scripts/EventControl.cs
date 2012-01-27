@@ -312,8 +312,21 @@ namespace EventAI_Creator
                 this.EventParam4.Text = "0";
                 this.EventParam4.Enabled = true;
             }
-           if (!locked)
-            GetEventData();
+
+            // Costumize Spell hit
+            if (EventTypeCBox.SelectedIndex == 8)
+            {
+                this.EventParam2.Width = 50;
+                this.button_spell_mask.Visible = true;
+            }
+            else
+            {
+                this.EventParam2.Width = 100;
+                this.button_spell_mask.Visible = false;
+            }
+
+            if (!locked)
+                GetEventData();
         }
 
 
@@ -454,13 +467,51 @@ namespace EventAI_Creator
 
         private void button_flag_select_Click(object sender, EventArgs e)
         {
-            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text));
+            // items in the listbox
+            string[] items = 
+            {
+                "REPEATABLE",
+                "DIFFICULTY_0",
+                "DIFFICULTY_1",
+                "DIFFICULTY_2",
+                "DIFFICULTY_3",
+                "RANDOM_ACTION",
+                "DUMMY_FLAG",
+                "DEBUG_ONLY"
+            };
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), items, 0);
             dialog.ShowDialog(this);
         }
 
+        private void button_spell_mask_Click(object sender, EventArgs e)
+        {
+            // items in the listbox
+            string[] items = 
+            {
+                "SPELL_SCHOOL_NORMAL",
+                "SPELL_SCHOOL_HOLY",
+                "SPELL_SCHOOL_FIRE",
+                "SPELL_SCHOOL_NATURE",
+                "SPELL_SCHOOL_FROST",
+                "SPELL_SCHOOL_SHADOW",
+                "SPELL_SCHOOL_ARCANE",
+            };
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), items, 1);
+            dialog.ShowDialog(this);
+        }
+
+        // Set event flags
         public void set_event_flags(int flag_value)
         {
             this.EventFlagTBox.Text = flag_value.ToString();
+        }
+
+        // Set spell masks
+        public void set_spell_mask(int flag_value)
+        {
+            this.EventParam2.Text = flag_value.ToString();
+            if (EventParam1.Text != "0")
+                MessageBox.Show("You already defined a SpellID. Please use '-1' for the SchoolMask or remove the SpellId!");
         }
     }
 }
