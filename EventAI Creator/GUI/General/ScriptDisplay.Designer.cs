@@ -36,7 +36,7 @@
             // 
             // button_copy
             // 
-            this.button_copy.Location = new System.Drawing.Point(209, 235);
+            this.button_copy.Location = new System.Drawing.Point(405, 377);
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(75, 23);
             this.button_copy.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // button_close
             // 
-            this.button_close.Location = new System.Drawing.Point(315, 235);
+            this.button_close.Location = new System.Drawing.Point(511, 377);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(75, 23);
             this.button_close.TabIndex = 1;
@@ -60,14 +60,14 @@
             this.textBox_query.Multiline = true;
             this.textBox_query.Name = "textBox_query";
             this.textBox_query.ReadOnly = true;
-            this.textBox_query.Size = new System.Drawing.Size(467, 216);
+            this.textBox_query.Size = new System.Drawing.Size(859, 358);
             this.textBox_query.TabIndex = 2;
             this.textBox_query.WordWrap = false;
             // 
             // button_execute
             // 
             this.button_execute.Enabled = false;
-            this.button_execute.Location = new System.Drawing.Point(103, 235);
+            this.button_execute.Location = new System.Drawing.Point(299, 377);
             this.button_execute.Name = "button_execute";
             this.button_execute.Size = new System.Drawing.Size(75, 23);
             this.button_execute.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 273);
+            this.ClientSize = new System.Drawing.Size(884, 412);
             this.Controls.Add(this.button_execute);
             this.Controls.Add(this.textBox_query);
             this.Controls.Add(this.button_close);

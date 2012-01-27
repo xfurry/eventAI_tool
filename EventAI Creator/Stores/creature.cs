@@ -95,12 +95,17 @@ namespace EventAI_Creator
             return true;
         }
 
+        public static string PrintCreatureToWindow(uint creature_id)
+        {
+            string value = "";
+            value = SQLcreator.WriteCreatureToWindow(npcList[creature_id]);
+            return value;
+        }
+
         public static bool PrintALLCreaturesToFile(string file)
         {
             foreach (KeyValuePair<uint,creature> item in npcList)
-            {
                 SQLcreator.WriteCreatureToFile(item.Value, file, true);
-            }
             return true;
         }
 

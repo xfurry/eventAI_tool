@@ -91,5 +91,38 @@ namespace EventAI_Creator
 /*42 | 01 */{"SET_INVINCIBILITY_HP_LEVEL","HP_Level","HP_Percent","","Set min. health level for creature that can be set at damage as flat value or percent from max health"},
 /*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."}
         };
+
+        public static string[] EventFlags = new string[]
+        {
+            "REPEATABLE",
+            "DIFFICULTY_0",
+            "DIFFICULTY_1",
+            "DIFFICULTY_2",
+            "DIFFICULTY_3",
+            "RANDOM_ACTION",
+            "DUMMY_FLAG",
+            "DEBUG_ONLY"
+        };
+
+        public static string[] SpellSchoolMask = new string[]
+        {
+            "SPELL_SCHOOL_NORMAL",
+            "SPELL_SCHOOL_HOLY",
+            "SPELL_SCHOOL_FIRE",
+            "SPELL_SCHOOL_NATURE",
+            "SPELL_SCHOOL_FROST",
+            "SPELL_SCHOOL_SHADOW",
+            "SPELL_SCHOOL_ARCANE"
+        };
+
+        public static string[] CastFlags = new string[]
+        {
+            "CAST_INTURRUPT_PREVIOUS",
+            "CAST_TRIGGERED",
+            "CAST_FORCE_CAST",
+            "CAST_NO_MELEE_IF_OOM",
+            "CAST_FORCE_TARGET_SELF",
+            "CAST_AURA_NOT_PRESENT"
+        };
     }
 }

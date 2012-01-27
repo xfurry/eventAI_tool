@@ -13,8 +13,9 @@ namespace EventAI_Creator
     {
         private EventControl parent;
         private int flagType = 0;
+        private int action = 0;
 
-        public EventFlag(EventControl control, int flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */)
+        public EventFlag(EventControl control, int flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action = 0)
         {
             InitializeComponent();
 
@@ -22,6 +23,8 @@ namespace EventAI_Creator
                 checkedListBox_flags.Items.Add(items[i]);
 
             flagType = type;
+            if (action != 0)
+                this.action = action;
 
             parent = control;
 
@@ -50,6 +53,9 @@ namespace EventAI_Creator
                     break;
                 case 1:
                     parent.set_spell_mask(flag_value);
+                    break;
+                case 2:
+                    parent.set_cast_flag(flag_value, action);
                     break;
             }
 

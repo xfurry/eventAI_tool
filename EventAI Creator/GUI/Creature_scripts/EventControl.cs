@@ -343,6 +343,19 @@ namespace EventAI_Creator
                 Tbox[0] = this.Action1Param1Tbox;
                 Tbox[1] = this.Action1Param2Tbox;
                 Tbox[2] = this.Action1Param3Tbox;
+
+                // Costumize controls
+                // Cast action
+                if (Cbox.SelectedIndex == 11)
+                {
+                    Action1Param3_button.Visible = true;
+                    Action1Param3Tbox.Width = 45;
+                }
+                else
+                {
+                    Action1Param3_button.Visible = false;
+                    Action1Param3Tbox.Width = 89;
+                }
             }
             if (Cbox == this.Action2TypeCBox)
             {
@@ -352,6 +365,19 @@ namespace EventAI_Creator
                 Tbox[0] = this.Action2Param1Tbox;
                 Tbox[1] = this.Action2Param2Tbox;
                 Tbox[2] = this.Action2Param3Tbox;
+
+                // Costumize controls
+                // Cast action
+                if (Cbox.SelectedIndex == 11)
+                {
+                    Action2Param3_button.Visible = true;
+                    Action2Param3Tbox.Width = 45;
+                }
+                else
+                {
+                    Action2Param3_button.Visible = false;
+                    Action2Param3Tbox.Width = 89;
+                }
             }
             if (Cbox == this.Action3TypeCBox)
             {
@@ -361,6 +387,19 @@ namespace EventAI_Creator
                 Tbox[0] = this.Action3Param1Tbox;
                 Tbox[1] = this.Action3Param2Tbox;
                 Tbox[2] = this.Action3Param3Tbox;
+
+                // Costumize controls
+                // Cast action
+                if (Cbox.SelectedIndex == 11)
+                {
+                    Action3Param3_button.Visible = true;
+                    Action3Param3Tbox.Width = 45;
+                }
+                else
+                {
+                    Action3Param3_button.Visible = false;
+                    Action3Param3Tbox.Width = 89;
+                }
             }
 
             toolTip.SetToolTip((sender as ComboBox), Info.ActionListInfo[Cbox.SelectedIndex, 4]);
@@ -467,36 +506,28 @@ namespace EventAI_Creator
 
         private void button_flag_select_Click(object sender, EventArgs e)
         {
-            // items in the listbox
-            string[] items = 
-            {
-                "REPEATABLE",
-                "DIFFICULTY_0",
-                "DIFFICULTY_1",
-                "DIFFICULTY_2",
-                "DIFFICULTY_3",
-                "RANDOM_ACTION",
-                "DUMMY_FLAG",
-                "DEBUG_ONLY"
-            };
-            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), items, 0);
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), Info.EventFlags, 0);
             dialog.ShowDialog(this);
         }
 
         private void button_spell_mask_Click(object sender, EventArgs e)
         {
-            // items in the listbox
-            string[] items = 
-            {
-                "SPELL_SCHOOL_NORMAL",
-                "SPELL_SCHOOL_HOLY",
-                "SPELL_SCHOOL_FIRE",
-                "SPELL_SCHOOL_NATURE",
-                "SPELL_SCHOOL_FROST",
-                "SPELL_SCHOOL_SHADOW",
-                "SPELL_SCHOOL_ARCANE",
-            };
-            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), items, 1);
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), Info.SpellSchoolMask, 1);
+            dialog.ShowDialog(this);
+        }
+
+        private void Action1Param3_button_Click(object sender, EventArgs e)
+        {
+            Button but = (sender as Button);
+            EventFlag dialog = null;
+
+            if (but == this.Action1Param3_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param3Tbox.Text), Info.CastFlags, 2, 1);
+            else if (but == this.Action2Param3_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param3Tbox.Text), Info.CastFlags, 2, 2);
+            else if (but == this.Action3Param3_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param3Tbox.Text), Info.CastFlags, 2, 3);
+
             dialog.ShowDialog(this);
         }
 
@@ -510,8 +541,26 @@ namespace EventAI_Creator
         public void set_spell_mask(int flag_value)
         {
             this.EventParam2.Text = flag_value.ToString();
+
             if (EventParam1.Text != "0")
                 MessageBox.Show("You already defined a SpellID. Please use '-1' for the SchoolMask or remove the SpellId!");
+        }
+
+        // Set cast flag
+        public void set_cast_flag(int flag_value, int action)
+        {
+            switch (action)
+            {
+                case 1:
+                    Action1Param3Tbox.Text = flag_value.ToString();
+                    break;
+                case 2:
+                    Action2Param3Tbox.Text = flag_value.ToString();
+                    break;
+                case 3:
+                    Action3Param3Tbox.Text = flag_value.ToString();
+                    break;
+            }
         }
     }
 }

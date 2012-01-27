@@ -112,6 +112,12 @@
             this.expand = new System.Windows.Forms.CheckBox();
             this.deleteevent = new System.Windows.Forms.Button();
             this.button_spell_mask = new System.Windows.Forms.Button();
+            this.Action1Param1Combobox = new System.Windows.Forms.ComboBox();
+            this.Action2Param1Combobox = new System.Windows.Forms.ComboBox();
+            this.Action3Param1Combobox = new System.Windows.Forms.ComboBox();
+            this.Action1Param3_button = new System.Windows.Forms.Button();
+            this.Action2Param3_button = new System.Windows.Forms.Button();
+            this.Action3Param3_button = new System.Windows.Forms.Button();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -324,6 +330,8 @@
             // 
             // groupBoxAction1
             // 
+            this.groupBoxAction1.Controls.Add(this.Action1Param3_button);
+            this.groupBoxAction1.Controls.Add(this.Action1Param1Combobox);
             this.groupBoxAction1.Controls.Add(this.Action1Param1Lb);
             this.groupBoxAction1.Controls.Add(this.Action1Param3Lb);
             this.groupBoxAction1.Controls.Add(this.Action1Param2Lb);
@@ -420,6 +428,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Action2Param3_button);
+            this.groupBox1.Controls.Add(this.Action2Param1Combobox);
             this.groupBox1.Controls.Add(this.Action2Param1Lb);
             this.groupBox1.Controls.Add(this.Action2Param3Lb);
             this.groupBox1.Controls.Add(this.Action2Param2Lb);
@@ -516,6 +526,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Action3Param3_button);
+            this.groupBox2.Controls.Add(this.Action3Param1Combobox);
             this.groupBox2.Controls.Add(this.Action3Param1Lb);
             this.groupBox2.Controls.Add(this.Action3Param3Lb);
             this.groupBox2.Controls.Add(this.Action3Param2Lb);
@@ -1035,6 +1047,64 @@
             this.button_spell_mask.Visible = false;
             this.button_spell_mask.Click += new System.EventHandler(this.button_spell_mask_Click);
             // 
+            // Action1Param1Combobox
+            // 
+            this.Action1Param1Combobox.FormattingEnabled = true;
+            this.Action1Param1Combobox.Location = new System.Drawing.Point(185, 22);
+            this.Action1Param1Combobox.Name = "Action1Param1Combobox";
+            this.Action1Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action1Param1Combobox.TabIndex = 24;
+            this.Action1Param1Combobox.Visible = false;
+            // 
+            // Action2Param1Combobox
+            // 
+            this.Action2Param1Combobox.FormattingEnabled = true;
+            this.Action2Param1Combobox.Location = new System.Drawing.Point(185, 23);
+            this.Action2Param1Combobox.Name = "Action2Param1Combobox";
+            this.Action2Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action2Param1Combobox.TabIndex = 24;
+            this.Action2Param1Combobox.Visible = false;
+            // 
+            // Action3Param1Combobox
+            // 
+            this.Action3Param1Combobox.FormattingEnabled = true;
+            this.Action3Param1Combobox.Location = new System.Drawing.Point(185, 22);
+            this.Action3Param1Combobox.Name = "Action3Param1Combobox";
+            this.Action3Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action3Param1Combobox.TabIndex = 24;
+            this.Action3Param1Combobox.Visible = false;
+            // 
+            // Action1Param3_button
+            // 
+            this.Action1Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action1Param3_button.Name = "Action1Param3_button";
+            this.Action1Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action1Param3_button.TabIndex = 25;
+            this.Action1Param3_button.Text = "Select";
+            this.Action1Param3_button.UseVisualStyleBackColor = true;
+            this.Action1Param3_button.Visible = false;
+            this.Action1Param3_button.Click += new System.EventHandler(this.Action1Param3_button_Click);
+            // 
+            // Action2Param3_button
+            // 
+            this.Action2Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action2Param3_button.Name = "Action2Param3_button";
+            this.Action2Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action2Param3_button.TabIndex = 25;
+            this.Action2Param3_button.Text = "Select";
+            this.Action2Param3_button.UseVisualStyleBackColor = true;
+            this.Action2Param3_button.Visible = false;
+            // 
+            // Action3Param3_button
+            // 
+            this.Action3Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action3Param3_button.Name = "Action3Param3_button";
+            this.Action3Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action3Param3_button.TabIndex = 25;
+            this.Action3Param3_button.Text = "Select";
+            this.Action3Param3_button.UseVisualStyleBackColor = true;
+            this.Action3Param3_button.Visible = false;
+            // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1183,5 +1253,11 @@
         private System.Windows.Forms.Button deleteevent;
         private System.Windows.Forms.Button button_flag_select;
         private System.Windows.Forms.Button button_spell_mask;
+        private System.Windows.Forms.ComboBox Action1Param1Combobox;
+        private System.Windows.Forms.ComboBox Action2Param1Combobox;
+        private System.Windows.Forms.ComboBox Action3Param1Combobox;
+        private System.Windows.Forms.Button Action1Param3_button;
+        private System.Windows.Forms.Button Action2Param3_button;
+        private System.Windows.Forms.Button Action3Param3_button;
     }
 }

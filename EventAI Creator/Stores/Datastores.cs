@@ -256,11 +256,26 @@ namespace EventAI_Creator
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            sqlpatchfile.WriteLine("/*" + npc.creature_name + "*/");
+            sqlpatchfile.WriteLine("-- Creature id: " + npc.creature_id);
             sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
             sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
             sqlpatchfile.Close();
             return true;
+        }
+
+        // Preview creature scripts
+        public static string WriteCreatureToWindow(creature script)
+        {
+            if (script == null)
+                return "";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("-- Creature id: " + script.creature_id);
+            sb.AppendLine(CreateCreatureTemplateQuery(script, false));
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+
+            return sb.ToString();
         }
 
         // Create summon script
@@ -461,7 +476,7 @@ namespace EventAI_Creator
             if (remove)
                 scriptname = "";
 
-            string result = "UPDATE creature_template SET AIName='"+ scriptname +"' WHERE entry IN("+arguments+");";
+            string result = "UPDATE creature_template SET AIName='"+ scriptname +"' WHERE entry="+arguments+";";
 
             return result;
         }
@@ -579,7 +594,7 @@ namespace EventAI_Creator
                     copy.line[i].action3_param3 + "','" +
                     MySqlHelper.EscapeString(copy.line[i].comment) + "')";
                     if (i + 1 < copy.line.Count)
-                        lines =lines+",";
+                        lines =lines+",\r\n";
                     else
                         lines =lines+";";
                 }
@@ -615,7 +630,7 @@ namespace EventAI_Creator
                         itemf.line[i].action3_param1 + "','" +
                         itemf.line[i].action3_param2 + "','" +
                         itemf.line[i].action3_param3 + "','" +
-                        MySqlHelper.EscapeString(itemf.line[i].comment) + "'),";
+                        MySqlHelper.EscapeString(itemf.line[i].comment) + "'),\r\n";
                     }
                 }
                 lines.Remove(lines.Length);
@@ -652,7 +667,7 @@ namespace EventAI_Creator
                         creatures.npcList[itemf.Key].line[i].action3_param1 + "','" +
                         creatures.npcList[itemf.Key].line[i].action3_param2 + "','" +
                         creatures.npcList[itemf.Key].line[i].action3_param3 + "','" +
-                        MySqlHelper.EscapeString(creatures.npcList[itemf.Key].line[i].comment) + "'),";
+                        MySqlHelper.EscapeString(creatures.npcList[itemf.Key].line[i].comment) + "'),\r\n";
                     }
                 }
                 lines.Remove(lines.Length);

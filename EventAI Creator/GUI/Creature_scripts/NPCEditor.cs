@@ -15,24 +15,28 @@ namespace EventAI_Creator
         public uint npc_id;
         public NPCEditor(uint creature_id)
         {
+            this.WindowState = FormWindowState.Maximized;
             npc_id = creature_id;
             InitializeComponent();
             this.Text = "NPC:"+npc_id;
             this.Name = "editor:" + npc_id;
+
             if (creatures.npcList[npc_id].activectemplate)
                 setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname";
-            else setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
+            else
+                setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
+
             Redraw(creature_id);
         }
 
         public void Redraw(uint creature_id)
         {
-            if (creatures.npcList[npc_id].line.Count != 0 || panel1.Controls.Count != 0)
+            if (creatures.npcList[npc_id].line.Count != 0 || splitContainer1.Panel2.Controls.Count != 0)
             {
                 uint index = 0;
                 EventsList.Clear();
 
-                this.panel1.Controls.Clear();
+                this.splitContainer1.Panel2.Controls.Clear();
                 foreach (Event_dataset item in creatures.npcList[npc_id].line)
                 {
                     EventsList.Add(index.ToString());
@@ -42,7 +46,7 @@ namespace EventAI_Creator
                 foreach (string item in EventsList)
                 {
                     EventControl newControl = new EventControl(creatures.npcList[npc_id].line[Convert.ToInt32(item)], Convert.ToInt32(item), npc_id);
-                    this.panel1.Controls.Add(newControl);
+                    this.splitContainer1.Panel2.Controls.Add(newControl);
                     newControl.Dock = DockStyle.Top;
                     newControl.Show();
                 }
@@ -54,7 +58,7 @@ namespace EventAI_Creator
         {
             creatures.GetCreature(npc_id).AddEvent();
             EventControl bla = new EventControl(creatures.GetCreature(npc_id).line[creatures.GetCreature(npc_id).line.Count - 1], (creatures.GetCreature(npc_id).line.Count - 1),npc_id);
-            this.panel1.Controls.Add(bla);
+            this.splitContainer1.Panel2.Controls.Add(bla);
             bla.Dock = DockStyle.Top;
             //(this.MdiParent as Hauptfenster).UpdateNPCListBox();
             EventsList.Add((creatures.GetCreature(npc_id).line.Count - 1).ToString());
@@ -63,9 +67,7 @@ namespace EventAI_Creator
         public void SaveEventsToNPCList()
         {
             foreach (string item in EventsList)
-            {
-                (this.panel1.Controls.Find(item, false)[0] as EventControl).GetEventData();
-            }
+                (this.splitContainer1.Panel2.Controls.Find(item, false)[0] as EventControl).GetEventData();
         }
 
         private void Editor_FormClosing(object sender, FormClosingEventArgs e)
@@ -93,6 +95,7 @@ namespace EventAI_Creator
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
@@ -105,6 +108,7 @@ namespace EventAI_Creator
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
@@ -119,15 +123,31 @@ namespace EventAI_Creator
                 if (creatures.npcList[npc_id].activectemplate)
                 {
                     if (SQLCommonExecutes.setScriptnameInCreature_template(npc_id, true))
-                    { creatures.npcList[npc_id].activectemplate = false; setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname"; }
+                    {
+                        creatures.npcList[npc_id].activectemplate = false;
+                        setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
+                    }
                 }
-
                 else
                 {
                     if (SQLCommonExecutes.setScriptnameInCreature_template(npc_id, false))
-                    { creatures.npcList[npc_id].activectemplate = true; setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname"; }
+                    {
+                        creatures.npcList[npc_id].activectemplate = true;
+                        setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname";
+                    }
                 }
             }
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+        }
+
+        private void queryWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScriptDisplay sd = new ScriptDisplay(creatures.PrintCreatureToWindow(npc_id));
+            sd.ShowDialog();
         }
     }
 }
