@@ -118,7 +118,9 @@
             this.Action1Param3_button = new System.Windows.Forms.Button();
             this.Action2Param3_button = new System.Windows.Forms.Button();
             this.Action3Param3_button = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Action1Param2Combobox = new System.Windows.Forms.ComboBox();
+            this.Action2Param2Combobox = new System.Windows.Forms.ComboBox();
+            this.Action3Param2Combobox = new System.Windows.Forms.ComboBox();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -331,6 +333,7 @@
             // 
             // groupBoxAction1
             // 
+            this.groupBoxAction1.Controls.Add(this.Action1Param2Combobox);
             this.groupBoxAction1.Controls.Add(this.Action1Param3_button);
             this.groupBoxAction1.Controls.Add(this.Action1Param1Combobox);
             this.groupBoxAction1.Controls.Add(this.Action1Param1Lb);
@@ -429,6 +432,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Action2Param2Combobox);
             this.groupBox1.Controls.Add(this.Action2Param3_button);
             this.groupBox1.Controls.Add(this.Action2Param1Combobox);
             this.groupBox1.Controls.Add(this.Action2Param1Lb);
@@ -527,6 +531,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Action3Param2Combobox);
             this.groupBox2.Controls.Add(this.Action3Param3_button);
             this.groupBox2.Controls.Add(this.Action3Param1Combobox);
             this.groupBox2.Controls.Add(this.Action3Param1Lb);
@@ -1111,20 +1116,41 @@
             this.Action3Param3_button.Visible = false;
             this.Action3Param3_button.Click += new System.EventHandler(this.Action1Param3_button_Click);
             // 
-            // comboBox1
+            // Action1Param2Combobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(541, 8);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(94, 21);
-            this.comboBox1.TabIndex = 26;
+            this.Action1Param2Combobox.FormattingEnabled = true;
+            this.Action1Param2Combobox.Location = new System.Drawing.Point(290, 22);
+            this.Action1Param2Combobox.Name = "Action1Param2Combobox";
+            this.Action1Param2Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action1Param2Combobox.TabIndex = 26;
+            this.Action1Param2Combobox.Visible = false;
+            this.Action1Param2Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param2Combobox_SelectedIndexChanged);
+            // 
+            // Action2Param2Combobox
+            // 
+            this.Action2Param2Combobox.FormattingEnabled = true;
+            this.Action2Param2Combobox.Location = new System.Drawing.Point(290, 22);
+            this.Action2Param2Combobox.Name = "Action2Param2Combobox";
+            this.Action2Param2Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action2Param2Combobox.TabIndex = 26;
+            this.Action2Param2Combobox.Visible = false;
+            this.Action2Param2Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param2Combobox_SelectedIndexChanged);
+            // 
+            // Action3Param2Combobox
+            // 
+            this.Action3Param2Combobox.FormattingEnabled = true;
+            this.Action3Param2Combobox.Location = new System.Drawing.Point(290, 22);
+            this.Action3Param2Combobox.Name = "Action3Param2Combobox";
+            this.Action3Param2Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action3Param2Combobox.TabIndex = 26;
+            this.Action3Param2Combobox.Visible = false;
+            this.Action3Param2Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param2Combobox_SelectedIndexChanged);
             // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.deleteevent);
             this.Controls.Add(this.expand);
             this.Controls.Add(this.PhaseMaskInfoLb);
@@ -1274,6 +1300,8 @@
         private System.Windows.Forms.Button Action1Param3_button;
         private System.Windows.Forms.Button Action2Param3_button;
         private System.Windows.Forms.Button Action3Param3_button;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Action1Param2Combobox;
+        private System.Windows.Forms.ComboBox Action2Param2Combobox;
+        private System.Windows.Forms.ComboBox Action3Param2Combobox;
     }
 }

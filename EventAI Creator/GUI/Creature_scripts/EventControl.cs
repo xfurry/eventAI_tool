@@ -347,10 +347,14 @@ namespace EventAI_Creator
                 // reset cast
                 Action1Param3_button.Visible = false;
                 Action1Param3Tbox.Width = 100;
-                // reset sheat
+                // reset combo box 1
                 Action1Param1Combobox.Visible = false;
                 Action1Param1Combobox.Items.Clear();
                 Action1Param1Tbox.Visible = true;
+                // reset combo box 2
+                Action1Param2Combobox.Visible = false;
+                Action1Param2Combobox.Items.Clear();
+                Action1Param2Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -365,6 +369,13 @@ namespace EventAI_Creator
                         Action1Param1Combobox.SelectedIndex = 0;
                         Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action1Param1Tbox.Visible = false;
+                        break;
+                    case 34:            // Set instance data
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
                         Action1Param1Combobox.Visible = true;
@@ -387,10 +398,14 @@ namespace EventAI_Creator
                 // reset cast
                 Action2Param3_button.Visible = false;
                 Action2Param3Tbox.Width = 100;
-                // reset sheat
+                // reset combo box 1
                 Action2Param1Combobox.Visible = false;
                 Action2Param1Combobox.Items.Clear();
                 Action2Param1Tbox.Visible = true;
+                // reset combo box 2
+                Action2Param2Combobox.Visible = false;
+                Action2Param2Combobox.Items.Clear();
+                Action2Param2Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -405,6 +420,13 @@ namespace EventAI_Creator
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param1Tbox.Visible = false;
+                        break;
+                    case 34:            // Set instance data
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
                         Action2Param1Combobox.Visible = true;
@@ -427,10 +449,14 @@ namespace EventAI_Creator
                 // reset cast
                 Action3Param3_button.Visible = false;
                 Action3Param3Tbox.Width = 100;
-                // reset sheat
+                // reset combo box 1
                 Action3Param1Combobox.Visible = false;
                 Action3Param1Combobox.Items.Clear();
                 Action3Param1Tbox.Visible = true;
+                // reset combo box 2
+                Action3Param2Combobox.Visible = false;
+                Action3Param2Combobox.Items.Clear();
+                Action3Param2Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -445,6 +471,13 @@ namespace EventAI_Creator
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action3Param1Tbox.Visible = false;
+                        break;
+                    case 34:            // Set instance data
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
                         Action3Param1Combobox.Visible = true;
@@ -567,8 +600,21 @@ namespace EventAI_Creator
                 Action1Param1Tbox.Text = Action1Param1Combobox.SelectedIndex.ToString();
             else if (box == this.Action2Param1Combobox)
                 Action2Param1Tbox.Text = Action2Param1Combobox.SelectedIndex.ToString();
-            else if (box == this.Action1Param1Combobox)
+            else if (box == this.Action3Param1Combobox)
                 Action3Param1Tbox.Text = Action3Param1Combobox.SelectedIndex.ToString();
+        }
+
+        // Set combo box 2 value
+        private void Action1Param2Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = (sender as ComboBox);
+
+            if (box == this.Action1Param2Combobox)
+                Action1Param2Tbox.Text = Action1Param2Combobox.SelectedIndex.ToString();
+            else if (box == this.Action2Param2Combobox)
+                Action2Param2Tbox.Text = Action2Param2Combobox.SelectedIndex.ToString();
+            else if (box == this.Action3Param2Combobox)
+                Action3Param2Tbox.Text = Action3Param2Combobox.SelectedIndex.ToString();
         }
 
         // Load event flags selection
