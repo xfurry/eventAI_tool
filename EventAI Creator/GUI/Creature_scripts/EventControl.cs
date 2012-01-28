@@ -374,6 +374,19 @@ namespace EventAI_Creator
                         Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
                         Action1Param2Tbox.Visible = false;
                         break;
+                    case 12:            // Summon
+                    case 13:            // Threat single
+                    case 15:            // Quest event
+                    case 32:            // Summon
+                    case 33:            // Killed unit
+                    case 35:            // Set instance data 64
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
+                        Action1Param2Tbox.Visible = false;
+                        break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
                         Action1Param1Combobox.Visible = true;
@@ -386,6 +399,14 @@ namespace EventAI_Creator
                     case 34:            // Set instance data
                         Action1Param2Combobox.Visible = true;
                         Action1Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
+                        Action1Param2Tbox.Visible = false;
+                        break;
+                    case 36:            // Update template
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.TeamTemplate);
                         Action1Param2Combobox.SelectedIndex = 0;
                         Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
@@ -441,6 +462,19 @@ namespace EventAI_Creator
                         Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
                         Action2Param2Tbox.Visible = false;
                         break;
+                    case 12:            // Summon
+                    case 13:            // Threat single
+                    case 15:            // Quest event
+                    case 32:            // Summon
+                    case 33:            // Killed unit
+                    case 35:            // Set instance data 64
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
+                        Action2Param2Tbox.Visible = false;
+                        break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
                         Action2Param1Combobox.Visible = true;
@@ -453,6 +487,14 @@ namespace EventAI_Creator
                     case 34:            // Set instance data
                         Action2Param2Combobox.Visible = true;
                         Action2Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
+                        Action2Param2Tbox.Visible = false;
+                        break;
+                    case 36:            // Update template
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.TeamTemplate);
                         Action2Param2Combobox.SelectedIndex = 0;
                         Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
@@ -508,6 +550,19 @@ namespace EventAI_Creator
                         Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
                         Action3Param2Tbox.Visible = false;
                         break;
+                    case 12:            // Summon
+                    case 13:            // Threat single
+                    case 15:            // Quest event
+                    case 32:            // Summon
+                    case 33:            // Killed unit
+                    case 35:            // Set instance data 64
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
+                        Action3Param2Tbox.Visible = false;
+                        break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
                         Action3Param1Combobox.Visible = true;
@@ -520,6 +575,14 @@ namespace EventAI_Creator
                     case 34:            // Set instance data
                         Action3Param2Combobox.Visible = true;
                         Action3Param2Combobox.Items.AddRange(Info.InstanceData);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
+                        Action3Param2Tbox.Visible = false;
+                        break;
+                    case 36:            // Update template
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.TeamTemplate);
                         Action3Param2Combobox.SelectedIndex = 0;
                         Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);

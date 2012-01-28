@@ -47,9 +47,9 @@ namespace EventAI_Creator
         public static string[,] ActionListInfo = new string[,]
         {
 /*00 | 01 */{"NONE","","","","Does nothign"},
-/*01 | 01 */{"TEXT","TextId","TextId","TextId","Says text. Can be random between 2 or 3 params*"},
-/*02 | 01 */{"SET_FACTION","FactionId","TempFactionFlag","","Change the faction of a creature. TempFaction flags can be used. If param 1 is 0 creature will rever to original faction"},
-/*03 | 01 */{"MORPH_TO_MODEL_OR_ENTRY","CreatureEntry","ModelId","","Morph to CreatureEntry (param1) or ModelId (param2). If both are 0 creature will Demorph to the default model"},
+/*01 | 01 */{"TEXT","-TextId","-TextId","-TextId","Simply displays the specified -TextId. When -TextId2 and -TextId3 are specified, the selection will be randomized. Text types are defined, along with other options for the text, in a table below. All values needs to be negative."},
+/*02 | 01 */{"SET_FACTION","FactionId","TempFactionFlag","","Changes faction for a creature. When param1 is zero, creature will revert to it's default faction. Flags will determine when faction is restored to default (evade, respawn etc)"},
+/*03 | 01 */{"MORPH_TO_MODEL_OR_ENTRY","CreatureEntry","ModelId","","Set either model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, demorph and revert to the default model."},
 /*04 | 01 */{"SOUND","SoundId","","","Plays Sound"},
 /*05 | 01 */{"EMOTE","EmoteId","","","Does emote"},
 /*06 | 01 */{"RANDOM_SAY","","","","Not implemented in core"},
@@ -132,7 +132,7 @@ namespace EventAI_Creator
             "SHEATH_RANGED"
         };
 
-        public static string[] Boolean = new string[] {"FALSE", "TRUE" };
+        public static string[] Boolean = new string[] {"FALSE", "TRUE"};
 
         public static string[] InstanceData = new string[]
         {
@@ -161,5 +161,7 @@ namespace EventAI_Creator
             "TEMPFACTION_RESTORE_COMBAT_STOP",
             "TEMPFACTION_RESTORE_REACH_HOME"
         };
+
+        public static string[] TeamTemplate = new string[] {"ALLIANCE", "HORDE"};
     }
 }
