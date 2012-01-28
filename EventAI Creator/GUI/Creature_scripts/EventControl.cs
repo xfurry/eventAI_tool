@@ -361,6 +361,12 @@ namespace EventAI_Creator
                     case 11:            // Cast
                         Action1Param3_button.Visible = true;
                         Action1Param3Tbox.Width = 50;
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
+                        Action1Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
@@ -368,6 +374,7 @@ namespace EventAI_Creator
                         Action1Param1Combobox.Items.AddRange(Info.Boolean);
                         Action1Param1Combobox.SelectedIndex = 0;
                         Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
@@ -375,6 +382,7 @@ namespace EventAI_Creator
                         Action1Param2Combobox.Items.AddRange(Info.InstanceData);
                         Action1Param2Combobox.SelectedIndex = 0;
                         Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
                         Action1Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
@@ -382,6 +390,7 @@ namespace EventAI_Creator
                         Action1Param1Combobox.Items.AddRange(Info.SheathState);
                         Action1Param1Combobox.SelectedIndex = 0;
                         Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
                 }
@@ -412,6 +421,13 @@ namespace EventAI_Creator
                     case 11:            // Cast
                         Action2Param3_button.Visible = true;
                         Action2Param3Tbox.Width = 50;
+
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
+                        Action2Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
@@ -419,6 +435,7 @@ namespace EventAI_Creator
                         Action2Param1Combobox.Items.AddRange(Info.Boolean);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
@@ -426,6 +443,7 @@ namespace EventAI_Creator
                         Action2Param2Combobox.Items.AddRange(Info.InstanceData);
                         Action2Param2Combobox.SelectedIndex = 0;
                         Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
                         Action2Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
@@ -433,6 +451,7 @@ namespace EventAI_Creator
                         Action2Param1Combobox.Items.AddRange(Info.SheathState);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
                         break;
                 }
@@ -463,6 +482,13 @@ namespace EventAI_Creator
                     case 11:            // Cast
                         Action3Param3_button.Visible = true;
                         Action3Param3Tbox.Width = 50;
+
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
+                        Action3Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
@@ -470,6 +496,7 @@ namespace EventAI_Creator
                         Action3Param1Combobox.Items.AddRange(Info.Boolean);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
@@ -477,6 +504,7 @@ namespace EventAI_Creator
                         Action3Param2Combobox.Items.AddRange(Info.InstanceData);
                         Action3Param2Combobox.SelectedIndex = 0;
                         Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
                         Action3Param2Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
@@ -484,6 +512,7 @@ namespace EventAI_Creator
                         Action3Param1Combobox.Items.AddRange(Info.SheathState);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
                 }
@@ -677,6 +706,25 @@ namespace EventAI_Creator
                     Action3Param3Tbox.Text = flag_value.ToString();
                     break;
             }
+        }
+
+        int DropDownWidth(ComboBox myCombo)
+        {
+            int maxWidth = 0;
+            int temp = 0;
+            Label label1 = new Label();
+
+            foreach (var obj in myCombo.Items)
+            {
+                label1.Text = obj.ToString();
+                temp = label1.PreferredWidth;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            label1.Dispose();
+            return maxWidth;
         }
     }
 }
