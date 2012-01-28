@@ -235,5 +235,7 @@ namespace EventAI_Creator
             "PHASE 31",
             "PHASE 32"
         };
+
+        public static string[] InvincibilityTemplate = new string[] { "VALUE", "RATE" };
     }
 }

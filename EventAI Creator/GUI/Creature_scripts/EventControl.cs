@@ -441,6 +441,14 @@ namespace EventAI_Creator
                         Action1Param1_button.Visible = true;
                         Action1Param1Tbox.Width = 50;
                         break;
+                    case 28:            // Remove aura
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.TargetType);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                     case 34:            // Set instance data
                         Action1Param2Combobox.Visible = true;
                         Action1Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -460,6 +468,14 @@ namespace EventAI_Creator
                     case 40:            // Set Sheat
                         Action1Param1Combobox.Visible = true;
                         Action1Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
+                    case 42:            // Set invincibility level
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.InvincibilityTemplate);
                         Action1Param1Combobox.SelectedIndex = 0;
                         Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
@@ -574,6 +590,14 @@ namespace EventAI_Creator
                         Action2Param1_button.Visible = true;
                         Action2Param1Tbox.Width = 50;
                         break;
+                    case 28:            // Remove aura
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.TargetType);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
                     case 34:            // Set instance data
                         Action2Param2Combobox.Visible = true;
                         Action2Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -593,6 +617,14 @@ namespace EventAI_Creator
                     case 40:            // Set Sheat
                         Action2Param1Combobox.Visible = true;
                         Action2Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 42:            // Set invincibility level
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.InvincibilityTemplate);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
@@ -707,6 +739,14 @@ namespace EventAI_Creator
                         Action3Param1_button.Visible = true;
                         Action3Param1Tbox.Width = 50;
                         break;
+                    case 28:            // Remove aura
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.TargetType);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
                     case 34:            // Set instance data
                         Action3Param2Combobox.Visible = true;
                         Action3Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -726,6 +766,14 @@ namespace EventAI_Creator
                     case 40:            // Set Sheat
                         Action3Param1Combobox.Visible = true;
                         Action3Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 42:            // Set invincibility level
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.InvincibilityTemplate);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
