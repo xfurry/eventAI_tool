@@ -549,6 +549,20 @@ namespace EventAI_Creator
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
+                    case 30:            // Random phase
+                        Action1Param1_button.Visible = true;
+                        Action1Param1Tbox.Width = 50;
+                        Action1Param2_button.Visible = true;
+                        Action1Param2Tbox.Width = 50;
+                        Action1Param3_button.Visible = true;
+                        Action1Param3Tbox.Width = 50;
+                        break;
+                    case 31:            // Random phase range
+                        Action1Param1_button.Visible = true;
+                        Action1Param1Tbox.Width = 50;
+                        Action1Param2_button.Visible = true;
+                        Action1Param2Tbox.Width = 50;
+                        break;
                     case 34:            // Set instance data
                         Action1Param2Combobox.Visible = true;
                         Action1Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -697,6 +711,20 @@ namespace EventAI_Creator
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
+                        break;
+                    case 30:            // Random phase
+                        Action2Param1_button.Visible = true;
+                        Action2Param1Tbox.Width = 50;
+                        Action2Param2_button.Visible = true;
+                        Action2Param2Tbox.Width = 50;
+                        Action2Param3_button.Visible = true;
+                        Action2Param3Tbox.Width = 50;
+                        break;
+                    case 31:            // Random phase range
+                        Action2Param1_button.Visible = true;
+                        Action2Param1Tbox.Width = 50;
+                        Action2Param2_button.Visible = true;
+                        Action2Param2Tbox.Width = 50;
                         break;
                     case 34:            // Set instance data
                         Action2Param2Combobox.Visible = true;
@@ -847,6 +875,20 @@ namespace EventAI_Creator
                         Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
+                    case 30:            // Random phase
+                        Action3Param1_button.Visible = true;
+                        Action3Param1Tbox.Width = 50;
+                        Action3Param2_button.Visible = true;
+                        Action3Param2Tbox.Width = 50;
+                        Action3Param3_button.Visible = true;
+                        Action3Param3Tbox.Width = 50;
+                        break;
+                    case 31:            // Random phase range
+                        Action3Param1_button.Visible = true;
+                        Action3Param1Tbox.Width = 50;
+                        Action3Param2_button.Visible = true;
+                        Action3Param2Tbox.Width = 50;
+                        break;
                     case 34:            // Set instance data
                         Action3Param2Combobox.Visible = true;
                         Action3Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -890,19 +932,21 @@ namespace EventAI_Creator
                 {
                     Labl[n].Text = Info.ActionListInfo[Cbox.SelectedIndex, n+1];
                     Tbox[n].Text = "0";
-                    if (Cbox.SelectedIndex == 6 || 7 == Cbox.SelectedIndex || 8 == Cbox.SelectedIndex || 9 == Cbox.SelectedIndex || 10 == Cbox.SelectedIndex || 30 == Cbox.SelectedIndex)
+
+                    if (Cbox.SelectedIndex == 1)
                         Tbox[n].Text = "-1";
+
                     Tbox[n].Enabled = true;
 
-                    switch (Info.ActionListInfo[Cbox.SelectedIndex, n + 1])
-                    {
-                        case "Target":
-                            toolTip.SetToolTip(Tbox[n], "0    TARGET_T_SELF\n1    TARGET_T_HOSTILE \n2    TARGET_T_HOSTILE_SECOND_AGGRO\n3    TARGET_T_HOSTILE_LAST_AGGRO\n4    TARGET_T_HOSTILE_RANDOM\n5    TARGET_T_HOSTILE_RANDOM_NOT_TOP\n6    TARGET_T_ACTION_INVOKER");
-                            break;
-                        case "CastFlags":
-                            toolTip.SetToolTip(Tbox[n], "1 :0       CAST_INTURRUPT_PREVIOUS\n2 :1       CAST_TRIGGERED\n4 :2       CAST_FORCE_CAST\n8 :3       CAST_NO_MELEE_IF_OOM\n16:4       CAST_FORCE_TARGET_SELF");
-                            break;
-                    }
+                    //switch (Info.ActionListInfo[Cbox.SelectedIndex, n + 1])
+                    //{
+                    //    case "Target":
+                    //        toolTip.SetToolTip(Tbox[n], "0    TARGET_T_SELF\n1    TARGET_T_HOSTILE \n2    TARGET_T_HOSTILE_SECOND_AGGRO\n3    TARGET_T_HOSTILE_LAST_AGGRO\n4    TARGET_T_HOSTILE_RANDOM\n5    TARGET_T_HOSTILE_RANDOM_NOT_TOP\n6    TARGET_T_ACTION_INVOKER");
+                    //        break;
+                    //    case "CastFlags":
+                    //        toolTip.SetToolTip(Tbox[n], "1 :0       CAST_INTURRUPT_PREVIOUS\n2 :1       CAST_TRIGGERED\n4 :2       CAST_FORCE_CAST\n8 :3       CAST_NO_MELEE_IF_OOM\n16:4       CAST_FORCE_TARGET_SELF");
+                    //        break;
+                    //}
                 }
                 else
                 {
@@ -1037,18 +1081,33 @@ namespace EventAI_Creator
             dialog.ShowDialog(this);
         }
 
-        // Load cast flags selection
+        // Load param 3 flags
         private void Action1Param3_button_Click(object sender, EventArgs e)
         {
             Button but = (sender as Button);
             EventFlag dialog = null;
 
             if (but == this.Action1Param3_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param3Tbox.Text), Info.CastFlags, 2, 1);
+            {
+                if (Action1TypeCBox.SelectedIndex == 11)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param3Tbox.Text), Info.CastFlags, 2, 1);
+                else if (Action1TypeCBox.SelectedIndex == 22 || Action1TypeCBox.SelectedIndex == 30)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param3Tbox.Text), Info.EventPhases, 2, 1);
+            }
             else if (but == this.Action2Param3_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param3Tbox.Text), Info.CastFlags, 2, 2);
+            {
+                if (Action2TypeCBox.SelectedIndex == 11)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param3Tbox.Text), Info.CastFlags, 2, 2);
+                else if (Action2TypeCBox.SelectedIndex == 22 || Action2TypeCBox.SelectedIndex == 30)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param3Tbox.Text), Info.EventPhases, 2, 2);
+            }
             else if (but == this.Action3Param3_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param3Tbox.Text), Info.CastFlags, 2, 3);
+            {
+                if (Action3TypeCBox.SelectedIndex == 11)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param3Tbox.Text), Info.CastFlags, 2, 3);
+                else if (Action3TypeCBox.SelectedIndex == 22 || Action3TypeCBox.SelectedIndex == 30)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param3Tbox.Text), Info.EventPhases, 2, 3);
+            }
 
             dialog.ShowDialog(this);
         }
@@ -1060,11 +1119,26 @@ namespace EventAI_Creator
             EventFlag dialog = null;
 
             if (but == this.Action1Param2_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param2Tbox.Text), Info.FactionFlag, 3, 1);
+            {
+                if (Action1TypeCBox.SelectedIndex == 2)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param2Tbox.Text), Info.FactionFlag, 3, 1);
+                else if (Action1TypeCBox.SelectedIndex == 22 || Action1TypeCBox.SelectedIndex == 30 || Action1TypeCBox.SelectedIndex == 31)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param2Tbox.Text), Info.EventPhases, 3, 1);
+            }
             else if (but == this.Action2Param2_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param2Tbox.Text), Info.FactionFlag, 3, 2);
+            {
+                if (Action2TypeCBox.SelectedIndex == 2)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param2Tbox.Text), Info.FactionFlag, 3, 2);
+                else if (Action2TypeCBox.SelectedIndex == 22 || Action2TypeCBox.SelectedIndex == 30 || Action2TypeCBox.SelectedIndex == 31)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param2Tbox.Text), Info.EventPhases, 3, 2);
+            }
             else if (but == this.Action3Param2_button)
-                dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param2Tbox.Text), Info.FactionFlag, 3, 3);
+            {
+                if (Action3TypeCBox.SelectedIndex == 2)
+                    dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param2Tbox.Text), Info.FactionFlag, 3, 3);
+                else if (Action3TypeCBox.SelectedIndex == 22 || Action3TypeCBox.SelectedIndex == 30 || Action3TypeCBox.SelectedIndex == 31)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param2Tbox.Text), Info.EventPhases, 3, 3);
+            }
 
             dialog.ShowDialog(this);
         }
@@ -1079,21 +1153,21 @@ namespace EventAI_Creator
             {
                 if (Action1TypeCBox.SelectedIndex == 18 || Action1TypeCBox.SelectedIndex == 19)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.UnitFlags, 4, 1);
-                else if (Action1TypeCBox.SelectedIndex == 22)
+                else if (Action1TypeCBox.SelectedIndex == 22 || Action1TypeCBox.SelectedIndex == 30 || Action1TypeCBox.SelectedIndex == 31)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.EventPhases, 4, 1);
             }
             else if (but == this.Action2Param1_button)
             {
                 if (Action2TypeCBox.SelectedIndex == 18 || Action2TypeCBox.SelectedIndex == 19)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.UnitFlags, 4, 2);
-                else if (Action2TypeCBox.SelectedIndex == 22)
+                else if (Action2TypeCBox.SelectedIndex == 22 || Action2TypeCBox.SelectedIndex == 30 || Action2TypeCBox.SelectedIndex == 31)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.EventPhases, 4, 2);
             }
             else if (but == this.Action3Param1_button)
             {
                 if (Action3TypeCBox.SelectedIndex == 18 || Action3TypeCBox.SelectedIndex == 19)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.UnitFlags, 4, 3);
-                else if (Action3TypeCBox.SelectedIndex == 22)
+                else if (Action3TypeCBox.SelectedIndex == 22 || Action3TypeCBox.SelectedIndex == 30 || Action3TypeCBox.SelectedIndex == 31)
                     dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.EventPhases, 4, 3);
             }
 
@@ -1156,18 +1230,12 @@ namespace EventAI_Creator
             {
                 case 1:
                     Action1Param2Tbox.Text = flag_value.ToString();
-                    if (Action1Param1Tbox.Text == "0" && flag_value != 0)
-                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
                     break;
                 case 2:
                     Action2Param2Tbox.Text = flag_value.ToString();
-                    if (Action2Param1Tbox.Text == "0" && flag_value != 0)
-                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
                     break;
                 case 3:
                     Action3Param2Tbox.Text = flag_value.ToString();
-                    if (Action3Param1Tbox.Text == "0" && flag_value != 0)
-                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
                     break;
             }
         }
