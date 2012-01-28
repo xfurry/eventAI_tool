@@ -47,14 +47,14 @@ namespace EventAI_Creator
         public static string[,] ActionListInfo = new string[,]
         {
 /*00 | 01 */{"NONE","","","","Does nothign"},
-/*01 | 01 */{"SAY","TextId","","","Says text"},
-/*02 | 01 */{"YELL","TextId","","","Yellls text"},
-/*03 | 01 */{"TEXTEMOTE","TextId","","","Text Emotes text"},
+/*01 | 01 */{"TEXT","TextId","TextId","TextId","Says text. Can be random between 2 or 3 params*"},
+/*02 | 01 */{"SET_FACTION","FactionId","TempFactionFlag","","Change the faction of a creature. TempFaction flags can be used. If param 1 is 0 creature will rever to original faction"},
+/*03 | 01 */{"MORPH_TO_MODEL_OR_ENTRY","CreatureEntry","ModelId","","Morph to CreatureEntry (param1) or ModelId (param2). If both are 0 creature will Demorph to the default model"},
 /*04 | 01 */{"SOUND","SoundId","","","Plays Sound"},
 /*05 | 01 */{"EMOTE","EmoteId","","","Does emote"},
-/*06 | 01 */{"RANDOM_SAY","TextId1","TextId2","TextId3","Says random text between 3 params*"},
-/*07 | 01 */{"RANDOM_YELL","TextId1","TextId2","TextId3","Yells random text between 3 params*"},
-/*08 | 01 */{"RANDOM_TEXTEMOTE","TextId1","TextId2","TextId3","Text Emotes random text between 3 params*"},
+/*06 | 01 */{"RANDOM_SAY","","","","Not implemented in core"},
+/*07 | 01 */{"RANDOM_YELL","","","","Not implemented in core"},
+/*08 | 01 */{"RANDOM_TEXTEMOTE","","","","Not implemented in core"},
 /*09 | 01 */{"RANDOM_SOUND","SoundId1","SoundId2","SoundId3","Plays random sound between 3 params*"},
 /*10 | 01 */{"RANDOM_EMOTE","EmoteId1","EmoteId2","EmoteId3","Emotes random emote between 3 params"},
 /*11 | 01 */{"CAST","SpellId","Target","CastFlags","Casts spell (param1) on target type (param2). Uses Cast Flags (specified below target types)"},
@@ -152,6 +152,14 @@ namespace EventAI_Creator
             "HOSTILE_RANDOM",
             "HOSTILE_RANDOM_NOT_TOP",
             "ACTION_INVOKER"
+        };
+
+        public static string[] FactionFlag = new string[]
+        {
+        //  "TEMPFACTION_NONE",
+            "TEMPFACTION_RESTORE_RESPAWN",
+            "TEMPFACTION_RESTORE_COMBAT_STOP",
+            "TEMPFACTION_RESTORE_REACH_HOME"
         };
     }
 }

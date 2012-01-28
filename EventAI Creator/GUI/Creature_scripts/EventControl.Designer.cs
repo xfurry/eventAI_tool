@@ -121,6 +121,9 @@
             this.Action1Param2Combobox = new System.Windows.Forms.ComboBox();
             this.Action2Param2Combobox = new System.Windows.Forms.ComboBox();
             this.Action3Param2Combobox = new System.Windows.Forms.ComboBox();
+            this.Action1Param2_button = new System.Windows.Forms.Button();
+            this.Action2Param2_button = new System.Windows.Forms.Button();
+            this.Action3Param2_button = new System.Windows.Forms.Button();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -333,6 +336,7 @@
             // 
             // groupBoxAction1
             // 
+            this.groupBoxAction1.Controls.Add(this.Action1Param2_button);
             this.groupBoxAction1.Controls.Add(this.Action1Param2Combobox);
             this.groupBoxAction1.Controls.Add(this.Action1Param3_button);
             this.groupBoxAction1.Controls.Add(this.Action1Param1Combobox);
@@ -432,6 +436,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Action2Param2_button);
             this.groupBox1.Controls.Add(this.Action2Param2Combobox);
             this.groupBox1.Controls.Add(this.Action2Param3_button);
             this.groupBox1.Controls.Add(this.Action2Param1Combobox);
@@ -531,6 +536,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Action3Param2_button);
             this.groupBox2.Controls.Add(this.Action3Param2Combobox);
             this.groupBox2.Controls.Add(this.Action3Param3_button);
             this.groupBox2.Controls.Add(this.Action3Param1Combobox);
@@ -1146,6 +1152,37 @@
             this.Action3Param2Combobox.Visible = false;
             this.Action3Param2Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param2Combobox_SelectedIndexChanged);
             // 
+            // Action1Param2_button
+            // 
+            this.Action1Param2_button.Location = new System.Drawing.Point(340, 22);
+            this.Action1Param2_button.Name = "Action1Param2_button";
+            this.Action1Param2_button.Size = new System.Drawing.Size(50, 20);
+            this.Action1Param2_button.TabIndex = 27;
+            this.Action1Param2_button.Text = "Select";
+            this.Action1Param2_button.UseVisualStyleBackColor = true;
+            this.Action1Param2_button.Visible = false;
+            this.Action1Param2_button.Click += new System.EventHandler(this.Action1Param2_button_Click);
+            // 
+            // Action2Param2_button
+            // 
+            this.Action2Param2_button.Location = new System.Drawing.Point(340, 22);
+            this.Action2Param2_button.Name = "Action2Param2_button";
+            this.Action2Param2_button.Size = new System.Drawing.Size(50, 20);
+            this.Action2Param2_button.TabIndex = 69;
+            this.Action2Param2_button.Text = "Select";
+            this.Action2Param2_button.UseVisualStyleBackColor = true;
+            this.Action2Param2_button.Visible = false;
+            // 
+            // Action3Param2_button
+            // 
+            this.Action3Param2_button.Location = new System.Drawing.Point(340, 22);
+            this.Action3Param2_button.Name = "Action3Param2_button";
+            this.Action3Param2_button.Size = new System.Drawing.Size(50, 20);
+            this.Action3Param2_button.TabIndex = 27;
+            this.Action3Param2_button.Text = "Select";
+            this.Action3Param2_button.UseVisualStyleBackColor = true;
+            this.Action3Param2_button.Visible = false;
+            // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1303,5 +1340,8 @@
         private System.Windows.Forms.ComboBox Action1Param2Combobox;
         private System.Windows.Forms.ComboBox Action2Param2Combobox;
         private System.Windows.Forms.ComboBox Action3Param2Combobox;
+        private System.Windows.Forms.Button Action1Param2_button;
+        private System.Windows.Forms.Button Action2Param2_button;
+        private System.Windows.Forms.Button Action3Param2_button;
     }
 }

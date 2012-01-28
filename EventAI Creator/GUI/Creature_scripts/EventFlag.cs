@@ -57,6 +57,9 @@ namespace EventAI_Creator
                 case 2:
                     parent.set_cast_flag(flag_value, action);
                     break;
+                case 3:
+                    parent.set_param2_flag(flag_value, action);
+                    break;
             }
 
             this.Close();

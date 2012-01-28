@@ -347,6 +347,8 @@ namespace EventAI_Creator
                 // reset cast
                 Action1Param3_button.Visible = false;
                 Action1Param3Tbox.Width = 100;
+                Action1Param2_button.Visible = false;
+                Action1Param2Tbox.Width = 100;
                 // reset combo box 1
                 Action1Param1Combobox.Visible = false;
                 Action1Param1Combobox.Items.Clear();
@@ -358,6 +360,10 @@ namespace EventAI_Creator
 
                 switch (Cbox.SelectedIndex)
                 {
+                    case 2:             // Set faction
+                        Action1Param2_button.Visible = true;
+                        Action1Param2Tbox.Width = 50;
+                        break;
                     case 11:            // Cast
                         Action1Param3_button.Visible = true;
                         Action1Param3Tbox.Width = 50;
@@ -407,6 +413,8 @@ namespace EventAI_Creator
                 // reset cast
                 Action2Param3_button.Visible = false;
                 Action2Param3Tbox.Width = 100;
+                Action2Param2_button.Visible = false;
+                Action2Param2Tbox.Width = 100;
                 // reset combo box 1
                 Action2Param1Combobox.Visible = false;
                 Action2Param1Combobox.Items.Clear();
@@ -418,6 +426,10 @@ namespace EventAI_Creator
 
                 switch (Cbox.SelectedIndex)
                 {
+                    case 2:             // Set faction
+                        Action2Param2_button.Visible = true;
+                        Action2Param2Tbox.Width = 50;
+                        break;
                     case 11:            // Cast
                         Action2Param3_button.Visible = true;
                         Action2Param3Tbox.Width = 50;
@@ -468,6 +480,8 @@ namespace EventAI_Creator
                 // reset cast
                 Action3Param3_button.Visible = false;
                 Action3Param3Tbox.Width = 100;
+                Action3Param2_button.Visible = false;
+                Action3Param2Tbox.Width = 100;
                 // reset combo box 1
                 Action3Param1Combobox.Visible = false;
                 Action3Param1Combobox.Items.Clear();
@@ -479,6 +493,10 @@ namespace EventAI_Creator
 
                 switch (Cbox.SelectedIndex)
                 {
+                    case 2:             // Set faction
+                        Action3Param2_button.Visible = true;
+                        Action3Param2Tbox.Width = 50;
+                        break;
                     case 11:            // Cast
                         Action3Param3_button.Visible = true;
                         Action3Param3Tbox.Width = 50;
@@ -676,6 +694,22 @@ namespace EventAI_Creator
             dialog.ShowDialog(this);
         }
 
+        // Load param 2 flags
+        private void Action1Param2_button_Click(object sender, EventArgs e)
+        {
+            Button but = (sender as Button);
+            EventFlag dialog = null;
+
+            if (but == this.Action1Param2_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action1Param2Tbox.Text), Info.FactionFlag, 3, 1);
+            else if (but == this.Action2Param2_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action2Param2Tbox.Text), Info.FactionFlag, 3, 2);
+            else if (but == this.Action3Param2_button)
+                dialog = new EventFlag(this, Convert.ToInt32(this.Action3Param2Tbox.Text), Info.FactionFlag, 3, 3);
+
+            dialog.ShowDialog(this);
+        }
+
         // Set event flags
         public void set_event_flags(int flag_value)
         {
@@ -704,6 +738,29 @@ namespace EventAI_Creator
                     break;
                 case 3:
                     Action3Param3Tbox.Text = flag_value.ToString();
+                    break;
+            }
+        }
+
+        // Set param 2 flag
+        public void set_param2_flag(int flag_value, int action)
+        {
+            switch (action)
+            {
+                case 1:
+                    Action1Param2Tbox.Text = flag_value.ToString();
+                    if (Action1Param1Tbox.Text == "0" && flag_value != 0)
+                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
+                    break;
+                case 2:
+                    Action2Param2Tbox.Text = flag_value.ToString();
+                    if (Action2Param1Tbox.Text == "0" && flag_value != 0)
+                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
+                    break;
+                case 3:
+                    Action3Param2Tbox.Text = flag_value.ToString();
+                    if (Action3Param1Tbox.Text == "0" && flag_value != 0)
+                        MessageBox.Show("You didn't define a FactionId for the current action. Please set a FactionId or remove the TempFactionFlags!");
                     break;
             }
         }
