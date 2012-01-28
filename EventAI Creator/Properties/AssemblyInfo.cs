@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
 [assembly: AssemblyTitle("EventAI Creator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("EventAI development tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TOSHIBA")]
+[assembly: AssemblyCompany("MaNGOS")]
 [assembly: AssemblyProduct("EventAI Creator")]
-[assembly: AssemblyCopyright("Copyright © TOSHIBA 2008")]
+[assembly: AssemblyCopyright("Copyright © MaNGOS 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
