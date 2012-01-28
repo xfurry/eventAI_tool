@@ -437,6 +437,10 @@ namespace EventAI_Creator
                         Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
                         Action1Param2Tbox.Visible = false;
                         break;
+                    case 22:            // Set phase
+                        Action1Param1_button.Visible = true;
+                        Action1Param1Tbox.Width = 50;
+                        break;
                     case 34:            // Set instance data
                         Action1Param2Combobox.Visible = true;
                         Action1Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -566,6 +570,10 @@ namespace EventAI_Creator
                         Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
                         Action2Param2Tbox.Visible = false;
                         break;
+                    case 22:            // Set phase
+                        Action2Param1_button.Visible = true;
+                        Action2Param1Tbox.Width = 50;
+                        break;
                     case 34:            // Set instance data
                         Action2Param2Combobox.Visible = true;
                         Action2Param2Combobox.Items.AddRange(Info.InstanceData);
@@ -694,6 +702,10 @@ namespace EventAI_Creator
                         Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
                         Action3Param2Tbox.Visible = false;
+                        break;
+                    case 22:            // Set phase
+                        Action3Param1_button.Visible = true;
+                        Action3Param1Tbox.Width = 50;
                         break;
                     case 34:            // Set instance data
                         Action3Param2Combobox.Visible = true;
@@ -916,11 +928,26 @@ namespace EventAI_Creator
             EventFlag dialog = null;
 
             if (but == this.Action1Param1_button)
-                dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.UnitFlags, 4, 1);
+            {
+                if (Action1TypeCBox.SelectedIndex == 18 || Action1TypeCBox.SelectedIndex == 19)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.UnitFlags, 4, 1);
+                else if (Action1TypeCBox.SelectedIndex == 22)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.EventPhases, 4, 1);
+            }
             else if (but == this.Action2Param1_button)
-                dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.UnitFlags, 4, 2);
+            {
+                if (Action2TypeCBox.SelectedIndex == 18 || Action2TypeCBox.SelectedIndex == 19)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.UnitFlags, 4, 2);
+                else if (Action2TypeCBox.SelectedIndex == 22)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.EventPhases, 4, 2);
+            }
             else if (but == this.Action3Param1_button)
-                dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.UnitFlags, 4, 3);
+            {
+                if (Action3TypeCBox.SelectedIndex == 18 || Action3TypeCBox.SelectedIndex == 19)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.UnitFlags, 4, 3);
+                else if (Action3TypeCBox.SelectedIndex == 22)
+                    dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.EventPhases, 4, 3);
+            }
 
             dialog.ShowDialog(this);
         }

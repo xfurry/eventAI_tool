@@ -199,5 +199,41 @@ namespace EventAI_Creator
             "UNIT_FLAG_SHEATHE",
             "UNIT_FLAG_UNK_31"
         };
+
+        public static string[] EventPhases = new string[]
+        {
+            "PHASE 1",
+            "PHASE 2",
+            "PHASE 3",
+            "PHASE 4",
+            "PHASE 5",
+            "PHASE 6",
+            "PHASE 7",
+            "PHASE 8",
+            "PHASE 9",
+            "PHASE 10",
+            "PHASE 11",
+            "PHASE 12",
+            "PHASE 13",
+            "PHASE 14",
+            "PHASE 15",
+            "PHASE 16",
+            "PHASE 17",
+            "PHASE 18",
+            "PHASE 19",
+            "PHASE 20",
+            "PHASE 21",
+            "PHASE 22",
+            "PHASE 23",
+            "PHASE 24",
+            "PHASE 25",
+            "PHASE 26",
+            "PHASE 27",
+            "PHASE 28",
+            "PHASE 29",
+            "PHASE 30",
+            "PHASE 31",
+            "PHASE 32"
+        };
     }
 }

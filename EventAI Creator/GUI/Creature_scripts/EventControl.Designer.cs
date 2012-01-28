@@ -537,6 +537,7 @@
             this.Action2Param1_button.TabIndex = 70;
             this.Action2Param1_button.Text = "Select";
             this.Action2Param1_button.UseVisualStyleBackColor = true;
+            this.Action2Param1_button.Click += new System.EventHandler(this.Action1Param1_button_Click);
             // 
             // Action2Param2_button
             // 
@@ -547,6 +548,7 @@
             this.Action2Param2_button.Text = "Select";
             this.Action2Param2_button.UseVisualStyleBackColor = true;
             this.Action2Param2_button.Visible = false;
+            this.Action2Param2_button.Click += new System.EventHandler(this.Action1Param2_button_Click);
             // 
             // Action2Param2Combobox
             // 
@@ -690,6 +692,7 @@
             this.Action3Param1_button.Text = "Select";
             this.Action3Param1_button.UseVisualStyleBackColor = true;
             this.Action3Param1_button.Visible = false;
+            this.Action3Param1_button.Click += new System.EventHandler(this.Action1Param1_button_Click);
             // 
             // Action3Param2_button
             // 
@@ -700,6 +703,7 @@
             this.Action3Param2_button.Text = "Select";
             this.Action3Param2_button.UseVisualStyleBackColor = true;
             this.Action3Param2_button.Visible = false;
+            this.Action3Param2_button.Click += new System.EventHandler(this.Action1Param2_button_Click);
             // 
             // Action3Param2Combobox
             // 
