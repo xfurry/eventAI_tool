@@ -344,17 +344,27 @@ namespace EventAI_Creator
                 Tbox[1] = this.Action1Param2Tbox;
                 Tbox[2] = this.Action1Param3Tbox;
 
-                // Costumize controls
-                // Cast action
-                if (Cbox.SelectedIndex == 11)
+                // reset cast
+                Action1Param3_button.Visible = false;
+                Action1Param3Tbox.Width = 89;
+                // reset sheat
+                Action1Param1Combobox.Visible = false;
+                Action1Param1Combobox.Items.Clear();
+                Action1Param1Tbox.Visible = true;
+
+                switch (Cbox.SelectedIndex)
                 {
-                    Action1Param3_button.Visible = true;
-                    Action1Param3Tbox.Width = 45;
-                }
-                else
-                {
-                    Action1Param3_button.Visible = false;
-                    Action1Param3Tbox.Width = 89;
+                    case 11:            // Cast
+                        Action1Param3_button.Visible = true;
+                        Action1Param3Tbox.Width = 45;
+                        break;
+                    case 40:            // Set Sheat
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Tbox.Visible = false;
+                        break;
                 }
             }
             if (Cbox == this.Action2TypeCBox)
@@ -366,17 +376,27 @@ namespace EventAI_Creator
                 Tbox[1] = this.Action2Param2Tbox;
                 Tbox[2] = this.Action2Param3Tbox;
 
-                // Costumize controls
-                // Cast action
-                if (Cbox.SelectedIndex == 11)
+                // reset cast
+                Action2Param3_button.Visible = false;
+                Action2Param3Tbox.Width = 89;
+                // reset sheat
+                Action2Param1Combobox.Visible = false;
+                Action2Param1Combobox.Items.Clear();
+                Action2Param1Tbox.Visible = true;
+
+                switch (Cbox.SelectedIndex)
                 {
-                    Action2Param3_button.Visible = true;
-                    Action2Param3Tbox.Width = 45;
-                }
-                else
-                {
-                    Action2Param3_button.Visible = false;
-                    Action2Param3Tbox.Width = 89;
+                    case 11:            // Cast
+                        Action2Param3_button.Visible = true;
+                        Action2Param3Tbox.Width = 45;
+                        break;
+                    case 40:            // Set Sheat
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Tbox.Visible = false;
+                        break;
                 }
             }
             if (Cbox == this.Action3TypeCBox)
@@ -388,17 +408,27 @@ namespace EventAI_Creator
                 Tbox[1] = this.Action3Param2Tbox;
                 Tbox[2] = this.Action3Param3Tbox;
 
-                // Costumize controls
-                // Cast action
-                if (Cbox.SelectedIndex == 11)
+                // reset cast
+                Action3Param3_button.Visible = false;
+                Action3Param3Tbox.Width = 89;
+                // reset sheat
+                Action3Param1Combobox.Visible = false;
+                Action3Param1Combobox.Items.Clear();
+                Action3Param1Tbox.Visible = true;
+
+                switch (Cbox.SelectedIndex)
                 {
-                    Action3Param3_button.Visible = true;
-                    Action3Param3Tbox.Width = 45;
-                }
-                else
-                {
-                    Action3Param3_button.Visible = false;
-                    Action3Param3Tbox.Width = 89;
+                    case 11:            // Cast
+                        Action3Param3_button.Visible = true;
+                        Action3Param3Tbox.Width = 45;
+                        break;
+                    case 40:            // Set Sheat
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.SheathState);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Tbox.Visible = false;
+                        break;
                 }
             }
 
@@ -504,18 +534,34 @@ namespace EventAI_Creator
             }
         }
 
+        // Set combo box 1 value
+        private void Action1Param1Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = (sender as ComboBox);
+
+            if (box == this.Action1Param1Combobox)
+                Action1Param1Tbox.Text = Action1Param1Combobox.SelectedIndex.ToString();
+            else if (box == this.Action2Param1Combobox)
+                Action2Param1Tbox.Text = Action2Param1Combobox.SelectedIndex.ToString();
+            else if (box == this.Action1Param1Combobox)
+                Action3Param1Tbox.Text = Action3Param1Combobox.SelectedIndex.ToString();
+        }
+
+        // Load event flags selection
         private void button_flag_select_Click(object sender, EventArgs e)
         {
             EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), Info.EventFlags, 0);
             dialog.ShowDialog(this);
         }
 
+        // Load spell mask selection
         private void button_spell_mask_Click(object sender, EventArgs e)
         {
             EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), Info.SpellSchoolMask, 1);
             dialog.ShowDialog(this);
         }
 
+        // Load cast flags selection
         private void Action1Param3_button_Click(object sender, EventArgs e)
         {
             Button but = (sender as Button);

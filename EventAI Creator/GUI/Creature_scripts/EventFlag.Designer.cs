@@ -34,7 +34,7 @@
             // 
             // button_flag_ok
             // 
-            this.button_flag_ok.Location = new System.Drawing.Point(238, 158);
+            this.button_flag_ok.Location = new System.Drawing.Point(80, 158);
             this.button_flag_ok.Name = "button_flag_ok";
             this.button_flag_ok.Size = new System.Drawing.Size(75, 23);
             this.button_flag_ok.TabIndex = 0;
@@ -48,18 +48,19 @@
             this.checkedListBox_flags.FormattingEnabled = true;
             this.checkedListBox_flags.Location = new System.Drawing.Point(13, 12);
             this.checkedListBox_flags.Name = "checkedListBox_flags";
-            this.checkedListBox_flags.Size = new System.Drawing.Size(525, 139);
+            this.checkedListBox_flags.Size = new System.Drawing.Size(209, 139);
             this.checkedListBox_flags.TabIndex = 1;
             // 
             // EventFlag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 193);
+            this.ClientSize = new System.Drawing.Size(234, 193);
             this.Controls.Add(this.checkedListBox_flags);
             this.Controls.Add(this.button_flag_ok);
             this.Name = "EventFlag";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Event Flag Selection";
             this.ResumeLayout(false);
 

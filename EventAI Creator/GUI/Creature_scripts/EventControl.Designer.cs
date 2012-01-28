@@ -1055,6 +1055,7 @@
             this.Action1Param1Combobox.Size = new System.Drawing.Size(104, 21);
             this.Action1Param1Combobox.TabIndex = 24;
             this.Action1Param1Combobox.Visible = false;
+            this.Action1Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
             // 
             // Action2Param1Combobox
             // 
@@ -1064,6 +1065,7 @@
             this.Action2Param1Combobox.Size = new System.Drawing.Size(104, 21);
             this.Action2Param1Combobox.TabIndex = 24;
             this.Action2Param1Combobox.Visible = false;
+            this.Action2Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
             // 
             // Action3Param1Combobox
             // 
@@ -1073,6 +1075,7 @@
             this.Action3Param1Combobox.Size = new System.Drawing.Size(104, 21);
             this.Action3Param1Combobox.TabIndex = 24;
             this.Action3Param1Combobox.Visible = false;
+            this.Action3Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
             // 
             // Action1Param3_button
             // 
@@ -1094,6 +1097,7 @@
             this.Action2Param3_button.Text = "Select";
             this.Action2Param3_button.UseVisualStyleBackColor = true;
             this.Action2Param3_button.Visible = false;
+            this.Action2Param3_button.Click += new System.EventHandler(this.Action1Param3_button_Click);
             // 
             // Action3Param3_button
             // 
@@ -1104,6 +1108,7 @@
             this.Action3Param3_button.Text = "Select";
             this.Action3Param3_button.UseVisualStyleBackColor = true;
             this.Action3Param3_button.Visible = false;
+            this.Action3Param3_button.Click += new System.EventHandler(this.Action1Param3_button_Click);
             // 
             // EventControl
             // 

@@ -34,13 +34,17 @@
             this.saveToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sQLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllNPCsToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sQLToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.setInCreaturetemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.new_event_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveAll_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,15 +55,11 @@
             this.delete_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.new_event_toolstrip_button = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.queryWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,16 +97,23 @@
             // databaseToolStripMenuItem
             // 
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
-            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.databaseToolStripMenuItem.Text = "Database";
             this.databaseToolStripMenuItem.Click += new System.EventHandler(this.databaseToolStripMenuItem_Click);
             // 
             // sQLFileToolStripMenuItem
             // 
             this.sQLFileToolStripMenuItem.Name = "sQLFileToolStripMenuItem";
-            this.sQLFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sQLFileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.sQLFileToolStripMenuItem.Text = "SQL File";
             this.sQLFileToolStripMenuItem.Click += new System.EventHandler(this.sQLFileToolStripMenuItem_Click);
+            // 
+            // queryWindowToolStripMenuItem
+            // 
+            this.queryWindowToolStripMenuItem.Name = "queryWindowToolStripMenuItem";
+            this.queryWindowToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.queryWindowToolStripMenuItem.Text = "Query Window";
+            this.queryWindowToolStripMenuItem.Click += new System.EventHandler(this.queryWindowToolStripMenuItem_Click);
             // 
             // saveAllNPCsToToolStripMenuItem
             // 
@@ -120,19 +127,20 @@
             // databaseToolStripMenuItem1
             // 
             this.databaseToolStripMenuItem1.Name = "databaseToolStripMenuItem1";
-            this.databaseToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.databaseToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.databaseToolStripMenuItem1.Text = "Database";
             this.databaseToolStripMenuItem1.Click += new System.EventHandler(this.databaseToolStripMenuItem1_Click);
             // 
             // sQLToolStripMenuItem1
             // 
             this.sQLToolStripMenuItem1.Name = "sQLToolStripMenuItem1";
-            this.sQLToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.sQLToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.sQLToolStripMenuItem1.Text = "SQL";
             this.sQLToolStripMenuItem1.Click += new System.EventHandler(this.sQLToolStripMenuItem1_Click);
             // 
             // setInCreaturetemplateToolStripMenuItem
             // 
+            this.setInCreaturetemplateToolStripMenuItem.Enabled = false;
             this.setInCreaturetemplateToolStripMenuItem.Name = "setInCreaturetemplateToolStripMenuItem";
             this.setInCreaturetemplateToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             this.setInCreaturetemplateToolStripMenuItem.Text = "Remove Scriptname";
@@ -147,6 +155,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 600);
             this.panel1.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Size = new System.Drawing.Size(733, 600);
+            this.splitContainer1.SplitterDistance = 25;
+            this.splitContainer1.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -171,6 +197,21 @@
             this.toolStrip1.Size = new System.Drawing.Size(733, 25);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // new_event_toolstrip_button
+            // 
+            this.new_event_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.new_event_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("new_event_toolstrip_button.Image")));
+            this.new_event_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.new_event_toolstrip_button.Name = "new_event_toolstrip_button";
+            this.new_event_toolstrip_button.Size = new System.Drawing.Size(23, 22);
+            this.new_event_toolstrip_button.Text = "New Event";
+            this.new_event_toolstrip_button.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // saveToolStripButton
             // 
@@ -257,46 +298,6 @@
             this.helpToolStripButton.Text = "He&lp";
             this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
-            // new_event_toolstrip_button
-            // 
-            this.new_event_toolstrip_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.new_event_toolstrip_button.Image = ((System.Drawing.Image)(resources.GetObject("new_event_toolstrip_button.Image")));
-            this.new_event_toolstrip_button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.new_event_toolstrip_button.Name = "new_event_toolstrip_button";
-            this.new_event_toolstrip_button.Size = new System.Drawing.Size(23, 22);
-            this.new_event_toolstrip_button.Text = "New Event";
-            this.new_event_toolstrip_button.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // queryWindowToolStripMenuItem
-            // 
-            this.queryWindowToolStripMenuItem.Name = "queryWindowToolStripMenuItem";
-            this.queryWindowToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.queryWindowToolStripMenuItem.Text = "Query Window";
-            this.queryWindowToolStripMenuItem.Click += new System.EventHandler(this.queryWindowToolStripMenuItem_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Size = new System.Drawing.Size(733, 600);
-            this.splitContainer1.SplitterDistance = 25;
-            this.splitContainer1.TabIndex = 0;
-            // 
             // NPCEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,11 +315,11 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -124,5 +124,12 @@ namespace EventAI_Creator
             "CAST_FORCE_TARGET_SELF",
             "CAST_AURA_NOT_PRESENT"
         };
+
+        public static string[] SheathState = new string[]
+        {
+            "SHEATH_UNARMED",
+            "SHEATH_MELEE",
+            "SHEATH_RANGED"
+        };
     }
 }
