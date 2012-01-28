@@ -12,8 +12,8 @@
     <AssemblyName>EventAI Creator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ManifestCertificateThumbprint>A5E97AFBF23D1A60AC5F4F94B84148C2B0EAE33E</ManifestCertificateThumbprint>
-    <ManifestKeyFile>EventAI Creator_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>FD1697F7E103C8D68343A0238C783FF0D16B965B</ManifestCertificateThumbprint>
+    <ManifestKeyFile>EventAI Creator_1_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -22,7 +22,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <PublishUrl>C:\kit\mangos\eaI_creator\new\</PublishUrl>
+    <PublishUrl>D:\Dev_tools\EventAI\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -207,6 +207,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="EventAI Creator_1_TemporaryKey.pfx" />
     <None Include="EventAI Creator_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\creatures.datasource" />
     <None Include="Properties\DataSources\Info.datasource" />
