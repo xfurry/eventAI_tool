@@ -163,5 +163,41 @@ namespace EventAI_Creator
         };
 
         public static string[] TeamTemplate = new string[] {"ALLIANCE", "HORDE"};
+
+        public static string[] UnitFlags = new string[]
+        {
+            "UNIT_FLAG_UNK_0",
+            "UNIT_FLAG_NON_ATTACKABLE",
+            "UNIT_FLAG_DISABLE_MOVE",
+            "UNIT_FLAG_PVP_ATTACKABLE",
+            "UNIT_FLAG_RENAME",
+            "UNIT_FLAG_PREPARATION",
+            "UNIT_FLAG_UNK_6",
+            "UNIT_FLAG_NOT_ATTACKABLE_1",
+            "UNIT_FLAG_OOC_NOT_ATTACKABLE",
+            "UNIT_FLAG_PASSIVE",
+            "UNIT_FLAG_LOOTING",
+            "UNIT_FLAG_PET_IN_COMBAT",
+            "UNIT_FLAG_PVP",
+            "UNIT_FLAG_SILENCED",
+            "UNIT_FLAG_UNK_14",
+            "UNIT_FLAG_UNK_15",
+            "UNIT_FLAG_UNK_16",
+            "UNIT_FLAG_PACIFIED",
+            "UNIT_FLAG_STUNNED",
+            "UNIT_FLAG_IN_COMBAT",
+            "UNIT_FLAG_TAXI_FLIGHT",
+            "UNIT_FLAG_DISARMED",
+            "UNIT_FLAG_CONFUSED",
+            "UNIT_FLAG_FLEEING",
+            "UNIT_FLAG_PLAYER_CONTROLLED",
+            "UNIT_FLAG_NOT_SELECTABLE",
+            "UNIT_FLAG_SKINNABLE",
+            "UNIT_FLAG_MOUNT",
+            "UNIT_FLAG_UNK_28",
+            "UNIT_FLAG_UNK_29",
+            "UNIT_FLAG_SHEATHE",
+            "UNIT_FLAG_UNK_31"
+        };
     }
 }

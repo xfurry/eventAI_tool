@@ -29,17 +29,17 @@ namespace EventAI_Creator
         public int event_param4;
 
         public int action1_type;
-        public int action1_param1;
+        public Int64 action1_param1;
         public int action1_param2;
         public int action1_param3;
 
         public int action2_type;
-        public int action2_param1;
+        public Int64 action2_param1;
         public int action2_param2;
         public int action2_param3;
 
         public int action3_type;
-        public int action3_param1;
+        public Int64 action3_param1;
         public int action3_param2;
         public int action3_param3;
 

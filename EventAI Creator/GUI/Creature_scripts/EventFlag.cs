@@ -15,7 +15,7 @@ namespace EventAI_Creator
         private int flagType = 0;
         private int action = 0;
 
-        public EventFlag(EventControl control, int flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action = 0)
+        public EventFlag(EventControl control, Int64 flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action = 0)
         {
             InitializeComponent();
 
@@ -31,20 +31,20 @@ namespace EventAI_Creator
             // Check only the lists for the given event mask
             for (int i = checkedListBox_flags.Items.Count; i >= 0; i--)
             {
-                if (Convert.ToInt32(Math.Pow(2, i)) <= flag_value)
+                if (Convert.ToInt64(Math.Pow(2, i)) <= flag_value)
                 {
                     checkedListBox_flags.SetItemChecked(i, true);
-                    flag_value -= Convert.ToInt32(Math.Pow(2, i));
+                    flag_value -= Convert.ToInt64(Math.Pow(2, i));
                 }
             }
         }
 
         private void button_flag_ok_Click(object sender, EventArgs e)
         {
-            int flag_value = 0;
+            Int64 flag_value = 0;
 
             foreach (int indexChecked in checkedListBox_flags.CheckedIndices)
-                flag_value += Convert.ToInt32(Math.Pow(2, indexChecked));
+                flag_value += Convert.ToInt64(Math.Pow(2, indexChecked));
 
             switch (flagType)
             {
@@ -59,6 +59,9 @@ namespace EventAI_Creator
                     break;
                 case 3:
                     parent.set_param2_flag(flag_value, action);
+                    break;
+                case 4:
+                    parent.set_unit_flag(flag_value, action);
                     break;
             }
 

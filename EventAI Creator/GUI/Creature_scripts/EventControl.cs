@@ -197,17 +197,17 @@ namespace EventAI_Creator
                 Event_dataset Data = new Event_dataset();
 
                 Data.action1_type = this.Action1TypeCBox.SelectedIndex;
-                if (Action1Param1Tbox.Text.Length != 0 && Action1Param1Tbox.Text != "-") Data.action1_param1 = System.Convert.ToInt32(this.Action1Param1Tbox.Text);
+                if (Action1Param1Tbox.Text.Length != 0 && Action1Param1Tbox.Text != "-") Data.action1_param1 = System.Convert.ToInt64(this.Action1Param1Tbox.Text);
                 if (Action1Param2Tbox.Text.Length != 0 && Action1Param2Tbox.Text != "-") Data.action1_param2 = System.Convert.ToInt32(this.Action1Param2Tbox.Text);
                 if (Action1Param3Tbox.Text.Length != 0 && Action1Param3Tbox.Text != "-") Data.action1_param3 = System.Convert.ToInt32(this.Action1Param3Tbox.Text);
 
                 Data.action2_type = this.Action2TypeCBox.SelectedIndex;
-                if (Action2Param1Tbox.Text.Length != 0 && Action2Param1Tbox.Text != "-") Data.action2_param1 = System.Convert.ToInt32(this.Action2Param1Tbox.Text);
+                if (Action2Param1Tbox.Text.Length != 0 && Action2Param1Tbox.Text != "-") Data.action2_param1 = System.Convert.ToInt64(this.Action2Param1Tbox.Text);
                 if (Action2Param2Tbox.Text.Length != 0 && Action2Param2Tbox.Text != "-") Data.action2_param2 = System.Convert.ToInt32(this.Action2Param2Tbox.Text);
                 if (Action2Param3Tbox.Text.Length != 0 && Action2Param3Tbox.Text != "-") Data.action2_param3 = System.Convert.ToInt32(this.Action2Param3Tbox.Text);
 
                 Data.action3_type = this.Action3TypeCBox.SelectedIndex;
-                if (Action3Param1Tbox.Text.Length != 0 && Action3Param1Tbox.Text != "-") Data.action3_param1 = System.Convert.ToInt32(this.Action3Param1Tbox.Text);
+                if (Action3Param1Tbox.Text.Length != 0 && Action3Param1Tbox.Text != "-") Data.action3_param1 = System.Convert.ToInt64(this.Action3Param1Tbox.Text);
                 if (Action3Param2Tbox.Text.Length != 0 && Action3Param2Tbox.Text != "-") Data.action3_param2 = System.Convert.ToInt32(this.Action3Param2Tbox.Text);
                 if (Action3Param3Tbox.Text.Length != 0 && Action3Param3Tbox.Text != "-") Data.action3_param3 = System.Convert.ToInt32(this.Action3Param3Tbox.Text);
 
@@ -349,6 +349,8 @@ namespace EventAI_Creator
                 Action1Param3Tbox.Width = 100;
                 Action1Param2_button.Visible = false;
                 Action1Param2Tbox.Width = 100;
+                Action1Param1_button.Visible = false;
+                Action1Param1Tbox.Width = 100;
                 // reset combo box 1
                 Action1Param1Combobox.Visible = false;
                 Action1Param1Combobox.Items.Clear();
@@ -380,6 +382,18 @@ namespace EventAI_Creator
                     case 32:            // Summon
                     case 33:            // Killed unit
                     case 35:            // Set instance data 64
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
+                        Action1Param2Tbox.Visible = false;
+                        break;
+                    case 18:            // Set unit flag
+                    case 19:            // Remove unit flag
+                        Action1Param1_button.Visible = true;
+                        Action1Param1Tbox.Width = 50;
+
                         Action1Param2Combobox.Visible = true;
                         Action1Param2Combobox.Items.AddRange(Info.TargetType);
                         Action1Param2Combobox.SelectedIndex = 0;
@@ -436,6 +450,8 @@ namespace EventAI_Creator
                 Action2Param3Tbox.Width = 100;
                 Action2Param2_button.Visible = false;
                 Action2Param2Tbox.Width = 100;
+                Action2Param1_button.Visible = false;
+                Action2Param1Tbox.Width = 100;
                 // reset combo box 1
                 Action2Param1Combobox.Visible = false;
                 Action2Param1Combobox.Items.Clear();
@@ -468,6 +484,18 @@ namespace EventAI_Creator
                     case 32:            // Summon
                     case 33:            // Killed unit
                     case 35:            // Set instance data 64
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
+                        Action2Param2Tbox.Visible = false;
+                        break;
+                    case 18:            // Set unit flag
+                    case 19:            // Remove unit flag
+                        Action2Param1_button.Visible = true;
+                        Action2Param1Tbox.Width = 50;
+
                         Action2Param2Combobox.Visible = true;
                         Action2Param2Combobox.Items.AddRange(Info.TargetType);
                         Action2Param2Combobox.SelectedIndex = 0;
@@ -524,6 +552,8 @@ namespace EventAI_Creator
                 Action3Param3Tbox.Width = 100;
                 Action3Param2_button.Visible = false;
                 Action3Param2Tbox.Width = 100;
+                Action3Param1_button.Visible = false;
+                Action3Param1Tbox.Width = 100;
                 // reset combo box 1
                 Action3Param1Combobox.Visible = false;
                 Action3Param1Combobox.Items.Clear();
@@ -556,6 +586,18 @@ namespace EventAI_Creator
                     case 32:            // Summon
                     case 33:            // Killed unit
                     case 35:            // Set instance data 64
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.TargetType);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
+                        Action3Param2Tbox.Visible = false;
+                        break;
+                    case 18:            // Set unit flag
+                    case 19:            // Remove unit flag
+                        Action3Param1_button.Visible = true;
+                        Action3Param1Tbox.Width = 50;
+
                         Action3Param2Combobox.Visible = true;
                         Action3Param2Combobox.Items.AddRange(Info.TargetType);
                         Action3Param2Combobox.SelectedIndex = 0;
@@ -773,14 +815,30 @@ namespace EventAI_Creator
             dialog.ShowDialog(this);
         }
 
+        // Load param 1 flags
+        private void Action1Param1_button_Click(object sender, EventArgs e)
+        {
+            Button but = (sender as Button);
+            EventFlag dialog = null;
+
+            if (but == this.Action1Param1_button)
+                dialog = new EventFlag(this, Convert.ToInt64(this.Action1Param1Tbox.Text), Info.UnitFlags, 4, 1);
+            else if (but == this.Action2Param1_button)
+                dialog = new EventFlag(this, Convert.ToInt64(this.Action2Param1Tbox.Text), Info.UnitFlags, 4, 2);
+            else if (but == this.Action3Param1_button)
+                dialog = new EventFlag(this, Convert.ToInt64(this.Action3Param1Tbox.Text), Info.UnitFlags, 4, 3);
+
+            dialog.ShowDialog(this);
+        }
+
         // Set event flags
-        public void set_event_flags(int flag_value)
+        public void set_event_flags(Int64 flag_value)
         {
             this.EventFlagTBox.Text = flag_value.ToString();
         }
 
         // Set spell masks
-        public void set_spell_mask(int flag_value)
+        public void set_spell_mask(Int64 flag_value)
         {
             this.EventParam2.Text = flag_value.ToString();
 
@@ -789,7 +847,7 @@ namespace EventAI_Creator
         }
 
         // Set cast flag
-        public void set_cast_flag(int flag_value, int action)
+        public void set_cast_flag(Int64 flag_value, int action)
         {
             switch (action)
             {
@@ -805,8 +863,25 @@ namespace EventAI_Creator
             }
         }
 
+        // Set unit flag
+        public void set_unit_flag(Int64 flag_value, int action)
+        {
+            switch (action)
+            {
+                case 1:
+                    Action1Param1Tbox.Text = flag_value.ToString();
+                    break;
+                case 2:
+                    Action2Param1Tbox.Text = flag_value.ToString();
+                    break;
+                case 3:
+                    Action3Param1Tbox.Text = flag_value.ToString();
+                    break;
+            }
+        }
+
         // Set param 2 flag
-        public void set_param2_flag(int flag_value, int action)
+        public void set_param2_flag(Int64 flag_value, int action)
         {
             switch (action)
             {
