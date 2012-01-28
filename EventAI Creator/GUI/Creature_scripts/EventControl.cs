@@ -26,9 +26,11 @@ namespace EventAI_Creator
             this.expand.Checked = true;
 
             for(int n=0; n < Info.EventListInfo.GetLength(0);n++)
-            {
                 this.EventTypeCBox.Items.Add(Info.EventListInfo[n,0]);
-            }
+
+            // set width
+            EventTypeCBox.DropDownWidth = DropDownWidth(EventTypeCBox);
+
             for (int n = 0; n < Info.ActionListInfo.GetLength(0); n++)
             {
                 this.Action1TypeCBox.Items.Add(Info.ActionListInfo[n, 0]);
@@ -51,7 +53,7 @@ namespace EventAI_Creator
             this.Action3Param2Tbox.Text             =       Data.action3_param2.ToString();
             this.Action3Param3Tbox.Text             =       Data.action3_param3.ToString();
 
-            this.EventTypeCBox.SelectedIndex = Data.event_type;
+            this.EventTypeCBox.SelectedIndex        =       Data.event_type;
             this.EventParam1.Text                   =       Data.event_param1.ToString();
             this.EventParam2.Text                   =       Data.event_param2.ToString();
             this.EventParam3.Text                   =       Data.event_param3.ToString();
@@ -59,7 +61,7 @@ namespace EventAI_Creator
 
             this.EventChanceTBox.Text               =       Data.event_chance.ToString();
             this.EventFlagTBox.Text                 =       Data.event_flags.ToString();
-            this.txtBoxComment.Text                  =       Data.comment;
+            this.txtBoxComment.Text                 =       Data.comment;
 
             this.SetInversePhaseMask(Data.event_inverse_phase_mask);
 
@@ -67,6 +69,104 @@ namespace EventAI_Creator
             this.Action1TypeCBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Action2TypeCBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Action3TypeCBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // set width
+            Action1TypeCBox.DropDownWidth = DropDownWidth(Action1TypeCBox);
+            Action2TypeCBox.DropDownWidth = DropDownWidth(Action2TypeCBox);
+            Action3TypeCBox.DropDownWidth = DropDownWidth(Action3TypeCBox);
+
+            // load combo boxes
+            switch (Action1TypeCBox.SelectedIndex)
+            {
+                case 11:            // Cast
+                case 12:            // Summon
+                case 13:            // Threat single
+                case 15:            // Quest event
+                case 18:            // Set unit flag
+                case 19:            // Remove unit flag
+                case 32:            // Summon
+                case 33:            // Killed unit
+                case 34:            // Set instance data
+                case 35:            // Set instance data 64
+                case 36:            // Update template
+                    Action1Param2Combobox.SelectedIndex = Convert.ToInt32(Action1Param2Tbox.Text);
+                    break;
+                case 16:            // Cast creature/go
+                case 17:            // Set unit field
+                    Action1Param3Combobox.SelectedIndex = Convert.ToInt32(Action1Param3Tbox.Text);
+                    break;
+                case 20:            // Auto attack
+                case 28:            // Remove aura
+                case 40:            // Set Sheat
+                case 42:            // Set invincibility level
+                    Action1Param1Combobox.SelectedIndex = Convert.ToInt32(Action1Param1Tbox.Text);
+                    break;
+                case 21:            // Combat movement
+                    Action1Param1Combobox.SelectedIndex = Convert.ToInt32(Action1Param1Tbox.Text);
+                    Action1Param2Combobox.SelectedIndex = Convert.ToInt32(Action1Param2Tbox.Text);
+                    break;
+            }
+            switch (Action2TypeCBox.SelectedIndex)
+            {
+                case 11:            // Cast
+                case 12:            // Summon
+                case 13:            // Threat single
+                case 15:            // Quest event
+                case 18:            // Set unit flag
+                case 19:            // Remove unit flag
+                case 32:            // Summon
+                case 33:            // Killed unit
+                case 34:            // Set instance data
+                case 35:            // Set instance data 64
+                case 36:            // Update template
+                    Action2Param2Combobox.SelectedIndex = Convert.ToInt32(Action2Param2Tbox.Text);
+                    break;
+                case 16:            // Cast creature/go
+                case 17:            // Set unit field
+                    Action2Param3Combobox.SelectedIndex = Convert.ToInt32(Action2Param3Tbox.Text);
+                    break;
+                case 20:            // Auto attack
+                case 28:            // Remove aura
+                case 40:            // Set Sheat
+                case 42:            // Set invincibility level
+                    Action2Param1Combobox.SelectedIndex = Convert.ToInt32(Action2Param1Tbox.Text);
+                    break;
+                case 21:            // Combat movement
+                    Action2Param1Combobox.SelectedIndex = Convert.ToInt32(Action2Param1Tbox.Text);
+                    Action2Param2Combobox.SelectedIndex = Convert.ToInt32(Action2Param2Tbox.Text);
+                    break;
+            }
+            switch (Action3TypeCBox.SelectedIndex)
+            {
+                case 11:            // Cast
+                case 12:            // Summon
+                case 13:            // Threat single
+                case 15:            // Quest event
+                case 18:            // Set unit flag
+                case 19:            // Remove unit flag
+                case 32:            // Summon
+                case 33:            // Killed unit
+                case 34:            // Set instance data
+                case 35:            // Set instance data 64
+                case 36:            // Update template
+                    Action3Param2Combobox.SelectedIndex = Convert.ToInt32(Action3Param2Tbox.Text);
+                    break;
+                case 16:            // Cast creature/go
+                case 17:            // Set unit field
+                    Action3Param3Combobox.SelectedIndex = Convert.ToInt32(Action3Param3Tbox.Text);
+                    break;
+                case 20:            // Auto attack
+                case 28:            // Remove aura
+                case 40:            // Set Sheat
+                case 42:            // Set invincibility level
+                    Action3Param1Combobox.SelectedIndex = Convert.ToInt32(Action3Param1Tbox.Text);
+                    break;
+                case 21:            // Combat movement
+                    Action3Param1Combobox.SelectedIndex = Convert.ToInt32(Action3Param1Tbox.Text);
+                    Action3Param2Combobox.SelectedIndex = Convert.ToInt32(Action3Param2Tbox.Text);
+                    break;
+            }
+
             locked = false;
         }
 
@@ -873,7 +973,7 @@ namespace EventAI_Creator
         private void control_changed(object sender, EventArgs e)
         {
             if (!locked)
-            GetEventData();
+                GetEventData();
         }
 
         private void txtBox_Leave(object sender, EventArgs e)

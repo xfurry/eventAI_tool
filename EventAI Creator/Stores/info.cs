@@ -88,7 +88,7 @@ namespace EventAI_Creator
 /*39 | 01 */{"CALL_FOR_HELP","Radius","","","Call any friendly out-of-combat creatures in a radius (Param1) to attack current creature's target."},
 /*40 | 01 */{"SET_SHEATH","Sheath","","","Sets sheath state for a creature (0 = no weapon, 1 = melee weapon, 2 = ranged weapon)."},
 /*41 | 01 */{"FORCE_DESPAWN","Delay","","","Despawns the creature, if delay = 0 immediate otherwise will despawn after delay time set in Param1 (in ms)."},
-/*42 | 01 */{"SET_INVINCIBILITY_HP_LEVEL","HP_Level","HP_Percent","","Set min. health level for creature that can be set at damage as flat value or percent from max health"},
+/*42 | 01 */{"INVINCIBILITY_HP_LEVEL","HP_Level","HP_Percent","","Set min. health level for creature that can be set at damage as flat value or percent from max health"},
 /*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."}
         };
 
