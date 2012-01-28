@@ -133,5 +133,25 @@ namespace EventAI_Creator
         };
 
         public static string[] Boolean = new string[] {"FALSE", "TRUE" };
+
+        public static string[] InstanceData = new string[]
+        {
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "FAIL",
+            "DONE",
+            "SPECIAL"
+        };
+
+        public static string[] TargetType = new string[]
+        {
+            "SELF",
+            "HOSTILE",
+            "HOSTILE_SECOND_AGGRO",
+            "HOSTILE_LAST_AGGRO",
+            "HOSTILE_RANDOM",
+            "HOSTILE_RANDOM_NOT_TOP",
+            "ACTION_INVOKER"
+        };
     }
 }

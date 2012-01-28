@@ -118,6 +118,7 @@
             this.Action1Param3_button = new System.Windows.Forms.Button();
             this.Action2Param3_button = new System.Windows.Forms.Button();
             this.Action3Param3_button = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -258,7 +259,7 @@
             this.txtBoxComment.Location = new System.Drawing.Point(206, 35);
             this.txtBoxComment.MaxLength = 255;
             this.txtBoxComment.Name = "txtBoxComment";
-            this.txtBoxComment.Size = new System.Drawing.Size(490, 20);
+            this.txtBoxComment.Size = new System.Drawing.Size(499, 20);
             this.txtBoxComment.TabIndex = 8;
             this.txtBoxComment.Text = "Comment";
             this.txtBoxComment.TextChanged += new System.EventHandler(this.control_changed);
@@ -342,7 +343,7 @@
             this.groupBoxAction1.Controls.Add(this.Action1Param1Tbox);
             this.groupBoxAction1.Location = new System.Drawing.Point(206, 59);
             this.groupBoxAction1.Name = "groupBoxAction1";
-            this.groupBoxAction1.Size = new System.Drawing.Size(490, 53);
+            this.groupBoxAction1.Size = new System.Drawing.Size(499, 53);
             this.groupBoxAction1.TabIndex = 31;
             this.groupBoxAction1.TabStop = false;
             this.groupBoxAction1.Text = "Action 1";
@@ -368,7 +369,7 @@
             // Action1Param2Lb
             // 
             this.Action1Param2Lb.AutoSize = true;
-            this.Action1Param2Lb.Location = new System.Drawing.Point(292, 9);
+            this.Action1Param2Lb.Location = new System.Drawing.Point(287, 9);
             this.Action1Param2Lb.Name = "Action1Param2Lb";
             this.Action1Param2Lb.Size = new System.Drawing.Size(46, 13);
             this.Action1Param2Lb.TabIndex = 21;
@@ -398,7 +399,7 @@
             this.Action1Param3Tbox.Location = new System.Drawing.Point(395, 22);
             this.Action1Param3Tbox.MaxLength = 11;
             this.Action1Param3Tbox.Name = "Action1Param3Tbox";
-            this.Action1Param3Tbox.Size = new System.Drawing.Size(89, 20);
+            this.Action1Param3Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action1Param3Tbox.TabIndex = 12;
             this.Action1Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action1Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -406,10 +407,10 @@
             // 
             // Action1Param2Tbox
             // 
-            this.Action1Param2Tbox.Location = new System.Drawing.Point(295, 22);
+            this.Action1Param2Tbox.Location = new System.Drawing.Point(290, 22);
             this.Action1Param2Tbox.MaxLength = 11;
             this.Action1Param2Tbox.Name = "Action1Param2Tbox";
-            this.Action1Param2Tbox.Size = new System.Drawing.Size(94, 20);
+            this.Action1Param2Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action1Param2Tbox.TabIndex = 11;
             this.Action1Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action1Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -420,7 +421,7 @@
             this.Action1Param1Tbox.Location = new System.Drawing.Point(185, 22);
             this.Action1Param1Tbox.MaxLength = 11;
             this.Action1Param1Tbox.Name = "Action1Param1Tbox";
-            this.Action1Param1Tbox.Size = new System.Drawing.Size(104, 20);
+            this.Action1Param1Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action1Param1Tbox.TabIndex = 10;
             this.Action1Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action1Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -440,7 +441,7 @@
             this.groupBox1.Controls.Add(this.Action2Param1Tbox);
             this.groupBox1.Location = new System.Drawing.Point(206, 114);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(490, 53);
+            this.groupBox1.Size = new System.Drawing.Size(499, 53);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Action 2";
@@ -466,7 +467,7 @@
             // Action2Param2Lb
             // 
             this.Action2Param2Lb.AutoSize = true;
-            this.Action2Param2Lb.Location = new System.Drawing.Point(292, 9);
+            this.Action2Param2Lb.Location = new System.Drawing.Point(287, 9);
             this.Action2Param2Lb.Name = "Action2Param2Lb";
             this.Action2Param2Lb.Size = new System.Drawing.Size(46, 13);
             this.Action2Param2Lb.TabIndex = 21;
@@ -493,10 +494,10 @@
             // 
             // Action2Param3Tbox
             // 
-            this.Action2Param3Tbox.Location = new System.Drawing.Point(395, 23);
+            this.Action2Param3Tbox.Location = new System.Drawing.Point(395, 22);
             this.Action2Param3Tbox.MaxLength = 11;
             this.Action2Param3Tbox.Name = "Action2Param3Tbox";
-            this.Action2Param3Tbox.Size = new System.Drawing.Size(89, 20);
+            this.Action2Param3Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action2Param3Tbox.TabIndex = 16;
             this.Action2Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action2Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -504,10 +505,10 @@
             // 
             // Action2Param2Tbox
             // 
-            this.Action2Param2Tbox.Location = new System.Drawing.Point(295, 23);
+            this.Action2Param2Tbox.Location = new System.Drawing.Point(290, 23);
             this.Action2Param2Tbox.MaxLength = 11;
             this.Action2Param2Tbox.Name = "Action2Param2Tbox";
-            this.Action2Param2Tbox.Size = new System.Drawing.Size(94, 20);
+            this.Action2Param2Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action2Param2Tbox.TabIndex = 15;
             this.Action2Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action2Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -518,7 +519,7 @@
             this.Action2Param1Tbox.Location = new System.Drawing.Point(185, 23);
             this.Action2Param1Tbox.MaxLength = 11;
             this.Action2Param1Tbox.Name = "Action2Param1Tbox";
-            this.Action2Param1Tbox.Size = new System.Drawing.Size(104, 20);
+            this.Action2Param1Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action2Param1Tbox.TabIndex = 14;
             this.Action2Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action2Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -538,7 +539,7 @@
             this.groupBox2.Controls.Add(this.Action3Param1Tbox);
             this.groupBox2.Location = new System.Drawing.Point(206, 171);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(490, 53);
+            this.groupBox2.Size = new System.Drawing.Size(499, 53);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Action 3";
@@ -564,7 +565,7 @@
             // Action3Param2Lb
             // 
             this.Action3Param2Lb.AutoSize = true;
-            this.Action3Param2Lb.Location = new System.Drawing.Point(292, 9);
+            this.Action3Param2Lb.Location = new System.Drawing.Point(287, 9);
             this.Action3Param2Lb.Name = "Action3Param2Lb";
             this.Action3Param2Lb.Size = new System.Drawing.Size(46, 13);
             this.Action3Param2Lb.TabIndex = 21;
@@ -594,7 +595,7 @@
             this.Action3Param3Tbox.Location = new System.Drawing.Point(395, 22);
             this.Action3Param3Tbox.MaxLength = 11;
             this.Action3Param3Tbox.Name = "Action3Param3Tbox";
-            this.Action3Param3Tbox.Size = new System.Drawing.Size(89, 20);
+            this.Action3Param3Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action3Param3Tbox.TabIndex = 20;
             this.Action3Param3Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action3Param3Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -602,10 +603,10 @@
             // 
             // Action3Param2Tbox
             // 
-            this.Action3Param2Tbox.Location = new System.Drawing.Point(295, 22);
+            this.Action3Param2Tbox.Location = new System.Drawing.Point(290, 22);
             this.Action3Param2Tbox.MaxLength = 11;
             this.Action3Param2Tbox.Name = "Action3Param2Tbox";
-            this.Action3Param2Tbox.Size = new System.Drawing.Size(94, 20);
+            this.Action3Param2Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action3Param2Tbox.TabIndex = 19;
             this.Action3Param2Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action3Param2Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -616,7 +617,7 @@
             this.Action3Param1Tbox.Location = new System.Drawing.Point(185, 22);
             this.Action3Param1Tbox.MaxLength = 11;
             this.Action3Param1Tbox.Name = "Action3Param1Tbox";
-            this.Action3Param1Tbox.Size = new System.Drawing.Size(104, 20);
+            this.Action3Param1Tbox.Size = new System.Drawing.Size(100, 20);
             this.Action3Param1Tbox.TabIndex = 18;
             this.Action3Param1Tbox.TextChanged += new System.EventHandler(this.control_changed);
             this.Action3Param1Tbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
@@ -1052,7 +1053,7 @@
             this.Action1Param1Combobox.FormattingEnabled = true;
             this.Action1Param1Combobox.Location = new System.Drawing.Point(185, 22);
             this.Action1Param1Combobox.Name = "Action1Param1Combobox";
-            this.Action1Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action1Param1Combobox.Size = new System.Drawing.Size(100, 21);
             this.Action1Param1Combobox.TabIndex = 24;
             this.Action1Param1Combobox.Visible = false;
             this.Action1Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
@@ -1060,9 +1061,9 @@
             // Action2Param1Combobox
             // 
             this.Action2Param1Combobox.FormattingEnabled = true;
-            this.Action2Param1Combobox.Location = new System.Drawing.Point(185, 23);
+            this.Action2Param1Combobox.Location = new System.Drawing.Point(185, 22);
             this.Action2Param1Combobox.Name = "Action2Param1Combobox";
-            this.Action2Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action2Param1Combobox.Size = new System.Drawing.Size(100, 21);
             this.Action2Param1Combobox.TabIndex = 24;
             this.Action2Param1Combobox.Visible = false;
             this.Action2Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
@@ -1072,16 +1073,16 @@
             this.Action3Param1Combobox.FormattingEnabled = true;
             this.Action3Param1Combobox.Location = new System.Drawing.Point(185, 22);
             this.Action3Param1Combobox.Name = "Action3Param1Combobox";
-            this.Action3Param1Combobox.Size = new System.Drawing.Size(104, 21);
+            this.Action3Param1Combobox.Size = new System.Drawing.Size(100, 21);
             this.Action3Param1Combobox.TabIndex = 24;
             this.Action3Param1Combobox.Visible = false;
             this.Action3Param1Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param1Combobox_SelectedIndexChanged);
             // 
             // Action1Param3_button
             // 
-            this.Action1Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action1Param3_button.Location = new System.Drawing.Point(445, 22);
             this.Action1Param3_button.Name = "Action1Param3_button";
-            this.Action1Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action1Param3_button.Size = new System.Drawing.Size(50, 20);
             this.Action1Param3_button.TabIndex = 25;
             this.Action1Param3_button.Text = "Select";
             this.Action1Param3_button.UseVisualStyleBackColor = true;
@@ -1090,9 +1091,9 @@
             // 
             // Action2Param3_button
             // 
-            this.Action2Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action2Param3_button.Location = new System.Drawing.Point(445, 22);
             this.Action2Param3_button.Name = "Action2Param3_button";
-            this.Action2Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action2Param3_button.Size = new System.Drawing.Size(50, 20);
             this.Action2Param3_button.TabIndex = 25;
             this.Action2Param3_button.Text = "Select";
             this.Action2Param3_button.UseVisualStyleBackColor = true;
@@ -1101,20 +1102,29 @@
             // 
             // Action3Param3_button
             // 
-            this.Action3Param3_button.Location = new System.Drawing.Point(440, 22);
+            this.Action3Param3_button.Location = new System.Drawing.Point(445, 22);
             this.Action3Param3_button.Name = "Action3Param3_button";
-            this.Action3Param3_button.Size = new System.Drawing.Size(45, 20);
+            this.Action3Param3_button.Size = new System.Drawing.Size(50, 20);
             this.Action3Param3_button.TabIndex = 25;
             this.Action3Param3_button.Text = "Select";
             this.Action3Param3_button.UseVisualStyleBackColor = true;
             this.Action3Param3_button.Visible = false;
             this.Action3Param3_button.Click += new System.EventHandler(this.Action1Param3_button_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(541, 8);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(94, 21);
+            this.comboBox1.TabIndex = 26;
+            // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.deleteevent);
             this.Controls.Add(this.expand);
             this.Controls.Add(this.PhaseMaskInfoLb);
@@ -1264,5 +1274,6 @@
         private System.Windows.Forms.Button Action1Param3_button;
         private System.Windows.Forms.Button Action2Param3_button;
         private System.Windows.Forms.Button Action3Param3_button;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

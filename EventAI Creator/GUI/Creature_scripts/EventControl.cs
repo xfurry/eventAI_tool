@@ -346,7 +346,7 @@ namespace EventAI_Creator
 
                 // reset cast
                 Action1Param3_button.Visible = false;
-                Action1Param3Tbox.Width = 89;
+                Action1Param3Tbox.Width = 100;
                 // reset sheat
                 Action1Param1Combobox.Visible = false;
                 Action1Param1Combobox.Items.Clear();
@@ -356,7 +356,7 @@ namespace EventAI_Creator
                 {
                     case 11:            // Cast
                         Action1Param3_button.Visible = true;
-                        Action1Param3Tbox.Width = 45;
+                        Action1Param3Tbox.Width = 50;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
@@ -386,7 +386,7 @@ namespace EventAI_Creator
 
                 // reset cast
                 Action2Param3_button.Visible = false;
-                Action2Param3Tbox.Width = 89;
+                Action2Param3Tbox.Width = 100;
                 // reset sheat
                 Action2Param1Combobox.Visible = false;
                 Action2Param1Combobox.Items.Clear();
@@ -396,7 +396,7 @@ namespace EventAI_Creator
                 {
                     case 11:            // Cast
                         Action2Param3_button.Visible = true;
-                        Action2Param3Tbox.Width = 45;
+                        Action2Param3Tbox.Width = 50;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
@@ -426,7 +426,7 @@ namespace EventAI_Creator
 
                 // reset cast
                 Action3Param3_button.Visible = false;
-                Action3Param3Tbox.Width = 89;
+                Action3Param3Tbox.Width = 100;
                 // reset sheat
                 Action3Param1Combobox.Visible = false;
                 Action3Param1Combobox.Items.Clear();
@@ -436,7 +436,7 @@ namespace EventAI_Creator
                 {
                     case 11:            // Cast
                         Action3Param3_button.Visible = true;
-                        Action3Param3Tbox.Width = 45;
+                        Action3Param3Tbox.Width = 50;
                         break;
                     case 20:            // Auto attack
                     case 21:            // Combat movement
