@@ -67,7 +67,7 @@ namespace EventAI_Creator
 /*18 | 01 */{"SET_UNIT_FLAG","Flags","Target","","Sets flag (flags can be binary OR together to modify multiple flags at once) on for Target type (param2)"},
 /*19 | 01 */{"REMOVE_UNIT_FLAG","Flags","Target","","Removes flag (flags can be binary OR together to modify multiple flags at once) on for Target type (param2)"},
 /*20 | 01 */{"AUTO_ATTACK","AllowAutoAttack","","","0 = stop melee attack, anything else means continue attacking/allow melee attacking"},
-/*21 | 01 */{"COMBAT_MOVEMENT","AllowCombatMovement","","","0 = stop combat based movement, anything else continue/allow combat based movement (targeted movement generator)"},
+/*21 | 01 */{"COMBAT_MOVEMENT","AllowCombatMovement","StopMeleeCombat","","0 = stop combat based movement, anything else continue/allow combat based movement (targeted movement generator)"},
 /*22 | 01 */{"SET_PHASE","Phase","","","Sets the current phase to (param1)"},
 /*23 | 01 */{"INC_PHASE","Value","","","Increments the phase by (param1). May be negative to decrement phase but should not be 0."},
 /*24 | 01 */{"EVADE","","","","Forces the creature to evade. Wiping all threat and dropping combat."},

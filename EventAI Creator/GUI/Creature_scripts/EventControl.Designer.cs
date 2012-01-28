@@ -50,6 +50,7 @@
             this.button_spell_mask = new System.Windows.Forms.Button();
             this.button_flag_select = new System.Windows.Forms.Button();
             this.groupBoxAction1 = new System.Windows.Forms.GroupBox();
+            this.Action1Param1_button = new System.Windows.Forms.Button();
             this.Action1Param2_button = new System.Windows.Forms.Button();
             this.Action1Param2Combobox = new System.Windows.Forms.ComboBox();
             this.Action1Param3_button = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@
             this.Action1Param2Tbox = new System.Windows.Forms.TextBox();
             this.Action1Param1Tbox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Action2Param1_button = new System.Windows.Forms.Button();
             this.Action2Param2_button = new System.Windows.Forms.Button();
             this.Action2Param2Combobox = new System.Windows.Forms.ComboBox();
             this.Action2Param3_button = new System.Windows.Forms.Button();
@@ -76,6 +78,7 @@
             this.Action2Param2Tbox = new System.Windows.Forms.TextBox();
             this.Action2Param1Tbox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Action3Param1_button = new System.Windows.Forms.Button();
             this.Action3Param2_button = new System.Windows.Forms.Button();
             this.Action3Param2Combobox = new System.Windows.Forms.ComboBox();
             this.Action3Param3_button = new System.Windows.Forms.Button();
@@ -124,9 +127,9 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.expand = new System.Windows.Forms.CheckBox();
             this.deleteevent = new System.Windows.Forms.Button();
-            this.Action1Param1_button = new System.Windows.Forms.Button();
-            this.Action2Param1_button = new System.Windows.Forms.Button();
-            this.Action3Param1_button = new System.Windows.Forms.Button();
+            this.Action1Param3Combobox = new System.Windows.Forms.ComboBox();
+            this.Action2Param3Combobox = new System.Windows.Forms.ComboBox();
+            this.Action3Param3Combobox = new System.Windows.Forms.ComboBox();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -350,6 +353,7 @@
             // 
             // groupBoxAction1
             // 
+            this.groupBoxAction1.Controls.Add(this.Action1Param3Combobox);
             this.groupBoxAction1.Controls.Add(this.Action1Param1_button);
             this.groupBoxAction1.Controls.Add(this.Action1Param2_button);
             this.groupBoxAction1.Controls.Add(this.Action1Param2Combobox);
@@ -369,6 +373,17 @@
             this.groupBoxAction1.TabIndex = 31;
             this.groupBoxAction1.TabStop = false;
             this.groupBoxAction1.Text = "Action 1";
+            // 
+            // Action1Param1_button
+            // 
+            this.Action1Param1_button.Location = new System.Drawing.Point(235, 22);
+            this.Action1Param1_button.Name = "Action1Param1_button";
+            this.Action1Param1_button.Size = new System.Drawing.Size(50, 20);
+            this.Action1Param1_button.TabIndex = 28;
+            this.Action1Param1_button.Text = "Select";
+            this.Action1Param1_button.UseVisualStyleBackColor = true;
+            this.Action1Param1_button.Visible = false;
+            this.Action1Param1_button.Click += new System.EventHandler(this.Action1Param1_button_Click);
             // 
             // Action1Param2_button
             // 
@@ -493,6 +508,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Action2Param3Combobox);
             this.groupBox1.Controls.Add(this.Action2Param1_button);
             this.groupBox1.Controls.Add(this.Action2Param2_button);
             this.groupBox1.Controls.Add(this.Action2Param2Combobox);
@@ -512,6 +528,15 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Action 2";
+            // 
+            // Action2Param1_button
+            // 
+            this.Action2Param1_button.Location = new System.Drawing.Point(235, 22);
+            this.Action2Param1_button.Name = "Action2Param1_button";
+            this.Action2Param1_button.Size = new System.Drawing.Size(50, 20);
+            this.Action2Param1_button.TabIndex = 70;
+            this.Action2Param1_button.Text = "Select";
+            this.Action2Param1_button.UseVisualStyleBackColor = true;
             // 
             // Action2Param2_button
             // 
@@ -635,6 +660,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Action3Param3Combobox);
             this.groupBox2.Controls.Add(this.Action3Param1_button);
             this.groupBox2.Controls.Add(this.Action3Param2_button);
             this.groupBox2.Controls.Add(this.Action3Param2Combobox);
@@ -654,6 +680,16 @@
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Action 3";
+            // 
+            // Action3Param1_button
+            // 
+            this.Action3Param1_button.Location = new System.Drawing.Point(235, 20);
+            this.Action3Param1_button.Name = "Action3Param1_button";
+            this.Action3Param1_button.Size = new System.Drawing.Size(50, 20);
+            this.Action3Param1_button.TabIndex = 28;
+            this.Action3Param1_button.Text = "Select";
+            this.Action3Param1_button.UseVisualStyleBackColor = true;
+            this.Action3Param1_button.Visible = false;
             // 
             // Action3Param2_button
             // 
@@ -1189,35 +1225,35 @@
             this.deleteevent.UseVisualStyleBackColor = true;
             this.deleteevent.Click += new System.EventHandler(this.deleteevent_Click);
             // 
-            // Action1Param1_button
+            // Action1Param3Combobox
             // 
-            this.Action1Param1_button.Location = new System.Drawing.Point(235, 22);
-            this.Action1Param1_button.Name = "Action1Param1_button";
-            this.Action1Param1_button.Size = new System.Drawing.Size(50, 20);
-            this.Action1Param1_button.TabIndex = 28;
-            this.Action1Param1_button.Text = "Select";
-            this.Action1Param1_button.UseVisualStyleBackColor = true;
-            this.Action1Param1_button.Visible = false;
-            this.Action1Param1_button.Click += new System.EventHandler(this.Action1Param1_button_Click);
+            this.Action1Param3Combobox.FormattingEnabled = true;
+            this.Action1Param3Combobox.Location = new System.Drawing.Point(395, 22);
+            this.Action1Param3Combobox.Name = "Action1Param3Combobox";
+            this.Action1Param3Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action1Param3Combobox.TabIndex = 29;
+            this.Action1Param3Combobox.Visible = false;
+            this.Action1Param3Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param3Combobox_SelectedIndexChanged);
             // 
-            // Action2Param1_button
+            // Action2Param3Combobox
             // 
-            this.Action2Param1_button.Location = new System.Drawing.Point(235, 22);
-            this.Action2Param1_button.Name = "Action2Param1_button";
-            this.Action2Param1_button.Size = new System.Drawing.Size(50, 20);
-            this.Action2Param1_button.TabIndex = 70;
-            this.Action2Param1_button.Text = "Select";
-            this.Action2Param1_button.UseVisualStyleBackColor = true;
+            this.Action2Param3Combobox.FormattingEnabled = true;
+            this.Action2Param3Combobox.Location = new System.Drawing.Point(395, 22);
+            this.Action2Param3Combobox.Name = "Action2Param3Combobox";
+            this.Action2Param3Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action2Param3Combobox.TabIndex = 71;
+            this.Action2Param3Combobox.Visible = false;
+            this.Action2Param3Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param3Combobox_SelectedIndexChanged);
             // 
-            // Action3Param1_button
+            // Action3Param3Combobox
             // 
-            this.Action3Param1_button.Location = new System.Drawing.Point(235, 20);
-            this.Action3Param1_button.Name = "Action3Param1_button";
-            this.Action3Param1_button.Size = new System.Drawing.Size(50, 20);
-            this.Action3Param1_button.TabIndex = 28;
-            this.Action3Param1_button.Text = "Select";
-            this.Action3Param1_button.UseVisualStyleBackColor = true;
-            this.Action3Param1_button.Visible = false;
+            this.Action3Param3Combobox.FormattingEnabled = true;
+            this.Action3Param3Combobox.Location = new System.Drawing.Point(395, 22);
+            this.Action3Param3Combobox.Name = "Action3Param3Combobox";
+            this.Action3Param3Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Action3Param3Combobox.TabIndex = 29;
+            this.Action3Param3Combobox.Visible = false;
+            this.Action3Param3Combobox.SelectedIndexChanged += new System.EventHandler(this.Action1Param3Combobox_SelectedIndexChanged);
             // 
             // EventControl
             // 
@@ -1382,5 +1418,8 @@
         private System.Windows.Forms.Button Action1Param1_button;
         private System.Windows.Forms.Button Action2Param1_button;
         private System.Windows.Forms.Button Action3Param1_button;
+        private System.Windows.Forms.ComboBox Action1Param3Combobox;
+        private System.Windows.Forms.ComboBox Action2Param3Combobox;
+        private System.Windows.Forms.ComboBox Action3Param3Combobox;
     }
 }

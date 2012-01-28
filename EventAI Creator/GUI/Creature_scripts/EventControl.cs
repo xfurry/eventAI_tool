@@ -359,6 +359,10 @@ namespace EventAI_Creator
                 Action1Param2Combobox.Visible = false;
                 Action1Param2Combobox.Items.Clear();
                 Action1Param2Tbox.Visible = true;
+                // reset combo box 3
+                Action1Param3Combobox.Visible = false;
+                Action1Param3Combobox.Items.Clear();
+                Action1Param3Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -389,6 +393,15 @@ namespace EventAI_Creator
                         Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
                         Action1Param2Tbox.Visible = false;
                         break;
+                    case 16:            // Cast creature/go
+                    case 17:            // Set unit field
+                        Action1Param3Combobox.Visible = true;
+                        Action1Param3Combobox.Items.AddRange(Info.TargetType);
+                        Action1Param3Combobox.SelectedIndex = 0;
+                        Action1Param3Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param3Combobox.DropDownWidth = DropDownWidth(Action1Param3Combobox);
+                        Action1Param3Tbox.Visible = false;
+                        break;
                     case 18:            // Set unit flag
                     case 19:            // Remove unit flag
                         Action1Param1_button.Visible = true;
@@ -402,6 +415,13 @@ namespace EventAI_Creator
                         Action1Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                     case 21:            // Combat movement
                         Action1Param1Combobox.Visible = true;
                         Action1Param1Combobox.Items.AddRange(Info.Boolean);
@@ -409,6 +429,13 @@ namespace EventAI_Creator
                         Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
+
+                        Action1Param2Combobox.Visible = true;
+                        Action1Param2Combobox.Items.AddRange(Info.Boolean);
+                        Action1Param2Combobox.SelectedIndex = 0;
+                        Action1Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param2Combobox.DropDownWidth = DropDownWidth(Action1Param2Combobox);
+                        Action1Param2Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
                         Action1Param2Combobox.Visible = true;
@@ -460,6 +487,10 @@ namespace EventAI_Creator
                 Action2Param2Combobox.Visible = false;
                 Action2Param2Combobox.Items.Clear();
                 Action2Param2Tbox.Visible = true;
+                // reset combo box 3
+                Action2Param3Combobox.Visible = false;
+                Action2Param3Combobox.Items.Clear();
+                Action2Param3Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -491,6 +522,15 @@ namespace EventAI_Creator
                         Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
                         Action2Param2Tbox.Visible = false;
                         break;
+                    case 16:            // Cast creature/go
+                    case 17:            // Set unit field
+                        Action2Param3Combobox.Visible = true;
+                        Action2Param3Combobox.Items.AddRange(Info.TargetType);
+                        Action2Param3Combobox.SelectedIndex = 0;
+                        Action2Param3Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param3Combobox.DropDownWidth = DropDownWidth(Action2Param3Combobox);
+                        Action2Param3Tbox.Visible = false;
+                        break;
                     case 18:            // Set unit flag
                     case 19:            // Remove unit flag
                         Action2Param1_button.Visible = true;
@@ -504,6 +544,13 @@ namespace EventAI_Creator
                         Action2Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
                     case 21:            // Combat movement
                         Action2Param1Combobox.Visible = true;
                         Action2Param1Combobox.Items.AddRange(Info.Boolean);
@@ -511,6 +558,13 @@ namespace EventAI_Creator
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
+
+                        Action2Param2Combobox.Visible = true;
+                        Action2Param2Combobox.Items.AddRange(Info.Boolean);
+                        Action2Param2Combobox.SelectedIndex = 0;
+                        Action2Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param2Combobox.DropDownWidth = DropDownWidth(Action2Param2Combobox);
+                        Action2Param2Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
                         Action2Param2Combobox.Visible = true;
@@ -562,6 +616,10 @@ namespace EventAI_Creator
                 Action3Param2Combobox.Visible = false;
                 Action3Param2Combobox.Items.Clear();
                 Action3Param2Tbox.Visible = true;
+                // reset combo box 3
+                Action3Param3Combobox.Visible = false;
+                Action3Param3Combobox.Items.Clear();
+                Action3Param3Tbox.Visible = true;
 
                 switch (Cbox.SelectedIndex)
                 {
@@ -593,6 +651,15 @@ namespace EventAI_Creator
                         Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
                         Action3Param2Tbox.Visible = false;
                         break;
+                    case 16:            // Cast creature/go
+                    case 17:            // Set unit field
+                        Action3Param3Combobox.Visible = true;
+                        Action3Param3Combobox.Items.AddRange(Info.TargetType);
+                        Action3Param3Combobox.SelectedIndex = 0;
+                        Action3Param3Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param3Combobox.DropDownWidth = DropDownWidth(Action3Param3Combobox);
+                        Action3Param3Tbox.Visible = false;
+                        break;
                     case 18:            // Set unit flag
                     case 19:            // Remove unit flag
                         Action3Param1_button.Visible = true;
@@ -606,6 +673,13 @@ namespace EventAI_Creator
                         Action3Param2Tbox.Visible = false;
                         break;
                     case 20:            // Auto attack
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
                     case 21:            // Combat movement
                         Action3Param1Combobox.Visible = true;
                         Action3Param1Combobox.Items.AddRange(Info.Boolean);
@@ -613,6 +687,13 @@ namespace EventAI_Creator
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
+
+                        Action3Param2Combobox.Visible = true;
+                        Action3Param2Combobox.Items.AddRange(Info.Boolean);
+                        Action3Param2Combobox.SelectedIndex = 0;
+                        Action3Param2Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param2Combobox.DropDownWidth = DropDownWidth(Action3Param2Combobox);
+                        Action3Param2Tbox.Visible = false;
                         break;
                     case 34:            // Set instance data
                         Action3Param2Combobox.Visible = true;
@@ -767,6 +848,19 @@ namespace EventAI_Creator
                 Action2Param2Tbox.Text = Action2Param2Combobox.SelectedIndex.ToString();
             else if (box == this.Action3Param2Combobox)
                 Action3Param2Tbox.Text = Action3Param2Combobox.SelectedIndex.ToString();
+        }
+
+        // Set combo box 3 value
+        private void Action1Param3Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = (sender as ComboBox);
+
+            if (box == this.Action1Param3Combobox)
+                Action1Param3Tbox.Text = Action1Param3Combobox.SelectedIndex.ToString();
+            else if (box == this.Action2Param3Combobox)
+                Action2Param3Tbox.Text = Action2Param3Combobox.SelectedIndex.ToString();
+            else if (box == this.Action3Param3Combobox)
+                Action3Param3Tbox.Text = Action3Param3Combobox.SelectedIndex.ToString();
         }
 
         // Load event flags selection
