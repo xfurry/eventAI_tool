@@ -131,5 +131,7 @@ namespace EventAI_Creator
             "SHEATH_MELEE",
             "SHEATH_RANGED"
         };
+
+        public static string[] Boolean = new string[] {"FALSE", "TRUE" };
     }
 }

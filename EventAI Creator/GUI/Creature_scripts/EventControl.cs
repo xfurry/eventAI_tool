@@ -358,6 +358,14 @@ namespace EventAI_Creator
                         Action1Param3_button.Visible = true;
                         Action1Param3Tbox.Width = 45;
                         break;
+                    case 20:            // Auto attack
+                    case 21:            // Combat movement
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Tbox.Visible = false;
+                        break;
                     case 40:            // Set Sheat
                         Action1Param1Combobox.Visible = true;
                         Action1Param1Combobox.Items.AddRange(Info.SheathState);
@@ -390,6 +398,14 @@ namespace EventAI_Creator
                         Action2Param3_button.Visible = true;
                         Action2Param3Tbox.Width = 45;
                         break;
+                    case 20:            // Auto attack
+                    case 21:            // Combat movement
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Tbox.Visible = false;
+                        break;
                     case 40:            // Set Sheat
                         Action2Param1Combobox.Visible = true;
                         Action2Param1Combobox.Items.AddRange(Info.SheathState);
@@ -421,6 +437,14 @@ namespace EventAI_Creator
                     case 11:            // Cast
                         Action3Param3_button.Visible = true;
                         Action3Param3Tbox.Width = 45;
+                        break;
+                    case 20:            // Auto attack
+                    case 21:            // Combat movement
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.Boolean);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Tbox.Visible = false;
                         break;
                     case 40:            // Set Sheat
                         Action3Param1Combobox.Visible = true;
