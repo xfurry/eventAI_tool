@@ -933,9 +933,6 @@ namespace EventAI_Creator
                     Labl[n].Text = Info.ActionListInfo[Cbox.SelectedIndex, n+1];
                     Tbox[n].Text = "0";
 
-                    if (Cbox.SelectedIndex == 1)
-                        Tbox[n].Text = "-1";
-
                     Tbox[n].Enabled = true;
 
                     //switch (Info.ActionListInfo[Cbox.SelectedIndex, n + 1])
@@ -963,69 +960,58 @@ namespace EventAI_Creator
 
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int test;
-            string strin = "";
-            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
-            {
-                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
-            }
-            else
-            {
-                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
-            }
-            bool tes = int.TryParse(strin, out test);
-            if (strin != "-" && strin != "")
-            {
-                if ("-1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
-                {
-                    e.Handled = true;
-                }
-            }
-            else e.Handled = false;
+            // Nothing here
         }
 
         private void txtBoxComment_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if ("\"\'".IndexOf(e.KeyChar.ToString()) < 0)
-            //{
-            //    e.Handled = false;
-            //}
-            //else e.Handled = true;
+            // Nothing here
         }
 
+        // Expand collapse events
         private void expand_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.expand.Checked) this.Height = 287;
-            else this.Height = 20;
+            if (this.expand.Checked)
+                this.Height = 287;
+            else
+                this.Height = 20;
         }
 
+        // Delete event
         private void deleteevent_Click(object sender, EventArgs e)
         {
-           Form blaa = this.ParentForm;
+            Form blaa = this.ParentForm;
             NPCEditor bla = blaa as NPCEditor;
             uint creature_id = bla.npc_id;
             creatures.npcList[creature_id].line.RemoveAt(eventid);
             bla.Redraw(creature_id);
-
-           // this.Parent.Controls.Remove(this);
-
-            //(this.Parent as NPCEditor).Redraw(creature_id);
-            
-   //(this.ParentForm as NPCEditor).Redraw(creature_id);
         }
 
         private void control_changed(object sender, EventArgs e)
         {
-            if (!locked)
-                GetEventData();
+            // Nothing heres
         }
 
+        // Handle if the text is number
         private void txtBox_Leave(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == "" || (sender as TextBox).Text == "-")
+            string str = (sender as TextBox).Text.Trim();
+            Int64 value;
+            bool isNum = Int64.TryParse(str, out value);
+            if (isNum)
             {
-                (sender as TextBox).Text = "0";
+                if (!locked)
+                    GetEventData();
             }
+            else
+                (sender as TextBox).Text = "0";
+        }
+
+        // Handle the comment text leave
+        private void txtBoxComment_Leave(object sender, EventArgs e)
+        {
+            if (!locked)
+                GetEventData();
         }
 
         // Set combo box 1 value
@@ -1039,6 +1025,9 @@ namespace EventAI_Creator
                 Action2Param1Tbox.Text = Action2Param1Combobox.SelectedIndex.ToString();
             else if (box == this.Action3Param1Combobox)
                 Action3Param1Tbox.Text = Action3Param1Combobox.SelectedIndex.ToString();
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set combo box 2 value
@@ -1052,6 +1041,9 @@ namespace EventAI_Creator
                 Action2Param2Tbox.Text = Action2Param2Combobox.SelectedIndex.ToString();
             else if (box == this.Action3Param2Combobox)
                 Action3Param2Tbox.Text = Action3Param2Combobox.SelectedIndex.ToString();
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set combo box 3 value
@@ -1065,6 +1057,9 @@ namespace EventAI_Creator
                 Action2Param3Tbox.Text = Action2Param3Combobox.SelectedIndex.ToString();
             else if (box == this.Action3Param3Combobox)
                 Action3Param3Tbox.Text = Action3Param3Combobox.SelectedIndex.ToString();
+
+            if (!locked)
+                GetEventData();
         }
 
         // Load event flags selection
@@ -1178,6 +1173,9 @@ namespace EventAI_Creator
         public void set_event_flags(Int64 flag_value)
         {
             this.EventFlagTBox.Text = flag_value.ToString();
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set spell masks
@@ -1187,6 +1185,9 @@ namespace EventAI_Creator
 
             if (EventParam1.Text != "0")
                 MessageBox.Show("You already defined a SpellID. Please use '-1' for the SchoolMask or remove the SpellId!");
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set cast flag
@@ -1204,6 +1205,9 @@ namespace EventAI_Creator
                     Action3Param3Tbox.Text = flag_value.ToString();
                     break;
             }
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set unit flag
@@ -1221,6 +1225,9 @@ namespace EventAI_Creator
                     Action3Param1Tbox.Text = flag_value.ToString();
                     break;
             }
+
+            if (!locked)
+                GetEventData();
         }
 
         // Set param 2 flag
@@ -1238,6 +1245,9 @@ namespace EventAI_Creator
                     Action3Param2Tbox.Text = flag_value.ToString();
                     break;
             }
+
+            if (!locked)
+                GetEventData();
         }
 
         int DropDownWidth(ComboBox myCombo)

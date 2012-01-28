@@ -51,6 +51,23 @@ namespace EventAI_Creator.GUI.General.localestext
         {
             if (this.textboxadd.Text.Length != 0)
             {
+                string str = textboxadd.Text.Trim();
+                Int64 value;
+                bool isNum = Int64.TryParse(str, out value);
+                if (isNum)
+                {
+                    if (value > 0)
+                    {
+                        MessageBox.Show("The id you entered is not valid. Please try again!");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The id you entered is not valid. Please try again!");
+                    return;
+                }
+
                 if (localized_texts.Add(System.Convert.ToInt32(this.textboxadd.Text)))
                 {
                     text_id = System.Convert.ToInt32(this.textboxadd.Text);

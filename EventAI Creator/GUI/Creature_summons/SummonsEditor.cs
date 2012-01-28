@@ -21,6 +21,19 @@ namespace EventAI_Creator
             this.WindowState = FormWindowState.Maximized;
         }
 
+        private void UpdateContent()
+        {
+            if (this.customlistBoxsummons.SelectedIndex != -1)
+            {
+                summons.map[summon_id].comment = box_comment.Text;
+                summons.map[summon_id].orientation = float.Parse(box_orientation.Text);
+                summons.map[summon_id].position_x = float.Parse(box_position_X.Text);
+                summons.map[summon_id].position_y = float.Parse(box_position_Y.Text);
+                summons.map[summon_id].position_z = float.Parse(box_position_Z.Text);
+                summons.map[summon_id].spawntimesecs = System.Convert.ToInt32(box_spawntimesecs.Text);
+            }
+        }
+
         private void UpdateListBox(bool updateofficial)
         {
             customlistBoxsummons.Items.Clear();
@@ -40,8 +53,18 @@ namespace EventAI_Creator
                 this.customlistBoxsummons.SelectedIndex = 0;
         }
 
+        // Add new summon id to list
         private void buttonadd_Click(object sender, EventArgs e)
         {
+            string str = textboxadd.Text.Trim();
+            int value;
+            bool isNum = int.TryParse(str, out value);
+            if (!isNum)
+            {
+                MessageBox.Show("The id you entered is not valid. Please try again!");
+                return;
+            }
+
             if (this.textboxadd.Text.Length != 0)
             {
                 if (summons.Add(System.Convert.ToUInt32(this.textboxadd.Text)))
@@ -88,15 +111,15 @@ namespace EventAI_Creator
 
         private void numberbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar)
-                && !char.IsDigit(e.KeyChar)
-                && e.KeyChar != '.')
-                e.Handled = true;
+            //if (!char.IsControl(e.KeyChar)
+            //    && !char.IsDigit(e.KeyChar)
+            //    && e.KeyChar != '.')
+            //    e.Handled = true;
 
-            // only allow one decimal point
-            if (e.KeyChar == '.'
-                && (sender as TextBox).Text.IndexOf('.') > -1)
-                e.Handled = true;
+            //// only allow one decimal point
+            //if (e.KeyChar == '.'
+            //    && (sender as TextBox).Text.IndexOf('.') > -1)
+            //    e.Handled = true;
         }
 
         private void intnumberbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -108,39 +131,28 @@ namespace EventAI_Creator
 
         private void stringbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if ("\"\'".IndexOf(e.KeyChar.ToString()) < 0)
-            //{
-            //    e.Handled = false;
-            //}
-            //else
-            //{
-            //    e.Handled = true;
-            //}
+            // Nothing here
         }
 
         private void txtBox_Leave(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == "" || (sender as TextBox).Text == ".")
+            string str = (sender as TextBox).Text.Trim();
+            Int64 value;
+            bool isNum = Int64.TryParse(str, out value);
+            if (isNum)
+                UpdateContent();
+            else
                 (sender as TextBox).Text = "0";
+        }
+
+        private void box_comment_Leave(object sender, EventArgs e)
+        {
+            UpdateContent();
         }
 
         private void summontextbox_TextChanged(object sender, EventArgs e)
         {
-            if (this.customlistBoxsummons.SelectedIndex != -1 && (sender as TextBox).Text.Length > 0 && (sender as TextBox).Text != "-" && (sender as TextBox).Text != ",")
-            {
-                if ((sender as TextBox) == box_comment)
-                    summons.map[summon_id].comment = box_comment.Text;
-                if ((sender as TextBox) == box_orientation)
-                    summons.map[summon_id].orientation = float.Parse(box_orientation.Text);
-                if ((sender as TextBox) == box_position_X)
-                    summons.map[summon_id].position_x = float.Parse(box_position_X.Text);
-                if ((sender as TextBox) == box_position_Y)
-                    summons.map[summon_id].position_y = float.Parse(box_position_Y.Text);
-                if ((sender as TextBox) == box_position_Z)
-                    summons.map[summon_id].position_z = float.Parse(box_position_Z.Text);
-                if ((sender as TextBox) == box_spawntimesecs)
-                    summons.map[summon_id].spawntimesecs = System.Convert.ToInt32(box_spawntimesecs.Text);
-            }
+            // Nothing here
         }
 
         private void deletebutton_Click(object sender, EventArgs e)
@@ -192,6 +204,7 @@ namespace EventAI_Creator
 
         private void toDBToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             if (customlistBoxsummons.SelectedIndex != -1)
                 SQLCommonExecutes.SaveOneItemTODB(summons.map[summon_id]);
             else
@@ -200,6 +213,7 @@ namespace EventAI_Creator
 
         private void toDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             if (customlistBoxsummons.SelectedIndex != -1)
                 SQLCommonExecutes.SaveAllItemsToDB(summons.map);
             else
@@ -208,6 +222,7 @@ namespace EventAI_Creator
 
         private void toSQLFileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             if (customlistBoxsummons.SelectedIndex != -1)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -225,6 +240,7 @@ namespace EventAI_Creator
 
         private void toSQLFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             if (customlistBoxsummons.SelectedIndex != -1)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -262,6 +278,7 @@ namespace EventAI_Creator
 
         private void toToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             if (customlistBoxsummons.SelectedIndex != -1)
             {
                 ScriptDisplay sd = new ScriptDisplay(summons.PrintToQueryWindow(summon_id));

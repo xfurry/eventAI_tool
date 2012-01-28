@@ -495,7 +495,7 @@ namespace EventAI_Creator
                     customquery = "INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`,`emote`) VALUES \r\n('" +
                         copy.id + "','" + MySqlHelper.EscapeString(copy.locale_0) + "','" +
                         copy.sound + "','" + copy.type + "','" + copy.language + "','" +
-                        MySqlHelper.EscapeString(copy.comment) + "', '" + copy.emote + "');";
+                        MySqlHelper.EscapeString(copy.comment) + "','" + copy.emote + "');";
                 else
                     customquery = "INSERT INTO creature_ai_texts VALUES \r\n('"
                             + copy.id + "','" + MySqlHelper.EscapeString(copy.locale_0) + "','" + MySqlHelper.EscapeString(copy.locale_1) + "','"

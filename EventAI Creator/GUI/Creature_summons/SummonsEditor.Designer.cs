@@ -239,6 +239,7 @@
             this.box_comment.TabIndex = 54;
             this.box_comment.TextChanged += new System.EventHandler(this.summontextbox_TextChanged);
             this.box_comment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stringbox_KeyPress);
+            this.box_comment.Leave += new System.EventHandler(this.box_comment_Leave);
             // 
             // menuStrip1
             // 
@@ -274,21 +275,21 @@
             // toDBToolStripMenuItem1
             // 
             this.toDBToolStripMenuItem1.Name = "toDBToolStripMenuItem1";
-            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toDBToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.toDBToolStripMenuItem1.Text = "To DB";
             this.toDBToolStripMenuItem1.Click += new System.EventHandler(this.toDBToolStripMenuItem1_Click);
             // 
             // toSQLFileToolStripMenuItem1
             // 
             this.toSQLFileToolStripMenuItem1.Name = "toSQLFileToolStripMenuItem1";
-            this.toSQLFileToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toSQLFileToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.toSQLFileToolStripMenuItem1.Text = "To SQL File";
             this.toSQLFileToolStripMenuItem1.Click += new System.EventHandler(this.toSQLFileToolStripMenuItem1_Click);
             // 
             // toToolStripMenuItem
             // 
             this.toToolStripMenuItem.Name = "toToolStripMenuItem";
-            this.toToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.toToolStripMenuItem.Text = "To Window";
             this.toToolStripMenuItem.Click += new System.EventHandler(this.toToolStripMenuItem_Click);
             // 

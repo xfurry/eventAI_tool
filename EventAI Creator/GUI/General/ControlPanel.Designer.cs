@@ -39,6 +39,7 @@
             // 
             // setallscriptnames
             // 
+            this.setallscriptnames.Enabled = false;
             this.setallscriptnames.Location = new System.Drawing.Point(12, 12);
             this.setallscriptnames.Name = "setallscriptnames";
             this.setallscriptnames.Size = new System.Drawing.Size(85, 40);
@@ -49,6 +50,7 @@
             // 
             // removescriptnames
             // 
+            this.removescriptnames.Enabled = false;
             this.removescriptnames.Location = new System.Drawing.Point(12, 58);
             this.removescriptnames.Name = "removescriptnames";
             this.removescriptnames.Size = new System.Drawing.Size(85, 45);
@@ -59,6 +61,7 @@
             // 
             // updateofficialDB
             // 
+            this.updateofficialDB.Enabled = false;
             this.updateofficialDB.Location = new System.Drawing.Point(103, 12);
             this.updateofficialDB.Name = "updateofficialDB";
             this.updateofficialDB.Size = new System.Drawing.Size(98, 53);
@@ -69,6 +72,7 @@
             // 
             // CompileCreatures
             // 
+            this.CompileCreatures.Enabled = false;
             this.CompileCreatures.Location = new System.Drawing.Point(408, 12);
             this.CompileCreatures.Name = "CompileCreatures";
             this.CompileCreatures.Size = new System.Drawing.Size(90, 53);
@@ -79,6 +83,7 @@
             // 
             // CompileSummons
             // 
+            this.CompileSummons.Enabled = false;
             this.CompileSummons.Location = new System.Drawing.Point(207, 12);
             this.CompileSummons.Name = "CompileSummons";
             this.CompileSummons.Size = new System.Drawing.Size(96, 53);
@@ -89,6 +94,7 @@
             // 
             // CompileTexts
             // 
+            this.CompileTexts.Enabled = false;
             this.CompileTexts.Location = new System.Drawing.Point(309, 12);
             this.CompileTexts.Name = "CompileTexts";
             this.CompileTexts.Size = new System.Drawing.Size(93, 53);

@@ -15,7 +15,6 @@ namespace EventAI_Creator
         public uint npc_id;
         public NPCEditor(uint creature_id)
         {
-            this.WindowState = FormWindowState.Maximized;
             npc_id = creature_id;
             InitializeComponent();
             this.Text = "NPC:"+npc_id;
@@ -82,16 +81,19 @@ namespace EventAI_Creator
 
         private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             SQLCommonExecutes.SaveOneItemTODB(creatures.npcList[this.npc_id]);
         }
 
         private void databaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             SQLCommonExecutes.SaveAllItemsToDB(creatures.npcList);
         }
 
         private void sQLFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
@@ -105,6 +107,7 @@ namespace EventAI_Creator
 
         private void sQLToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             saveFileDialog.Filter = "SQL Scriptdateien (*.sql)|*.sql|Alle Dateien (*.*)|*.*";
@@ -146,6 +149,7 @@ namespace EventAI_Creator
 
         private void queryWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            menuStrip1.Focus();
             ScriptDisplay sd = new ScriptDisplay(creatures.PrintCreatureToWindow(npc_id));
             sd.ShowDialog();
         }
