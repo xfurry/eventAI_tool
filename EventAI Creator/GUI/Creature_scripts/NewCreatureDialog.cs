@@ -18,27 +18,41 @@ namespace EventAI_Creator
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Int32 test;
-            string strin = "";
-            if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
-            {
-                strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
-            }
-            else
-            {
-                strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
-            }
-            bool tes = Int32.TryParse(strin, out test);
-            if ("1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
-            {
-                e.Handled = true;
-            }
+            //Int32 test;
+            //string strin = "";
+            //if (e.KeyChar.ToString() == "\b" && (sender as TextBox).Text.Length != 0)
+            //{
+            //    strin = (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1);
+            //}
+            //else
+            //{
+            //    strin = (sender as TextBox).Text.Insert((sender as TextBox).SelectionStart, e.KeyChar.ToString());
+            //}
+            //bool tes = Int32.TryParse(strin, out test);
+            //if ("1234567890\b".IndexOf(e.KeyChar.ToString()) < 0 || !tes)
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.textBox1.Text.Length == 0)
+            {
+                MessageBox.Show("The id cannot be blank.");
                 return;
+            }
+
+            string str = textBox1.Text.Trim();
+            Int64 value;
+            bool isNum = Int64.TryParse(str, out value);
+            if (!isNum)
+            {
+                MessageBox.Show("The creature id should be a number. Please enter a number.");
+                return;
+            }
+
+
             if (Datastores.dbused && !creatures.npcsAvailable.Contains(System.Convert.ToUInt32(textBox1.Text)))
             {
                 MessageBox.Show("This Creature is NOT in creature_template");
