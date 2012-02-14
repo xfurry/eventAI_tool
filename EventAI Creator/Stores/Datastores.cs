@@ -570,7 +570,7 @@ namespace EventAI_Creator
 
                 for (int i = 0; i < copy.line.Count; i++)
                 {
-                    lines = lines + "('" + copy.creature_id + i.ToString("00") + "','" +
+                    lines = lines + "('" + copy.creature_id + (i + 1).ToString("00") + "','" +
                     copy.creature_id + "','" +
                     copy.line[i].event_type + "','" +
                     copy.line[i].event_inverse_phase_mask + "','" +
@@ -608,7 +608,7 @@ namespace EventAI_Creator
                 {
                     for (int i = 0; i < itemf.line.Count; i++)
                     {
-                        lines = lines + "('" + itemf.creature_id + i.ToString("00") + "','" +
+                        lines = lines + "('" + itemf.creature_id + (i + 1).ToString("00") + "','" +
                         itemf.creature_id + "','" +
                         itemf.line[i].event_type + "','" +
                         itemf.line[i].event_inverse_phase_mask + "','" +
@@ -645,7 +645,7 @@ namespace EventAI_Creator
                 {
                     for (int i = 0; i < creatures.npcList[itemf.Key].line.Count; i++)
                     {
-                        lines = lines + "('" + creatures.npcList[itemf.Key].creature_id + i.ToString("00") + "','" +
+                        lines = lines + "('" + creatures.npcList[itemf.Key].creature_id + (i + 1).ToString("00") + "','" +
                         creatures.npcList[itemf.Key].creature_id + "','" +
                         creatures.npcList[itemf.Key].line[i].event_type + "','" +
                         creatures.npcList[itemf.Key].line[i].event_inverse_phase_mask + "','" +
