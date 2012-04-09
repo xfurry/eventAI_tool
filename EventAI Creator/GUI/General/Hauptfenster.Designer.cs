@@ -53,7 +53,6 @@
             this.texts_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.summons_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.db_scripts_button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.help_toolstrip_button = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -221,7 +220,6 @@
             this.texts_toolstrip_button,
             this.summons_toolstrip_button,
             this.toolStripSeparator2,
-            this.db_scripts_button,
             this.toolStripSeparator4,
             this.help_toolstrip_button});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
@@ -269,16 +267,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // db_scripts_button
-            // 
-            this.db_scripts_button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.db_scripts_button.Image = ((System.Drawing.Image)(resources.GetObject("db_scripts_button.Image")));
-            this.db_scripts_button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.db_scripts_button.Name = "db_scripts_button";
-            this.db_scripts_button.Size = new System.Drawing.Size(23, 22);
-            this.db_scripts_button.Text = "DB scripts";
-            this.db_scripts_button.Click += new System.EventHandler(this.db_scripts_button_Click);
             // 
             // toolStripSeparator4
             // 
@@ -441,7 +429,6 @@
         private System.Windows.Forms.ToolStripButton summons_toolstrip_button;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton help_toolstrip_button;
-        private System.Windows.Forms.ToolStripButton db_scripts_button;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_script_type;
