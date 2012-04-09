@@ -83,13 +83,17 @@ namespace EventAI_Creator
                 childForm.Close();
         }
 
-        public void UpdateNPCListBox(bool updateoff)
+        public void UpdateNPCListBox()
         {
             CheckedListBox npcListbox = panel1.Controls.Find("npclistbox", true)[0] as CheckedListBox;
             npcListbox.Items.Clear();
             IList<uint> list;
 
-            list = creatures.npcList.Keys;
+            if (comboBox_script_type.SelectedIndex == 0)
+                list = creatures.npcList.Keys;
+            else
+                list = db_scripts.scriptList.Keys;
+
             for (int i = 0; i < list.Count; i++)
             {
                 npcListbox.Items.Add(list[i].ToString());
@@ -228,7 +232,7 @@ namespace EventAI_Creator
                                 }
                                 c.ExecuteNonQuery();
                                 creatures.DelCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex]));
-                                UpdateNPCListBox(false);
+                                UpdateNPCListBox();
                             }
                         }
                         catch (Exception ex)
@@ -251,7 +255,7 @@ namespace EventAI_Creator
                             }
 
                             creatures.DelCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex]));
-                            UpdateNPCListBox(false);
+                            UpdateNPCListBox();
                         }
                         break;
                     case DialogResult.Cancel:
@@ -283,7 +287,30 @@ namespace EventAI_Creator
         private void Hauptfenster_Load(object sender, EventArgs e)
         {
             Datastores.ReloadDB();
-            UpdateNPCListBox(true);
+            UpdateNPCListBox();
+
+
+            // Init script types
+            comboBox_script_type.Items.AddRange(Info.ScriptTemplate);
+            comboBox_script_type.SelectedIndex = 0;
+            comboBox_script_type.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // set width of the combo
+            int maxWidth = 0;
+            int temp = 0;
+            Label labelX = new Label();
+
+            foreach (var obj in comboBox_script_type.Items)
+            {
+                label1.Text = obj.ToString();
+                temp = label1.PreferredWidth;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            labelX.Dispose();
+            comboBox_script_type.DropDownWidth = maxWidth;
         }
 
         private void Hauptfenster_FormClosing(object sender, FormClosingEventArgs e)
@@ -309,7 +336,7 @@ namespace EventAI_Creator
             summons.map.Clear();
             localized_texts.map.Clear();
             Datastores.ReloadDB();
-            UpdateNPCListBox(true);
+            UpdateNPCListBox();
         }
 
         private void controlPanelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -330,12 +357,27 @@ namespace EventAI_Creator
 
         private void help_toolstrip_button_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+            if (comboBox_script_type.SelectedIndex == 0)
+                System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+            else
+                System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/script_commands.txt");
         }
 
         private void db_scripts_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("DB scripts support not yet implemented");
+            //MessageBox.Show("DB scripts support not yet implemented");
+        }
+
+        // Handle script reload
+        private void comboBox_script_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // creature_ai_scripts
+            if (comboBox_script_type.SelectedIndex == 0)
+                Datastores.ReloadDB();
+            else
+                Datastores.LoadDBScripts(comboBox_script_type.SelectedItem.ToString());
+
+            UpdateNPCListBox();
         }
     }
 }

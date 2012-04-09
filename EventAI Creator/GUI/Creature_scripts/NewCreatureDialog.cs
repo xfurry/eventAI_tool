@@ -67,7 +67,7 @@ namespace EventAI_Creator
                 this.Hide();
 
                 (this.MdiParent as Hauptfenster).ShowNewForm(newcreature.creature_id);
-                (this.MdiParent as Hauptfenster).UpdateNPCListBox(false);
+                (this.MdiParent as Hauptfenster).UpdateNPCListBox();
             }
         }
 

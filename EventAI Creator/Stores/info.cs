@@ -237,5 +237,17 @@ namespace EventAI_Creator
         };
 
         public static string[] InvincibilityTemplate = new string[] { "VALUE", "RATE" };
+
+        public static string[] ScriptTemplate = new string[]
+        {
+            "CREATURE_AI_SCRIPTS",
+            "CREATURE_MOVEMENT_SCRIPTS",
+            "EVENT_SCRIPTS",
+            "GOSSIP_SCRIPTS",
+            "GAMEOBJECT_SCRIPTS",
+            "QUEST_END_SCRIPTS",
+            "QUEST_START_SCRIPTS",
+            "SPELL_SCRIPTS"
+        };
     }
 }

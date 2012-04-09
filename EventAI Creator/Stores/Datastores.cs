@@ -245,6 +245,83 @@ namespace EventAI_Creator
                 reader.Close();
             }
         }
+
+        // Load DB scripts
+        public static void LoadDBScripts(string sTable)
+        {
+            if (!Datastores.dbused)
+                return;
+
+            MySqlDataReader reader = null;
+
+            // Check for the creatureAI tables
+            try
+            {
+                string sQuery = "SELECT information_schema.TABLES.table_name FROM information_schema.TABLES " +
+                    "where information_schema.TABLES.table_name IN ('creature_movement_scripts','event_script','gameobject_scripts','gossip_scripts','quest_end_scripts','quest_start_scripts','spell_scripts') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
+                MySqlCommand comm = new MySqlCommand(sQuery, SQLConnection.conn);
+                reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (!reader.HasRows)
+                    {
+                        MessageBox.Show("Your database doesn't contain the script tables. The application won't use the database anymore");
+                        dbused = false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            reader.Close();
+
+            if (Datastores.dbused)
+            {
+                // Select all creature scripts and creature names
+                MySqlCommand c = new MySqlCommand("SELECT * FROM " + sTable, SQLConnection.conn);
+                reader = c.ExecuteReader();
+
+                try
+                {
+                    while (reader.Read())
+                    {
+                        if (!db_scripts.scriptList.ContainsKey(reader.GetUInt32("id")))
+                        {
+                            db_script temp = new db_script(reader.GetUInt32("id"));
+                            db_scripts.scriptList.Add(reader.GetUInt32("id"), temp);
+                        }
+
+                        Event_dataset_script item = new Event_dataset_script();
+
+                        item.id = reader.GetUInt32("id");
+                        item.delay = reader.GetUInt32("delay");
+                        item.command = reader.GetUInt32("command");
+                        item.datalong = reader.GetUInt32("datalong");
+                        item.datalong2 = reader.GetUInt32("datalong2");
+                        item.buddy = reader.GetUInt32("buddy_entry");
+                        item.radius = reader.GetUInt32("search_radius");
+                        item.dataint = reader.GetUInt32("dataint");
+                        item.dataint2 = reader.GetUInt32("dataint2");
+                        item.dataint3 = reader.GetUInt32("dataint3");
+                        item.dataint4 = reader.GetUInt32("dataint4");
+                        item.position_x = reader.GetFloat("x");
+                        item.position_y = reader.GetFloat("y");
+                        item.position_z = reader.GetFloat("z");
+                        item.orientation = reader.GetFloat("o");
+                        item.comment = reader.GetString("comments");
+
+                        db_scripts.scriptList[reader.GetUInt32("id")].line.Add(item);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                reader.Close();
+            }
+        }
     }
 
     static class SQLcreator
