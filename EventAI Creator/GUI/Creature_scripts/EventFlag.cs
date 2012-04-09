@@ -15,7 +15,7 @@ namespace EventAI_Creator
         private int flagType = 0;
         private int action = 0;
 
-        public EventFlag(EventControl control, Int64 flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action = 0)
+        public EventFlag(EventControl control, Int64 flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action)
         {
             InitializeComponent();
 

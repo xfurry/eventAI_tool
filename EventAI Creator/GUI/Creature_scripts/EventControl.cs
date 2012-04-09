@@ -1065,14 +1065,14 @@ namespace EventAI_Creator
         // Load event flags selection
         private void button_flag_select_Click(object sender, EventArgs e)
         {
-            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), Info.EventFlags, 0);
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventFlagTBox.Text), Info.EventFlags, 0, 0);
             dialog.ShowDialog(this);
         }
 
         // Load spell mask selection
         private void button_spell_mask_Click(object sender, EventArgs e)
         {
-            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), Info.SpellSchoolMask, 1);
+            EventFlag dialog = new EventFlag(this, Convert.ToInt32(this.EventParam2.Text), Info.SpellSchoolMask, 1, 0);
             dialog.ShowDialog(this);
         }
 

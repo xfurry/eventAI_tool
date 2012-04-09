@@ -278,6 +278,35 @@ namespace EventAI_Creator
             return sb.ToString();
         }
 
+        // Create DB script
+        public static bool WriteScriptToFile(db_script npc, string file, bool reihe)
+        {
+            if (npc == null || npc.line.Count == 0)
+                return false;
+
+            StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
+            //sqlpatchfile.WriteLine("-- Creature id: " + npc.creature_id);
+            //sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
+            //sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
+            //sqlpatchfile.Close();
+            return true;
+        }
+
+        // Preview DB scripts
+        public static string WriteScriptToWindow(db_script script)
+        {
+            if (script == null)
+                return "";
+
+            StringBuilder sb = new StringBuilder();
+            //sb.AppendLine("-- Creature id: " + script.creature_id);
+            //sb.AppendLine(CreateCreatureTemplateQuery(script, false));
+            //sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
+            //sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+
+            return sb.ToString();
+        }
+
         // Create summon script
         public static bool WriteSummonToFile(summon script, string file, bool reihe)
         {
