@@ -13,10 +13,34 @@ namespace EventAI_Creator
     {
         private bool bIsCreature;
 
-        public NewCreatureDialog(bool bIsCreature)
+        public NewCreatureDialog(bool bIsCreature, int selectedIndex)
         {
             InitializeComponent();
             this.bIsCreature = bIsCreature;
+
+            switch (selectedIndex)
+            {
+                case 0:     // eventAI
+                case 1:     // creature move
+                    label_id.Text += "Creature Entry";
+                    break;
+                case 2:     // event
+                    label_id.Text += "Script Event Id";
+                    break;
+                case 3:     // gossip
+                    label_id.Text += "Menu Id";
+                    break;
+                case 4:     // gameobject
+                    label_id.Text += "Gameobject Guid";
+                    break;
+                case 5:     // quest end
+                case 6:     // quest start
+                    label_id.Text += "Quest Id";
+                    break;
+                case 7:     // spell id
+                    label_id.Text += "Spell Id";
+                    break;
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

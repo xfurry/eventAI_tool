@@ -249,5 +249,55 @@ namespace EventAI_Creator
             "QUEST_START_SCRIPTS",
             "SPELL_SCRIPTS"
         };
+
+        public static string[] ScriptFlags = new string[]
+        {
+            "SCRIPT_FLAG_BUDDY_AS_TARGET",
+            "SCRIPT_FLAG_REVERSE_DIRECTION",
+            "SCRIPT_FLAG_SOURCE_TARGETS_SELF",
+            "SCRIPT_FLAG_COMMAND_ADDITIONAL"
+        };
+
+        public static string[] GameObjectFlags = new string[]
+        {
+            "GO_LOCK",
+            "GO_UNLOCK",
+            "GO_NONINTERACT",
+            "GO_INTERACT"
+        };
+
+        public static string[,] ScriptCommands = new string[,]
+        {
+/* 0 */     {"TALK",                "Creature say/whisper/yell/textemote."},
+/* 1 */     {"EMOTE",               "Play emote on creature."},
+/* 2 */     {"FIELD_SET",           "Change the value at an index for the unit."},
+/* 3 */     {"MOVE_TO",             "Relocate creature to a destination"},
+/* 4 */     {"FLAG_SET",            "Turns on bits on a flag field at an index for the worldobject."},
+/* 5 */     {"FLAG_REMOVE",         "Turns off bits on a flag field at an index for the worldobject."},
+/* 6 */     {"TELEPORT_TO",         "Teleports the player to a location."},
+/* 7 */     {"QUEST_EXPLORED",      "Satisfies the explore requirement for a quest."},
+/* 8 */     {"KILL_CREDIT",         "Satisfies the kill credit requirement for a quest."},
+/* 9 */     {"RESPAWN_GAMEOBJECT",  "Spawns a despawned gameobject."},
+/* 10 */    {"TEMP_SUMMON_CREATURE","Temporarily summon a creature."},
+/* 11 */    {"OPEN_DOOR",           "Opens a door gameobject (type == 0)."},
+/* 12 */    {"CLOSE_DOOR",          "Closes a door gameobject (type == 0)."},
+/* 13 */    {"ACTIVATE_OBJECT",     "Activates an object."},
+/* 14 */    {"REMOVE_AURA",         "Removes an aura due to a spell."},
+/* 15 */    {"CAST_SPELL",          "Casts a spell."},
+/* 16 */    {"PLAY_SOUND",          "Plays a sound."},
+/* 17 */    {"CREATE_ITEM",         "Creates an item."},
+/* 18 */    {"DESPAWN_SELF",        "Despawns an npc with some delay."},
+/* 19 */    {"PLAY_MOVIE",          "Plays a movie."},
+/* 20 */    {"MOVEMENT",            "Change Movement of a creature."},
+/* 21 */    {"SET_ACTIVEOBJECT",    "Sets the active object state of the creature"},
+/* 22 */    {"SET_FACTION",         "Sets the faction id from the creature."},
+/* 23 */    {"MORPH_TO_ENTRY_OR_MODEL", "Morphs the creature to the model specified."},
+/* 24 */    {"MOUNT_TO_ENTRY_OR_MODEL", "Mounts the creature with the model specified."},
+/* 25 */    {"SET_RUN",             "Changes the run capacity of the creature."},
+/* 26 */    {"ATTACK_START",        ""},
+/* 27 */    {"GO_LOCK_STATE",       ""},
+/* 28 */    {"STAND_STATE",         ""},
+/* 29 */    {"MODIFY_NPC_FLAGS",    ""},
+        };
     }
 }

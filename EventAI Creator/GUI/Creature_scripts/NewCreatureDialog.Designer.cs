@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_id = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // label_id
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Please Insert the ID";
+            this.label_id.AutoSize = true;
+            this.label_id.Location = new System.Drawing.Point(13, 13);
+            this.label_id.Name = "label_id";
+            this.label_id.Size = new System.Drawing.Size(89, 13);
+            this.label_id.TabIndex = 2;
+            this.label_id.Text = "Please Insert the ";
             // 
             // textBox1
             // 
@@ -69,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(302, 75);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_id);
             this.Name = "NewCreatureDialog";
             this.ShowIcon = false;
             this.Text = "Create New Script";
@@ -80,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_id;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
     }

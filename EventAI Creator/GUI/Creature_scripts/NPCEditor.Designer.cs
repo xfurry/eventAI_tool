@@ -82,7 +82,7 @@
             this.newEventToolStripMenuItem.Name = "newEventToolStripMenuItem";
             this.newEventToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.newEventToolStripMenuItem.Text = "New Event";
-            this.newEventToolStripMenuItem.Click += new System.EventHandler(this.button2_Click);
+            this.newEventToolStripMenuItem.Click += new System.EventHandler(this.AddNewEvent);
             // 
             // saveToToolStripMenuItem
             // 
@@ -206,7 +206,7 @@
             this.new_event_toolstrip_button.Name = "new_event_toolstrip_button";
             this.new_event_toolstrip_button.Size = new System.Drawing.Size(23, 22);
             this.new_event_toolstrip_button.Text = "New Event";
-            this.new_event_toolstrip_button.Click += new System.EventHandler(this.button2_Click);
+            this.new_event_toolstrip_button.Click += new System.EventHandler(this.AddNewEvent);
             // 
             // toolStripSeparator3
             // 

@@ -107,7 +107,7 @@ namespace EventAI_Creator
 
         private void ShowNewCreatureDialog(object sender, EventArgs e)
         {
-            NewCreatureDialog dialog = new NewCreatureDialog(comboBox_script_type.SelectedIndex == 0);
+            NewCreatureDialog dialog = new NewCreatureDialog(comboBox_script_type.SelectedIndex == 0, comboBox_script_type.SelectedIndex);
             dialog.MdiParent = this;
             dialog.Show();
         }
@@ -130,7 +130,7 @@ namespace EventAI_Creator
                 {
                     if (item is NPCEditor)
                     {
-                        if ((item as NPCEditor).id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
+                        if ((item as NPCEditor).Id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
                         {
                             (item as NPCEditor).Show();
                             (item as NPCEditor).Activate();
@@ -152,7 +152,7 @@ namespace EventAI_Creator
                 {
                     if (item is NPCEditor)
                     {
-                        if ((item as NPCEditor).id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
+                        if ((item as NPCEditor).Id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
                         {
                             (item as NPCEditor).Show();
                             (item as NPCEditor).Activate();
@@ -228,7 +228,7 @@ namespace EventAI_Creator
                                 {
                                     if (item is NPCEditor)
                                     {
-                                        if ((item as NPCEditor).id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
+                                        if ((item as NPCEditor).Id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
                                         {
                                             (item as NPCEditor).Close();
                                         }
@@ -251,7 +251,7 @@ namespace EventAI_Creator
                             {
                                 if (item is NPCEditor)
                                 {
-                                    if ((item as NPCEditor).id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
+                                    if ((item as NPCEditor).Id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
                                     {
                                         (item as NPCEditor).Close();
                                     }
@@ -290,30 +290,28 @@ namespace EventAI_Creator
 
         private void Hauptfenster_Load(object sender, EventArgs e)
         {
-            Datastores.ReloadDB();
-            UpdateNPCListBox();
-
-
             // Init script types
             comboBox_script_type.Items.AddRange(Info.ScriptTemplate);
             comboBox_script_type.SelectedIndex = 0;
             comboBox_script_type.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            // already done by selected index changed
+            //Datastores.ReloadDB();
+            //UpdateNPCListBox();
+
             // set width of the combo
             int maxWidth = 0;
             int temp = 0;
-            Label labelX = new Label();
+            Label label_test = new Label();
 
             foreach (var obj in comboBox_script_type.Items)
             {
-                label1.Text = obj.ToString();
-                temp = label1.PreferredWidth;
+                label_test.Text = obj.ToString();
+                temp = label_test.PreferredWidth;
                 if (temp > maxWidth)
-                {
                     maxWidth = temp;
-                }
             }
-            labelX.Dispose();
+            label_test.Dispose();
             comboBox_script_type.DropDownWidth = maxWidth;
         }
 

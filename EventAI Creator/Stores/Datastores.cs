@@ -208,7 +208,7 @@ namespace EventAI_Creator
 
                 // Select creature entries
                 SQLConnection.conn.ChangeDatabase(SQLConnection.dbworld);
-                c.CommandText = "SELECT entry FROM creature_template WHERE AIName='EventAI';";
+                c.CommandText = "SELECT distinct entry FROM creature_template WHERE AIName='EventAI';";
                 reader = c.ExecuteReader();
 
                 try
@@ -228,7 +228,7 @@ namespace EventAI_Creator
 
                 reader.Close();
 
-                c.CommandText = "SELECT entry FROM creature_template;";
+                c.CommandText = "SELECT distinct entry FROM creature_template;";
                 reader = c.ExecuteReader();
 
                 try
@@ -300,7 +300,7 @@ namespace EventAI_Creator
 
                         item.id = reader.GetUInt32("id");
                         item.delay = reader.GetUInt32("delay");
-                        item.command = reader.GetUInt32("command");
+                        item.command = reader.GetInt32("command");
                         item.datalong = reader.GetUInt32("datalong");
                         item.datalong2 = reader.GetUInt32("datalong2");
                         item.buddy = reader.GetUInt32("buddy_entry");

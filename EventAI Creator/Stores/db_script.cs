@@ -15,7 +15,7 @@ namespace EventAI_Creator
 
         public uint id;
         public uint delay = 0;
-        public uint command = 0;
+        public int command = 0;
         public uint datalong = 0;
         public uint datalong2 = 0;
         public uint buddy = 0;
