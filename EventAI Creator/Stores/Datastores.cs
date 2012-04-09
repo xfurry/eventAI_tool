@@ -283,6 +283,9 @@ namespace EventAI_Creator
                 MySqlCommand c = new MySqlCommand("SELECT * FROM " + sTable, SQLConnection.conn);
                 reader = c.ExecuteReader();
 
+                // clear existing script first
+                db_scripts.scriptList.Clear();
+
                 try
                 {
                     while (reader.Read())

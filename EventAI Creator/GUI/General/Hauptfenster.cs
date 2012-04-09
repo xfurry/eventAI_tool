@@ -20,11 +20,15 @@ namespace EventAI_Creator
             InitializeComponent();
         }
 
-        public void ShowNewForm(uint creature_id)
+        public void ShowNewForm(uint id)
         {
-            NPCEditor childForm = new NPCEditor(creature_id);
+            NPCEditor childForm = new NPCEditor(id, comboBox_script_type.SelectedIndex == 0);
             childForm.MdiParent = this;
-            childForm.Text = "NPC:  " + creature_id;
+            if (comboBox_script_type.SelectedIndex == 0)
+                childForm.Text = "NPC:  " + id;
+            else
+                childForm.Text = "SCRIPT:  " + id;
+
             childForm.Show();
         }
 
@@ -103,7 +107,7 @@ namespace EventAI_Creator
 
         private void ShowNewCreatureDialog(object sender, EventArgs e)
         {
-            NewCreatureDialog dialog = new NewCreatureDialog();
+            NewCreatureDialog dialog = new NewCreatureDialog(comboBox_script_type.SelectedIndex == 0);
             dialog.MdiParent = this;
             dialog.Show();
         }
@@ -126,7 +130,7 @@ namespace EventAI_Creator
                 {
                     if (item is NPCEditor)
                     {
-                        if ((item as NPCEditor).npc_id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
+                        if ((item as NPCEditor).id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
                         {
                             (item as NPCEditor).Show();
                             (item as NPCEditor).Activate();
@@ -148,7 +152,7 @@ namespace EventAI_Creator
                 {
                     if (item is NPCEditor)
                     {
-                        if ((item as NPCEditor).npc_id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
+                        if ((item as NPCEditor).id.ToString() == this.npclistbox.Items[this.npclistbox.SelectedIndex].ToString())
                         {
                             (item as NPCEditor).Show();
                             (item as NPCEditor).Activate();
@@ -224,7 +228,7 @@ namespace EventAI_Creator
                                 {
                                     if (item is NPCEditor)
                                     {
-                                        if ((item as NPCEditor).npc_id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
+                                        if ((item as NPCEditor).id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
                                         {
                                             (item as NPCEditor).Close();
                                         }
@@ -247,7 +251,7 @@ namespace EventAI_Creator
                             {
                                 if (item is NPCEditor)
                                 {
-                                    if ((item as NPCEditor).npc_id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
+                                    if ((item as NPCEditor).id == System.Convert.ToInt32(this.npclistbox.Items[npclistbox.SelectedIndex]))
                                     {
                                         (item as NPCEditor).Close();
                                     }

@@ -11,9 +11,12 @@ namespace EventAI_Creator
 {
     public partial class NewCreatureDialog : Form
     {
-        public NewCreatureDialog()
+        private bool bIsCreature;
+
+        public NewCreatureDialog(bool bIsCreature)
         {
             InitializeComponent();
+            this.bIsCreature = bIsCreature;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -48,26 +51,42 @@ namespace EventAI_Creator
             bool isNum = Int64.TryParse(str, out value);
             if (!isNum)
             {
-                MessageBox.Show("The creature id should be a number. Please enter a number.");
+                MessageBox.Show("The script id should be a number. Please enter a number.");
                 return;
             }
 
-
-            if (Datastores.dbused && !creatures.npcsAvailable.Contains(System.Convert.ToUInt32(textBox1.Text)))
+            if (bIsCreature)
             {
-                MessageBox.Show("This Creature is NOT in creature_template");
-                return;
-            }
 
-            creature newcreature = new creature(System.Convert.ToUInt32(textBox1.Text), "");
-            if (!creatures.AddCreature(newcreature))
-                MessageBox.Show("ID already Exists!");
+                if (Datastores.dbused && !creatures.npcsAvailable.Contains(System.Convert.ToUInt32(textBox1.Text)))
+                {
+                    MessageBox.Show("This Creature is NOT in creature_template");
+                    return;
+                }
+
+                creature newcreature = new creature(System.Convert.ToUInt32(textBox1.Text), "");
+                if (!creatures.AddCreature(newcreature))
+                    MessageBox.Show("ID already Exists!");
+                else
+                {
+                    this.Hide();
+
+                    (this.MdiParent as Hauptfenster).ShowNewForm(newcreature.creature_id);
+                    (this.MdiParent as Hauptfenster).UpdateNPCListBox();
+                }
+            }
             else
             {
-                this.Hide();
+                db_script newscript = new db_script(System.Convert.ToUInt32(textBox1.Text));
+                if (!db_scripts.AddScript(newscript))
+                    MessageBox.Show("ID already Exists!");
+                else
+                {
+                    this.Hide();
 
-                (this.MdiParent as Hauptfenster).ShowNewForm(newcreature.creature_id);
-                (this.MdiParent as Hauptfenster).UpdateNPCListBox();
+                    (this.MdiParent as Hauptfenster).ShowNewForm(newscript.id);
+                    (this.MdiParent as Hauptfenster).UpdateNPCListBox();
+                }
             }
         }
 

@@ -982,7 +982,7 @@ namespace EventAI_Creator
         {
             Form blaa = this.ParentForm;
             NPCEditor bla = blaa as NPCEditor;
-            uint creature_id = bla.npc_id;
+            uint creature_id = bla.id;
             creatures.npcList[creature_id].line.RemoveAt(eventid);
             bla.Redraw(creature_id);
         }

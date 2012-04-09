@@ -12,31 +12,52 @@ namespace EventAI_Creator
     public partial class NPCEditor : Form
     {
         public List<string> EventsList = new List<string>();
-        public uint npc_id;
-        public NPCEditor(uint creature_id)
+        public uint id;
+        private bool bIsCreature;
+
+        public NPCEditor(uint id, bool bIsCreature)
         {
-            npc_id = creature_id;
+            this.id = id;
+            this.bIsCreature = bIsCreature;
+
             InitializeComponent();
-            this.Text = "NPC:"+npc_id;
-            this.Name = "editor:" + npc_id;
 
-            if (creatures.npcList[npc_id].activectemplate)
-                setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname";
+            if (bIsCreature)
+            {
+                this.Text = "NPC:" + this.id;
+                this.Name = "editor:" + this.id;
+
+                if (creatures.npcList[this.id].activectemplate)
+                    setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname";
+                else
+                    setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
+
+                Redraw(id);
+            }
             else
-                setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
+            {
+                this.Text = "SCRIPT:" + this.id;
+                this.Name = "editor:" + this.id;
 
-            Redraw(creature_id);
+                LoadScript(id);
+            }
         }
 
+        // Load DB scripts form
+        public void LoadScript(uint uiId)
+        {
+        }
+
+        // Load Creature AI form
         public void Redraw(uint creature_id)
         {
-            if (creatures.npcList[npc_id].line.Count != 0 || splitContainer1.Panel2.Controls.Count != 0)
+            if (creatures.npcList[this.id].line.Count != 0 || splitContainer1.Panel2.Controls.Count != 0)
             {
                 uint index = 0;
                 EventsList.Clear();
 
                 this.splitContainer1.Panel2.Controls.Clear();
-                foreach (Event_dataset item in creatures.npcList[npc_id].line)
+                foreach (Event_dataset item in creatures.npcList[this.id].line)
                 {
                     EventsList.Add(index.ToString());
                     index++;
@@ -44,7 +65,7 @@ namespace EventAI_Creator
 
                 foreach (string item in EventsList)
                 {
-                    EventControl newControl = new EventControl(creatures.npcList[npc_id].line[Convert.ToInt32(item)], Convert.ToInt32(item), npc_id);
+                    EventControl newControl = new EventControl(creatures.npcList[this.id].line[Convert.ToInt32(item)], Convert.ToInt32(item), this.id);
                     this.splitContainer1.Panel2.Controls.Add(newControl);
                     newControl.Dock = DockStyle.Top;
                     newControl.Show();
@@ -55,12 +76,12 @@ namespace EventAI_Creator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            creatures.GetCreature(npc_id).AddEvent();
-            EventControl bla = new EventControl(creatures.GetCreature(npc_id).line[creatures.GetCreature(npc_id).line.Count - 1], (creatures.GetCreature(npc_id).line.Count - 1),npc_id);
+            creatures.GetCreature(this.id).AddEvent();
+            EventControl bla = new EventControl(creatures.GetCreature(this.id).line[creatures.GetCreature(this.id).line.Count - 1], (creatures.GetCreature(this.id).line.Count - 1), this.id);
             this.splitContainer1.Panel2.Controls.Add(bla);
             bla.Dock = DockStyle.Top;
             //(this.MdiParent as Hauptfenster).UpdateNPCListBox();
-            EventsList.Add((creatures.GetCreature(npc_id).line.Count - 1).ToString());
+            EventsList.Add((creatures.GetCreature(this.id).line.Count - 1).ToString());
         }
 
         public void SaveEventsToNPCList()
@@ -76,13 +97,13 @@ namespace EventAI_Creator
 
         private void NPCEditor_ControlRemoved(object sender, ControlEventArgs e)
         {
-            Redraw(npc_id);
+            Redraw(this.id);
         }
 
         private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
-            SQLCommonExecutes.SaveOneItemTODB(creatures.npcList[this.npc_id]);
+            SQLCommonExecutes.SaveOneItemTODB(creatures.npcList[this.id]);
         }
 
         private void databaseToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -101,7 +122,7 @@ namespace EventAI_Creator
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
-                creatures.PrintCreatureToFile(npc_id, FileName);
+                creatures.PrintCreatureToFile(this.id, FileName);
             }
         }
 
@@ -123,19 +144,19 @@ namespace EventAI_Creator
         {
             if (Datastores.dbused)
             {
-                if (creatures.npcList[npc_id].activectemplate)
+                if (creatures.npcList[this.id].activectemplate)
                 {
-                    if (SQLCommonExecutes.setScriptnameInCreature_template(npc_id, true))
+                    if (SQLCommonExecutes.setScriptnameInCreature_template(this.id, true))
                     {
-                        creatures.npcList[npc_id].activectemplate = false;
+                        creatures.npcList[this.id].activectemplate = false;
                         setInCreaturetemplateToolStripMenuItem.Text = "Set scriptname";
                     }
                 }
                 else
                 {
-                    if (SQLCommonExecutes.setScriptnameInCreature_template(npc_id, false))
+                    if (SQLCommonExecutes.setScriptnameInCreature_template(this.id, false))
                     {
-                        creatures.npcList[npc_id].activectemplate = true;
+                        creatures.npcList[this.id].activectemplate = true;
                         setInCreaturetemplateToolStripMenuItem.Text = "Remove scriptname";
                     }
                 }
@@ -144,13 +165,16 @@ namespace EventAI_Creator
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+            if (bIsCreature)
+                System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/EventAI.txt");
+            else
+                System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/script_commands.txt");
         }
 
         private void queryWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
-            ScriptDisplay sd = new ScriptDisplay(creatures.PrintCreatureToWindow(npc_id));
+            ScriptDisplay sd = new ScriptDisplay(creatures.PrintCreatureToWindow(this.id));
             sd.ShowDialog();
         }
     }
