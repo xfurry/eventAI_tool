@@ -169,6 +169,20 @@ namespace EventAI_Creator
                     textBox_posZ.ReadOnly = false;
                     textBox_orientation.ReadOnly = false;
                     break;
+                case 8:     // kill credit
+                    break;
+                case 16:    // play sound
+                    break;
+                case 20:    // movement type
+                    break;
+                case 21:    // active object
+                    break;
+                case 22:    // set faction
+                    break;
+                case 27:    // go lock state
+                    break;
+                case 29:    // npc flags
+                    break;
             }
 
             // Set all to 0
@@ -195,6 +209,10 @@ namespace EventAI_Creator
                 label_datalong2.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 2];
             else
                 textBox_datalong2.ReadOnly = true;
+
+            label_source.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 3];
+            label_target.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 4];
+            label_details.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 5];
 
             if (!locked)
                 GetEventData();
