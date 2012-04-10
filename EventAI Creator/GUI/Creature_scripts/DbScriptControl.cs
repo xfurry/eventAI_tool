@@ -55,23 +55,23 @@ namespace EventAI_Creator
 
             this.commentTextbox.Text = Data.comment;
 
-            switch (comboBoxAction.SelectedIndex)
-            {
-                case 0:     // talk
-                    textBox_dataint1.ReadOnly = false;
-                    textBox_dataint2.ReadOnly = false;
-                    textBox_dataint3.ReadOnly = false;
-                    textBox_dataint4.ReadOnly = false;
-                    break;
-                case 3:     // move
-                case 6:     // teleport
-                case 10:    // summon
-                    textBox_posX.ReadOnly = false;
-                    textBox_posY.ReadOnly = false;
-                    textBox_posZ.ReadOnly = false;
-                    textBox_orientation.ReadOnly = false;
-                    break;
-            }
+            //switch (comboBoxAction.SelectedIndex)
+            //{
+            //    case 0:     // talk
+            //        textBox_dataint1.ReadOnly = false;
+            //        textBox_dataint2.ReadOnly = false;
+            //        textBox_dataint3.ReadOnly = false;
+            //        textBox_dataint4.ReadOnly = false;
+            //        break;
+            //    case 3:     // move
+            //    case 6:     // teleport
+            //    case 10:    // summon
+            //        textBox_posX.ReadOnly = false;
+            //        textBox_posY.ReadOnly = false;
+            //        textBox_posZ.ReadOnly = false;
+            //        textBox_orientation.ReadOnly = false;
+            //        break;
+            //}
 
             locked = false;
         }
@@ -148,6 +148,11 @@ namespace EventAI_Creator
             textBox_posZ.ReadOnly = true;
             textBox_orientation.ReadOnly = true;
 
+            textBox_datalong2.ReadOnly = false;
+            textBox_datalong.ReadOnly = false;
+            label_datalong.Text = "Datalong";
+            label_datalong2.Text = "Datalong2";
+
             switch (comboBoxAction.SelectedIndex)
             {
                 case 0:     // talk
@@ -179,6 +184,17 @@ namespace EventAI_Creator
             textBox_dataint2.Text = "0";
             textBox_dataint3.Text = "0";
             textBox_dataint4.Text = "0";
+
+            // Datalong labels
+            if (Info.ScriptCommands[comboBoxAction.SelectedIndex, 1] != "")
+                label_datalong.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 1];
+            else
+                textBox_datalong.ReadOnly = true;
+
+            if (Info.ScriptCommands[comboBoxAction.SelectedIndex, 2] != "")
+                label_datalong2.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 2];
+            else
+                textBox_datalong2.ReadOnly = true;
 
             if (!locked)
                 GetEventData();

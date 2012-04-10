@@ -373,6 +373,13 @@ namespace EventAI_Creator
         // Handle script reload
         private void comboBox_script_type_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // close all editors
+            foreach (Form item in MdiChildren)
+            {
+                if (item is NPCEditor)
+                    (item as NPCEditor).Close();
+            }
+
             // creature_ai_scripts
             if (comboBox_script_type.SelectedIndex == 0)
                 Datastores.ReloadDB();
@@ -380,13 +387,6 @@ namespace EventAI_Creator
                 Datastores.LoadDBScripts(comboBox_script_type.SelectedItem.ToString());
 
             UpdateNPCListBox();
-
-            // close all editors
-            foreach (Form item in MdiChildren)
-            {
-                if (item is NPCEditor)
-                    (item as NPCEditor).Close();
-            }
         }
     }
 }
