@@ -65,6 +65,9 @@ namespace EventAI_Creator
                 case 5:
                     scriptParent.SetDataFlags(flag_value);
                     break;
+                case 6:
+                    scriptParent.SetEventFlags(flag_value);
+                    break;
             }
 
             this.Close();

@@ -36,6 +36,10 @@
             this.comboBoxAction = new System.Windows.Forms.ComboBox();
             this.textBoxDelay = new System.Windows.Forms.TextBox();
             this.groupBoxMain = new System.Windows.Forms.GroupBox();
+            this.comboBox_datalong2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_datalong = new System.Windows.Forms.ComboBox();
+            this.button_datalong = new System.Windows.Forms.Button();
+            this.button_datalong2 = new System.Windows.Forms.Button();
             this.button_flags = new System.Windows.Forms.Button();
             this.label_flags = new System.Windows.Forms.Label();
             this.label_radius = new System.Windows.Forms.Label();
@@ -67,16 +71,12 @@
             this.textBox_posX = new System.Windows.Forms.TextBox();
             this.button_delete_event = new System.Windows.Forms.Button();
             this.groupBox_details = new System.Windows.Forms.GroupBox();
-            this.label_src = new System.Windows.Forms.Label();
-            this.label_source = new System.Windows.Forms.Label();
-            this.label_tar = new System.Windows.Forms.Label();
-            this.label_target = new System.Windows.Forms.Label();
-            this.label_extra = new System.Windows.Forms.Label();
             this.label_details = new System.Windows.Forms.Label();
-            this.button_datalong2 = new System.Windows.Forms.Button();
-            this.button_datalong = new System.Windows.Forms.Button();
-            this.comboBox_datalong = new System.Windows.Forms.ComboBox();
-            this.comboBox_datalong2 = new System.Windows.Forms.ComboBox();
+            this.label_extra = new System.Windows.Forms.Label();
+            this.label_target = new System.Windows.Forms.Label();
+            this.label_tar = new System.Windows.Forms.Label();
+            this.label_source = new System.Windows.Forms.Label();
+            this.label_src = new System.Windows.Forms.Label();
             this.groupBoxEvent.SuspendLayout();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxDataInt.SuspendLayout();
@@ -175,6 +175,47 @@
             this.groupBoxMain.TabIndex = 3;
             this.groupBoxMain.TabStop = false;
             this.groupBoxMain.Text = "Main Flags";
+            // 
+            // comboBox_datalong2
+            // 
+            this.comboBox_datalong2.FormattingEnabled = true;
+            this.comboBox_datalong2.Location = new System.Drawing.Point(6, 73);
+            this.comboBox_datalong2.Name = "comboBox_datalong2";
+            this.comboBox_datalong2.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_datalong2.TabIndex = 14;
+            this.comboBox_datalong2.Visible = false;
+            this.comboBox_datalong2.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong2_SelectedIndexChanged);
+            // 
+            // comboBox_datalong
+            // 
+            this.comboBox_datalong.FormattingEnabled = true;
+            this.comboBox_datalong.Location = new System.Drawing.Point(6, 33);
+            this.comboBox_datalong.Name = "comboBox_datalong";
+            this.comboBox_datalong.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_datalong.TabIndex = 13;
+            this.comboBox_datalong.Visible = false;
+            this.comboBox_datalong.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong_SelectedIndexChanged);
+            // 
+            // button_datalong
+            // 
+            this.button_datalong.Location = new System.Drawing.Point(56, 33);
+            this.button_datalong.Name = "button_datalong";
+            this.button_datalong.Size = new System.Drawing.Size(50, 20);
+            this.button_datalong.TabIndex = 12;
+            this.button_datalong.Text = "Select";
+            this.button_datalong.UseVisualStyleBackColor = true;
+            this.button_datalong.Click += new System.EventHandler(this.button_datalong2_Click);
+            // 
+            // button_datalong2
+            // 
+            this.button_datalong2.Location = new System.Drawing.Point(56, 73);
+            this.button_datalong2.Name = "button_datalong2";
+            this.button_datalong2.Size = new System.Drawing.Size(50, 20);
+            this.button_datalong2.TabIndex = 11;
+            this.button_datalong2.Text = "Select";
+            this.button_datalong2.UseVisualStyleBackColor = true;
+            this.button_datalong2.Visible = false;
+            this.button_datalong2.Click += new System.EventHandler(this.button_datalong2_Click);
             // 
             // button_flags
             // 
@@ -475,43 +516,14 @@
             this.groupBox_details.TabStop = false;
             this.groupBox_details.Text = "Details";
             // 
-            // label_src
+            // label_details
             // 
-            this.label_src.AutoSize = true;
-            this.label_src.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_src.Location = new System.Drawing.Point(6, 16);
-            this.label_src.Name = "label_src";
-            this.label_src.Size = new System.Drawing.Size(51, 13);
-            this.label_src.TabIndex = 0;
-            this.label_src.Text = "Source:";
-            // 
-            // label_source
-            // 
-            this.label_source.AutoSize = true;
-            this.label_source.Location = new System.Drawing.Point(6, 29);
-            this.label_source.Name = "label_source";
-            this.label_source.Size = new System.Drawing.Size(39, 13);
-            this.label_source.TabIndex = 1;
-            this.label_source.Text = "source";
-            // 
-            // label_tar
-            // 
-            this.label_tar.AutoSize = true;
-            this.label_tar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_tar.Location = new System.Drawing.Point(6, 52);
-            this.label_tar.Name = "label_tar";
-            this.label_tar.Size = new System.Drawing.Size(48, 13);
-            this.label_tar.TabIndex = 2;
-            this.label_tar.Text = "Target:";
-            // 
-            // label_target
-            // 
-            this.label_target.AutoSize = true;
-            this.label_target.Location = new System.Drawing.Point(6, 65);
-            this.label_target.Name = "label_target";
-            this.label_target.Size = new System.Drawing.Size(34, 13);
-            this.label_target.TabIndex = 3;
-            this.label_target.Text = "target";
+            this.label_details.AutoSize = true;
+            this.label_details.Location = new System.Drawing.Point(7, 102);
+            this.label_details.Name = "label_details";
+            this.label_details.Size = new System.Drawing.Size(37, 13);
+            this.label_details.TabIndex = 5;
+            this.label_details.Text = "details";
             // 
             // label_extra
             // 
@@ -523,53 +535,43 @@
             this.label_extra.TabIndex = 4;
             this.label_extra.Text = "Additional:";
             // 
-            // label_details
+            // label_target
             // 
-            this.label_details.AutoSize = true;
-            this.label_details.Location = new System.Drawing.Point(7, 102);
-            this.label_details.Name = "label_details";
-            this.label_details.Size = new System.Drawing.Size(37, 13);
-            this.label_details.TabIndex = 5;
-            this.label_details.Text = "details";
+            this.label_target.AutoSize = true;
+            this.label_target.Location = new System.Drawing.Point(6, 65);
+            this.label_target.Name = "label_target";
+            this.label_target.Size = new System.Drawing.Size(34, 13);
+            this.label_target.TabIndex = 3;
+            this.label_target.Text = "target";
             // 
-            // button_datalong2
+            // label_tar
             // 
-            this.button_datalong2.Location = new System.Drawing.Point(56, 73);
-            this.button_datalong2.Name = "button_datalong2";
-            this.button_datalong2.Size = new System.Drawing.Size(50, 20);
-            this.button_datalong2.TabIndex = 11;
-            this.button_datalong2.Text = "Select";
-            this.button_datalong2.UseVisualStyleBackColor = true;
-            this.button_datalong2.Visible = false;
+            this.label_tar.AutoSize = true;
+            this.label_tar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_tar.Location = new System.Drawing.Point(6, 52);
+            this.label_tar.Name = "label_tar";
+            this.label_tar.Size = new System.Drawing.Size(48, 13);
+            this.label_tar.TabIndex = 2;
+            this.label_tar.Text = "Target:";
             // 
-            // button_datalong
+            // label_source
             // 
-            this.button_datalong.Location = new System.Drawing.Point(56, 33);
-            this.button_datalong.Name = "button_datalong";
-            this.button_datalong.Size = new System.Drawing.Size(50, 20);
-            this.button_datalong.TabIndex = 12;
-            this.button_datalong.Text = "Select";
-            this.button_datalong.UseVisualStyleBackColor = true;
+            this.label_source.AutoSize = true;
+            this.label_source.Location = new System.Drawing.Point(6, 29);
+            this.label_source.Name = "label_source";
+            this.label_source.Size = new System.Drawing.Size(39, 13);
+            this.label_source.TabIndex = 1;
+            this.label_source.Text = "source";
             // 
-            // comboBox_datalong
+            // label_src
             // 
-            this.comboBox_datalong.FormattingEnabled = true;
-            this.comboBox_datalong.Location = new System.Drawing.Point(6, 33);
-            this.comboBox_datalong.Name = "comboBox_datalong";
-            this.comboBox_datalong.Size = new System.Drawing.Size(100, 21);
-            this.comboBox_datalong.TabIndex = 13;
-            this.comboBox_datalong.Visible = false;
-            this.comboBox_datalong.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong_SelectedIndexChanged);
-            // 
-            // comboBox_datalong2
-            // 
-            this.comboBox_datalong2.FormattingEnabled = true;
-            this.comboBox_datalong2.Location = new System.Drawing.Point(6, 73);
-            this.comboBox_datalong2.Name = "comboBox_datalong2";
-            this.comboBox_datalong2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox_datalong2.TabIndex = 14;
-            this.comboBox_datalong2.Visible = false;
-            this.comboBox_datalong2.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong2_SelectedIndexChanged);
+            this.label_src.AutoSize = true;
+            this.label_src.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_src.Location = new System.Drawing.Point(6, 16);
+            this.label_src.Name = "label_src";
+            this.label_src.Size = new System.Drawing.Size(51, 13);
+            this.label_src.TabIndex = 0;
+            this.label_src.Text = "Source:";
             // 
             // DbScriptControl
             // 

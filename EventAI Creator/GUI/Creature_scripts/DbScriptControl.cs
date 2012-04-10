@@ -160,6 +160,12 @@ namespace EventAI_Creator
             textBox_datalong.Width = 100;
             textBox_datalong2.Width = 100;
 
+            textBox_datalong.Visible = true;
+            textBox_datalong2.Visible = true;
+
+            comboBox_datalong.Items.Clear();
+            comboBox_datalong2.Items.Clear();
+
             switch (comboBoxAction.SelectedIndex)
             {
                 case 0:     // talk
@@ -329,6 +335,37 @@ namespace EventAI_Creator
                 GetEventData();
         }
 
+        public void SetEventFlags(Int64 flagValue)
+        {
+            switch (comboBoxAction.SelectedIndex)
+            {
+                case 16:        // play sound
+                case 22:        // change faction
+                    textBox_datalong2.Text = flagValue.ToString();
+                    break;
+                case 27:        // go lock state
+                    // validation
+                    if (flagValue == 3 || flagValue == 7 || flagValue == 11 || flagValue == 15)
+                    {
+                        MessageBox.Show("You can't have LOCK and UNLOCK flags at the same time.");
+                        flagValue = 0;
+                    }
+                    else if (flagValue == 12 || flagValue == 13 || flagValue == 14)
+                    {
+                        MessageBox.Show("You can't have NONINTERACT and INTERACT flags at the same time.");
+                        flagValue = 0;
+                    }
+                    textBox_datalong.Text = flagValue.ToString();
+                    break;
+                case 29:        // npc flags
+                    textBox_datalong.Text = flagValue.ToString();
+                    break;
+            }
+
+            if (!locked)
+                GetEventData();
+        }
+
         private void comboBox_datalong_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox_datalong.Text = comboBox_datalong.SelectedIndex.ToString();
@@ -343,6 +380,32 @@ namespace EventAI_Creator
 
             if (!locked)
                 GetEventData();
+        }
+
+        // Load event flags box
+        private void button_datalong2_Click(object sender, EventArgs e)
+        {
+            EventFlag dialog = null;
+
+            switch (comboBoxAction.SelectedIndex)
+            {
+                case 16:        // play sound
+                    dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong2.Text), Info.SoundBitmask, 6, 0);
+                    dialog.ShowDialog(this);
+                    break;
+                case 22:        // change faction
+                    dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong2.Text), Info.FactionFlag, 6, 0);
+                    dialog.ShowDialog(this);
+                    break;
+                case 27:        // go lock state
+                    dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong.Text), Info.GameObjectFlags, 6, 0);
+                    dialog.ShowDialog(this);
+                    break;
+                case 29:        // npc flags
+                    dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong.Text), Info.NpcFlags, 6, 0);
+                    dialog.ShowDialog(this);
+                    break;
+            }
         }
     }
 }
