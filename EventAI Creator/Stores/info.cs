@@ -324,7 +324,7 @@ namespace EventAI_Creator
 /* 0 */     {"TALK",                "ChatType",     "language",         "WorldObject*", "Unit/none*",   "",                         "Creature say/whisper/yell/textemote."},
 /* 1 */     {"EMOTE",               "emote_id",     "",                 "Unit*",        "Unit/none*",   "",                         "Play emote on creature."},
 /* 2 */     {"FIELD_SET",           "field_id",     "field value",      "any",          "",             "",                         "Change the value at an index for the unit."},
-/* 3 */     {"MOVE_TO",             "",             "travel time",      "Creature*",    "",             "",                         "Relocate creature to a destination"},
+/* 3 */     {"MOVE_TO",             "",             "travel_speed",     "Creature*",    "",             "teleport unit to position","Relocate creature to a destination"},
 /* 4 */     {"FLAG_SET",            "field_id",     "bitmask",          "any",          "",             "",                         "Turns on bits on a flag field at an index for the worldobject."},
 /* 5 */     {"FLAG_REMOVE",         "field_id",     "bitmask",          "any",          "",             "",                         "Turns off bits on a flag field at an index for the worldobject."},
 /* 6 */     {"TELEPORT_TO",         "map_id",       "",                 "Player|",      "Player|",      "",                         "Teleports the player to a location."},
