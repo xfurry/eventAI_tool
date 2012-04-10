@@ -559,6 +559,7 @@
             this.comboBox_datalong.Size = new System.Drawing.Size(100, 21);
             this.comboBox_datalong.TabIndex = 13;
             this.comboBox_datalong.Visible = false;
+            this.comboBox_datalong.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong_SelectedIndexChanged);
             // 
             // comboBox_datalong2
             // 
@@ -568,6 +569,7 @@
             this.comboBox_datalong2.Size = new System.Drawing.Size(100, 21);
             this.comboBox_datalong2.TabIndex = 14;
             this.comboBox_datalong2.Visible = false;
+            this.comboBox_datalong2.SelectedIndexChanged += new System.EventHandler(this.comboBox_datalong2_SelectedIndexChanged);
             // 
             // DbScriptControl
             // 

@@ -153,6 +153,13 @@ namespace EventAI_Creator
             label_datalong.Text = "Datalong";
             label_datalong2.Text = "Datalong2";
 
+            comboBox_datalong.Visible = false;
+            comboBox_datalong2.Visible = false;
+            button_datalong.Visible = false;
+            button_datalong2.Visible = false;
+            textBox_datalong.Width = 100;
+            textBox_datalong2.Width = 100;
+
             switch (comboBoxAction.SelectedIndex)
             {
                 case 0:     // talk
@@ -170,12 +177,30 @@ namespace EventAI_Creator
                     textBox_orientation.ReadOnly = false;
                     break;
                 case 8:     // kill credit
+                    textBox_datalong2.Visible = false;
+                    comboBox_datalong2.Visible = true;
+                    comboBox_datalong2.Items.AddRange(Info.CreditTemplate);
+                    comboBox_datalong2.SelectedIndex = 0;
+                    comboBox_datalong2.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
                 case 16:    // play sound
                     break;
                 case 20:    // movement type
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.MovementTemplate);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 21:    // active object
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.Boolean);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 22:    // set faction
                     break;
@@ -276,6 +301,22 @@ namespace EventAI_Creator
         public void SetDataFlags(Int64 flagValue)
         {
             textBox_flags.Text = flagValue.ToString();
+
+            if (!locked)
+                GetEventData();
+        }
+
+        private void comboBox_datalong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_datalong.Text = comboBox_datalong.SelectedIndex.ToString();
+
+            if (!locked)
+                GetEventData();
+        }
+
+        private void comboBox_datalong2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_datalong2.Text = comboBox_datalong2.SelectedIndex.ToString();
 
             if (!locked)
                 GetEventData();

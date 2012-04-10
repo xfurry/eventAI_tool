@@ -238,6 +238,10 @@ namespace EventAI_Creator
 
         public static string[] InvincibilityTemplate = new string[] { "VALUE", "RATE" };
 
+        public static string[] CreditTemplate = new string[] { "PERSONAL", "GROUP" };
+
+        public static string[] MovementTemplate = new string[] { "IDLE", "RANDOMP", "WAYPOINT" };
+
         public static string[] ScriptTemplate = new string[]
         {
             "CREATURE_AI_SCRIPTS",
