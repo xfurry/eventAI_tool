@@ -12,6 +12,7 @@ namespace EventAI_Creator
     public partial class EventFlag : Form
     {
         private EventControl parent;
+        private DbScriptControl scriptParent;
         private int flagType = 0;
         private int action = 0;
 
@@ -19,24 +20,22 @@ namespace EventAI_Creator
         {
             InitializeComponent();
 
-            for (int i = 0; i < items.Count(); i++)
-                checkedListBox_flags.Items.Add(items[i]);
-
             flagType = type;
-            if (action != 0)
-                this.action = action;
-
+            this.action = action;
             parent = control;
 
-            // Check only the lists for the given event mask
-            for (int i = checkedListBox_flags.Items.Count; i >= 0; i--)
-            {
-                if (Convert.ToInt64(Math.Pow(2, i)) <= flag_value)
-                {
-                    checkedListBox_flags.SetItemChecked(i, true);
-                    flag_value -= Convert.ToInt64(Math.Pow(2, i));
-                }
-            }
+            LoadFlags(items, flag_value);
+        }
+
+        public EventFlag(DbScriptControl control, Int64 flag_value, string[] items, int type/*0=event_flag, 1=spell_hit, 2=cast_flag */, int action)
+        {
+            InitializeComponent();
+
+            flagType = type;
+            this.action = action;
+            scriptParent = control;
+
+            LoadFlags(items, flag_value);
         }
 
         private void button_flag_ok_Click(object sender, EventArgs e)
@@ -63,9 +62,28 @@ namespace EventAI_Creator
                 case 4:
                     parent.set_unit_flag(flag_value, action);
                     break;
+                case 5:
+                    scriptParent.SetDataFlags(flag_value);
+                    break;
             }
 
             this.Close();
+        }
+
+        private void LoadFlags(string[] items, Int64 flag_value)
+        {
+            for (int i = 0; i < items.Count(); i++)
+                checkedListBox_flags.Items.Add(items[i]);
+
+            // Check only the lists for the given event mask
+            for (int i = checkedListBox_flags.Items.Count; i >= 0; i--)
+            {
+                if (Convert.ToInt64(Math.Pow(2, i)) <= flag_value)
+                {
+                    checkedListBox_flags.SetItemChecked(i, true);
+                    flag_value -= Convert.ToInt64(Math.Pow(2, i));
+                }
+            }
         }
     }
 }

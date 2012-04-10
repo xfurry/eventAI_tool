@@ -36,6 +36,7 @@
             this.comboBoxAction = new System.Windows.Forms.ComboBox();
             this.textBoxDelay = new System.Windows.Forms.TextBox();
             this.groupBoxMain = new System.Windows.Forms.GroupBox();
+            this.button_flags = new System.Windows.Forms.Button();
             this.label_flags = new System.Windows.Forms.Label();
             this.label_radius = new System.Windows.Forms.Label();
             this.label_buddy = new System.Windows.Forms.Label();
@@ -64,7 +65,7 @@
             this.textBox_posZ = new System.Windows.Forms.TextBox();
             this.textBox_posY = new System.Windows.Forms.TextBox();
             this.textBox_posX = new System.Windows.Forms.TextBox();
-            this.button_flags = new System.Windows.Forms.Button();
+            this.button_delete_event = new System.Windows.Forms.Button();
             this.groupBoxEvent.SuspendLayout();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxDataInt.SuspendLayout();
@@ -80,6 +81,7 @@
             this.eventCheckbox.TabIndex = 0;
             this.eventCheckbox.Text = "Event 1";
             this.eventCheckbox.UseVisualStyleBackColor = true;
+            this.eventCheckbox.CheckedChanged += new System.EventHandler(this.eventCheckbox_CheckedChanged);
             // 
             // commentTextbox
             // 
@@ -88,6 +90,7 @@
             this.commentTextbox.Size = new System.Drawing.Size(372, 20);
             this.commentTextbox.TabIndex = 1;
             this.commentTextbox.Text = "Comment";
+            this.commentTextbox.Leave += new System.EventHandler(this.txtBox_comment_leave);
             // 
             // groupBoxEvent
             // 
@@ -107,9 +110,9 @@
             this.labelAction.AutoSize = true;
             this.labelAction.Location = new System.Drawing.Point(10, 82);
             this.labelAction.Name = "labelAction";
-            this.labelAction.Size = new System.Drawing.Size(37, 13);
+            this.labelAction.Size = new System.Drawing.Size(54, 13);
             this.labelAction.TabIndex = 3;
-            this.labelAction.Text = "Action";
+            this.labelAction.Text = "Command";
             // 
             // labelDelay
             // 
@@ -127,6 +130,7 @@
             this.comboBoxAction.Name = "comboBoxAction";
             this.comboBoxAction.Size = new System.Drawing.Size(100, 21);
             this.comboBoxAction.TabIndex = 1;
+            this.comboBoxAction.SelectedIndexChanged += new System.EventHandler(this.comboBoxAction_SelectedIndexChanged);
             // 
             // textBoxDelay
             // 
@@ -134,6 +138,7 @@
             this.textBoxDelay.Name = "textBoxDelay";
             this.textBoxDelay.Size = new System.Drawing.Size(100, 20);
             this.textBoxDelay.TabIndex = 0;
+            this.textBoxDelay.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // groupBoxMain
             // 
@@ -154,6 +159,16 @@
             this.groupBoxMain.TabIndex = 3;
             this.groupBoxMain.TabStop = false;
             this.groupBoxMain.Text = "Main Flags";
+            // 
+            // button_flags
+            // 
+            this.button_flags.Location = new System.Drawing.Point(312, 66);
+            this.button_flags.Name = "button_flags";
+            this.button_flags.Size = new System.Drawing.Size(50, 20);
+            this.button_flags.TabIndex = 10;
+            this.button_flags.Text = "Select";
+            this.button_flags.UseVisualStyleBackColor = true;
+            this.button_flags.Click += new System.EventHandler(this.button_flags_Click);
             // 
             // label_flags
             // 
@@ -197,6 +212,7 @@
             this.textBox_datalong2.Name = "textBox_datalong2";
             this.textBox_datalong2.Size = new System.Drawing.Size(100, 20);
             this.textBox_datalong2.TabIndex = 5;
+            this.textBox_datalong2.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_flags
             // 
@@ -204,6 +220,7 @@
             this.textBox_flags.Name = "textBox_flags";
             this.textBox_flags.Size = new System.Drawing.Size(50, 20);
             this.textBox_flags.TabIndex = 4;
+            this.textBox_flags.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_radius
             // 
@@ -211,6 +228,7 @@
             this.textBox_radius.Name = "textBox_radius";
             this.textBox_radius.Size = new System.Drawing.Size(100, 20);
             this.textBox_radius.TabIndex = 3;
+            this.textBox_radius.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_buddy
             // 
@@ -218,6 +236,7 @@
             this.textBox_buddy.Name = "textBox_buddy";
             this.textBox_buddy.Size = new System.Drawing.Size(100, 20);
             this.textBox_buddy.TabIndex = 2;
+            this.textBox_buddy.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // label_datalong
             // 
@@ -234,6 +253,7 @@
             this.textBox_datalong.Name = "textBox_datalong";
             this.textBox_datalong.Size = new System.Drawing.Size(100, 20);
             this.textBox_datalong.TabIndex = 0;
+            this.textBox_datalong.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // groupBoxDataInt
             // 
@@ -295,6 +315,7 @@
             this.textBox_dataint4.ReadOnly = true;
             this.textBox_dataint4.Size = new System.Drawing.Size(100, 20);
             this.textBox_dataint4.TabIndex = 3;
+            this.textBox_dataint4.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_dataint3
             // 
@@ -303,6 +324,7 @@
             this.textBox_dataint3.ReadOnly = true;
             this.textBox_dataint3.Size = new System.Drawing.Size(100, 20);
             this.textBox_dataint3.TabIndex = 2;
+            this.textBox_dataint3.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_dataint2
             // 
@@ -311,6 +333,7 @@
             this.textBox_dataint2.ReadOnly = true;
             this.textBox_dataint2.Size = new System.Drawing.Size(100, 20);
             this.textBox_dataint2.TabIndex = 1;
+            this.textBox_dataint2.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // textBox_dataint1
             // 
@@ -319,6 +342,7 @@
             this.textBox_dataint1.ReadOnly = true;
             this.textBox_dataint1.Size = new System.Drawing.Size(100, 20);
             this.textBox_dataint1.TabIndex = 0;
+            this.textBox_dataint1.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // groupBoxPosition
             // 
@@ -340,7 +364,7 @@
             // label_orientation
             // 
             this.label_orientation.AutoSize = true;
-            this.label_orientation.Location = new System.Drawing.Point(324, 16);
+            this.label_orientation.Location = new System.Drawing.Point(327, 20);
             this.label_orientation.Name = "label_orientation";
             this.label_orientation.Size = new System.Drawing.Size(58, 13);
             this.label_orientation.TabIndex = 7;
@@ -349,7 +373,7 @@
             // label_posZ
             // 
             this.label_posZ.AutoSize = true;
-            this.label_posZ.Location = new System.Drawing.Point(218, 16);
+            this.label_posZ.Location = new System.Drawing.Point(221, 20);
             this.label_posZ.Name = "label_posZ";
             this.label_posZ.Size = new System.Drawing.Size(54, 13);
             this.label_posZ.TabIndex = 6;
@@ -358,7 +382,7 @@
             // label_posY
             // 
             this.label_posY.AutoSize = true;
-            this.label_posY.Location = new System.Drawing.Point(112, 16);
+            this.label_posY.Location = new System.Drawing.Point(115, 20);
             this.label_posY.Name = "label_posY";
             this.label_posY.Size = new System.Drawing.Size(54, 13);
             this.label_posY.TabIndex = 5;
@@ -367,7 +391,7 @@
             // label_posX
             // 
             this.label_posX.AutoSize = true;
-            this.label_posX.Location = new System.Drawing.Point(7, 16);
+            this.label_posX.Location = new System.Drawing.Point(10, 20);
             this.label_posX.Name = "label_posX";
             this.label_posX.Size = new System.Drawing.Size(54, 13);
             this.label_posX.TabIndex = 4;
@@ -375,49 +399,56 @@
             // 
             // textBox_orientation
             // 
-            this.textBox_orientation.Location = new System.Drawing.Point(325, 32);
+            this.textBox_orientation.Location = new System.Drawing.Point(328, 36);
             this.textBox_orientation.Name = "textBox_orientation";
             this.textBox_orientation.ReadOnly = true;
             this.textBox_orientation.Size = new System.Drawing.Size(100, 20);
             this.textBox_orientation.TabIndex = 3;
+            this.textBox_orientation.Leave += new System.EventHandler(this.txtBox_leave_location);
             // 
             // textBox_posZ
             // 
-            this.textBox_posZ.Location = new System.Drawing.Point(219, 32);
+            this.textBox_posZ.Location = new System.Drawing.Point(222, 36);
             this.textBox_posZ.Name = "textBox_posZ";
             this.textBox_posZ.ReadOnly = true;
             this.textBox_posZ.Size = new System.Drawing.Size(100, 20);
             this.textBox_posZ.TabIndex = 2;
+            this.textBox_posZ.Leave += new System.EventHandler(this.txtBox_leave_location);
             // 
             // textBox_posY
             // 
-            this.textBox_posY.Location = new System.Drawing.Point(113, 32);
+            this.textBox_posY.Location = new System.Drawing.Point(116, 36);
             this.textBox_posY.Name = "textBox_posY";
             this.textBox_posY.ReadOnly = true;
             this.textBox_posY.Size = new System.Drawing.Size(100, 20);
             this.textBox_posY.TabIndex = 1;
+            this.textBox_posY.Leave += new System.EventHandler(this.txtBox_leave_location);
             // 
             // textBox_posX
             // 
-            this.textBox_posX.Location = new System.Drawing.Point(7, 32);
+            this.textBox_posX.Location = new System.Drawing.Point(10, 36);
             this.textBox_posX.Name = "textBox_posX";
             this.textBox_posX.ReadOnly = true;
             this.textBox_posX.Size = new System.Drawing.Size(100, 20);
             this.textBox_posX.TabIndex = 0;
+            this.textBox_posX.Leave += new System.EventHandler(this.txtBox_leave_location);
             // 
-            // button_flags
+            // button_delete_event
             // 
-            this.button_flags.Location = new System.Drawing.Point(312, 66);
-            this.button_flags.Name = "button_flags";
-            this.button_flags.Size = new System.Drawing.Size(50, 20);
-            this.button_flags.TabIndex = 10;
-            this.button_flags.Text = "Select";
-            this.button_flags.UseVisualStyleBackColor = true;
+            this.button_delete_event.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_delete_event.Location = new System.Drawing.Point(469, 0);
+            this.button_delete_event.Name = "button_delete_event";
+            this.button_delete_event.Size = new System.Drawing.Size(84, 20);
+            this.button_delete_event.TabIndex = 6;
+            this.button_delete_event.Text = "Delete Event";
+            this.button_delete_event.UseVisualStyleBackColor = true;
+            this.button_delete_event.Click += new System.EventHandler(this.button_delete_event_Click);
             // 
             // DbScriptControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_delete_event);
             this.Controls.Add(this.groupBoxPosition);
             this.Controls.Add(this.groupBoxDataInt);
             this.Controls.Add(this.groupBoxMain);
@@ -478,5 +509,6 @@
         private System.Windows.Forms.Label label_dataint4;
         private System.Windows.Forms.Label label_dataint3;
         private System.Windows.Forms.Button button_flags;
+        private System.Windows.Forms.Button button_delete_event;
     }
 }
