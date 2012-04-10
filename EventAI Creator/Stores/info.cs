@@ -256,10 +256,10 @@ namespace EventAI_Creator
 
         public static string[] ScriptFlags = new string[]
         {
-            "SCRIPT_FLAG_BUDDY_AS_TARGET",
-            "SCRIPT_FLAG_REVERSE_DIRECTION",
-            "SCRIPT_FLAG_SOURCE_TARGETS_SELF",
-            "SCRIPT_FLAG_COMMAND_ADDITIONAL"
+            "BUDDY_AS_TARGET",
+            "REVERSE_DIRECTION",
+            "SOURCE_TARGETS_SELF",
+            "COMMAND_ADDITIONAL"
         };
 
         public static string[] GameObjectFlags = new string[]
@@ -269,6 +269,54 @@ namespace EventAI_Creator
             "GO_NONINTERACT",
             "GO_INTERACT"
         };
+
+        public static string[] StandStateTemplate = new string[]
+        {
+            "STAND",
+            "SIT",
+            "SIT_CHAIR",
+            "SLEEP",
+            "SIT_LOW_CHAIR",
+            "SIT_MEDIUM_CHAIR",
+            "SIT_HIGH_CHAIR",
+            "DEAD",
+            "KNEEL",
+            "CUSTOM",
+        };
+
+        public static string[] NpcFlags = new string[]
+        {
+            "NONE",
+            "GOSSIP",
+            "QUESTGIVER",
+            "UNK1",
+            "UNK2",
+            "TRAINER",
+            "TRAINER_CLASS",
+            "TRAINER_PROFESSION",
+            "VENDOR",
+            "VENDOR_AMMO",
+            "VENDOR_FOOD",
+            "VENDOR_POISON",
+            "VENDOR_REAGENT",
+            "REPAIR",
+            "FLIGHTMASTER",
+            "SPIRITHEALER",
+            "SPIRITGUIDE",
+            "INNKEEPER",
+            "BANKER",
+            "PETITIONER",
+            "TABARDDESIGNER",
+            "BATTLEMASTER",
+            "AUCTIONEER",
+            "STABLEMASTER",
+            "GUILD_BANKER",
+            "SPELLCLICK"
+        };
+
+        public static string[] NpcFlagsSelect = new string[] {"TOGGLE","ADD","REMOVE"};
+
+        public static string[] SoundBitmask = new string[] {"ANYONE/TARGET", "DISTANCE DEPENDENT"};
 
         public static string[,] ScriptCommands = new string[,]
         {

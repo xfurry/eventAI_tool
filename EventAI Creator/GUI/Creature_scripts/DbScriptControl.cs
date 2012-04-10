@@ -185,6 +185,8 @@ namespace EventAI_Creator
                     comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
                 case 16:    // play sound
+                    textBox_datalong2.Width = 50;
+                    button_datalong2.Visible = true;
                     break;
                 case 20:    // movement type
                     textBox_datalong.Visible = false;
@@ -195,6 +197,7 @@ namespace EventAI_Creator
                     comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 21:    // active object
+                case 25:    // set run
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
                     comboBox_datalong.Items.AddRange(Info.Boolean);
@@ -203,10 +206,30 @@ namespace EventAI_Creator
                     comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 22:    // set faction
+                    textBox_datalong2.Width = 50;
+                    button_datalong2.Visible = true;
                     break;
                 case 27:    // go lock state
+                    textBox_datalong.Width = 50;
+                    button_datalong.Visible = true;
+                    break;
+                case 28:    // unit stand state
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.StandStateTemplate);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 29:    // npc flags
+                    textBox_datalong.Width = 50;
+                    button_datalong.Visible = true;
+                    textBox_datalong2.Visible = false;
+                    comboBox_datalong2.Visible = true;
+                    comboBox_datalong2.Items.AddRange(Info.NpcFlagsSelect);
+                    comboBox_datalong2.SelectedIndex = 0;
+                    comboBox_datalong2.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
             }
 
