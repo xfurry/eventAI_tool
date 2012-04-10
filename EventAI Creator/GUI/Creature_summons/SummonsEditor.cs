@@ -162,7 +162,7 @@ namespace EventAI_Creator
                 switch (MessageBox.Show("Are you sure you want to delete the selected text from the database?", "Remove from Database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
-                        string query = SQLcreator.CreateDeleteQuery(summons.map[summon_id]);
+                        string query = SQLcreator.CreateDeleteQuery(summons.map[summon_id], "");
                         MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
                         try
                         {

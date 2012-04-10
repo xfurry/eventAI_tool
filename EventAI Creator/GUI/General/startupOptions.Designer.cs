@@ -82,9 +82,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(341, 13);
+            this.label1.Size = new System.Drawing.Size(343, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Welcome to MaNGOS eventAI tool. Please set your Database Settings";
+            this.label1.Text = "Welcome to MaNGOS scripting tool. Please set your Database Settings";
             // 
             // mysqlgroupbox
             // 
@@ -305,9 +305,9 @@
             this.Controls.Add(this.noDBconnection);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eAICreator";
-            this.Text = "MaNGOS eventAI development tool";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.eAICreator_FormClosing);
+            this.Text = "MaNGOS script development tool";
             this.Load += new System.EventHandler(this.eAICreator_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.eAICreator_FormClosing);
             this.mysqlgroupbox.ResumeLayout(false);
             this.mysqlgroupbox.PerformLayout();
             this.sshgroupbox.ResumeLayout(false);

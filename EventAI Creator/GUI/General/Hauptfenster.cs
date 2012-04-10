@@ -22,7 +22,7 @@ namespace EventAI_Creator
 
         public void ShowNewForm(uint id)
         {
-            NPCEditor childForm = new NPCEditor(id, comboBox_script_type.SelectedIndex == 0);
+            NPCEditor childForm = new NPCEditor(id, comboBox_script_type.SelectedIndex == 0, comboBox_script_type.SelectedItem.ToString().ToLower());
             childForm.MdiParent = this;
             if (comboBox_script_type.SelectedIndex == 0)
                 childForm.Text = "NPC:  " + id;
@@ -218,7 +218,7 @@ namespace EventAI_Creator
                 switch (MessageBox.Show("Do you want to Remove it from Database Now? (Executing delete Query", "Remove from Database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
-                        string query = SQLcreator.CreateDeleteQuery(creatures.GetCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex])));
+                        string query = SQLcreator.CreateDeleteQuery(creatures.GetCreature(System.Convert.ToUInt32(this.npclistbox.Items[npclistbox.SelectedIndex])), "");
                         MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
                         try
                         {
@@ -380,6 +380,13 @@ namespace EventAI_Creator
                 Datastores.LoadDBScripts(comboBox_script_type.SelectedItem.ToString());
 
             UpdateNPCListBox();
+
+            // close all editors
+            foreach (Form item in MdiChildren)
+            {
+                if (item is NPCEditor)
+                    (item as NPCEditor).Close();
+            }
         }
     }
 }

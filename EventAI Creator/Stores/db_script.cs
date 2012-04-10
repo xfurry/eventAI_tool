@@ -74,23 +74,23 @@ namespace EventAI_Creator
             return script;
         }
 
-        public static bool PrintScriptToFile(uint id, string file)
+        public static bool PrintScriptToFile(uint id, string file, string table)
         {
-            SQLcreator.WriteScriptToFile(scriptList[id], file, false);
+            SQLcreator.WriteScriptToFile(scriptList[id], file, false, table);
             return true;
         }
 
-        public static string PrintScriptToWindow(uint id)
+        public static string PrintScriptToWindow(uint id, string table)
         {
             string value = "";
-            value = SQLcreator.WriteScriptToWindow(scriptList[id]);
+            value = SQLcreator.WriteScriptToWindow(scriptList[id], table);
             return value;
         }
 
-        public static bool PrintALLScriptsToFile(string file)
+        public static bool PrintALLScriptsToFile(string file, string table)
         {
             foreach (KeyValuePair<uint, db_script> item in scriptList)
-                SQLcreator.WriteScriptToFile(item.Value, file, true);
+                SQLcreator.WriteScriptToFile(item.Value, file, true, table);
             return true;
         }
 

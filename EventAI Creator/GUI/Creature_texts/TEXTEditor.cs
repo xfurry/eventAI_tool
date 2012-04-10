@@ -225,7 +225,7 @@ namespace EventAI_Creator.GUI.General.localestext
                 switch (MessageBox.Show("Are you sure you want to delete the selected text from the database?", "Remove from database?", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
-                        string query = SQLcreator.CreateDeleteQuery(localized_texts.map[text_id]);
+                        string query = SQLcreator.CreateDeleteQuery(localized_texts.map[text_id], "");
                         MySqlCommand c = new MySqlCommand(query,SQLConnection.conn);
                         try
                         {

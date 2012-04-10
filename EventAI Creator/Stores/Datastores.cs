@@ -55,6 +55,10 @@ namespace EventAI_Creator
                 MySqlCommand c = new MySqlCommand("SELECT a.*, b.name FROM creature_ai_scripts a join creature_template b on a.creature_id = b.entry;", SQLConnection.conn);
                 reader = c.ExecuteReader();
 
+                creatures.npcList.Clear();
+                summons.map.Clear();
+                localized_texts.map.Clear();
+
                 try
                 {
                     while (reader.Read())
@@ -337,8 +341,8 @@ namespace EventAI_Creator
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
             sqlpatchfile.WriteLine("-- Creature id: " + npc.creature_id);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc, ""));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc, ""));
             sqlpatchfile.Close();
             return true;
         }
@@ -352,37 +356,44 @@ namespace EventAI_Creator
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("-- Creature id: " + script.creature_id);
             sb.AppendLine(CreateCreatureTemplateQuery(script, false));
-            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
-            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script, ""));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script, ""));
 
             return sb.ToString();
         }
 
         // Create DB script
-        public static bool WriteScriptToFile(db_script npc, string file, bool reihe)
+        public static bool WriteScriptToFile(db_script script, string file, bool reihe, string table)
         {
-            if (npc == null || npc.line.Count == 0)
+            if (script == null || script.line.Count == 0)
                 return false;
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
-            //sqlpatchfile.WriteLine("-- Creature id: " + npc.creature_id);
-            //sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(npc));
-            //sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(npc));
-            //sqlpatchfile.Close();
+            sqlpatchfile.WriteLine("-- Script id: " + script.id);
+
+            if (table != "event_scripts" && table != "gameobject_scripts" && table != "spell_scripts")
+                sqlpatchfile.WriteLine(CreateScriptTemplateQuery(script, false, table));
+
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script, table));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script, table));
+            sqlpatchfile.Close();
             return true;
         }
 
         // Preview DB scripts
-        public static string WriteScriptToWindow(db_script script)
+        public static string WriteScriptToWindow(db_script script, string table)
         {
             if (script == null)
                 return "";
 
             StringBuilder sb = new StringBuilder();
-            //sb.AppendLine("-- Creature id: " + script.creature_id);
-            //sb.AppendLine(CreateCreatureTemplateQuery(script, false));
-            //sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
-            //sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+            sb.AppendLine("-- Script id: " + script.id);
+
+            if (table != "event_scripts" && table != "gameobject_scripts" && table != "spell_scripts")
+                sb.AppendLine(CreateScriptTemplateQuery(script, false, table));
+
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script, table));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script, table));
 
             return sb.ToString();
         }
@@ -395,8 +406,8 @@ namespace EventAI_Creator
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
             sqlpatchfile.WriteLine("-- Summon id: " + script.id);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script));
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script, ""));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script, ""));
             sqlpatchfile.Close();
             return true;
         }
@@ -409,8 +420,8 @@ namespace EventAI_Creator
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("-- Summon id: " + script.id);
-            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
-            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script, ""));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script, ""));
 
             return sb.ToString();
         }
@@ -423,8 +434,8 @@ namespace EventAI_Creator
 
             StreamWriter sqlpatchfile = new StreamWriter(file, reihe);
             sqlpatchfile.WriteLine("-- Text id: " + script.id);
-            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script));
-            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script));
+            sqlpatchfile.WriteLine(SQLcreator.CreateDeleteQuery(script, ""));
+            sqlpatchfile.WriteLine(SQLcreator.CreateCreateQuery(script, ""));
             sqlpatchfile.Close();
             return true;
         }
@@ -437,13 +448,13 @@ namespace EventAI_Creator
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("-- Text id: "  + script.id);
-            sb.AppendLine(SQLcreator.CreateDeleteQuery(script));
-            sb.AppendLine(SQLcreator.CreateCreateQuery(script));
+            sb.AppendLine(SQLcreator.CreateDeleteQuery(script, ""));
+            sb.AppendLine(SQLcreator.CreateCreateQuery(script, ""));
 
             return sb.ToString();
         }
 
-        public static string CreateDeleteQuery(object item)
+        public static string CreateDeleteQuery(object item, string sTable)
         {
             string table = "";
             string argument = "id < 0";
@@ -535,11 +546,56 @@ namespace EventAI_Creator
                     customquery = customquery + "DELETE FROM creature_ai_texts WHERE entry=" + itemf.Key + ";";
             }
 
+            // DB scripts
+            if (item is db_script)
+            {
+                db_script copy = item as db_script;
+                table = sTable;
+                argument = "id=" + copy.id;
+            }
+
             string result = "";
             if (customquery.Length != 0)
                 result = customquery;
             else
                 result = "DELETE FROM " + table + " WHERE " + argument + ";";
+
+            return result;
+        }
+
+        public static string CreateScriptTemplateQuery(object item, bool remove, string table)
+        {
+            string arguments = "";
+            string column = "";
+
+            if (item is db_script)
+            {
+                db_script copy = item as db_script;
+                arguments = copy.id.ToString();
+            }
+
+            switch (table)
+            {
+                case "creature_movement_scripts":
+                    table = "creature_movement_template";
+                    column = "entry";
+                    break;
+                case "gossip_scripts":
+                    table = "gossip_menu_option";
+                    column = "menu_id";
+                    break;
+                case "quest_start_scripts":
+                case "quest_end_scripts":
+                    table = "quest_template";
+                    column = "entry";
+                    break;
+            }
+
+            string scriptname = arguments;
+            if (remove)
+                scriptname = "0";
+
+            string result = "UPDATE " + table + " SET script_id=" + scriptname + " WHERE " + column + "=" + arguments + ";";
 
             return result;
         }
@@ -590,7 +646,7 @@ namespace EventAI_Creator
             return result;
         }
 
-        public static string CreateCreateQuery(object item)
+        public static string CreateCreateQuery(object item, string scriptTable)
         {
             string table = "";
             string lines = "";
@@ -782,6 +838,39 @@ namespace EventAI_Creator
                 lines.Remove(lines.Length);
                 lines = lines + ";";
             }
+
+            // Db script
+            if (item is db_script)
+            {
+                table = scriptTable;
+                db_script copy = item as db_script;
+
+                for (int i = 0; i < copy.line.Count; i++)
+                {
+                    lines = lines + "(" + copy.id + "," +
+                    copy.line[i].delay + "," +
+                    copy.line[i].command + "," +
+                    copy.line[i].datalong + "," +
+                    copy.line[i].datalong2 + "," +
+                    copy.line[i].buddy + "," +
+                    copy.line[i].radius + "," +
+                    copy.line[i].dataflags + "," +
+                    copy.line[i].dataint + "," +
+                    copy.line[i].dataint2 + "," +
+                    copy.line[i].dataint3 + "," +
+                    copy.line[i].dataint4 + "," +
+                    copy.line[i].position_x + "," +
+                    copy.line[i].position_y + "," +
+                    copy.line[i].position_z + "," +
+                    copy.line[i].orientation + ",'" +
+                    MySqlHelper.EscapeString(copy.line[i].comment) + "')";
+                    if (i + 1 < copy.line.Count)
+                        lines = lines + ",\r\n";
+                    else
+                        lines = lines + ";";
+                }
+            }
+
             string result = "";
 
             if (customquery.Length != 0)
@@ -923,8 +1012,8 @@ namespace EventAI_Creator
                 {
                     if (creatures.npcList.ContainsKey(itemf.Key))
                     {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                     }
                 }
             }
@@ -934,8 +1023,8 @@ namespace EventAI_Creator
                 {
                     if (summons.map.ContainsKey(itemf.Key))
                     {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                     }
                 }
             }
@@ -945,8 +1034,8 @@ namespace EventAI_Creator
                 {
                     if (localized_texts.map.ContainsKey(itemf.Key))
                     {
-                        query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                        query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                        query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                        query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                     }
                 }
             }
@@ -960,8 +1049,8 @@ namespace EventAI_Creator
         {
             if (Datastores.dbused)
             {
-                string query = SQLcreator.CreateDeleteQuery(item);
-                query = query + SQLcreator.CreateCreateQuery(item);
+                string query = SQLcreator.CreateDeleteQuery(item, "");
+                query = query + SQLcreator.CreateCreateQuery(item, "");
                 MySqlCommand c = new MySqlCommand(query, SQLConnection.conn);
                 try
                 {
@@ -991,8 +1080,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                         }
                     }
                 }
@@ -1002,8 +1091,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                         }
                     }
                 }
@@ -1013,8 +1102,8 @@ namespace EventAI_Creator
                     {
                         if (itemf.Value.changed)
                         {
-                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value);
-                            query = query + SQLcreator.CreateCreateQuery(itemf.Value);
+                            query = query + SQLcreator.CreateDeleteQuery(itemf.Value, "");
+                            query = query + SQLcreator.CreateCreateQuery(itemf.Value, "");
                         }
                     }
                 }

@@ -21,11 +21,13 @@ namespace EventAI_Creator
         }
 
         private bool bIsCreature;
+        private string scriptTable;
 
-        public NPCEditor(uint id, bool bIsCreature)
+        public NPCEditor(uint id, bool bIsCreature, string table)
         {
             this.id = id;
             this.bIsCreature = bIsCreature;
+            scriptTable = table;
 
             InitializeComponent();
 
@@ -45,6 +47,11 @@ namespace EventAI_Creator
             {
                 this.Text = "SCRIPT:" + this.id;
                 this.Name = "editor:" + this.id;
+
+                // hide some controls
+                save_all_db_toolstrip.Visible = false;
+                saveAll_toolstrip_button.Visible = false;
+                saveAllNPCsToToolStripMenuItem.Visible = false;
 
                 LoadScript(id);
             }
@@ -144,18 +151,24 @@ namespace EventAI_Creator
             Redraw(this.id);
         }
 
+        // Save NPC to DB
         private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
-            SQLCommonExecutes.SaveOneItemTODB(creatures.npcList[this.id]);
+            if (bIsCreature)
+                SQLCommonExecutes.SaveOneItemTODB(creatures.npcList[this.id]);
+            else
+                SQLCommonExecutes.SaveAllItemsToDB(db_scripts.scriptList[this.id]);
         }
 
+        // Save all npcs to DB (only for eventAI)
         private void databaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
             SQLCommonExecutes.SaveAllItemsToDB(creatures.npcList);
         }
 
+        // Save npc to file
         private void sQLFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
@@ -166,10 +179,14 @@ namespace EventAI_Creator
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
-                creatures.PrintCreatureToFile(this.id, FileName);
+                if (bIsCreature)
+                    creatures.PrintCreatureToFile(this.id, FileName);
+                else
+                    db_scripts.PrintScriptToFile(this.id, FileName, scriptTable);
             }
         }
 
+        // Save all npcs to file
         private void sQLToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
@@ -180,10 +197,14 @@ namespace EventAI_Creator
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
-                creatures.PrintALLCreaturesToFile(FileName);
+                if (bIsCreature)
+                    creatures.PrintALLCreaturesToFile(FileName);
+                else
+                    db_scripts.PrintALLScriptsToFile(FileName, scriptTable);
             }
         }
 
+        // Set script name (for eventAI only)
         private void setInCreaturetemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Datastores.dbused)
@@ -207,6 +228,7 @@ namespace EventAI_Creator
             }
         }
 
+        // Help button
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
             if (bIsCreature)
@@ -215,10 +237,17 @@ namespace EventAI_Creator
                 System.Diagnostics.Process.Start("https://raw.github.com/mangos/mangos/master/doc/script_commands.txt");
         }
 
+        // Query window button
         private void queryWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             menuStrip1.Focus();
-            ScriptDisplay sd = new ScriptDisplay(creatures.PrintCreatureToWindow(this.id));
+            ScriptDisplay sd = null;
+
+            if (bIsCreature)
+                sd = new ScriptDisplay(creatures.PrintCreatureToWindow(this.id));
+            else
+                sd = new ScriptDisplay(db_scripts.PrintScriptToWindow(this.id, scriptTable));
+
             sd.ShowDialog();
         }
     }
