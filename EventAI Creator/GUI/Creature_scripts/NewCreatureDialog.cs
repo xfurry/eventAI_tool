@@ -33,11 +33,14 @@ namespace EventAI_Creator
                 case 4:     // gameobject
                     label_id.Text += "Gameobject Guid";
                     break;
-                case 5:     // quest end
-                case 6:     // quest start
+                case 5:     // gameobject template
+                    label_id.Text += "Gameobject Entry";
+                    break;
+                case 6:     // quest end
+                case 7:     // quest start
                     label_id.Text += "Quest Id";
                     break;
-                case 7:     // spell id
+                case 8:     // spell id
                     label_id.Text += "Spell Id";
                     break;
             }

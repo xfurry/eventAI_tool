@@ -249,6 +249,7 @@ namespace EventAI_Creator
             "EVENT_SCRIPTS",
             "GOSSIP_SCRIPTS",
             "GAMEOBJECT_SCRIPTS",
+            "GAMEOBJECT_TEMPLATE_SCRIPTS",
             "QUEST_END_SCRIPTS",
             "QUEST_START_SCRIPTS",
             "SPELL_SCRIPTS"
@@ -320,7 +321,7 @@ namespace EventAI_Creator
 
         public static string[,] ScriptCommands = new string[,]
         {
-            // command name         // datalong     // datalong         // source       // target       // command add              // details
+            // command name         // datalong     // datalong2        // source       // target       // command add              // details
 /* 0 */     {"TALK",                "ChatType",     "language",         "WorldObject*", "Unit/none*",   "",                         "Creature say/whisper/yell/textemote."},
 /* 1 */     {"EMOTE",               "emote_id",     "",                 "Unit*",        "Unit/none*",   "",                         "Play emote on creature."},
 /* 2 */     {"FIELD_SET",           "field_id",     "field value",      "any",          "",             "",                         "Change the value at an index for the unit."},
@@ -351,6 +352,7 @@ namespace EventAI_Creator
 /* 27 */    {"GO_LOCK_STATE",       "Flag",         "",                 "GO*",          "",             "",                         "Lock/Unlock a gameobject"},
 /* 28 */    {"STAND_STATE",         "stand state",  "",                 "Creature*",    "",             "",                         "Set the stand state of a creature"},
 /* 29 */    {"MODIFY_NPC_FLAGS",    "NPCFlags",     "bitmask",          "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
+/* 30 */    {"SEND_TAXI_PATH",      "taxi path id", "",                 "Player|",      "Player|",      "",                         "Send player in Taxi path"},
         };
     }
 }
