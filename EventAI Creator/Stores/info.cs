@@ -89,7 +89,8 @@ namespace EventAI_Creator
 /*40 | 01 */{"SET_SHEATH","Sheath","","","Sets sheath state for a creature (0 = no weapon, 1 = melee weapon, 2 = ranged weapon)."},
 /*41 | 01 */{"FORCE_DESPAWN","Delay","","","Despawns the creature, if delay = 0 immediate otherwise will despawn after delay time set in Param1 (in ms)."},
 /*42 | 01 */{"INVINCIBILITY_HP_LEVEL","HP_Level","HP_Percent","","Set min. health level for creature that can be set at damage as flat value or percent from max health"},
-/*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."}
+/*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."},
+/*44 | 01 */{"CHANCED_TEXT","Chance","-TextId1","-TextId2","Displays by Chance (1..100) the specified -TextId. When -TextId2 is specified, the selection will be randomized. Text types are defined, along with other options for the text, in a table below. Param2 and Param3 needs to be negative."},
         };
 
         public static string[] EventFlags = new string[]
@@ -342,7 +343,7 @@ namespace EventAI_Creator
 /* 17 */    {"CREATE_ITEM",         "item entry",   "amount",           "player|",      "player|",      "",                         "Creates an item."},
 /* 18 */    {"DESPAWN_SELF",        "despawn delay","",                 "Creature*",    "",             "",                         "Despawns an npc with some delay."},
 /* 19 */    {"PLAY_MOVIE",          "movie id",     "",                 "",             "player",       "",                         "Plays a movie."},
-/* 20 */    {"MOVEMENT",            "MovementType", "",                 "Creature*",    "",             "",                         "Change Movement of a creature."},
+/* 20 */    {"MOVEMENT",            "MovementType", "",                 "Creature*",    "",             "RandomMovement",           "Change Movement of a creature."},
 /* 21 */    {"SET_ACTIVEOBJECT",    "bool",         "",                 "Creature*",    "",             "",                         "Sets the active object state of the creature"},
 /* 22 */    {"SET_FACTION",         "factionId",    "TemporaryFactionFlags","Creature*","",             "",                         "Sets the faction id from the creature."},
 /* 23 */    {"MORPH_TO_ENTRY_OR_MODEL","entry/modelid","",              "Creature*",    "",             "",                         "Morphs the creature to the model specified."},
