@@ -93,9 +93,9 @@ namespace EventAI_Creator
             if (textBox_dataint4.Text.Length != 0)      Data.dataint = Convert.ToUInt32(textBox_dataint4.Text);
 
             if (textBox_posX.Text.Length != 0)          Data.position_x = float.Parse(textBox_posX.Text);
-            if (textBox_posY.Text.Length != 0)          Data.position_x = float.Parse(textBox_posY.Text);
-            if (textBox_posZ.Text.Length != 0)          Data.position_x = float.Parse(textBox_posZ.Text);
-            if (textBox_orientation.Text.Length != 0)   Data.position_x = float.Parse(textBox_orientation.Text);
+            if (textBox_posY.Text.Length != 0)          Data.position_y = float.Parse(textBox_posY.Text);
+            if (textBox_posZ.Text.Length != 0)          Data.position_z = float.Parse(textBox_posZ.Text);
+            if (textBox_orientation.Text.Length != 0)   Data.orientation = float.Parse(textBox_orientation.Text);
 
             if (textBox_buddy.Text.Length != 0)         Data.buddy = Convert.ToUInt32(textBox_buddy.Text);
             if (textBox_radius.Text.Length != 0)        Data.radius = Convert.ToUInt32(textBox_radius.Text);

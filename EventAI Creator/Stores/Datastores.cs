@@ -262,7 +262,7 @@ namespace EventAI_Creator
             try
             {
                 string sQuery = "SELECT information_schema.TABLES.table_name FROM information_schema.TABLES " +
-                    "where information_schema.TABLES.table_name IN ('creature_movement_scripts','event_script','gameobject_scripts','gossip_scripts','quest_end_scripts','quest_start_scripts','spell_scripts') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
+                    "where information_schema.TABLES.table_name IN ('dbscripts_on_creature_movement','dbscripts_on_event','dbscripts_on_go_use','dbscripts_on_go_template_use','dbscripts_on_gossip','dbscripts_on_quest_end','dbscripts_on_quest_start','dbscripts_on_spell') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
                 MySqlCommand comm = new MySqlCommand(sQuery, SQLConnection.conn);
                 reader = comm.ExecuteReader();
 

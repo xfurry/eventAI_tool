@@ -388,5 +388,54 @@ namespace EventAI_Creator
 
             UpdateNPCListBox();
         }
+
+        private void toolStripButton_search_Click(object sender, EventArgs e)
+        {
+            // Check if number first
+            string str = toolStripTextBox_search.Text.Trim();
+            UInt64 value;
+            bool isNum = UInt64.TryParse(str, out value);
+
+            if (!isNum)
+            {
+                MessageBox.Show("Please make sure the search parameter is a number!");
+                toolStripTextBox_search.Clear();
+                return;
+            }
+
+            CheckedListBox npcListbox = panel1.Controls.Find("npclistbox", true)[0] as CheckedListBox;
+            npcListbox.Items.Clear();
+            IList<uint> list;
+
+            if (comboBox_script_type.SelectedIndex == 0)
+                list = creatures.npcList.Keys;
+            else
+                list = db_scripts.scriptList.Keys;
+
+            // search for the requested item
+            uint entry = Convert.ToUInt32(toolStripTextBox_search.Text);
+
+            // if not found
+            if (!list.Contains(entry))
+            {
+                MessageBox.Show("The entry you are searching for does not exist.");
+                toolStripTextBox_search.Clear();
+                UpdateNPCListBox();
+            }
+            else
+            {
+                toolStripTextBox_search.Clear();
+                int index = list.IndexOf(entry);
+                npcListbox.Items.Add(list[index].ToString());
+                npcListbox.SetItemChecked(npcListbox.Items.Count - 1, false);
+            }
+        }
+
+        private void toolStripButton_clear_Click(object sender, EventArgs e)
+        {
+            // just clear everything
+            toolStripTextBox_search.Clear();
+            UpdateNPCListBox();
+        }
     }
 }

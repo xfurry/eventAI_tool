@@ -41,7 +41,8 @@ namespace EventAI_Creator
 /*25 | 26*/{"SUMMONED_JUST_DIED","CreatureId","RepeatMin","RepeatMax","","Expires after creature with entry = (Param1) is die (Param1 = 0 means all spawns). Will repeat every (Param2) and (Param3)."},
 /*26 | 27*/{"SUMMONED_JUST_DESPAWN","CreatureId","RepeatMin","RepeatMax","","Expires before creature with entry = (Param1) is despawn (Param1 = 0 means all spawns). Will repeat every (Param2) and (Param3)."},
 /*27 | 28*/{"MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when a creature not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
-/*28 | 29*/{"TARGET_MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."}
+/*28 | 29*/{"TARGET_MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
+/*29 | 30*/{"TIMER_GENERIC","InitialMin","InitialMax","RepeatMin","RepeatMax","Expires at first between (Param1) and (Param2) and then will repeat between every (Param3) and (Param4)." }
        };
 
         public static string[,] ActionListInfo = new string[,]
@@ -152,7 +153,10 @@ namespace EventAI_Creator
             "HOSTILE_LAST_AGGRO",
             "HOSTILE_RANDOM",
             "HOSTILE_RANDOM_NOT_TOP",
-            "ACTION_INVOKER"
+            "ACTION_INVOKER",
+            "ACTION_INVOKER_OWNER",
+            "HOSTILE_RANDOM_PLAYER",
+            "HOSTILE_RANDOM_NOT_TOP_PLAYER"
         };
 
         public static string[] FactionFlag = new string[]
@@ -246,14 +250,14 @@ namespace EventAI_Creator
         public static string[] ScriptTemplate = new string[]
         {
             "CREATURE_AI_SCRIPTS",
-            "CREATURE_MOVEMENT_SCRIPTS",
-            "EVENT_SCRIPTS",
-            "GOSSIP_SCRIPTS",
-            "GAMEOBJECT_SCRIPTS",
-            "GAMEOBJECT_TEMPLATE_SCRIPTS",
-            "QUEST_END_SCRIPTS",
-            "QUEST_START_SCRIPTS",
-            "SPELL_SCRIPTS"
+            "DBSCRIPTS_ON_CREATURE_MOVEMENT",
+            "DBSCRIPTS_ON_EVENT",
+            "DBSCRIPTS_ON_GOSSIP",
+            "DBSCRIPTS_ON_GO_USE",
+            "DBSCRIPTS_ON_GO_TEMPLATE_USE",
+            "DBSCRIPTS_ON_QUEST_END",
+            "DBSCRIPTS_ON_QUEST_START",
+            "DBSCRIPTS_ON_SPELL"
         };
 
         public static string[] ScriptFlags = new string[]
@@ -318,6 +322,8 @@ namespace EventAI_Creator
 
         public static string[] NpcFlagsSelect = new string[] {"TOGGLE","ADD","REMOVE"};
 
+        public static string[] PauseWaypoints = new string[] { "UNPAUSE", "PAUSE" };
+
         public static string[] SoundBitmask = new string[] {"ANYONE/TARGET", "DISTANCE DEPENDENT"};
 
         public static string[,] ScriptCommands = new string[,]
@@ -354,6 +360,8 @@ namespace EventAI_Creator
 /* 28 */    {"STAND_STATE",         "stand state",  "",                 "Creature*",    "",             "",                         "Set the stand state of a creature"},
 /* 29 */    {"MODIFY_NPC_FLAGS",    "NPCFlags",     "bitmask",          "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
 /* 30 */    {"SEND_TAXI_PATH",      "taxi path id", "",                 "Player|",      "Player|",      "",                         "Send player in Taxi path"},
+/* 31 */    {"TERMINATE_SCRIPT",    "npc entry",    "search distance",  "Creature|",    "Creature|",    "not alive / alive",        "Terminate current script execution"},
+/* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
         };
     }
 }
