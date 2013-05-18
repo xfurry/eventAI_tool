@@ -253,6 +253,11 @@ namespace EventAI_Creator
         // Load DB scripts
         public static void LoadDBScripts(string sTable)
         {
+            // Force using dots on floats, no matter which is the system setting
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
             if (!Datastores.dbused)
                 return;
 
@@ -389,7 +394,7 @@ namespace EventAI_Creator
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("-- Script id: " + script.id);
 
-            if (table != "event_scripts" && table != "gameobject_scripts" && table != "spell_scripts")
+            if (table == "quest_start_scripts" || table == "quest_end_scripts")
                 sb.AppendLine(CreateScriptTemplateQuery(script, false, table));
 
             sb.AppendLine(SQLcreator.CreateDeleteQuery(script, table));
@@ -648,6 +653,11 @@ namespace EventAI_Creator
 
         public static string CreateCreateQuery(object item, string scriptTable)
         {
+            // Force using dots on floats, no matter which is the system setting
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
             string table = "";
             string lines = "";
             string customquery = "";

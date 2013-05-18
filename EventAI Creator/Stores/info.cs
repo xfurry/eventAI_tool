@@ -42,7 +42,8 @@ namespace EventAI_Creator
 /*26 | 27*/{"SUMMONED_JUST_DESPAWN","CreatureId","RepeatMin","RepeatMax","","Expires before creature with entry = (Param1) is despawn (Param1 = 0 means all spawns). Will repeat every (Param2) and (Param3)."},
 /*27 | 28*/{"MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when a creature not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
 /*28 | 29*/{"TARGET_MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
-/*29 | 30*/{"TIMER_GENERIC","InitialMin","InitialMax","RepeatMin","RepeatMax","Expires at first between (Param1) and (Param2) and then will repeat between every (Param3) and (Param4)." }
+/*29 | 30*/{"TIMER_GENERIC","InitialMin","InitialMax","RepeatMin","RepeatMax","Expires at first between (Param1) and (Param2) and then will repeat between every (Param3) and (Param4)." },
+/*30 | 31*/{"RECEIVE_AI_EVENT","AIEventType","SenderEntry","","","Expires when the creature receives an AIEvent of type (Param1), sent by creature (Param2 != 0). If (Param2 = 0) then sent by any creature"},
        };
 
         public static string[,] ActionListInfo = new string[,]
@@ -92,6 +93,7 @@ namespace EventAI_Creator
 /*42 | 01 */{"INVINCIBILITY_HP_LEVEL","HP_Level","HP_Percent","","Set min. health level for creature that can be set at damage as flat value or percent from max health"},
 /*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."},
 /*44 | 01 */{"CHANCED_TEXT","Chance","-TextId1","-TextId2","Displays by Chance (1..100) the specified -TextId. When -TextId2 is specified, the selection will be randomized. Text types are defined, along with other options for the text, in a table below. Param2 and Param3 needs to be negative."},
+/*45 | 01 */{"THROW_AI_EVENT","EventType","Radius","","Throws an AIEvent of type (Param1) to nearby friendly Npcs in range of (Param2)"},
         };
 
         public static string[] EventFlags = new string[]
@@ -156,7 +158,8 @@ namespace EventAI_Creator
             "ACTION_INVOKER",
             "ACTION_INVOKER_OWNER",
             "HOSTILE_RANDOM_PLAYER",
-            "HOSTILE_RANDOM_NOT_TOP_PLAYER"
+            "HOSTILE_RANDOM_NOT_TOP_PLAYER",
+            "EVENT_SENDER",
         };
 
         public static string[] FactionFlag = new string[]
@@ -250,6 +253,7 @@ namespace EventAI_Creator
         public static string[] ScriptTemplate = new string[]
         {
             "CREATURE_AI_SCRIPTS",
+            "DBSCRIPTS_ON_CREATURE_DEATH",
             "DBSCRIPTS_ON_CREATURE_MOVEMENT",
             "DBSCRIPTS_ON_EVENT",
             "DBSCRIPTS_ON_GOSSIP",
@@ -320,6 +324,17 @@ namespace EventAI_Creator
             "SPELLCLICK"
         };
 
+        public static string[] AIEvents = new string[]
+        {
+            "JUST_DIED",                                // Sender = Killed Npc, Invoker = Killer
+            "CRITICAL_HEALTH",                          // Sender = Hurt Npc, Invoker = DamageDealer
+            "LOST_HEALTH",                              // Sender = Hurt Npc, Invoker = DamageDealer
+            "GOT_CCED",                                 // Sender = CCed Npc, Invoker = Caster that CCed
+            "GOT_FULL_HEALTH",                          // Sender = Healed Npc, Invoker = Healer
+            "CUSTOM_EVENTAI_A",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "CUSTOM_EVENTAI_B",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+        };
+
         public static string[] NpcFlagsSelect = new string[] {"TOGGLE","ADD","REMOVE"};
 
         public static string[] PauseWaypoints = new string[] { "UNPAUSE", "PAUSE" };
@@ -362,6 +377,8 @@ namespace EventAI_Creator
 /* 30 */    {"SEND_TAXI_PATH",      "taxi path id", "",                 "Player|",      "Player|",      "",                         "Send player in Taxi path"},
 /* 31 */    {"TERMINATE_SCRIPT",    "npc entry",    "search distance",  "Creature|",    "Creature|",    "not alive / alive",        "Terminate current script execution"},
 /* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
+/* 33 */    {"XP_USER",             "off/on",       "",                 "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
+/* 34 */    {"TERMINATE_COND",      "condition_id", "fail-quest",       "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
         };
     }
 }

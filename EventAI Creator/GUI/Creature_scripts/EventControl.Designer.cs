@@ -130,6 +130,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.expand = new System.Windows.Forms.CheckBox();
             this.deleteevent = new System.Windows.Forms.Button();
+            this.EventParam1ComboBox = new System.Windows.Forms.ComboBox();
             this.groupBoxevent.SuspendLayout();
             this.groupBoxAction1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -308,6 +309,7 @@
             // 
             // groupBoxevent
             // 
+            this.groupBoxevent.Controls.Add(this.EventParam1ComboBox);
             this.groupBoxevent.Controls.Add(this.button_spell_mask);
             this.groupBoxevent.Controls.Add(this.button_flag_select);
             this.groupBoxevent.Controls.Add(this.lblevType);
@@ -1260,6 +1262,16 @@
             this.deleteevent.UseVisualStyleBackColor = true;
             this.deleteevent.Click += new System.EventHandler(this.deleteevent_Click);
             // 
+            // EventParam1ComboBox
+            // 
+            this.EventParam1ComboBox.FormattingEnabled = true;
+            this.EventParam1ComboBox.Location = new System.Drawing.Point(68, 40);
+            this.EventParam1ComboBox.Name = "EventParam1ComboBox";
+            this.EventParam1ComboBox.Size = new System.Drawing.Size(100, 21);
+            this.EventParam1ComboBox.TabIndex = 30;
+            this.EventParam1ComboBox.Visible = false;
+            this.EventParam1ComboBox.SelectedIndexChanged += new System.EventHandler(this.EventParam1ComboBox_SelectedIndexChanged);
+            // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1426,5 +1438,6 @@
         private System.Windows.Forms.ComboBox Action1Param3Combobox;
         private System.Windows.Forms.ComboBox Action2Param3Combobox;
         private System.Windows.Forms.ComboBox Action3Param3Combobox;
+        private System.Windows.Forms.ComboBox EventParam1ComboBox;
     }
 }

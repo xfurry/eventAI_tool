@@ -55,6 +55,13 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.help_toolstrip_button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel_search = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox_search = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton_search = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_clear = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -65,12 +72,6 @@
             this.creaturelistboxcontextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel_search = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox_search = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton_search = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_clear = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -234,7 +235,8 @@
             this.toolStripLabel_search,
             this.toolStripTextBox_search,
             this.toolStripButton_search,
-            this.toolStripButton_clear});
+            this.toolStripButton_clear,
+            this.toolStripSeparator7});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1086, 25);
@@ -296,6 +298,53 @@
             this.help_toolstrip_button.Text = "Help";
             this.help_toolstrip_button.Click += new System.EventHandler(this.help_toolstrip_button_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel_search
+            // 
+            this.toolStripLabel_search.Name = "toolStripLabel_search";
+            this.toolStripLabel_search.Size = new System.Drawing.Size(93, 22);
+            this.toolStripLabel_search.Text = "Search for entry:";
+            // 
+            // toolStripTextBox_search
+            // 
+            this.toolStripTextBox_search.MaxLength = 10;
+            this.toolStripTextBox_search.Name = "toolStripTextBox_search";
+            this.toolStripTextBox_search.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripButton_search
+            // 
+            this.toolStripButton_search.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_search.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_search.Image")));
+            this.toolStripButton_search.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_search.Name = "toolStripButton_search";
+            this.toolStripButton_search.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_search.Text = "Search";
+            this.toolStripButton_search.Click += new System.EventHandler(this.toolStripButton_search_Click);
+            // 
+            // toolStripButton_clear
+            // 
+            this.toolStripButton_clear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_clear.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_clear.Image")));
+            this.toolStripButton_clear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_clear.Name = "toolStripButton_clear";
+            this.toolStripButton_clear.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_clear.Text = "Clear";
+            this.toolStripButton_clear.Click += new System.EventHandler(this.toolStripButton_clear_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -344,8 +393,8 @@
             // 
             // npclistbox
             // 
-            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.npclistbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.npclistbox.ContextMenuStrip = this.creaturelistboxcontextmenu;
             this.npclistbox.FormattingEnabled = true;
             this.npclistbox.Location = new System.Drawing.Point(12, 76);
@@ -378,48 +427,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Existing creature scripts";
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel_search
-            // 
-            this.toolStripLabel_search.Name = "toolStripLabel_search";
-            this.toolStripLabel_search.Size = new System.Drawing.Size(93, 22);
-            this.toolStripLabel_search.Text = "Search for entry:";
-            // 
-            // toolStripTextBox_search
-            // 
-            this.toolStripTextBox_search.MaxLength = 10;
-            this.toolStripTextBox_search.Name = "toolStripTextBox_search";
-            this.toolStripTextBox_search.Size = new System.Drawing.Size(100, 25);
-            // 
-            // toolStripButton_search
-            // 
-            this.toolStripButton_search.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_search.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_search.Image")));
-            this.toolStripButton_search.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_search.Name = "toolStripButton_search";
-            this.toolStripButton_search.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_search.Text = "Search";
-            this.toolStripButton_search.Click += new System.EventHandler(this.toolStripButton_search_Click);
-            // 
-            // toolStripButton_clear
-            // 
-            this.toolStripButton_clear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_clear.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_clear.Image")));
-            this.toolStripButton_clear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_clear.Name = "toolStripButton_clear";
-            this.toolStripButton_clear.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_clear.Text = "Clear";
-            this.toolStripButton_clear.Click += new System.EventHandler(this.toolStripButton_clear_Click);
-            // 
             // Hauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,7 +440,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Hauptfenster";
-            this.Text = "MaNGOS script development tool";
+            this.Text = "CMaNGOS script development tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hauptfenster_FormClosing);
             this.Load += new System.EventHandler(this.Hauptfenster_Load);
             this.menuStrip.ResumeLayout(false);
@@ -493,6 +500,7 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox_search;
         private System.Windows.Forms.ToolStripButton toolStripButton_search;
         private System.Windows.Forms.ToolStripButton toolStripButton_clear;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }
 

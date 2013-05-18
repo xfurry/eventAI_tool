@@ -92,10 +92,10 @@ namespace EventAI_Creator
             if (textBox_dataint3.Text.Length != 0)      Data.dataint = Convert.ToUInt32(textBox_dataint3.Text);
             if (textBox_dataint4.Text.Length != 0)      Data.dataint = Convert.ToUInt32(textBox_dataint4.Text);
 
-            if (textBox_posX.Text.Length != 0)          Data.position_x = float.Parse(textBox_posX.Text);
-            if (textBox_posY.Text.Length != 0)          Data.position_y = float.Parse(textBox_posY.Text);
-            if (textBox_posZ.Text.Length != 0)          Data.position_z = float.Parse(textBox_posZ.Text);
-            if (textBox_orientation.Text.Length != 0)   Data.orientation = float.Parse(textBox_orientation.Text);
+            if (textBox_posX.Text.Length != 0)          Data.position_x = float.Parse(textBox_posX.Text, System.Globalization.CultureInfo.InvariantCulture);
+            if (textBox_posY.Text.Length != 0)          Data.position_y = float.Parse(textBox_posY.Text, System.Globalization.CultureInfo.InvariantCulture);
+            if (textBox_posZ.Text.Length != 0)          Data.position_z = float.Parse(textBox_posZ.Text, System.Globalization.CultureInfo.InvariantCulture);
+            if (textBox_orientation.Text.Length != 0)   Data.orientation = float.Parse(textBox_orientation.Text, System.Globalization.CultureInfo.InvariantCulture);
 
             if (textBox_buddy.Text.Length != 0)         Data.buddy = Convert.ToUInt32(textBox_buddy.Text);
             if (textBox_radius.Text.Length != 0)        Data.radius = Convert.ToUInt32(textBox_radius.Text);
@@ -204,6 +204,7 @@ namespace EventAI_Creator
                     break;
                 case 21:    // active object
                 case 25:    // set run
+                case 33:    // user XP
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
                     comboBox_datalong.Items.AddRange(Info.Boolean);

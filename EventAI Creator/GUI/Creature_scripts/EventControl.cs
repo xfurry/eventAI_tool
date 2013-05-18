@@ -70,6 +70,10 @@ namespace EventAI_Creator
             this.Action2TypeCBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Action3TypeCBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            // load event boxes
+            if (EventTypeCBox.SelectedIndex == 30)
+                EventParam1ComboBox.SelectedIndex = Convert.ToInt32(EventParam1.Text);
+
             // set width
             Action1TypeCBox.DropDownWidth = DropDownWidth(Action1TypeCBox);
             Action2TypeCBox.DropDownWidth = DropDownWidth(Action2TypeCBox);
@@ -99,6 +103,7 @@ namespace EventAI_Creator
                 case 28:            // Remove aura
                 case 40:            // Set Sheat
                 case 42:            // Set invincibility level
+                case 45:            // Throw AI event
                     Action1Param1Combobox.SelectedIndex = Convert.ToInt32(Action1Param1Tbox.Text);
                     break;
                 case 21:            // Combat movement
@@ -129,6 +134,7 @@ namespace EventAI_Creator
                 case 28:            // Remove aura
                 case 40:            // Set Sheat
                 case 42:            // Set invincibility level
+                case 45:            // Throw AI event
                     Action2Param1Combobox.SelectedIndex = Convert.ToInt32(Action2Param1Tbox.Text);
                     break;
                 case 21:            // Combat movement
@@ -159,6 +165,7 @@ namespace EventAI_Creator
                 case 28:            // Remove aura
                 case 40:            // Set Sheat
                 case 42:            // Set invincibility level
+                case 45:            // Throw AI event
                     Action3Param1Combobox.SelectedIndex = Convert.ToInt32(Action3Param1Tbox.Text);
                     break;
                 case 21:            // Combat movement
@@ -425,6 +432,21 @@ namespace EventAI_Creator
                 this.button_spell_mask.Visible = false;
             }
 
+            // Costumize AI event receive
+            if (EventTypeCBox.SelectedIndex == 30)
+            {
+                EventParam1ComboBox.Visible = true;
+                EventParam1ComboBox.Items.AddRange(Info.AIEvents);
+                EventParam1ComboBox.SelectedIndex = 0;
+                EventParam1ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                EventParam1ComboBox.DropDownWidth = DropDownWidth(EventParam1ComboBox);
+                EventParam1.Visible = false;
+            }
+            else
+            {
+                this.EventParam1ComboBox.Visible = false;
+            }
+
             if (!locked)
                 GetEventData();
         }
@@ -595,6 +617,14 @@ namespace EventAI_Creator
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
+                    case 45:            // Throw AI event
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.AIEvents);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                 }
             }
             if (Cbox == this.Action2TypeCBox)
@@ -757,6 +787,14 @@ namespace EventAI_Creator
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
                         Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
+                        break;
+                    case 45:            // Throw AI event
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.AIEvents);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
                         break;
                 }
             }
@@ -921,6 +959,14 @@ namespace EventAI_Creator
                         Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
+                    case 45:            // Throw AI event
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.AIEvents);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                 }
             }
 
@@ -1057,6 +1103,18 @@ namespace EventAI_Creator
                 Action2Param3Tbox.Text = Action2Param3Combobox.SelectedIndex.ToString();
             else if (box == this.Action3Param3Combobox)
                 Action3Param3Tbox.Text = Action3Param3Combobox.SelectedIndex.ToString();
+
+            if (!locked)
+                GetEventData();
+        }
+
+        // Set event combo box value
+        private void EventParam1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = (sender as ComboBox);
+
+            if (box == this.EventParam1ComboBox)
+                EventParam1.Text = EventParam1ComboBox.SelectedIndex.ToString();
 
             if (!locked)
                 GetEventData();
