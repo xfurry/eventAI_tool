@@ -94,6 +94,9 @@ namespace EventAI_Creator
 /*43 | 01 */{"MOUNT_TO_ENTRY_OR_MODEL","CreatureEntry","ModelId","","Set mount model from creature_template.entry (Param1) OR explicit modelId (Param2). If (Param1) AND (Param2) are both 0, unmount."},
 /*44 | 01 */{"CHANCED_TEXT","Chance","-TextId1","-TextId2","Displays by Chance (1..100) the specified -TextId. When -TextId2 is specified, the selection will be randomized. Text types are defined, along with other options for the text, in a table below. Param2 and Param3 needs to be negative."},
 /*45 | 01 */{"THROW_AI_EVENT","EventType","Radius","","Throws an AIEvent of type (Param1) to nearby friendly Npcs in range of (Param2)"},
+/*46 | 01 */{"SET_THROW_MASK","EventTypeMask","","","Marks for which AIEvents the npc will throw AIEvents on its own."},
+/*47 | 01 */{"SET_STAND_STATE","StandState","","","Set the unit stand state (Param1) of the current creature."},
+/*48 | 01 */{"CHANGE_MOVEMENT","MovementType","WanderDistance","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
         };
 
         public static string[] EventFlags = new string[]
@@ -329,10 +332,11 @@ namespace EventAI_Creator
             "JUST_DIED",                                // Sender = Killed Npc, Invoker = Killer
             "CRITICAL_HEALTH",                          // Sender = Hurt Npc, Invoker = DamageDealer
             "LOST_HEALTH",                              // Sender = Hurt Npc, Invoker = DamageDealer
-            "GOT_CCED",                                 // Sender = CCed Npc, Invoker = Caster that CCed
+            "LOST_SOME_HEALTH",                         // Sender = Hurt Npc, Invoker = DamageDealer
             "GOT_FULL_HEALTH",                          // Sender = Healed Npc, Invoker = Healer
             "CUSTOM_EVENTAI_A",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
             "CUSTOM_EVENTAI_B",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "GOT_CCED",                                 // Sender = CCed Npc, Invoker = Caster that CCed
         };
 
         public static string[] NpcFlagsSelect = new string[] {"TOGGLE","ADD","REMOVE"};
@@ -379,6 +383,7 @@ namespace EventAI_Creator
 /* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
 /* 33 */    {"XP_USER",             "off/on",       "",                 "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
 /* 34 */    {"TERMINATE_COND",      "condition_id", "fail-quest",       "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
+/* 35 */    {"SEND_AI_EVENT_AROUND","AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around - limited to eventAI events only"},
         };
     }
 }

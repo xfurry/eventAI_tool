@@ -625,6 +625,22 @@ namespace EventAI_Creator
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
+                    case 47:            // Stand State
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.StandStateTemplate);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
+                    case 48:            // Change movemnet
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.MovementTemplate);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                 }
             }
             if (Cbox == this.Action2TypeCBox)
@@ -789,12 +805,28 @@ namespace EventAI_Creator
                         Action2Param1Tbox.Visible = false;
                         break;
                     case 45:            // Throw AI event
-                        Action1Param1Combobox.Visible = true;
-                        Action1Param1Combobox.Items.AddRange(Info.AIEvents);
-                        Action1Param1Combobox.SelectedIndex = 0;
-                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
-                        Action1Param1Tbox.Visible = false;
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.AIEvents);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 47:            // Stand State
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.StandStateTemplate);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 48:            // Change movemnet
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.MovementTemplate);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
                         break;
                 }
             }
@@ -960,12 +992,28 @@ namespace EventAI_Creator
                         Action3Param1Tbox.Visible = false;
                         break;
                     case 45:            // Throw AI event
-                        Action1Param1Combobox.Visible = true;
-                        Action1Param1Combobox.Items.AddRange(Info.AIEvents);
-                        Action1Param1Combobox.SelectedIndex = 0;
-                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
-                        Action1Param1Tbox.Visible = false;
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.AIEvents);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 47:            // Stand State
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.StandStateTemplate);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 48:            // Change movemnet
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.MovementTemplate);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
                         break;
                 }
             }

@@ -238,6 +238,14 @@ namespace EventAI_Creator
                     comboBox_datalong2.DropDownStyle = ComboBoxStyle.DropDownList;
                     comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
+                case 35:
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.AIEvents);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
+                    break;
             }
 
             // Set all to 0
