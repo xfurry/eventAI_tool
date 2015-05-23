@@ -387,7 +387,7 @@ namespace EventAI_Creator
 /* 35 */    {"SEND_AI_EVENT_AROUND","AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around - limited to eventAI events only"},
 /* 36 */    {"SET_FACING",          "reset facing", "",                 "Creature*",    "WorldObject",  "set target guid",          "Set facing of the creature source to the target"},
 /* 37 */    {"MOVE_DYNAMIC",        "maxDist",      "minDist",          "Creature*",    "WorldObject",  "use random point",         "Move source to a random point between source and target."},
-/* 38 */    {"SEND_MAIL",           "templateId",   "altSender",        "WorldObject",    "Player*",    "",                         "Send email to player"},
+/* 38 */    {"SEND_MAIL",           "templateId",   "altSender",        "WorldObject",  "Player*",      "",                         "Send email to player"},
         };
     }
 }
