@@ -44,7 +44,8 @@ namespace EventAI_Creator
 /*28 | 29*/{"TARGET_MISSING_AURA","SpellID","Stacks","RepeatMin","RepeatMax","Expires when when the current target unit not has spell (Param1) auras applied in a stack greater or equal to value provided in (Param2). Will repeat every (Param3) and (Param4)."},
 /*29 | 30*/{"TIMER_GENERIC","InitialMin","InitialMax","RepeatMin","RepeatMax","Expires at first between (Param1) and (Param2) and then will repeat between every (Param3) and (Param4)." },
 /*30 | 31*/{"RECEIVE_AI_EVENT","AIEventType","SenderEntry","","","Expires when the creature receives an AIEvent of type (Param1), sent by creature (Param2 != 0). If (Param2 = 0) then sent by any creature"},
-       };
+/*31 | 32*/{"ENERGY","EnergyMax","EnergyMin","RepeatMin","RepeatMax","Expires once Energy% is between (Param1) and (Param2). Will repeat every (Param3) and (Param4)."},
+        };
 
         public static string[,] ActionListInfo = new string[,]
         {
@@ -384,6 +385,9 @@ namespace EventAI_Creator
 /* 33 */    {"XP_USER",             "off/on",       "",                 "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
 /* 34 */    {"TERMINATE_COND",      "condition_id", "fail-quest",       "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
 /* 35 */    {"SEND_AI_EVENT_AROUND","AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around - limited to eventAI events only"},
+/* 36 */    {"SET_FACING",          "reset facing", "",                 "Creature*",    "WorldObject",  "set target guid",          "Set facing of the creature source to the target"},
+/* 37 */    {"MOVE_DYNAMIC",        "maxDist",      "minDist",          "Creature*",    "WorldObject",  "use random point",         "Move source to a random point between source and target."},
+/* 38 */    {"SEND_MAIL",           "templateId",   "altSender",        "WorldObject",    "Player*",    "",                         "Send email to player"},
         };
     }
 }
