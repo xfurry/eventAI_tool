@@ -337,6 +337,10 @@ namespace EventAI_Creator
             "GOT_FULL_HEALTH",                          // Sender = Healed Npc, Invoker = Healer
             "CUSTOM_EVENTAI_A",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
             "CUSTOM_EVENTAI_B",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "CUSTOM_EVENTAI_C",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "CUSTOM_EVENTAI_D",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "CUSTOM_EVENTAI_E",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
+            "CUSTOM_EVENTAI_F",                         // Sender = Npc that throws custom event, Invoker = TARGET_T_ACTION_INVOKER (if exists)
             "GOT_CCED",                                 // Sender = CCed Npc, Invoker = Caster that CCed
         };
 
@@ -384,10 +388,13 @@ namespace EventAI_Creator
 /* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
 /* 33 */    {"XP_USER",             "off/on",       "",                 "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
 /* 34 */    {"TERMINATE_COND",      "condition_id", "fail-quest",       "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
-/* 35 */    {"SEND_AI_EVENT_AROUND","AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around - limited to eventAI events only"},
+/* 35 */    {"SEND_AI_EVENT",       "AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around or target - limited to eventAI events only"},
 /* 36 */    {"SET_FACING",          "reset facing", "",                 "Creature*",    "WorldObject",  "set target guid",          "Set facing of the creature source to the target"},
 /* 37 */    {"MOVE_DYNAMIC",        "maxDist",      "minDist",          "Creature*",    "WorldObject",  "use random point",         "Move source to a random point between source and target."},
 /* 38 */    {"SEND_MAIL",           "templateId",   "altSender",        "WorldObject",  "Player*",      "",                         "Send email to player"},
+/* 39 */    {"SET_FLY",             "bool",         "",                 "Creature*",    "",             "set/unset byte flag",      "Changes the fly capacity of the creature."},
+/* 40 */    {"DESPAWN_GO",          "",             "",                 "GO*",          "",             "",                         "Despawn an GO with some instant."},
+/* 41 */    {"RESPAWN",             "",             "",                 "Creature*",    "",             "",                         "Respawn an npc with some instant."},
         };
     }
 }
