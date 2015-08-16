@@ -205,6 +205,7 @@ namespace EventAI_Creator
                 case 21:    // active object
                 case 25:    // set run
                 case 33:    // user XP
+                case 39     // set fly
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
                     comboBox_datalong.Items.AddRange(Info.Boolean);
@@ -245,7 +246,7 @@ namespace EventAI_Creator
                     comboBox_datalong.SelectedIndex = 0;
                     comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
                     comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
-                    break;
+                    break;      
             }
 
             // Set all to 0
