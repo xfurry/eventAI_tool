@@ -273,7 +273,10 @@ namespace EventAI_Creator
             "BUDDY_AS_TARGET",
             "REVERSE_DIRECTION",
             "SOURCE_TARGETS_SELF",
-            "COMMAND_ADDITIONAL"
+            "COMMAND_ADDITIONAL",
+            "BUDDY_BY_GUID",
+            "BUDDY_IS_PET",
+            "BUDDY_IS_DESPAWNED"
         };
 
         public static string[] GameObjectFlags = new string[]

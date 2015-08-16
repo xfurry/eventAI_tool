@@ -205,7 +205,7 @@ namespace EventAI_Creator
                 case 21:    // active object
                 case 25:    // set run
                 case 33:    // user XP
-                case 39     // set fly
+                case 39:    // set fly
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
                     comboBox_datalong.Items.AddRange(Info.Boolean);
