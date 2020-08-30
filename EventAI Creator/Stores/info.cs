@@ -45,6 +45,10 @@ namespace EventAI_Creator
 /*29 | 30*/{"TIMER_GENERIC","InitialMin","InitialMax","RepeatMin","RepeatMax","Expires at first between (Param1) and (Param2) and then will repeat between every (Param3) and (Param4)." },
 /*30 | 31*/{"RECEIVE_AI_EVENT","AIEventType","SenderEntry","","","Expires when the creature receives an AIEvent of type (Param1), sent by creature (Param2 != 0). If (Param2 = 0) then sent by any creature"},
 /*31 | 32*/{"ENERGY","EnergyMax","EnergyMin","RepeatMin","RepeatMax","Expires once Energy% is between (Param1) and (Param2). Will repeat every (Param3) and (Param4)."},
+/*32 | 33*/{"SELECT_ATTACKING_TARGET","MinRange","MaxRange","RepeatMin","RepeatMax","Expires once Energy% is between (Param1) and (Param2). Will repeat every (Param3) and (Param4)."},
+/*33 | 34*/{"FACING_TARGET","Back/Front","","RepeatMin","RepeatMax","Expires if (Param1) is 0 and source is behind the target or if (Param1) is 1 and source is in from of the target. Will repeat every (Param3) and (Param4)."},
+/*34 | 35*/{"SPELLHIT_TARGET","SpellId","School","RepeatMin","RepeatMax","Expires once the spell Id (Param1) or spell school (Param2) hits the target. Will repeat every (Param3) and (Param4)."},
+/*35 | 36*/{"DEATH_PREVENTED","","","","","Expires if the creature is prevented from dying."},
         };
 
         public static string[,] ActionListInfo = new string[,]
@@ -98,6 +102,19 @@ namespace EventAI_Creator
 /*46 | 01 */{"SET_THROW_MASK","EventTypeMask","","","Marks for which AIEvents the npc will throw AIEvents on its own."},
 /*47 | 01 */{"SET_STAND_STATE","StandState","","","Set the unit stand state (Param1) of the current creature."},
 /*48 | 01 */{"CHANGE_MOVEMENT","MovementType","WanderDistance","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*49 | 01 */{"DYNAMIC_MOVEMENT","Enable","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*50 | 01 */{"SET_REACT_STATE","ReactState","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*51 | 01 */{"PAUSE_WAYPOINTS","DoPause","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*52 | 01 */{"INTERRUPT_SPELL","SpellType","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*53 | 01 */{"START_RELAY_SCRIPT","RelayScriptId","Target","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*54 | 01 */{"TEXT_NEW","TextID","Target","TemplateId","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*55 | 01 */{"ATTACK_START","Target","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*56 | 01 */{"DESPAWN_GUARDIANS","GuardianEntryID","","","Change the unit movement type (Param1). If the movement type is Random Movement (1), the WanderDistance (Param2) must be provided."},
+/*57 | 01 */{"SET_RANGED_MODE","RangeModeType","ChaseDistance","","Change the unit range mode type (Param1) and set the chase distance (Param2)."},
+/*58 | 01 */{"SET_WALK","WalkModeType","","","Change the unit walk type (Param1)"},
+/*59 | 01 */{"SET_FACING","TargetEntry","Reset","","Set facing to the target with entry (Param1) provided by the target selection. If reset is set to 1 (Param2) the creature will reset to respawn coords."},
+/*60 | 01 */{"SET_SPELL_SET","SpellSetID","","","Change the unit spell set to the one provided by (Param1)."},
+/*61 | 01 */{"SET_IMMOBILIZED_STATE","Apply","CombatOnly","","Toggle the unit immobilized state based on (Param1). (Param2) defines if this takes place only during combat."},
         };
 
         public static string[] EventFlags = new string[]
@@ -109,7 +126,10 @@ namespace EventAI_Creator
             "DIFFICULTY_3",
             "RANDOM_ACTION",
             "DUMMY_FLAG",
-            "DEBUG_ONLY"
+            "DEBUG_ONLY",
+            "RANGED_MODE_ONLY",
+            "MELEE_MODE_ONLY",
+            "COMBAT_ACTION",
         };
 
         public static string[] SpellSchoolMask = new string[]
@@ -130,7 +150,12 @@ namespace EventAI_Creator
             "CAST_FORCE_CAST",
             "CAST_NO_MELEE_IF_OOM",
             "CAST_FORCE_TARGET_SELF",
-            "CAST_AURA_NOT_PRESENT"
+            "CAST_AURA_NOT_PRESENT",
+            "CAST_IGNORE_UNSELECTABLE_TARGET",
+            "CAST_SWITCH_CASTER_TARGET",
+            "CAST_MAIN_SPELL",
+            "CAST_PLAYER_ONLY",
+            "CAST_DISTANCE_YOURSELF",
         };
 
         public static string[] SheathState = new string[]
@@ -151,6 +176,29 @@ namespace EventAI_Creator
             "SPECIAL"
         };
 
+        public static string[] RangedModeType = new string[]
+        {
+            "NONE",
+            "FULL_CASTER",
+            "PROXIMITY",
+            "NO_MELEE_MODE"
+        };
+
+        public static string[] ReactStates = new string[]
+        {
+            "PASSIVE",
+            "DEFENSIVE",
+            "AGGRESSIVE"
+        };
+
+        public static string[] WalkModeType = new string[]
+        {
+            "RUN_DEFAULT",
+            "WALK_DEFAULT",
+            "RUN_CHASE",
+            "WALK_CHASE"
+        };
+
         public static string[] TargetType = new string[]
         {
             "SELF",
@@ -164,6 +212,16 @@ namespace EventAI_Creator
             "HOSTILE_RANDOM_PLAYER",
             "HOSTILE_RANDOM_NOT_TOP_PLAYER",
             "EVENT_SENDER",
+            "HOSTILE_RANDOM_PLAYER",
+            "HOSTILE_RANDOM_NOT_TOP_PLAYER",
+            "SPAWNER",
+            "EVENT_SPECIFIC",
+            "PLAYER_INVOKER",
+            "PLAYER_TAPPED",
+            "NONE",
+            "HOSTILE_RANDOM_MANA",
+            "NEAREST_AOE_TARGET",
+            "HOSTILE_FARTHEST_AWAY"
         };
 
         public static string[] FactionFlag = new string[]
@@ -171,7 +229,12 @@ namespace EventAI_Creator
         //  "TEMPFACTION_NONE",
             "TEMPFACTION_RESTORE_RESPAWN",
             "TEMPFACTION_RESTORE_COMBAT_STOP",
-            "TEMPFACTION_RESTORE_REACH_HOME"
+            "TEMPFACTION_RESTORE_REACH_HOME",
+            "TEMPFACTION_TOGGLE_NON_ATTACKABLE",
+            "TEMPFACTION_TOGGLE_IMMUNE_TO_PLAYER",
+            "TEMPFACTION_TOGGLE_IMMUNE_TO_NPC",
+            "TEMPFACTION_TOGGLE_PACIFIED",
+            "TEMPFACTION_TOGGLE_NOT_SELECTABLE"
         };
 
         public static string[] TeamTemplate = new string[] {"ALLIANCE", "HORDE"};
@@ -180,21 +243,21 @@ namespace EventAI_Creator
         {
             "UNIT_FLAG_UNK_0",
             "UNIT_FLAG_NON_ATTACKABLE",
-            "UNIT_FLAG_DISABLE_MOVE",
-            "UNIT_FLAG_PVP_ATTACKABLE",
+            "UNIT_FLAG_CLIENT_CONTROL_LOST",
+            "UNIT_FLAG_PLAYER_CONTROLLED",
             "UNIT_FLAG_RENAME",
             "UNIT_FLAG_PREPARATION",
             "UNIT_FLAG_UNK_6",
             "UNIT_FLAG_NOT_ATTACKABLE_1",
-            "UNIT_FLAG_OOC_NOT_ATTACKABLE",
-            "UNIT_FLAG_PASSIVE",
+            "UNIT_FLAG_IMMUNE_TO_PLAYER",
+            "UNIT_FLAG_IMMUNE_TO_NPC",
             "UNIT_FLAG_LOOTING",
             "UNIT_FLAG_PET_IN_COMBAT",
-            "UNIT_FLAG_PVP",
+            "UNIT_FLAG_PVP_DEPRECATED",
             "UNIT_FLAG_SILENCED",
             "UNIT_FLAG_UNK_14",
-            "UNIT_FLAG_UNK_15",
-            "UNIT_FLAG_UNK_16",
+            "UNIT_FLAG_SWIMMING",
+            "UNIT_FLAG_NON_ATTACKABLE_2",
             "UNIT_FLAG_PACIFIED",
             "UNIT_FLAG_STUNNED",
             "UNIT_FLAG_IN_COMBAT",
@@ -202,14 +265,14 @@ namespace EventAI_Creator
             "UNIT_FLAG_DISARMED",
             "UNIT_FLAG_CONFUSED",
             "UNIT_FLAG_FLEEING",
-            "UNIT_FLAG_PLAYER_CONTROLLED",
+            "UNIT_FLAG_POSSESSED",
             "UNIT_FLAG_NOT_SELECTABLE",
             "UNIT_FLAG_SKINNABLE",
             "UNIT_FLAG_MOUNT",
             "UNIT_FLAG_UNK_28",
             "UNIT_FLAG_UNK_29",
             "UNIT_FLAG_SHEATHE",
-            "UNIT_FLAG_UNK_31"
+            "UNIT_FLAG_IMMUNE"
         };
 
         public static string[] EventPhases = new string[]
@@ -265,6 +328,7 @@ namespace EventAI_Creator
             "DBSCRIPTS_ON_GO_TEMPLATE_USE",
             "DBSCRIPTS_ON_QUEST_END",
             "DBSCRIPTS_ON_QUEST_START",
+            "DBSCRIPTS_ON_RELAY",
             "DBSCRIPTS_ON_SPELL"
         };
 
@@ -276,7 +340,8 @@ namespace EventAI_Creator
             "COMMAND_ADDITIONAL",
             "BUDDY_BY_GUID",
             "BUDDY_IS_PET",
-            "BUDDY_IS_DESPAWNED"
+            "BUDDY_IS_DESPAWNED",
+            "BUDDY_BY_POOL"
         };
 
         public static string[] GameObjectFlags = new string[]
@@ -285,6 +350,14 @@ namespace EventAI_Creator
             "GO_UNLOCK",
             "GO_NONINTERACT",
             "GO_INTERACT"
+        };
+
+        public static string[] CurrentSpellTypes = new string[]
+        {
+            "MELEE_SPELL",
+            "GENERIC_SPELL",
+            "AUTOREPEAT_SPELL",
+            "CHANNELED_SPELL"
         };
 
         public static string[] StandStateTemplate = new string[]
@@ -328,7 +401,8 @@ namespace EventAI_Creator
             "AUCTIONEER",
             "STABLEMASTER",
             "GUILD_BANKER",
-            "SPELLCLICK"
+            "SPELLCLICK",
+            "PLAYER_VEHICLE"
         };
 
         public static string[] AIEvents = new string[]
@@ -351,53 +425,59 @@ namespace EventAI_Creator
 
         public static string[] PauseWaypoints = new string[] { "UNPAUSE", "PAUSE" };
 
-        public static string[] SoundBitmask = new string[] {"ANYONE/TARGET", "DISTANCE DEPENDENT"};
+        public static string[] SoundBitmask = new string[] {"ANYONE/TARGET", "DISTANCE DEPENDENT", "SOUND_TO_MAP", "SOUND_TO_ENTIRE_ZONE" };
 
         public static string[,] ScriptCommands = new string[,]
         {
-            // command name         // datalong     // datalong2        // source       // target       // command add              // details
-/* 0 */     {"TALK",                "ChatType",     "language",         "WorldObject*", "Unit/none*",   "",                         "Creature say/whisper/yell/textemote."},
-/* 1 */     {"EMOTE",               "emote_id",     "",                 "Unit*",        "Unit/none*",   "",                         "Play emote on creature."},
-/* 2 */     {"FIELD_SET",           "field_id",     "field value",      "any",          "",             "",                         "Change the value at an index for the unit."},
-/* 3 */     {"MOVE_TO",             "",             "travel_speed",     "Creature*",    "",             "teleport unit to position","Relocate creature to a destination"},
-/* 4 */     {"FLAG_SET",            "field_id",     "bitmask",          "any",          "",             "",                         "Turns on bits on a flag field at an index for the worldobject."},
-/* 5 */     {"FLAG_REMOVE",         "field_id",     "bitmask",          "any",          "",             "",                         "Turns off bits on a flag field at an index for the worldobject."},
-/* 6 */     {"TELEPORT_TO",         "map_id",       "",                 "Player|",      "Player|",      "",                         "Teleports the player to a location."},
-/* 7 */     {"QUEST_EXPLORED",      "quest_id",     "distance",         "GO/Creature^",  "Player^",     "",                         "Satisfies the explore requirement for a quest."},
-/* 8 */     {"KILL_CREDIT",         "creature entry","bool",            "Player|",      "Player|",      "",                         "Satisfies the kill credit requirement for a quest."},
-/* 9 */     {"RESPAWN_GAMEOBJECT",  "db_guid",      "despawn_delay",    "any",          "any",          "",                         "Spawns a despawned gameobject."},
-/* 10 */    {"TEMP_SUMMON_CREATURE","creature entry","despawn_delay",   "any",          "any",          "summon as active object",  "Temporarily summon a creature."},
-/* 11 */    {"OPEN_DOOR",           "db_guid",      "reset_delay",      "any",          "",             "",                         "Opens a door gameobject (type == 0)."},
-/* 12 */    {"CLOSE_DOOR",          "db_guid",      "reset_delay",      "any",          "",             "",                         "Closes a door gameobject (type == 0)."},
-/* 13 */    {"ACTIVATE_OBJECT",     "",             "",                 "unit",         "GO",           "",                         "Activates an object."},
-/* 14 */    {"REMOVE_AURA",         "spell_id",     "",                 "Unit*",        "",             "",                         "Removes an aura due to a spell."},
-/* 15 */    {"CAST_SPELL",          "spell_id",     "",                 "Unit*",        "Unit*",        "cast triggered",           "Casts a spell."},
-/* 16 */    {"PLAY_SOUND",          "sound_id",     "bitmask",          "any object",   "any/player",   "",                         "Plays a sound."},
-/* 17 */    {"CREATE_ITEM",         "item entry",   "amount",           "player|",      "player|",      "",                         "Creates an item."},
-/* 18 */    {"DESPAWN_SELF",        "despawn delay","",                 "Creature*",    "",             "",                         "Despawns an npc with some delay."},
-/* 19 */    {"PLAY_MOVIE",          "movie id",     "",                 "",             "player",       "",                         "Plays a movie."},
-/* 20 */    {"MOVEMENT",            "MovementType", "",                 "Creature*",    "",             "RandomMovement",           "Change Movement of a creature."},
-/* 21 */    {"SET_ACTIVEOBJECT",    "bool",         "",                 "Creature*",    "",             "",                         "Sets the active object state of the creature"},
-/* 22 */    {"SET_FACTION",         "factionId",    "TemporaryFactionFlags","Creature*","",             "",                         "Sets the faction id from the creature."},
-/* 23 */    {"MORPH_TO_ENTRY_OR_MODEL","entry/modelid","",              "Creature*",    "",             "",                         "Morphs the creature to the model specified."},
-/* 24 */    {"MOUNT_TO_ENTRY_OR_MODEL","entry/modelid","",              "Creature*",    "",             "",                         "Mounts the creature with the model specified."},
-/* 25 */    {"SET_RUN",             "bool",         "",                 "Creature*",    "",             "",                         "Changes the run capacity of the creature."},
-/* 26 */    {"ATTACK_START",        "",             "",                 "Creature*",    "unit*",        "",                         "Makes a creature attack a unit"},
-/* 27 */    {"GO_LOCK_STATE",       "Flag",         "",                 "GO*",          "",             "",                         "Lock/Unlock a gameobject"},
-/* 28 */    {"STAND_STATE",         "stand state",  "",                 "Creature*",    "",             "",                         "Set the stand state of a creature"},
-/* 29 */    {"MODIFY_NPC_FLAGS",    "NPCFlags",     "bitmask",          "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
-/* 30 */    {"SEND_TAXI_PATH",      "taxi path id", "",                 "Player|",      "Player|",      "",                         "Send player in Taxi path"},
-/* 31 */    {"TERMINATE_SCRIPT",    "npc entry",    "search distance",  "Creature|",    "Creature|",    "not alive / alive",        "Terminate current script execution"},
-/* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
-/* 33 */    {"XP_USER",             "off/on",       "",                 "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
-/* 34 */    {"TERMINATE_COND",      "condition_id", "fail-quest",       "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
-/* 35 */    {"SEND_AI_EVENT",       "AIEventType",  "radius",           "Creature*",    "Unit*",        "",                         "Send AI event around or target - limited to eventAI events only"},
-/* 36 */    {"SET_FACING",          "reset facing", "",                 "Creature*",    "WorldObject",  "set target guid",          "Set facing of the creature source to the target"},
-/* 37 */    {"MOVE_DYNAMIC",        "maxDist",      "minDist",          "Creature*",    "WorldObject",  "use random point",         "Move source to a random point between source and target."},
-/* 38 */    {"SEND_MAIL",           "templateId",   "altSender",        "WorldObject",  "Player*",      "",                         "Send email to player"},
-/* 39 */    {"SET_FLY",             "bool",         "",                 "Creature*",    "",             "set/unset byte flag",      "Changes the fly capacity of the creature."},
-/* 40 */    {"DESPAWN_GO",          "",             "",                 "GO*",          "",             "",                         "Despawn an GO with some instant."},
-/* 41 */    {"RESPAWN",             "",             "",                 "Creature*",    "",             "",                         "Respawn an npc with some instant."},
+            // command name         // datalong     // datalong2        // datalong 3   // source       // target       // command add              // details
+/* 0 */     {"TALK",                "Template Id",  "",                 "",             "WorldObject*", "Unit/none*",   "",                         "Creature say/whisper/yell/textemote."},
+/* 1 */     {"EMOTE",               "Emote Id",     "",                 "",             "Unit*",        "Unit/none*",   "",                         "Play emote on creature."},
+/* 2 */     {"FIELD_SET",           "Field Id",     "Field Value",      "",             "any",          "",             "",                         "Change the value at an index for the unit."},
+/* 3 */     {"MOVE_TO",             "",             "Travel Speed",     "",             "Creature*",    "",             "teleport unit to position","Relocate creature to a destination"},
+/* 4 */     {"FLAG_SET",            "Field Id",     "Bitmask",          "",             "any",          "",             "",                         "Turns on bits on a flag field at an index for the worldobject."},
+/* 5 */     {"FLAG_REMOVE",         "Field Id",     "Bitmask",          "",             "any",          "",             "",                         "Turns off bits on a flag field at an index for the worldobject."},
+/* 6 */     {"TELEPORT_TO",         "Map Id",       "",                 "",             "Player|",      "Player|",      "",                         "Teleports the player to a location."},
+/* 7 */     {"QUEST_EXPLORED",      "quest_id",     "distance",         "",             "GO/Creature^", "Player^",      "",                         "Satisfies the explore requirement for a quest."},
+/* 8 */     {"KILL_CREDIT",         "Creature Entry","Group Credit",    "",             "Player|",      "Player|",      "",                         "Satisfies the kill credit requirement for a quest."},
+/* 9 */     {"RESPAWN_GAMEOBJECT",  "DB Guid",      "Despawn Delay",    "",             "any",          "any",          "",                         "Spawns a despawned gameobject."},
+/* 10 */    {"TEMP_SUMMON_CREATURE","Creature Entry","Despawn Delay",   "Path Id",      "any",          "any",          "summon as active object",  "Temporarily summon a creature."},
+/* 11 */    {"OPEN_DOOR",           "DB Guid",      "Reset Delay",      "",             "any",          "",             "",                         "Opens a door gameobject (type == 0)."},
+/* 12 */    {"CLOSE_DOOR",          "DB Guid",      "Reset Delay",      "",             "any",          "",             "",                         "Closes a door gameobject (type == 0)."},
+/* 13 */    {"ACTIVATE_OBJECT",     "",             "",                 "",             "unit",         "GO",           "",                         "Activates an object."},
+/* 14 */    {"REMOVE_AURA",         "Spell Id",     "",                 "",             "Unit*",        "",             "",                         "Removes an aura due to a spell."},
+/* 15 */    {"CAST_SPELL",          "Spell Id",     "Cast Flags",       "",             "Unit*",        "Unit*",        "cast triggered",           "Casts a spell."},
+/* 16 */    {"PLAY_SOUND",          "Sound Id",     "Sound Flags",      "",             "any object",   "any/player",   "",                         "Plays a sound."},
+/* 17 */    {"CREATE_ITEM",         "Item Entry",   "Amount",           "",             "player|",      "player|",      "",                         "Creates an item."},
+/* 18 */    {"DESPAWN_SELF",        "Despawn Delay","",                 "",             "Creature*",    "",             "",                         "Despawns an npc with some delay."},
+/* 19 */    {"PLAY_MOVIE",          "movie id",     "",                 "",             "",             "player",       "",                         "Plays a movie."},
+/* 20 */    {"MOVEMENT",            "MovementType", "Wander / Path Id", "Timer",        "Creature*",    "",             "RandomMovement",           "Change Movement of a creature."},
+/* 21 */    {"SET_ACTIVEOBJECT",    "True / False", "",                 "",             "Creature*",    "",             "",                         "Sets the active object state of the creature"},
+/* 22 */    {"SET_FACTION",         "Faction Id",   "TemporaryFactionFlags","",         "Creature*",    "",             "",                         "Sets the faction id from the creature."},
+/* 23 */    {"MORPH_TO_ENTRY_OR_MODEL","Entry  /Modelid","",            "",             "Creature*",    "",             "",                         "Morphs the creature to the model specified."},
+/* 24 */    {"MOUNT_TO_ENTRY_OR_MODEL","Entry / Modelid","",            "",             "Creature*",    "",             "",                         "Mounts the creature with the model specified."},
+/* 25 */    {"SET_RUN",             "True / False", "",                 "",             "Creature*",    "",             "",                         "Changes the run capacity of the creature."},
+/* 26 */    {"ATTACK_START",        "",             "",                 "",             "Creature*",    "unit*",        "",                         "Makes a creature attack a unit"},
+/* 27 */    {"GO_LOCK_STATE",       "Flag",         "",                 "",             "GO*",          "",             "",                         "Lock/Unlock a gameobject"},
+/* 28 */    {"STAND_STATE",         "Stand State",  "",                 "",             "Creature*",    "",             "",                         "Set the stand state of a creature"},
+/* 29 */    {"MODIFY_NPC_FLAGS",    "NPC Flags",    "Bitmask",          "",             "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
+/* 30 */    {"SEND_TAXI_PATH",      "Taxi Path id", "",                 "",             "Player|",      "Player|",      "",                         "Send player in Taxi path"},
+/* 31 */    {"TERMINATE_SCRIPT",    "NPC Entry",    "Search Distance",  "Pool Id",      "Creature|",    "Creature|",    "not alive / alive",        "Terminate current script execution"},
+/* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "",             "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
+/* 33 */    {"XP_USER",             "Off / On",     "",                 "",             "Player|",      "Player|",      "",                         "Allow the player to stop or resume XP gain"},
+/* 34 */    {"TERMINATE_COND",      "Condition Id", "fail-quest",       "",             "",             "",             "terminate when condition is false", "Terminate a script based on a condition"},
+/* 35 */    {"SEND_AI_EVENT",       "AIEventType",  "Radius",           "",             "Creature*",    "Unit*",        "",                         "Send AI event around or target - limited to eventAI events only"},
+/* 36 */    {"SET_FACING",          "Reset facing", "",                 "",             "Creature*",    "WorldObject",  "set target guid",          "Set facing of the creature source to the target"},
+/* 37 */    {"MOVE_DYNAMIC",        "Max Dist",     "Min Dist",         "Fixed Dist",   "Creature*",    "WorldObject",  "use random point",         "Move source to a random point between source and target."},
+/* 38 */    {"SEND_MAIL",           "Template Id",  "Alt Sender",       "",             "WorldObject",  "Player*",      "",                         "Send email to player"},
+/* 39 */    {"SET_FLY",             "True / False", "",                 "",             "Creature*",    "",             "set/unset byte flag",      "Changes the fly capacity of the creature."},
+/* 40 */    {"DESPAWN_GO",          "",             "",                 "",             "GO*",          "",             "",                         "Despawn an GO with some instant."},
+/* 41 */    {"RESPAWN",             "",             "",                 "",             "Creature*",    "",             "",                         "Respawn an npc with some instant."},
+/* 42 */    {"SET_EQUIPMENT_SLOTS", "Reset Default","",                 "",             "Creature*",    "",             "",                         "Set the equipment slots."},
+/* 43 */    {"RESET_GO",            "",             "",                 "",             "",             "GO",           "",                         "Reset Door or Button"},
+/* 44 */    {"UPDATE_TEMPLATE",     "New Template Id","",               "",             "Creature*",    "",             "",                         "Update creature entry"},
+/* 45 */    {"START_RELAY_SCRIPT",  "Relay Id",     "Relay Template Id","",             "Unit*",        "",             "",                         "Start relay script. Use Template Id if provided"},
+/* 46 */    {"CAST_CUSTOM_SPELL",   "Spell Id",     "Cast Flags",       "",             "Unit*",        "Unit*",        "",                         "Cast custom spell"},
+/* 47 */    {"INTERRUPT_SPELL",     "Current Spell Type","",            "",             "Unit*",    "",             "",                             "Interrupt spell by type"},
         };
     }
 }

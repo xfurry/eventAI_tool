@@ -41,16 +41,16 @@
             this.button_datalong = new System.Windows.Forms.Button();
             this.button_datalong2 = new System.Windows.Forms.Button();
             this.button_flags = new System.Windows.Forms.Button();
+            this.label_datalong2 = new System.Windows.Forms.Label();
+            this.textBox_datalong2 = new System.Windows.Forms.TextBox();
+            this.label_datalong = new System.Windows.Forms.Label();
+            this.textBox_datalong = new System.Windows.Forms.TextBox();
             this.label_flags = new System.Windows.Forms.Label();
             this.label_radius = new System.Windows.Forms.Label();
             this.label_buddy = new System.Windows.Forms.Label();
-            this.label_datalong2 = new System.Windows.Forms.Label();
-            this.textBox_datalong2 = new System.Windows.Forms.TextBox();
             this.textBox_flags = new System.Windows.Forms.TextBox();
             this.textBox_radius = new System.Windows.Forms.TextBox();
             this.textBox_buddy = new System.Windows.Forms.TextBox();
-            this.label_datalong = new System.Windows.Forms.Label();
-            this.textBox_datalong = new System.Windows.Forms.TextBox();
             this.groupBoxDataInt = new System.Windows.Forms.GroupBox();
             this.label_dataint4 = new System.Windows.Forms.Label();
             this.label_dataint3 = new System.Windows.Forms.Label();
@@ -77,11 +77,24 @@
             this.label_tar = new System.Windows.Forms.Label();
             this.label_source = new System.Windows.Forms.Label();
             this.label_src = new System.Windows.Forms.Label();
+            this.groupBoxBuddy = new System.Windows.Forms.GroupBox();
+            this.label_datalong3 = new System.Windows.Forms.Label();
+            this.textBox_datalong3 = new System.Windows.Forms.TextBox();
+            this.button_datalong3 = new System.Windows.Forms.Button();
+            this.comboBox_datalong3 = new System.Windows.Forms.ComboBox();
+            this.labelPriority = new System.Windows.Forms.Label();
+            this.textBoxPriority = new System.Windows.Forms.TextBox();
+            this.labelCommandDetailsMaster = new System.Windows.Forms.Label();
+            this.label_command_details = new System.Windows.Forms.Label();
+            this.button_dataflags = new System.Windows.Forms.Button();
+            this.label_conditionId = new System.Windows.Forms.Label();
+            this.textBox_conditionId = new System.Windows.Forms.TextBox();
             this.groupBoxEvent.SuspendLayout();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxDataInt.SuspendLayout();
             this.groupBoxPosition.SuspendLayout();
             this.groupBox_details.SuspendLayout();
+            this.groupBoxBuddy.SuspendLayout();
             this.SuspendLayout();
             // 
             // eventCheckbox
@@ -106,13 +119,15 @@
             // 
             // groupBoxEvent
             // 
+            this.groupBoxEvent.Controls.Add(this.textBoxPriority);
+            this.groupBoxEvent.Controls.Add(this.labelPriority);
             this.groupBoxEvent.Controls.Add(this.labelAction);
             this.groupBoxEvent.Controls.Add(this.labelDelay);
             this.groupBoxEvent.Controls.Add(this.comboBoxAction);
             this.groupBoxEvent.Controls.Add(this.textBoxDelay);
             this.groupBoxEvent.Location = new System.Drawing.Point(16, 27);
             this.groupBoxEvent.Name = "groupBoxEvent";
-            this.groupBoxEvent.Size = new System.Drawing.Size(129, 129);
+            this.groupBoxEvent.Size = new System.Drawing.Size(129, 165);
             this.groupBoxEvent.TabIndex = 2;
             this.groupBoxEvent.TabStop = false;
             this.groupBoxEvent.Text = "Event Settings";
@@ -120,7 +135,7 @@
             // labelAction
             // 
             this.labelAction.AutoSize = true;
-            this.labelAction.Location = new System.Drawing.Point(10, 82);
+            this.labelAction.Location = new System.Drawing.Point(10, 105);
             this.labelAction.Name = "labelAction";
             this.labelAction.Size = new System.Drawing.Size(54, 13);
             this.labelAction.TabIndex = 3;
@@ -138,7 +153,7 @@
             // comboBoxAction
             // 
             this.comboBoxAction.FormattingEnabled = true;
-            this.comboBoxAction.Location = new System.Drawing.Point(10, 100);
+            this.comboBoxAction.Location = new System.Drawing.Point(10, 121);
             this.comboBoxAction.Name = "comboBoxAction";
             this.comboBoxAction.Size = new System.Drawing.Size(100, 21);
             this.comboBoxAction.TabIndex = 1;
@@ -146,7 +161,7 @@
             // 
             // textBoxDelay
             // 
-            this.textBoxDelay.Location = new System.Drawing.Point(10, 49);
+            this.textBoxDelay.Location = new System.Drawing.Point(10, 41);
             this.textBoxDelay.Name = "textBoxDelay";
             this.textBoxDelay.Size = new System.Drawing.Size(100, 20);
             this.textBoxDelay.TabIndex = 0;
@@ -154,24 +169,22 @@
             // 
             // groupBoxMain
             // 
+            this.groupBoxMain.Controls.Add(this.comboBox_datalong3);
             this.groupBoxMain.Controls.Add(this.comboBox_datalong2);
+            this.groupBoxMain.Controls.Add(this.button_datalong3);
+            this.groupBoxMain.Controls.Add(this.textBox_datalong3);
+            this.groupBoxMain.Controls.Add(this.label_datalong3);
             this.groupBoxMain.Controls.Add(this.comboBox_datalong);
             this.groupBoxMain.Controls.Add(this.button_datalong);
             this.groupBoxMain.Controls.Add(this.button_datalong2);
             this.groupBoxMain.Controls.Add(this.button_flags);
-            this.groupBoxMain.Controls.Add(this.label_flags);
-            this.groupBoxMain.Controls.Add(this.label_radius);
-            this.groupBoxMain.Controls.Add(this.label_buddy);
             this.groupBoxMain.Controls.Add(this.label_datalong2);
             this.groupBoxMain.Controls.Add(this.textBox_datalong2);
-            this.groupBoxMain.Controls.Add(this.textBox_flags);
-            this.groupBoxMain.Controls.Add(this.textBox_radius);
-            this.groupBoxMain.Controls.Add(this.textBox_buddy);
             this.groupBoxMain.Controls.Add(this.label_datalong);
             this.groupBoxMain.Controls.Add(this.textBox_datalong);
             this.groupBoxMain.Location = new System.Drawing.Point(166, 52);
             this.groupBoxMain.Name = "groupBoxMain";
-            this.groupBoxMain.Size = new System.Drawing.Size(372, 104);
+            this.groupBoxMain.Size = new System.Drawing.Size(110, 140);
             this.groupBoxMain.TabIndex = 3;
             this.groupBoxMain.TabStop = false;
             this.groupBoxMain.Text = "Main Flags";
@@ -179,7 +192,7 @@
             // comboBox_datalong2
             // 
             this.comboBox_datalong2.FormattingEnabled = true;
-            this.comboBox_datalong2.Location = new System.Drawing.Point(6, 73);
+            this.comboBox_datalong2.Location = new System.Drawing.Point(6, 72);
             this.comboBox_datalong2.Name = "comboBox_datalong2";
             this.comboBox_datalong2.Size = new System.Drawing.Size(100, 21);
             this.comboBox_datalong2.TabIndex = 14;
@@ -227,37 +240,10 @@
             this.button_flags.UseVisualStyleBackColor = true;
             this.button_flags.Click += new System.EventHandler(this.button_flags_Click);
             // 
-            // label_flags
-            // 
-            this.label_flags.AutoSize = true;
-            this.label_flags.Location = new System.Drawing.Point(112, 73);
-            this.label_flags.Name = "label_flags";
-            this.label_flags.Size = new System.Drawing.Size(58, 13);
-            this.label_flags.TabIndex = 9;
-            this.label_flags.Text = "Data Flags";
-            // 
-            // label_radius
-            // 
-            this.label_radius.AutoSize = true;
-            this.label_radius.Location = new System.Drawing.Point(112, 46);
-            this.label_radius.Name = "label_radius";
-            this.label_radius.Size = new System.Drawing.Size(103, 13);
-            this.label_radius.TabIndex = 8;
-            this.label_radius.Text = "Buddy search radius";
-            // 
-            // label_buddy
-            // 
-            this.label_buddy.AutoSize = true;
-            this.label_buddy.Location = new System.Drawing.Point(112, 19);
-            this.label_buddy.Name = "label_buddy";
-            this.label_buddy.Size = new System.Drawing.Size(144, 13);
-            this.label_buddy.TabIndex = 7;
-            this.label_buddy.Text = "Buddy Entry (Creature or GO)";
-            // 
             // label_datalong2
             // 
             this.label_datalong2.AutoSize = true;
-            this.label_datalong2.Location = new System.Drawing.Point(6, 57);
+            this.label_datalong2.Location = new System.Drawing.Point(4, 56);
             this.label_datalong2.Name = "label_datalong2";
             this.label_datalong2.Size = new System.Drawing.Size(56, 13);
             this.label_datalong2.TabIndex = 6;
@@ -270,30 +256,6 @@
             this.textBox_datalong2.Size = new System.Drawing.Size(100, 20);
             this.textBox_datalong2.TabIndex = 5;
             this.textBox_datalong2.Leave += new System.EventHandler(this.txtBox_leave);
-            // 
-            // textBox_flags
-            // 
-            this.textBox_flags.Location = new System.Drawing.Point(262, 66);
-            this.textBox_flags.Name = "textBox_flags";
-            this.textBox_flags.Size = new System.Drawing.Size(50, 20);
-            this.textBox_flags.TabIndex = 4;
-            this.textBox_flags.Leave += new System.EventHandler(this.txtBox_leave);
-            // 
-            // textBox_radius
-            // 
-            this.textBox_radius.Location = new System.Drawing.Point(262, 41);
-            this.textBox_radius.Name = "textBox_radius";
-            this.textBox_radius.Size = new System.Drawing.Size(100, 20);
-            this.textBox_radius.TabIndex = 3;
-            this.textBox_radius.Leave += new System.EventHandler(this.txtBox_leave);
-            // 
-            // textBox_buddy
-            // 
-            this.textBox_buddy.Location = new System.Drawing.Point(262, 16);
-            this.textBox_buddy.Name = "textBox_buddy";
-            this.textBox_buddy.Size = new System.Drawing.Size(100, 20);
-            this.textBox_buddy.TabIndex = 2;
-            this.textBox_buddy.Leave += new System.EventHandler(this.txtBox_leave);
             // 
             // label_datalong
             // 
@@ -312,6 +274,57 @@
             this.textBox_datalong.TabIndex = 0;
             this.textBox_datalong.Leave += new System.EventHandler(this.txtBox_leave);
             // 
+            // label_flags
+            // 
+            this.label_flags.AutoSize = true;
+            this.label_flags.Location = new System.Drawing.Point(6, 79);
+            this.label_flags.Name = "label_flags";
+            this.label_flags.Size = new System.Drawing.Size(58, 13);
+            this.label_flags.TabIndex = 9;
+            this.label_flags.Text = "Data Flags";
+            // 
+            // label_radius
+            // 
+            this.label_radius.AutoSize = true;
+            this.label_radius.Location = new System.Drawing.Point(6, 52);
+            this.label_radius.Name = "label_radius";
+            this.label_radius.Size = new System.Drawing.Size(103, 13);
+            this.label_radius.TabIndex = 8;
+            this.label_radius.Text = "Buddy search radius";
+            // 
+            // label_buddy
+            // 
+            this.label_buddy.AutoSize = true;
+            this.label_buddy.Location = new System.Drawing.Point(6, 25);
+            this.label_buddy.Name = "label_buddy";
+            this.label_buddy.Size = new System.Drawing.Size(144, 13);
+            this.label_buddy.TabIndex = 7;
+            this.label_buddy.Text = "Buddy Entry (Creature or GO)";
+            // 
+            // textBox_flags
+            // 
+            this.textBox_flags.Location = new System.Drawing.Point(156, 72);
+            this.textBox_flags.Name = "textBox_flags";
+            this.textBox_flags.Size = new System.Drawing.Size(50, 20);
+            this.textBox_flags.TabIndex = 4;
+            this.textBox_flags.Leave += new System.EventHandler(this.txtBox_leave);
+            // 
+            // textBox_radius
+            // 
+            this.textBox_radius.Location = new System.Drawing.Point(156, 47);
+            this.textBox_radius.Name = "textBox_radius";
+            this.textBox_radius.Size = new System.Drawing.Size(100, 20);
+            this.textBox_radius.TabIndex = 3;
+            this.textBox_radius.Leave += new System.EventHandler(this.txtBox_leave);
+            // 
+            // textBox_buddy
+            // 
+            this.textBox_buddy.Location = new System.Drawing.Point(156, 22);
+            this.textBox_buddy.Name = "textBox_buddy";
+            this.textBox_buddy.Size = new System.Drawing.Size(100, 20);
+            this.textBox_buddy.TabIndex = 2;
+            this.textBox_buddy.Leave += new System.EventHandler(this.txtBox_leave);
+            // 
             // groupBoxDataInt
             // 
             this.groupBoxDataInt.Controls.Add(this.label_dataint4);
@@ -322,7 +335,7 @@
             this.groupBoxDataInt.Controls.Add(this.textBox_dataint3);
             this.groupBoxDataInt.Controls.Add(this.textBox_dataint2);
             this.groupBoxDataInt.Controls.Add(this.textBox_dataint1);
-            this.groupBoxDataInt.Location = new System.Drawing.Point(16, 162);
+            this.groupBoxDataInt.Location = new System.Drawing.Point(16, 198);
             this.groupBoxDataInt.Name = "groupBoxDataInt";
             this.groupBoxDataInt.Size = new System.Drawing.Size(445, 60);
             this.groupBoxDataInt.TabIndex = 4;
@@ -411,7 +424,7 @@
             this.groupBoxPosition.Controls.Add(this.textBox_posZ);
             this.groupBoxPosition.Controls.Add(this.textBox_posY);
             this.groupBoxPosition.Controls.Add(this.textBox_posX);
-            this.groupBoxPosition.Location = new System.Drawing.Point(16, 228);
+            this.groupBoxPosition.Location = new System.Drawing.Point(16, 265);
             this.groupBoxPosition.Name = "groupBoxPosition";
             this.groupBoxPosition.Size = new System.Drawing.Size(445, 62);
             this.groupBoxPosition.TabIndex = 5;
@@ -509,12 +522,12 @@
             this.groupBox_details.Controls.Add(this.label_tar);
             this.groupBox_details.Controls.Add(this.label_source);
             this.groupBox_details.Controls.Add(this.label_src);
-            this.groupBox_details.Location = new System.Drawing.Point(469, 162);
+            this.groupBox_details.Location = new System.Drawing.Point(469, 199);
             this.groupBox_details.Name = "groupBox_details";
-            this.groupBox_details.Size = new System.Drawing.Size(69, 128);
+            this.groupBox_details.Size = new System.Drawing.Size(74, 128);
             this.groupBox_details.TabIndex = 7;
             this.groupBox_details.TabStop = false;
-            this.groupBox_details.Text = "Details";
+            this.groupBox_details.Text = "Target Info";
             // 
             // label_details
             // 
@@ -573,10 +586,127 @@
             this.label_src.TabIndex = 0;
             this.label_src.Text = "Source:";
             // 
+            // groupBoxBuddy
+            // 
+            this.groupBoxBuddy.Controls.Add(this.textBox_conditionId);
+            this.groupBoxBuddy.Controls.Add(this.label_conditionId);
+            this.groupBoxBuddy.Controls.Add(this.button_dataflags);
+            this.groupBoxBuddy.Controls.Add(this.label_buddy);
+            this.groupBoxBuddy.Controls.Add(this.textBox_buddy);
+            this.groupBoxBuddy.Controls.Add(this.textBox_radius);
+            this.groupBoxBuddy.Controls.Add(this.textBox_flags);
+            this.groupBoxBuddy.Controls.Add(this.label_radius);
+            this.groupBoxBuddy.Controls.Add(this.label_flags);
+            this.groupBoxBuddy.Location = new System.Drawing.Point(284, 53);
+            this.groupBoxBuddy.Name = "groupBoxBuddy";
+            this.groupBoxBuddy.Size = new System.Drawing.Size(259, 123);
+            this.groupBoxBuddy.TabIndex = 8;
+            this.groupBoxBuddy.TabStop = false;
+            this.groupBoxBuddy.Text = "Additional Settings";
+            // 
+            // label_datalong3
+            // 
+            this.label_datalong3.AutoSize = true;
+            this.label_datalong3.Location = new System.Drawing.Point(6, 96);
+            this.label_datalong3.Name = "label_datalong3";
+            this.label_datalong3.Size = new System.Drawing.Size(56, 13);
+            this.label_datalong3.TabIndex = 15;
+            this.label_datalong3.Text = "Datalong3";
+            // 
+            // textBox_datalong3
+            // 
+            this.textBox_datalong3.Location = new System.Drawing.Point(6, 112);
+            this.textBox_datalong3.Name = "textBox_datalong3";
+            this.textBox_datalong3.Size = new System.Drawing.Size(100, 20);
+            this.textBox_datalong3.TabIndex = 16;
+            // 
+            // button_datalong3
+            // 
+            this.button_datalong3.Location = new System.Drawing.Point(56, 112);
+            this.button_datalong3.Name = "button_datalong3";
+            this.button_datalong3.Size = new System.Drawing.Size(50, 20);
+            this.button_datalong3.TabIndex = 15;
+            this.button_datalong3.Text = "Select";
+            this.button_datalong3.UseVisualStyleBackColor = true;
+            this.button_datalong3.Visible = false;
+            // 
+            // comboBox_datalong3
+            // 
+            this.comboBox_datalong3.FormattingEnabled = true;
+            this.comboBox_datalong3.Location = new System.Drawing.Point(6, 112);
+            this.comboBox_datalong3.Name = "comboBox_datalong3";
+            this.comboBox_datalong3.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_datalong3.TabIndex = 15;
+            this.comboBox_datalong3.Visible = false;
+            // 
+            // labelPriority
+            // 
+            this.labelPriority.AutoSize = true;
+            this.labelPriority.Location = new System.Drawing.Point(10, 66);
+            this.labelPriority.Name = "labelPriority";
+            this.labelPriority.Size = new System.Drawing.Size(38, 13);
+            this.labelPriority.TabIndex = 4;
+            this.labelPriority.Text = "Priority";
+            // 
+            // textBoxPriority
+            // 
+            this.textBoxPriority.Location = new System.Drawing.Point(10, 82);
+            this.textBoxPriority.Name = "textBoxPriority";
+            this.textBoxPriority.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPriority.TabIndex = 5;
+            // 
+            // labelCommandDetailsMaster
+            // 
+            this.labelCommandDetailsMaster.AutoSize = true;
+            this.labelCommandDetailsMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCommandDetailsMaster.Location = new System.Drawing.Point(290, 179);
+            this.labelCommandDetailsMaster.Name = "labelCommandDetailsMaster";
+            this.labelCommandDetailsMaster.Size = new System.Drawing.Size(74, 13);
+            this.labelCommandDetailsMaster.TabIndex = 16;
+            this.labelCommandDetailsMaster.Text = "Cmd Details";
+            // 
+            // label_command_details
+            // 
+            this.label_command_details.AutoSize = true;
+            this.label_command_details.Location = new System.Drawing.Point(370, 179);
+            this.label_command_details.Name = "label_command_details";
+            this.label_command_details.Size = new System.Drawing.Size(113, 13);
+            this.label_command_details.TabIndex = 17;
+            this.label_command_details.Text = "No command selected";
+            // 
+            // button_dataflags
+            // 
+            this.button_dataflags.Location = new System.Drawing.Point(206, 72);
+            this.button_dataflags.Name = "button_dataflags";
+            this.button_dataflags.Size = new System.Drawing.Size(50, 20);
+            this.button_dataflags.TabIndex = 12;
+            this.button_dataflags.Text = "Select";
+            this.button_dataflags.UseVisualStyleBackColor = true;
+            this.button_dataflags.Click += new System.EventHandler(this.button_dataflags_Click);
+            // 
+            // label_conditionId
+            // 
+            this.label_conditionId.AutoSize = true;
+            this.label_conditionId.Location = new System.Drawing.Point(6, 103);
+            this.label_conditionId.Name = "label_conditionId";
+            this.label_conditionId.Size = new System.Drawing.Size(63, 13);
+            this.label_conditionId.TabIndex = 13;
+            this.label_conditionId.Text = "Condition Id";
+            // 
+            // textBox_conditionId
+            // 
+            this.textBox_conditionId.Location = new System.Drawing.Point(156, 100);
+            this.textBox_conditionId.Name = "textBox_conditionId";
+            this.textBox_conditionId.Size = new System.Drawing.Size(100, 20);
+            this.textBox_conditionId.TabIndex = 14;
+            // 
             // DbScriptControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_command_details);
+            this.Controls.Add(this.labelCommandDetailsMaster);
+            this.Controls.Add(this.groupBoxBuddy);
             this.Controls.Add(this.groupBox_details);
             this.Controls.Add(this.button_delete_event);
             this.Controls.Add(this.groupBoxPosition);
@@ -586,7 +716,7 @@
             this.Controls.Add(this.commentTextbox);
             this.Controls.Add(this.eventCheckbox);
             this.Name = "DbScriptControl";
-            this.Size = new System.Drawing.Size(553, 305);
+            this.Size = new System.Drawing.Size(553, 330);
             this.groupBoxEvent.ResumeLayout(false);
             this.groupBoxEvent.PerformLayout();
             this.groupBoxMain.ResumeLayout(false);
@@ -597,6 +727,8 @@
             this.groupBoxPosition.PerformLayout();
             this.groupBox_details.ResumeLayout(false);
             this.groupBox_details.PerformLayout();
+            this.groupBoxBuddy.ResumeLayout(false);
+            this.groupBoxBuddy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -653,5 +785,17 @@
         private System.Windows.Forms.Button button_datalong;
         private System.Windows.Forms.ComboBox comboBox_datalong;
         private System.Windows.Forms.ComboBox comboBox_datalong2;
+        private System.Windows.Forms.GroupBox groupBoxBuddy;
+        private System.Windows.Forms.Label label_datalong3;
+        private System.Windows.Forms.TextBox textBox_datalong3;
+        private System.Windows.Forms.ComboBox comboBox_datalong3;
+        private System.Windows.Forms.Button button_datalong3;
+        private System.Windows.Forms.TextBox textBoxPriority;
+        private System.Windows.Forms.Label labelPriority;
+        private System.Windows.Forms.Label labelCommandDetailsMaster;
+        private System.Windows.Forms.Label label_command_details;
+        private System.Windows.Forms.Button button_dataflags;
+        private System.Windows.Forms.TextBox textBox_conditionId;
+        private System.Windows.Forms.Label label_conditionId;
     }
 }

@@ -641,6 +641,30 @@ namespace EventAI_Creator
                         Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
                         Action1Param1Tbox.Visible = false;
                         break;
+                    case 50:            // React State
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.ReactStates);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
+                    case 57:            // Ranged Mode
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.RangedModeType);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
+                    case 58:            // Walk Mode
+                        Action1Param1Combobox.Visible = true;
+                        Action1Param1Combobox.Items.AddRange(Info.WalkModeType);
+                        Action1Param1Combobox.SelectedIndex = 0;
+                        Action1Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action1Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action1Param1Tbox.Visible = false;
+                        break;
                 }
             }
             if (Cbox == this.Action2TypeCBox)
@@ -809,7 +833,7 @@ namespace EventAI_Creator
                         Action2Param1Combobox.Items.AddRange(Info.AIEvents);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
                         break;
                     case 47:            // Stand State
@@ -817,7 +841,7 @@ namespace EventAI_Creator
                         Action2Param1Combobox.Items.AddRange(Info.StandStateTemplate);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
                         break;
                     case 48:            // Change movemnet
@@ -825,7 +849,31 @@ namespace EventAI_Creator
                         Action2Param1Combobox.Items.AddRange(Info.MovementTemplate);
                         Action2Param1Combobox.SelectedIndex = 0;
                         Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 50:            // React State
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.ReactStates);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 57:            // Ranged Mode
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.RangedModeType);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
+                        Action2Param1Tbox.Visible = false;
+                        break;
+                    case 58:            // Walk Mode
+                        Action2Param1Combobox.Visible = true;
+                        Action2Param1Combobox.Items.AddRange(Info.WalkModeType);
+                        Action2Param1Combobox.SelectedIndex = 0;
+                        Action2Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action2Param1Combobox.DropDownWidth = DropDownWidth(Action2Param1Combobox);
                         Action2Param1Tbox.Visible = false;
                         break;
                 }
@@ -996,7 +1044,7 @@ namespace EventAI_Creator
                         Action3Param1Combobox.Items.AddRange(Info.AIEvents);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
                     case 47:            // Stand State
@@ -1004,7 +1052,7 @@ namespace EventAI_Creator
                         Action3Param1Combobox.Items.AddRange(Info.StandStateTemplate);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
                     case 48:            // Change movemnet
@@ -1012,7 +1060,31 @@ namespace EventAI_Creator
                         Action3Param1Combobox.Items.AddRange(Info.MovementTemplate);
                         Action3Param1Combobox.SelectedIndex = 0;
                         Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action1Param1Combobox);
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 50:            // React State
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.ReactStates);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 57:            // Ranged Mode
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.RangedModeType);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
+                        Action3Param1Tbox.Visible = false;
+                        break;
+                    case 58:            // Walk Mode
+                        Action3Param1Combobox.Visible = true;
+                        Action3Param1Combobox.Items.AddRange(Info.WalkModeType);
+                        Action3Param1Combobox.SelectedIndex = 0;
+                        Action3Param1Combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                        Action3Param1Combobox.DropDownWidth = DropDownWidth(Action3Param1Combobox);
                         Action3Param1Tbox.Visible = false;
                         break;
                 }

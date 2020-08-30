@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,8 +9,8 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EventAI_Creator</RootNamespace>
-    <AssemblyName>EventAI Creator</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AssemblyName>EventAI Development Tool</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ManifestCertificateThumbprint>FD1697F7E103C8D68343A0238C783FF0D16B965B</ManifestCertificateThumbprint>
     <ManifestKeyFile>EventAI Creator_1_TemporaryKey.pfx</ManifestKeyFile>
@@ -22,7 +22,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <PublishUrl>E:\Dev_tools\EventAI_creator\</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>H:\Cmangos\03_Development\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -33,8 +34,10 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://localhost/EventAI Creator/</UpdateUrl>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>4.0.0.%2a</ApplicationVersion>
+    <ProductName>EventAI Development Tool</ProductName>
+    <PublisherName>CMaNGOS</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>5.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -48,6 +51,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>1</WarningLevel>
     <DocumentationFile>test.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,17 +62,21 @@
     <WarningLevel>1</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>cmangos.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DiffieHellman, Version=0.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SharpSSH-1.1.1.13.bin\DiffieHellman.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.3.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <Private>True</Private>
+    <Reference Include="MySql.Data">
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.10.5\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Org.Mentalis.Security, Version=1.0.13.715, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>

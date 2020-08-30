@@ -15,9 +15,11 @@ namespace EventAI_Creator
 
         public uint id;
         public uint delay = 0;
+        public uint priority = 0;
         public int command = 0;
         public uint datalong = 0;
         public uint datalong2 = 0;
+        public uint datalong3 = 0;
         public uint buddy = 0;
         public uint radius = 0;
         public uint dataflags = 0;
@@ -29,6 +31,7 @@ namespace EventAI_Creator
         public float position_y = 0;
         public float position_z = 0;
         public float orientation = 0;
+        public uint conditionId = 0;
         public string comment = "";
     }
 

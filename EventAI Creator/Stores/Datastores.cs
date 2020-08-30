@@ -267,7 +267,7 @@ namespace EventAI_Creator
             try
             {
                 string sQuery = "SELECT information_schema.TABLES.table_name FROM information_schema.TABLES " +
-                    "where information_schema.TABLES.table_name IN ('dbscripts_on_creature_movement','dbscripts_on_event','dbscripts_on_go_use','dbscripts_on_go_template_use','dbscripts_on_gossip','dbscripts_on_quest_end','dbscripts_on_quest_start','dbscripts_on_spell') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
+                    "where information_schema.TABLES.table_name IN ('dbscripts_on_creature_movement','dbscripts_on_event','dbscripts_on_go_use','dbscripts_on_go_template_use','dbscripts_on_gossip','dbscripts_on_quest_end','dbscripts_on_quest_start','dbscripts_on_relay','dbscripts_on_spell') and information_schema.TABLES.Table_schema='" + Properties.Settings.Default.DBMANGOS + "'";
                 MySqlCommand comm = new MySqlCommand(sQuery, SQLConnection.conn);
                 reader = comm.ExecuteReader();
 
@@ -309,9 +309,11 @@ namespace EventAI_Creator
 
                         item.id = reader.GetUInt32("id");
                         item.delay = reader.GetUInt32("delay");
+                        item.priority = reader.GetUInt32("priority");
                         item.command = reader.GetInt32("command");
                         item.datalong = reader.GetUInt32("datalong");
                         item.datalong2 = reader.GetUInt32("datalong2");
+                        item.datalong3 = reader.GetUInt32("datalong3");
                         item.buddy = reader.GetUInt32("buddy_entry");
                         item.radius = reader.GetUInt32("search_radius");
                         item.dataint = reader.GetUInt32("dataint");
@@ -322,6 +324,7 @@ namespace EventAI_Creator
                         item.position_y = reader.GetFloat("y");
                         item.position_z = reader.GetFloat("z");
                         item.orientation = reader.GetFloat("o");
+                        item.conditionId = reader.GetUInt32("condition_id");
                         item.comment = reader.GetString("comments");
 
                         db_scripts.scriptList[reader.GetUInt32("id")].line.Add(item);
@@ -859,9 +862,11 @@ namespace EventAI_Creator
                 {
                     lines = lines + "(" + copy.id + "," +
                     copy.line[i].delay + "," +
+                    copy.line[i].priority + "," +
                     copy.line[i].command + "," +
                     copy.line[i].datalong + "," +
                     copy.line[i].datalong2 + "," +
+                    copy.line[i].datalong3 + "," +
                     copy.line[i].buddy + "," +
                     copy.line[i].radius + "," +
                     copy.line[i].dataflags + "," +
@@ -873,6 +878,7 @@ namespace EventAI_Creator
                     copy.line[i].position_y + "," +
                     copy.line[i].position_z + "," +
                     copy.line[i].orientation + ",'" +
+                    copy.line[i].conditionId + ",'" +
                     MySqlHelper.EscapeString(copy.line[i].comment) + "')";
                     if (i + 1 < copy.line.Count)
                         lines = lines + ",\r\n";

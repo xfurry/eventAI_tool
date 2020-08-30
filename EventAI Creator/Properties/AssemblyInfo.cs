@@ -6,12 +6,12 @@ using System.Resources;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("EventAI Creator")]
-[assembly: AssemblyDescription("EventAI development tool")]
+[assembly: AssemblyTitle("EventAI Development Tool")]
+[assembly: AssemblyDescription("Development tool for EventAI and DB Scripts")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MaNGOS")]
-[assembly: AssemblyProduct("EventAI Creator")]
-[assembly: AssemblyCopyright("Copyright © MaNGOS 2012")]
+[assembly: AssemblyCompany("CMaNGOS")]
+[assembly: AssemblyProduct("EventAI Development Tool")]
+[assembly: AssemblyCopyright("Copyright © CMaNGOS 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

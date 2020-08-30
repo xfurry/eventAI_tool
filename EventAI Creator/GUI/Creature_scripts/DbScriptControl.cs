@@ -35,13 +35,16 @@ namespace EventAI_Creator
 
             this.comboBoxAction.SelectedIndex = Data.command;
             this.textBoxDelay.Text = Data.delay.ToString();
+            this.textBoxPriority.Text = Data.priority.ToString();
 
             this.textBox_datalong.Text = Data.datalong.ToString();
             this.textBox_datalong2.Text = Data.datalong2.ToString();
+            this.textBox_datalong3.Text = Data.datalong3.ToString();
 
             this.textBox_buddy.Text = Data.buddy.ToString();
             this.textBox_radius.Text = Data.radius.ToString();
             this.textBox_flags.Text = Data.dataflags.ToString();
+            this.textBox_conditionId.Text = Data.conditionId.ToString();
 
             this.textBox_dataint1.Text = Data.dataint.ToString();
             this.textBox_dataint2.Text = Data.dataint2.ToString();
@@ -83,9 +86,11 @@ namespace EventAI_Creator
 
             Data.command = comboBoxAction.SelectedIndex;
             if (textBoxDelay.Text.Length != 0)          Data.delay = Convert.ToUInt32(textBoxDelay.Text);
+            if (textBoxPriority.Text.Length != 0)       Data.priority = Convert.ToUInt32(textBoxPriority.Text);
 
             if (textBox_datalong.Text.Length != 0)      Data.datalong = Convert.ToUInt32(textBox_datalong.Text);
             if (textBox_datalong2.Text.Length != 0)     Data.datalong2 = Convert.ToUInt32(textBox_datalong2.Text);
+            if (textBox_datalong3.Text.Length != 0)     Data.datalong3 = Convert.ToUInt32(textBox_datalong3.Text);
 
             if (textBox_dataint1.Text.Length != 0)      Data.dataint = Convert.ToUInt32(textBox_dataint1.Text);
             if (textBox_dataint2.Text.Length != 0)      Data.dataint = Convert.ToUInt32(textBox_dataint2.Text);
@@ -100,6 +105,7 @@ namespace EventAI_Creator
             if (textBox_buddy.Text.Length != 0)         Data.buddy = Convert.ToUInt32(textBox_buddy.Text);
             if (textBox_radius.Text.Length != 0)        Data.radius = Convert.ToUInt32(textBox_radius.Text);
             if (textBox_flags.Text.Length != 0)         Data.dataflags = Convert.ToUInt32(textBox_flags.Text);
+            if (textBox_conditionId.Text.Length != 0)   Data.conditionId = Convert.ToUInt32(textBox_conditionId.Text);
 
             if (commentTextbox.Text.Length != 0)        Data.comment = commentTextbox.Text;
 
@@ -130,7 +136,7 @@ namespace EventAI_Creator
         private void eventCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.eventCheckbox.Checked)
-                this.Height = 287;
+                this.Height = 330;
             else
                 this.Height = 20;
         }
@@ -148,23 +154,36 @@ namespace EventAI_Creator
             textBox_posZ.ReadOnly = true;
             textBox_orientation.ReadOnly = true;
 
-            textBox_datalong2.ReadOnly = false;
             textBox_datalong.ReadOnly = false;
+            textBox_datalong2.ReadOnly = false;
+            textBox_datalong3.ReadOnly = false;
             label_datalong.Text = "Datalong";
             label_datalong2.Text = "Datalong2";
+            label_datalong3.Text = "Datalong3";
+            label_command_details.Text = "No command selected";
+
+            label_dataint1.Text = "DataInt1";
+            label_dataint2.Text = "DataInt2";
+            label_dataint3.Text = "DataInt3";
+            label_dataint4.Text = "DataInt4";
 
             comboBox_datalong.Visible = false;
             comboBox_datalong2.Visible = false;
+            comboBox_datalong3.Visible = false;
             button_datalong.Visible = false;
             button_datalong2.Visible = false;
+            button_datalong3.Visible = false;
             textBox_datalong.Width = 100;
             textBox_datalong2.Width = 100;
+            textBox_datalong3.Width = 100;
 
             textBox_datalong.Visible = true;
             textBox_datalong2.Visible = true;
+            textBox_datalong3.Visible = true;
 
             comboBox_datalong.Items.Clear();
             comboBox_datalong2.Items.Clear();
+            comboBox_datalong3.Items.Clear();
 
             switch (comboBoxAction.SelectedIndex)
             {
@@ -190,6 +209,7 @@ namespace EventAI_Creator
                     comboBox_datalong2.DropDownStyle = ComboBoxStyle.DropDownList;
                     comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
+                case 15:    // cast spell
                 case 16:    // play sound
                     textBox_datalong2.Width = 50;
                     button_datalong2.Visible = true;
@@ -205,6 +225,7 @@ namespace EventAI_Creator
                 case 21:    // active object
                 case 25:    // set run
                 case 33:    // user XP
+                case 36:    // reset facing
                 case 39:    // set fly
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
@@ -239,19 +260,53 @@ namespace EventAI_Creator
                     comboBox_datalong2.DropDownStyle = ComboBoxStyle.DropDownList;
                     comboBox_datalong2.DropDownWidth = DropDownWidth(comboBox_datalong2);
                     break;
-                case 35:
+                case 35:    // send AI event around
                     textBox_datalong.Visible = false;
                     comboBox_datalong.Visible = true;
                     comboBox_datalong.Items.AddRange(Info.AIEvents);
                     comboBox_datalong.SelectedIndex = 0;
                     comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
                     comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
-                    break;      
+                    break;
+                case 42:    // equipment slots
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.Boolean);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
+
+                    textBox_dataint1.ReadOnly = false;
+                    textBox_dataint2.ReadOnly = false;
+                    textBox_dataint3.ReadOnly = false;
+                    label_dataint1.Text = "Main Hand";
+                    label_dataint2.Text = "Off Hand";
+                    label_dataint3.Text = "Ranged";
+                    break;
+                case 46:    // custom spell
+                    textBox_datalong2.Width = 50;
+                    button_datalong2.Visible = true;
+                    textBox_dataint1.ReadOnly = false;
+                    textBox_dataint2.ReadOnly = false;
+                    textBox_dataint3.ReadOnly = false;
+                    label_dataint1.Text = "Base Points 0";
+                    label_dataint2.Text = "Base Points 1";
+                    label_dataint3.Text = "Base Points 2";
+                    break;
+                case 47:    // interrupt current spell
+                    textBox_datalong.Visible = false;
+                    comboBox_datalong.Visible = true;
+                    comboBox_datalong.Items.AddRange(Info.CurrentSpellTypes);
+                    comboBox_datalong.SelectedIndex = 0;
+                    comboBox_datalong.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
+                    break;
             }
 
             // Set all to 0
             textBox_datalong.Text = "0";
             textBox_datalong2.Text = "0";
+            textBox_datalong3.Text = "0";
 
             textBox_posX.Text = "0";
             textBox_posY.Text = "0";
@@ -274,9 +329,15 @@ namespace EventAI_Creator
             else
                 textBox_datalong2.ReadOnly = true;
 
-            label_source.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 3];
-            label_target.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 4];
-            label_details.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 5];
+            if (Info.ScriptCommands[comboBoxAction.SelectedIndex, 3] != "")
+                label_datalong3.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 3];
+            else
+                textBox_datalong3.ReadOnly = true;
+
+            label_source.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 4];
+            label_target.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 5];
+            label_details.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 6];
+            label_command_details.Text = Info.ScriptCommands[comboBoxAction.SelectedIndex, 7];
 
             if (!locked)
                 GetEventData();
@@ -349,8 +410,10 @@ namespace EventAI_Creator
         {
             switch (comboBoxAction.SelectedIndex)
             {
+                case 15:        // cast spell
                 case 16:        // play sound
                 case 22:        // change faction
+                case 46:        // cast custom spell
                     textBox_datalong2.Text = flagValue.ToString();
                     break;
                 case 27:        // go lock state
@@ -399,6 +462,11 @@ namespace EventAI_Creator
 
             switch (comboBoxAction.SelectedIndex)
             {
+                case 15:        // cast spell
+                case 46:        // cast custom spell
+                    dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong2.Text), Info.CastFlags, 6, 0);
+                    dialog.ShowDialog(this);
+                    break;
                 case 16:        // play sound
                     dialog = new EventFlag(this, Convert.ToInt32(textBox_datalong2.Text), Info.SoundBitmask, 6, 0);
                     dialog.ShowDialog(this);
@@ -416,6 +484,15 @@ namespace EventAI_Creator
                     dialog.ShowDialog(this);
                     break;
             }
+        }
+
+        // load script flags dialogue
+        private void button_dataflags_Click(object sender, EventArgs e)
+        {
+            EventFlag dialog = null;
+
+            dialog = new EventFlag(this, Convert.ToInt32(textBox_flags.Text), Info.ScriptFlags, 5, 0);
+            dialog.ShowDialog(this);
         }
     }
 }
