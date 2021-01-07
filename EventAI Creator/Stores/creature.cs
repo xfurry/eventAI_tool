@@ -27,6 +27,8 @@ namespace EventAI_Creator
         public int event_param2;
         public int event_param3;
         public int event_param4;
+        public int event_param5;
+        public int event_param6;
 
         public int action1_type;
         public Int64 action1_param1;

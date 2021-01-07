@@ -209,8 +209,6 @@ namespace EventAI_Creator
             "HOSTILE_RANDOM_NOT_TOP",
             "ACTION_INVOKER",
             "ACTION_INVOKER_OWNER",
-            "HOSTILE_RANDOM_PLAYER",
-            "HOSTILE_RANDOM_NOT_TOP_PLAYER",
             "EVENT_SENDER",
             "HOSTILE_RANDOM_PLAYER",
             "HOSTILE_RANDOM_NOT_TOP_PLAYER",
@@ -421,7 +419,7 @@ namespace EventAI_Creator
             "GOT_CCED",                                 // Sender = CCed Npc, Invoker = Caster that CCed
         };
 
-        public static string[] NpcFlagsSelect = new string[] {"TOGGLE","ADD","REMOVE"};
+        public static string[] NpcFlagsSelect = new string[] { "REMOVE", "ADD", "TOGGLE" };
 
         public static string[] PauseWaypoints = new string[] { "UNPAUSE", "PAUSE" };
 
@@ -443,7 +441,7 @@ namespace EventAI_Creator
 /* 10 */    {"TEMP_SUMMON_CREATURE","Creature Entry","Despawn Delay",   "Path Id",      "any",          "any",          "summon as active object",  "Temporarily summon a creature."},
 /* 11 */    {"OPEN_DOOR",           "DB Guid",      "Reset Delay",      "",             "any",          "",             "",                         "Opens a door gameobject (type == 0)."},
 /* 12 */    {"CLOSE_DOOR",          "DB Guid",      "Reset Delay",      "",             "any",          "",             "",                         "Closes a door gameobject (type == 0)."},
-/* 13 */    {"ACTIVATE_OBJECT",     "",             "",                 "",             "unit",         "GO",           "",                         "Activates an object."},
+/* 13 */    {"ACTIVATE_OBJECT",     "Anim Id",      "",                 "",             "unit",         "GO",           "Send custom animation",    "Activates an object."},
 /* 14 */    {"REMOVE_AURA",         "Spell Id",     "",                 "",             "Unit*",        "",             "",                         "Removes an aura due to a spell."},
 /* 15 */    {"CAST_SPELL",          "Spell Id",     "Cast Flags",       "",             "Unit*",        "Unit*",        "cast triggered",           "Casts a spell."},
 /* 16 */    {"PLAY_SOUND",          "Sound Id",     "Sound Flags",      "",             "any object",   "any/player",   "",                         "Plays a sound."},
@@ -459,7 +457,7 @@ namespace EventAI_Creator
 /* 26 */    {"ATTACK_START",        "",             "",                 "",             "Creature*",    "unit*",        "",                         "Makes a creature attack a unit"},
 /* 27 */    {"GO_LOCK_STATE",       "Flag",         "",                 "",             "GO*",          "",             "",                         "Lock/Unlock a gameobject"},
 /* 28 */    {"STAND_STATE",         "Stand State",  "",                 "",             "Creature*",    "",             "",                         "Set the stand state of a creature"},
-/* 29 */    {"MODIFY_NPC_FLAGS",    "NPC Flags",    "Bitmask",          "",             "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
+/* 29 */    {"MODIFY_NPC_FLAGS",    "NPC Flags",    "Change Flag",      "",             "Creature*",    "",             "",                         "Modify the NPC flags of a creature"},
 /* 30 */    {"SEND_TAXI_PATH",      "Taxi Path id", "",                 "",             "Player|",      "Player|",      "",                         "Send player in Taxi path"},
 /* 31 */    {"TERMINATE_SCRIPT",    "NPC Entry",    "Search Distance",  "Pool Id",      "Creature|",    "Creature|",    "not alive / alive",        "Terminate current script execution"},
 /* 32 */    {"PAUSE_WAYPOINTS",     "unpause/pause","",                 "",             "Creature|",    "Creature|",    "",                         "Unpause/pause waypoint movement"},
@@ -478,6 +476,7 @@ namespace EventAI_Creator
 /* 45 */    {"START_RELAY_SCRIPT",  "Relay Id",     "Relay Template Id","",             "Unit*",        "",             "",                         "Start relay script. Use Template Id if provided"},
 /* 46 */    {"CAST_CUSTOM_SPELL",   "Spell Id",     "Cast Flags",       "",             "Unit*",        "Unit*",        "",                         "Cast custom spell"},
 /* 47 */    {"INTERRUPT_SPELL",     "Current Spell Type","",            "",             "Unit*",    "",             "",                             "Interrupt spell by type"},
+/* 48 */    {"MODIFY_UNIT_FLAGS",   "Unit Flags",   "Change Flag",      "",             "Creature*",    "",             "",                         "Modify the Unit flags of a creature"},
         };
     }
 }

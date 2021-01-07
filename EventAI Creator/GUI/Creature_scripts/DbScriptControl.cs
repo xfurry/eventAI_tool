@@ -251,6 +251,7 @@ namespace EventAI_Creator
                     comboBox_datalong.DropDownWidth = DropDownWidth(comboBox_datalong);
                     break;
                 case 29:    // npc flags
+                case 48:    // unit flags
                     textBox_datalong.Width = 50;
                     button_datalong.Visible = true;
                     textBox_datalong2.Visible = false;

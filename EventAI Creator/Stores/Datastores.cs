@@ -80,6 +80,8 @@ namespace EventAI_Creator
                         item.event_param2 = reader.GetInt32("event_param2");
                         item.event_param3 = reader.GetInt32("event_param3");
                         item.event_param4 = reader.GetInt32("event_param4");
+                        item.event_param5 = reader.GetInt32("event_param5");
+                        item.event_param6 = reader.GetInt32("event_param6");
                         item.action1_type = reader.GetInt32("action1_type");
                         item.action1_param1 = reader.GetInt32("action1_param1");
                         item.action1_param2 = reader.GetInt32("action1_param2");
@@ -758,6 +760,8 @@ namespace EventAI_Creator
                     copy.line[i].event_param2 + "','" +
                     copy.line[i].event_param3 + "','" +
                     copy.line[i].event_param4 + "','" +
+                    copy.line[i].event_param5 + "','" +
+                    copy.line[i].event_param6 + "','" +
                     copy.line[i].action1_type + "','" +
                     copy.line[i].action1_param1 + "','" +
                     copy.line[i].action1_param2 + "','" +
@@ -796,6 +800,8 @@ namespace EventAI_Creator
                         itemf.line[i].event_param2 + "','" +
                         itemf.line[i].event_param3 + "','" +
                         itemf.line[i].event_param4 + "','" +
+                        itemf.line[i].event_param5 + "','" +
+                        itemf.line[i].event_param6 + "','" +
                         itemf.line[i].action1_type + "','" +
                         itemf.line[i].action1_param1 + "','" +
                         itemf.line[i].action1_param2 + "','" +
@@ -833,6 +839,8 @@ namespace EventAI_Creator
                         creatures.npcList[itemf.Key].line[i].event_param2 + "','" +
                         creatures.npcList[itemf.Key].line[i].event_param3 + "','" +
                         creatures.npcList[itemf.Key].line[i].event_param4 + "','" +
+                        creatures.npcList[itemf.Key].line[i].event_param5 + "','" +
+                        creatures.npcList[itemf.Key].line[i].event_param6 + "','" +
                         creatures.npcList[itemf.Key].line[i].action1_type + "','" +
                         creatures.npcList[itemf.Key].line[i].action1_param1 + "','" +
                         creatures.npcList[itemf.Key].line[i].action1_param2 + "','" +
